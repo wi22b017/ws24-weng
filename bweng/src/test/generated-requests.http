@@ -1,0 +1,66 @@
+###
+GET http://localhost:8080/books
+
+<> 2024-10-02T205024.200.json
+<> 2024-10-02T204950.200.json
+<> 2024-10-02T204602.200.json
+<> 2024-10-02T204352.200.json
+<> 2024-10-02T203441.200.json
+<> 2024-10-02T202052.200.json
+<> 2024-10-02T200436.200.json
+<> 2024-10-02T200353.200.json
+<> 2024-10-02T194540.200.json
+<> 2024-10-02T190849.200.json
+<> 2024-10-02T190724.500.json
+
+###
+GET http://localhost:8080/books/d9217954-af02-4a04-a584-fee633e5d32a
+
+<> 2024-10-02T200425.200.json
+<> 2024-10-02T195136.200.json
+<> 2024-10-02T194735.500.json
+<> 2024-10-02T194603.200.json
+
+###
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "Death on the Nile",
+  "author": {
+    "firstName": "Agatha",
+    "lastName": "Christie"
+  },
+  "releaseYear": 1937
+}
+
+<> 2024-10-02T203508.400.json
+<> 2024-10-02T202019.400.json
+<> 2024-10-02T202013.400.json
+<> 2024-10-02T201933.400.json
+
+###
+PATCH http://localhost:8080/books/2dad87ad-d949-4c54-8d3c-13b3baa4cc3a
+Content-Type: application/json
+
+{
+  "author": "John R.R. Tolkien"
+}
+
+<> 2024-10-02T204405.200.json
+
+###
+PUT http://localhost:8080/books/2fadbfb7-7ba4-4ece-9a27-6a781e136a38
+Content-Type: application/json
+
+{
+  "title": "The Lord of the Rings",
+  "author": "John R.R. Tolkien",
+  "releaseYear": 1954
+}
+
+<> 2024-10-02T204656.200.json
+<> 2024-10-02T204629.200.json
+
+###
+DELETE http://localhost:8080/books/104dcfd7-2cfe-49c4-8ab8-91573c99f10e
