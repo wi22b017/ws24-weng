@@ -1,0 +1,155 @@
+{"flights": [
+    { "id": "1",
+      "flightDepartureInfo": {
+        "time": "08:30",
+        "airportCode": "JFK",
+        "terminal": "4",
+        "type": "departure"
+      },
+      "flightArrivalInfo": {
+        "time": "04:00",
+        "airportCode": "LHR",
+        "terminal": "5",
+        "type": "arrival"
+      },
+      "stops": 1,
+      "flightDuration": 450,
+      "airline": "British Airways",
+      "economyClassCard": {
+        "flightClassName": "Economy",
+        "price": 450
+      },
+      "businessClassCard": {
+        "flightClassName": "Business",
+        "price": 1200
+      },
+      "firstClassCard": {
+        "flightClassName": "First",
+        "price": 2500
+      }
+    },
+    {"id": "2",
+      "flightDepartureInfo": {
+        "time": "06:00",
+        "airportCode": "LAX",
+        "terminal": "B",
+        "type": "departure"
+      },
+      "flightArrivalInfo": {
+        "time": "01:30",
+        "airportCode": "NRT",
+        "terminal": "2",
+        "type": "arrival"
+      },
+      "stops": 0,
+      "flightDuration": 600,
+      "airline": "Japan Airlines",
+      "economyClassCard": {
+        "flightClassName": "Economy",
+        "price": 600
+      },
+      "businessClassCard": {
+        "flightClassName": "Business",
+        "price": 1600
+      },
+      "firstClassCard": {
+        "flightClassName": "First",
+        "price": 3200
+      }
+    },
+    {
+        "id": "3",
+      "flightDepartureInfo": {
+        "time": "10:45",
+        "airportCode": "SFO",
+        "terminal": "1",
+        "type": "departure"
+      },
+      "flightArrivalInfo": {
+        "time": "08:00",
+        "airportCode": "CDG",
+        "terminal": "2E",
+        "type": "arrival"
+      },
+      "stops": 1,
+      "flightDuration": 540,
+      "airline": "Air France",
+      "economyClassCard": {
+        "flightClassName": "Economy",
+        "price": 520
+      },
+      "businessClassCard": {
+        "flightClassName": "Business",
+        "price": 1800
+      },
+      "firstClassCard": {
+        "flightClassName": "First",
+        "price": 3500
+      }
+    },
+    {
+        "id": "4",
+      "flightDepartureInfo": {
+        "time": "09:00",
+        "airportCode": "SIN",
+        "terminal": "3",
+        "type": "departure"
+      },
+      "flightArrivalInfo": {
+        "time": "05:00",
+        "airportCode": "SYD",
+        "terminal": "1",
+        "type": "arrival"
+      },
+      "stops": 0,
+      "flightDuration": 480,
+      "airline": "Singapore Airlines",
+      "economyClassCard": {
+        "flightClassName": "Economy",
+        "price": 400,
+        "currency": "SGD"
+      },
+      "businessClassCard": {
+        "flightClassName": "Business",
+        "price": 1400,
+        "currency": "SGD"
+      },
+      "firstClassCard": {
+        "flightClassName": "First",
+        "price": 2800,
+        "currency": "SGD"
+      }
+    },
+    {
+        "id": "5",
+      "flightDepartureInfo": {
+        "time": "03:00",
+        "airportCode": "DXB",
+        "terminal": "1",
+        "type": "departure"
+      },
+      "flightArrivalInfo": {
+        "time": "11:00",
+        "airportCode": "JFK",
+        "terminal": "4",
+        "type": "arrival"
+      },
+      "stops": 2,
+      "flightDuration": 780,
+      "airline": "Emirates",
+      "economyClassCard": {
+        "flightClassName": "Economy",
+        "price": 500
+      },
+      "businessClassCard": {
+        "flightClassName": "Business",
+        "price": 1800,
+        "currency": "USD"
+      },
+      "firstClassCard": {
+        "flightClassName": "First",
+        "price": 4500,
+        "currency": "USD"
+      }
+    }
+  ]}

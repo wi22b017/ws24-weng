@@ -1,0 +1,52 @@
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+
+const routes = [
+  {
+    path: "/",
+    name: "home",
+    component: HomeView,
+  },
+  {
+    path: "/help",
+    name: "help",
+    component: () =>
+        import(/* webpackChunkName: "help" */ "../views/HelpView.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () =>
+        import(
+            /* webpackChunkName: "login" */ "../components/organisms/OrganismLoginModal.vue"
+            ),
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () =>
+        import(
+            /* webpackChunkName: "register" */ "../components/organisms/OrganismRegisterModal.vue"
+            ),
+  },
+
+  {
+    path: "/imprint",
+    name: "imprint",
+    component: () =>
+        import(/* webpackChunkName: "imprint" */ "../views/ImprintView.vue"),
+  },
+  {
+    path: "/flights",
+    name: "flights",
+    component: () =>
+        import(/* webpackChunkName: "flights" */ "../views/FlightListView.vue"),
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+export default router;
