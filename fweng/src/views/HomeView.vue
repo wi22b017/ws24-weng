@@ -8,12 +8,17 @@
     <!-- OrganismFlightSearchBar Component -->
     <OrganismFlightSearchBar @submit="onSubmit"/>
   </div>
+  <FlightListTemplate class="d-none" id="flightList" />
+  <div class="mt-5">
+
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import ErrorModal from '@/components/organisms/OrganismErrorModal.vue';
 import OrganismFlightSearchBar from "@/components/organisms/OrganismFlightSearchBar.vue";
+import FlightListTemplate from "@/components/template/FlightListTemplate.vue";
 
 
 // Reference to the error modal
@@ -46,6 +51,7 @@ const onSubmit = (formData) => {
 
   // If no errors, continue the form submission
   alert(JSON.stringify(formData, null, 2));
+  document.querySelector('#flightList').classList.remove('d-none')
 };
 </script>
 
