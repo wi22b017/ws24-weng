@@ -9,9 +9,7 @@
     <OrganismFlightSearchBar @submit="onSubmit"/>
   </div>
   <FlightListTemplate class="d-none" id="flightList" />
-  <div class="mt-5">
 
-  </div>
 </template>
 
 <script setup>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="flight in flightData.flights" :key="flight.id">
-      <OrganisimFlightInfoEntry
+      <OrganismFlightInfoEntry
           :flight-departure-info="flight.flightDepartureInfo"
           :flight-arrival-info="flight.flightArrivalInfo"
           :stops="flight.stops"
@@ -16,6 +16,6 @@
 </template>
 
 <script setup>
-import OrganisimFlightInfoEntry from "@/components/organisms/OrganisimFlightInfoEntry.vue";
+import OrganismFlightInfoEntry from "@/components/organisms/OrganismFlightInfoEntry.vue";
 import flightData from "/mock/flightData.json";
 </script>

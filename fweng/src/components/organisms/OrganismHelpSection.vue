@@ -16,9 +16,17 @@ import AppText from '@/components/atoms/AtomText.vue';
 import AppButton from '@/components/atoms/AtomButton.vue';
 
 const handleContactClick = () => {
-  // Navigate to the contact page or trigger a modal
-  console.log('Redirecting to contact page...');
+  const email = 'support@airscape.com';
+  const subject = 'Contact Request';
+  const body = 'Hello, I would like to get in touch regarding...';
+
+  // Create the mailto link
+  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Redirect the user to their email client
+  window.location.href = mailtoLink;
 };
+
 </script>
 
 <style scoped>
