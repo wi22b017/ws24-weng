@@ -27,11 +27,6 @@
           >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :to="{ name: 'flights' }"
-            >Flights</router-link
-          >
-        </li>
-        <li class="nav-item">
           <button class="nav-link" @click="$emit('show-login')">Login</button>
         </li>
         <li class="nav-item">
