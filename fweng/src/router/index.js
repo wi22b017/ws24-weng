@@ -36,12 +36,6 @@ const routes = [
     component: () =>
         import(/* webpackChunkName: "imprint" */ "../views/ImprintView.vue"),
   },
-  {
-    path: "/flights",
-    name: "flights",
-    component: () =>
-        import(/* webpackChunkName: "flights" */ "../views/FlightListView.vue"),
-  },
 ];
 
 const router = createRouter({

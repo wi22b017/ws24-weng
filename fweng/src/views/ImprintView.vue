@@ -70,10 +70,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "ImprintPage",
-};
+<script setup>
+
 </script>
 
 <style scoped>

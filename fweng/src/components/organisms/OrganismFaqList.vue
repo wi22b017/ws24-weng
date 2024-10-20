@@ -13,10 +13,10 @@
 import FaqItem from '@/components/molecules/MoleculeFaqItem.vue';
 
 const faqItems = [
-  { question: "How can I book a flight?", answer: "You can book a flight by..." },
-  { question: "What are the cancellation policies?", answer: "The cancellation policies..." },
-  { question: "How do I change my booking?", answer: "To change your booking, you can..." },
-  { question: "What payment methods are accepted?", answer: "We accept credit cards, debit cards, and PayPal." }
+  { question: "How can I book a flight?", answer: "You can book a flight by entering your travel details in the search bar on our homepage. Once you have found your flight, you can select a suitable flight class. After this, you have to login or register. As a last step you can enter the details of your fellow passengers and confirm the flight booking." },
+  { question: "What are the cancellation policies?", answer: "Our cancellation policy allows for a full refund within 24 hours of booking. After that period, cancellations may be subject to fees or may result in a travel credit, depending on the fare type. Please refer to the specific terms and conditions of your booking for more details." },
+  { question: "How do I change my booking?", answer: "You can cancel your booking in the MyBookings section. " },
+  { question: "What payment methods are accepted?", answer: "We accept credit cards and debit cards." }
 ];
 </script>
 
