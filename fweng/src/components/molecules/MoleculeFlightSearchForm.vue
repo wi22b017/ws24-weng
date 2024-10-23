@@ -63,7 +63,7 @@
             id="returnDate"
             type="date"
             label="Return Date"
-            name="departureDate"
+            name="returnDate"
         />
       </div>
 
