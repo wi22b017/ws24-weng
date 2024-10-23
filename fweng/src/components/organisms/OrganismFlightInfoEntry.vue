@@ -4,12 +4,12 @@
       <div class="col-6 d-flex flex-column justify-content-between my-3">
         <div class="d-flex justify-content-center align-items-center w-100">
           <MoleculeFlightFromToInfo
-            v-bind="flightDepartureInfo"
+              :flightInfo="flightDepartureInfo"
             class="flex-grow-1"
           />
           <MoleculeFlightConnector :stops="stops" />
           <MoleculeFlightFromToInfo
-            v-bind="flightArrivalInfo"
+              :flightInfo="flightArrivalInfo"
             class="flex-grow-1 ms-2"
           />
         </div>
