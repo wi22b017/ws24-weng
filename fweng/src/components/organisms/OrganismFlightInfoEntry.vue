@@ -18,7 +18,10 @@
             :icon="faClock"
             :text="'Duration ' + formatDuration(flightDuration)"
           />
-          <MoleculeIconText :icon="faPlane" :text="'Operated by ' + airline" />
+          <MoleculeIconText
+              :icon="faPlane"
+              :text="'Operated by ' + airline"
+          />
         </div>
       </div>
       <div class="col-6">
