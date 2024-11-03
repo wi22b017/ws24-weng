@@ -6,6 +6,582 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
+  "flightNumber": "LH1235",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T121322.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1235",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "XH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T120826.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T120358.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 336
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234567",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T115947.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH123456",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T115921.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 335
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH123456",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T115652.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T114856.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1235",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T114512.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12356",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T114316.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1235",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T114251.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1235",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T114230.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 334
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+<> 2024-11-03T110412.409.json
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
   "flightNumber": "LH1234",
   "departureTime": "2024-11-03T15:30:00",
   "arrivalTime": "2024-11-03T18:45:00",

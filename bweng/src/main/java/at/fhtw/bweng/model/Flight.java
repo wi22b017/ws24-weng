@@ -22,8 +22,8 @@ public class Flight {
     private String flightNumber;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    @OneToOne
+    @ManyToOne
     private Airport flightOrigin;
-    @OneToOne
+    @ManyToOne
     private Airport flightDestination;
 }
