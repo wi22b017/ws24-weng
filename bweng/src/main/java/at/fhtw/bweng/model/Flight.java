@@ -18,6 +18,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(unique = true)
     private String flightNumber;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
