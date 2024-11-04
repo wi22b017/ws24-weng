@@ -17,10 +17,10 @@ Content-Type: application/json
   "aircraft": {
     "serialNumber": "A123456789",
     "manufacturer": "Boeing",
-    "model": "737",
-    "capacity": 180,
+    "model": "767-300ER",
+    "capacity": 211,
     "airline": {
-      "name": "Lufthansa"
+      "name": "Austrian Airlines"
     }
   }
 }
@@ -45,4 +45,41 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/airports
+
+
+###
+POST http://localhost:8080/airlines
+Content-Type: application/json
+
+{
+  "name": "Austrian Airlines"
+}
+
+###
+POST http://localhost:8080/airlines
+Content-Type: application/json
+
+{
+  "name": "Air France"
+}
+
+###
+GET http://localhost:8080/airlines
+
+###
+POST http://localhost:8080/aircrafts
+Content-Type: application/json
+
+{
+  "serialNumber": "A2",
+  "manufacturer": "Boeing",
+  "model": "787-9",
+  "capacity": 294,
+  "airline": {
+    "name": "Austrian Airlines"
+  }
+}
+
+###
+GET http://localhost:8080/aircrafts
 
