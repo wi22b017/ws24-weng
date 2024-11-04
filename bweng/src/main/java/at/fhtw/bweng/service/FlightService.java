@@ -1,8 +1,12 @@
 package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.FlightDto;
+import at.fhtw.bweng.model.Aircraft;
+import at.fhtw.bweng.model.Airline;
 import at.fhtw.bweng.model.Airport;
 import at.fhtw.bweng.model.Flight;
+import at.fhtw.bweng.repository.AircraftRepository;
+import at.fhtw.bweng.repository.AirlineRepository;
 import at.fhtw.bweng.repository.AirportRepository;
 import at.fhtw.bweng.repository.FlightRepository;
 import org.springframework.stereotype.Service;
@@ -16,11 +20,15 @@ public class FlightService {
 
     private FlightRepository flightRepository;
     private AirportRepository airportRepository;
+    private AirlineRepository airlineRepository;
+    private AircraftRepository aircraftRepository;
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
-    public FlightService(FlightRepository flightRepository, AirportRepository airportRepository) {
+    public FlightService(FlightRepository flightRepository, AirportRepository airportRepository, AirlineRepository airlineRepository, AircraftRepository aircraftRepository) {
         this.flightRepository = flightRepository;
         this.airportRepository = airportRepository;
+        this.airlineRepository = airlineRepository;
+        this.aircraftRepository = aircraftRepository;
     }
 
     public UUID addFlight(FlightDto flightDto) {
@@ -42,7 +50,22 @@ public class FlightService {
                     return airportRepository.save(newAirport);
                 });
 
-        Flight flight = new Flight(null, flightDto.flightNumber(), departureTime, arrivalTime, flightOrigin, flightDestination);
+        // Find or create the airline
+        Airline airline = airlineRepository.findByName(flightDto.aircraft().airline().name())
+                .orElseGet(() -> {
+                    Airline newAirline = new Airline(null, flightDto.aircraft().airline().name());
+                    return airlineRepository.save(newAirline);
+                });
+
+        // Find or create the aircraft
+        Aircraft aircraft = aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber())
+                .orElseGet(() -> {
+                    Aircraft newAircraft = new Aircraft(null, flightDto.aircraft().serialNumber(), flightDto.aircraft().manufacturer(),
+                            flightDto.aircraft().model(), flightDto.aircraft().capacity(), airline);
+                    return aircraftRepository.save(newAircraft);
+                });
+
+        Flight flight = new Flight(null, flightDto.flightNumber(), departureTime, arrivalTime, flightOrigin, flightDestination, aircraft);
         flightRepository.save(flight);
         return flight.getId();
     }

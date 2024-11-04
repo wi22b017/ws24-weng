@@ -1,5 +1,157 @@
 POST http://localhost:8080/flights
 Content-Type: application/json
+Content-Length: 509
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "737",
+    "capacity": 180,
+    "airline": {
+      "name": "Lufthansa"
+    }
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 508
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "737",
+    "capacity": 180,
+    "airline": {
+      "name": "Lufthansa"
+    }
+  }
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
+Content-Length: 508
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "737",
+    "capacity": 180,
+    "airline": {
+      "name": "Lufthansa"
+    }
+  }
+}
+
+<> 2024-11-04T122736.400.json
+
+###
+
+GET http://localhost:8080/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T121950.200.json
+
+###
+
+POST http://localhost:8080/airports
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+<> 2024-11-04T121025.409.json
+
+###
+
+POST http://localhost:8080/airports
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+###
+
+POST http://localhost:8080/airports
+Content-Type: application/json
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+###
+
+POST http://localhost:8080/flights
+Content-Type: application/json
 Content-Length: 333
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip

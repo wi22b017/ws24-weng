@@ -30,7 +30,7 @@ public class ExceptionHandling {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Map<String, String>> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
         Map<String, String> response = new HashMap<>();
-        response.put("error", "A flight with this flight number already exists.");
+        response.put("error", "A entity with the same data already exists.");
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 

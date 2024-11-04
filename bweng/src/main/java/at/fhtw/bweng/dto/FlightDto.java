@@ -7,5 +7,5 @@ public record FlightDto(@NotBlank String flightNumber,
                         @NotBlank String departureTime,
                         @NotBlank String arrivalTime,
                         @NotNull AirportDto flightOrigin,
-                        @NotNull AirportDto flightDestination
-                        ) {}
+                        @NotNull AirportDto flightDestination,
+                        @NotNull AircraftDto aircraft) {}
