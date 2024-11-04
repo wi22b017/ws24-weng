@@ -1,9 +1,7 @@
 package at.fhtw.bweng.controller;
 
 import at.fhtw.bweng.dto.AircraftDto;
-import at.fhtw.bweng.dto.AirlineDto;
 import at.fhtw.bweng.model.Aircraft;
-import at.fhtw.bweng.model.Airline;
 import at.fhtw.bweng.service.AircraftService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class AircraftController {

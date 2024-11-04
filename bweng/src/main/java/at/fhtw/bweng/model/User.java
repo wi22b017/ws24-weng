@@ -13,10 +13,22 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-public class Airline {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    private String gender;
+    private String firstName;
+    private String lastName;
     @Column(unique = true)
-    private String name;
+    private String username;
+    private String password;
+    @Column(unique = true)
+    private String email;
+    private String role;
+    private String status;
+    @ManyToOne
+    private Address address;
+    @ManyToOne
+    private PaymentMethod paymentMethod;
 }

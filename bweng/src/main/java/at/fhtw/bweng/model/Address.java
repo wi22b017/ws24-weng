@@ -13,10 +13,16 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-public class Airline {
+@Table(name = "address", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"street", "number", "zip", "city"})
+})
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(unique = true)
-    private String name;
+    private String street;
+    private int number;
+    private int zip;
+    private String city;
+    private String country;
 }

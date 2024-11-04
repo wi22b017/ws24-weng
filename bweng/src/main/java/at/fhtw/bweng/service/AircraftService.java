@@ -1,15 +1,14 @@
 package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.AircraftDto;
-import at.fhtw.bweng.dto.AirlineDto;
 import at.fhtw.bweng.model.Aircraft;
 import at.fhtw.bweng.model.Airline;
 import at.fhtw.bweng.repository.AircraftRepository;
 import at.fhtw.bweng.repository.AirlineRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AircraftService {

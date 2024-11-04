@@ -13,7 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-public class Airline {
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

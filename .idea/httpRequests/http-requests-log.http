@@ -1,1063 +1,760 @@
-GET http://localhost:8080/aircrafts
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125642.200.json
+<> 2024-11-04T143913.200.json
 
 ###
 
-POST http://localhost:8080/aircrafts
-Content-Type: application/json
-Content-Length: 145
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A2",
-  "manufacturer": "Boeing",
-  "model": "787-9",
-  "capacity": 294,
-  "airline": {
-    "name": "Austrian Airlines"
-  }
-}
-
-###
-
-GET http://localhost:8080/aircrafts
+GET http://localhost:8080/users
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125634.200.json
+<> 2024-11-04T143906.200.json
 
 ###
 
-GET http://localhost:8080/aircrafts
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 383
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
+}
+
+###
+
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125628.200.json
+<> 2024-11-04T143859.200.json
 
 ###
 
-GET http://localhost:8080/airlines
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 381
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Credit Card"
+}
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "PayPal"
+}
+
+<> 2024-11-04T143852.409.json
+
+###
+
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125223.200.json
+<> 2024-11-04T143849.200.json
 
 ###
 
-POST http://localhost:8080/airlines
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 26
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Air France"
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/airlines
-Content-Type: application/json
-Content-Length: 33
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Austrian Airlines"
-}
-
-<> 2024-11-04T125214.409.json
-
-###
-
-GET http://localhost:8080/airlines
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125211.200.json
+<> 2024-11-04T143733.200.json
 
 ###
 
-POST http://localhost:8080/airlines
+POST http://localhost:8080/users
 Content-Type: application/json
-Content-Length: 33
+Content-Length: 383
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Austrian Airlines"
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
 }
+
+<> 2024-11-04T143728.409.json
 
 ###
 
-GET http://localhost:8080/airlines
+GET http://localhost:8080/users
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T125201.200.json
+<> 2024-11-04T143717.200.json
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/users
 Content-Type: application/json
-Content-Length: 509
+Content-Length: 383
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
   },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "737",
-    "capacity": 180,
-    "airline": {
-      "name": "Lufthansa"
-    }
+  "paymentMethod": {
+    "name": "PayPal"
   }
 }
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 508
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "737",
-    "capacity": 180,
-    "airline": {
-      "name": "Lufthansa"
-    }
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 508
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "737",
-    "capacity": 180,
-    "airline": {
-      "name": "Lufthansa"
-    }
-  }
-}
-
-<> 2024-11-04T122736.400.json
-
-###
-
-GET http://localhost:8080/airports
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-04T121950.200.json
+<> 2024-11-04T143711.200.json
 
 ###
 
-POST http://localhost:8080/airports
+POST http://localhost:8080/users
 Content-Type: application/json
-Content-Length: 84
+Content-Length: 381
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-<> 2024-11-04T121025.409.json
-
-###
-
-POST http://localhost:8080/airports
-Content-Type: application/json
-Content-Length: 84
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-###
-
-POST http://localhost:8080/airports
-Content-Type: application/json
-Content-Length: 80
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "LAX",
-  "airportText": "Los Angeles International Airport"
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1235",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
   },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
+  "paymentMethod": {
+    "name": "Credit Card"
   }
 }
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 333
+Content-Length: 27
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T121322.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "Credit Card"
 }
 
 ###
 
-POST http://localhost:8080/flights
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143704.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 333
+Content-Length: 27
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH1235",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "Credit Card"
 }
 
 ###
 
-POST http://localhost:8080/flights
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143659.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 333
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
+content-length: 0
 
-{
-  "flightNumber": "XH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T120826.409.json
+<> 2024-11-04T143647.200.json
 
 ###
 
-POST http://localhost:8080/flights
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143645.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 333
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 334
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T120358.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 336
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
+content-length: 0
 
-{
-  "flightNumber": "LH1234567",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T115947.409.json
+<> 2024-11-04T143637.200.json
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 335
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH123456",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "PayPal"
 }
-
-<> 2024-11-03T115921.409.json
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 335
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
+content-length: 0
 
-{
-  "flightNumber": "LH123456",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T115652.409.json
+<> 2024-11-04T143630.200.json
 
 ###
 
-POST http://localhost:8080/flights
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143552.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 334
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
+  "name": "PayPal"
+}
+
+<> 2024-11-04T143546.500.json
+
+###
+
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143540.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Credit Card"
+}
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Credit Card"
+}
+
+###
+
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143528.200.json
+
+###
+
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143341.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "PayPal"
+}
+
+###
+
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143333.200.json
+
+###
+
+GET http://localhost:8080/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143321.200.json
+
+###
+
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 383
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
   },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
+  "paymentMethod": {
+    "name": "PayPal"
   }
 }
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/users
 Content-Type: application/json
-Content-Length: 334
+Content-Length: 381
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
   },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T114856.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
+  "paymentMethod": {
+    "name": "Credit Card"
   }
 }
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
+content-length: 0
 
-{
-  "flightNumber": "LH1235",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T114512.409.json
+<> 2024-11-04T143114.200.json
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 333
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/flights
+POST http://localhost:8080/paymentMethods
 Content-Type: application/json
-Content-Length: 334
+Content-Length: 27
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12356",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T114316.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1235",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T114251.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1235",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T114230.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
+  "name": "Credit Card"
 }
 
 ###
 
-POST http://localhost:8080/flights
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T143103.200.json
+
+###
+
+POST http://localhost:8080/users
 Content-Type: application/json
-Content-Length: 334
+Content-Length: 381
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
   },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
+  "paymentMethod": {
+    "name": "Credit Card"
   }
+}
+
+<> 2024-11-04T143019.500.json
+
+###
+
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 381
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-04T142302.500.json
+
+###
+
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 381
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-04T141753.500.json
+
+###
+
+GET http://localhost:8080/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T141743.200.json
+
+###
+
+GET http://localhost:8080/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-04T141531.200.json
+
+###
+
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "PayPal"
 }
 
 ###
 
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 334
+GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
+content-length: 0
 
-{
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T110412.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T110056.409.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T105303.500.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T104458.500.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 327
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-<> 2024-11-03T104020.400.json
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
-
-###
-
-POST http://localhost:8080/flights
-Content-Type: application/json
-Content-Length: 333
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  }
-}
+<> 2024-11-04T141522.200.json
 
 ###
 

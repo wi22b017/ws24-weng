@@ -5,8 +5,8 @@ import at.fhtw.bweng.model.Airport;
 import at.fhtw.bweng.repository.AirportRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AirportService {

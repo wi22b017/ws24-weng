@@ -83,3 +83,74 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/aircrafts
 
+###
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "Credit Card"
+}
+
+###
+POST http://localhost:8080/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "PayPal"
+}
+
+###
+GET http://localhost:8080/paymentMethods
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
+}
+
+###
+GET http://localhost:8080/users
