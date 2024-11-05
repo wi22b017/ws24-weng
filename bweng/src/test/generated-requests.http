@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/flights
+POST http://localhost:3000/flights
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/airports
+POST http://localhost:3000/airports
 Content-Type: application/json
 
 {
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/airports
+POST http://localhost:3000/airports
 Content-Type: application/json
 
 {
@@ -44,11 +44,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/airports
+GET http://localhost:3000/airports
 
 
 ###
-POST http://localhost:8080/airlines
+POST http://localhost:3000/airlines
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/airlines
+POST http://localhost:3000/airlines
 Content-Type: application/json
 
 {
@@ -64,10 +64,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/airlines
+GET http://localhost:3000/airlines
 
 ###
-POST http://localhost:8080/aircrafts
+POST http://localhost:3000/aircrafts
 Content-Type: application/json
 
 {
@@ -81,10 +81,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/aircrafts
+GET http://localhost:3000/aircrafts
 
 ###
-POST http://localhost:8080/paymentMethods
+POST http://localhost:3000/paymentMethods
 Content-Type: application/json
 
 {
@@ -92,7 +92,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/paymentMethods
+POST http://localhost:3000/paymentMethods
 Content-Type: application/json
 
 {
@@ -100,10 +100,10 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/paymentMethods
+GET http://localhost:3000/paymentMethods
 
 ###
-POST http://localhost:8080/users
+POST http://localhost:3000/users
 Content-Type: application/json
 
 {
@@ -128,7 +128,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/users
+POST http://localhost:3000/users
 Content-Type: application/json
 
 {
@@ -153,4 +153,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/users
+GET http://localhost:3000/users

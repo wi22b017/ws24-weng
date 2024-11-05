@@ -1,3 +1,131 @@
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-05T185552.200.json
+
+###
+
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+<> 2024-11-05T185549.409.json
+
+###
+
+POST http://localhost:3000/flights
+Content-Type: application/json
+Content-Length: 523
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-03T15:30:00",
+  "arrivalTime": "2024-11-03T18:45:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+###
+
+GET http://localhost:3000/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-05T185430.200.json
+
+###
+
+GET http://localhost:8080/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-05T185230.200.json
+
+###
+
+GET http://localhost:8080/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-05T185225.200.json
+
+###
+
+GET http://localhost:8080/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-05T184945.200.json
+
+###
+
+POST http://localhost:8080/users
+Content-Type: application/json
+Content-Length: 383
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
+}
+
+###
+
 GET http://localhost:8080/paymentMethods
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -606,155 +734,6 @@ Accept: */*
 {
   "name": "Credit Card"
 }
-
-###
-
-GET http://localhost:8080/paymentMethods
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-04T143103.200.json
-
-###
-
-POST http://localhost:8080/users
-Content-Type: application/json
-Content-Length: 381
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "gender": "Male",
-  "firstName": "John",
-  "lastName": "Doe",
-  "username": "john_doe",
-  "password": "securepassword",
-  "email": "john.doe@example.com",
-  "role": "USER",
-  "status": "ACTIVE",
-  "address": {
-    "street": "Main St",
-    "number": 123,
-    "zip": 12345,
-    "city": "Springfield",
-    "country": "USA"
-  },
-  "paymentMethod": {
-    "name": "Credit Card"
-  }
-}
-
-<> 2024-11-04T143019.500.json
-
-###
-
-POST http://localhost:8080/users
-Content-Type: application/json
-Content-Length: 381
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "gender": "Male",
-  "firstName": "John",
-  "lastName": "Doe",
-  "username": "john_doe",
-  "password": "securepassword",
-  "email": "john.doe@example.com",
-  "role": "USER",
-  "status": "ACTIVE",
-  "address": {
-    "street": "Main St",
-    "number": 123,
-    "zip": 12345,
-    "city": "Springfield",
-    "country": "USA"
-  },
-  "paymentMethod": {
-    "name": "Credit Card"
-  }
-}
-
-<> 2024-11-04T142302.500.json
-
-###
-
-POST http://localhost:8080/users
-Content-Type: application/json
-Content-Length: 381
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "gender": "Male",
-  "firstName": "John",
-  "lastName": "Doe",
-  "username": "john_doe",
-  "password": "securepassword",
-  "email": "john.doe@example.com",
-  "role": "USER",
-  "status": "ACTIVE",
-  "address": {
-    "street": "Main St",
-    "number": 123,
-    "zip": 12345,
-    "city": "Springfield",
-    "country": "USA"
-  },
-  "paymentMethod": {
-    "name": "Credit Card"
-  }
-}
-
-<> 2024-11-04T141753.500.json
-
-###
-
-GET http://localhost:8080/users
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-04T141743.200.json
-
-###
-
-GET http://localhost:8080/paymentMethods
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-04T141531.200.json
-
-###
-
-POST http://localhost:8080/paymentMethods
-Content-Type: application/json
-Content-Length: 22
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "PayPal"
-}
-
-###
-
-GET http://localhost:8080/paymentMethods
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-04T141522.200.json
 
 ###
 
