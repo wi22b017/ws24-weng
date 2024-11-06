@@ -4,6 +4,16 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
+<> 2024-11-06T145726.200.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
 <> 2024-11-05T185552.200.json
 
 ###
@@ -720,19 +730,6 @@ Accept: */*
 
 {
   "name": "PayPal"
-}
-
-###
-
-POST http://localhost:8080/paymentMethods
-Content-Type: application/json
-Content-Length: 27
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Credit Card"
 }
 
 ###

@@ -1,5 +1,6 @@
 spring:
-  application.name: bweng-ws24
+  application:
+    name: bweng-ws24
   datasource:
     url: jdbc:mysql://localhost:3306/spring
     username: springuser
@@ -8,3 +9,5 @@ spring:
   jpa:
     hibernate.ddl-auto: update
     properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
+server:
+  port: 3000
