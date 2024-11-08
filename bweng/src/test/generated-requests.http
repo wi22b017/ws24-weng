@@ -1,34 +1,4 @@
 ###
-POST http://localhost:3000/flights
-Content-Type: application/json
-
-{
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "767-300ER",
-    "capacity": 211,
-    "airline": {
-      "name": "Austrian Airlines"
-    }
-  }
-}
-
-
-
-
-###
 POST http://localhost:3000/airlines
 Content-Type: application/json
 

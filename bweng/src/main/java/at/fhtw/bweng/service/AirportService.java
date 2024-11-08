@@ -21,7 +21,11 @@ public class AirportService {
 
     public UUID addAirport(AirportDto airportDto) {
         Airport newAirport = new Airport(null, airportDto.airportText(), airportDto.airportCode());
-        return airportRepository.save(newAirport).getId();
+        try {
+            return airportRepository.save(newAirport).getId();
+        } catch (DataIntegrityViolationException ex) {
+            throw new DataIntegrityViolationException("Airport with the same data already exists.");
+        }
     }
 
     public List<Airport> getAllAirports(){
