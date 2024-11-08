@@ -13,16 +13,11 @@ import java.util.NoSuchElementException;
 @ControllerAdvice
 public class ExceptionHandling {
 
-    /*@ExceptionHandler(NoSuchElementException.class)
-    public String handleNoSuchElementException() {
-        return "redirect:/books";
-    }*/
-
     // Handle NoSuchElementException (for missing resources)
     @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<Map<String, String>> handleNoSuchElementException() {
+    public ResponseEntity<Map<String, String>> handleNoSuchElementException(NoSuchElementException ex) {
         Map<String, String> response = new HashMap<>();
-        response.put("error", "Resource not found");
+        response.put("error", ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
@@ -30,7 +25,7 @@ public class ExceptionHandling {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Map<String, String>> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
         Map<String, String> response = new HashMap<>();
-        response.put("error", "A entity with the same data already exists.");
+        response.put("error", ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 

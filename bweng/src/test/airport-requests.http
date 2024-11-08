@@ -1,0 +1,63 @@
+###
+# test POST an airport
+POST http://localhost:3000/airports
+Content-Type: application/json
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+###
+# test POST an airport
+POST http://localhost:3000/airports
+Content-Type: application/json
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+###
+# test GET all airports
+GET http://localhost:3000/airports
+
+###
+# test GET with exisiting id
+GET http://localhost:3000/airports/cac8a834-bfd5-428d-80bc-4f66ae10dcf3
+
+###
+# test GET with non-exisiting id
+GET http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+
+###
+# test PUT with exisiting id
+PUT http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+Content-Type: application/json
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles Intl Airport Updated"
+}
+
+###
+# test PUT with non-exisiting id
+PUT http://localhost:3000/airports/cac8a834-bfd5-428d-80bc-4f66ae10dcf3
+Content-Type: application/json
+
+{
+  "airportCode": "LAX-01",
+  "airportText": "Los Angeles Intl Airport Updated"
+}
+
+###
+# test DELETE with exisiting id
+DELETE http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+
+###
+# test DELETE with non-exisiting id
+DELETE http://localhost:3000/airports/87779864-ef3e-4f64-90af-c16e899018da
+
+
+
+

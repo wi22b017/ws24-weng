@@ -25,26 +25,7 @@ Content-Type: application/json
   }
 }
 
-###
-POST http://localhost:3000/airports
-Content-Type: application/json
 
-{
-  "airportCode": "LAX",
-  "airportText": "Los Angeles International Airport"
-}
-
-###
-POST http://localhost:3000/airports
-Content-Type: application/json
-
-{
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-###
-GET http://localhost:3000/airports
 
 
 ###
