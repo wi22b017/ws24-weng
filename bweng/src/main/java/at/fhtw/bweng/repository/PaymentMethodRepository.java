@@ -14,5 +14,14 @@ public interface PaymentMethodRepository extends CrudRepository<PaymentMethod, U
 
     Optional<PaymentMethod> findByName(String name);
 
+    @Override
+    Optional<PaymentMethod> findById(UUID id);
+
+    @Override
+    boolean existsById(UUID id);
+
+    @Override
+    void deleteById(UUID id);
+
 
 }

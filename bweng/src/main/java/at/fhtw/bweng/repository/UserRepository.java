@@ -16,4 +16,15 @@ public interface UserRepository extends CrudRepository<User, UUID> {
 
     Optional<User> findByEmail(String email);
 
+    @Override
+    Optional<User> findById(UUID id);
+
+    @Override
+    boolean existsById(UUID id);
+
+    @Override
+    void delete(User user);
+
+
+
 }

@@ -1,3 +1,75 @@
+POST http://localhost:3000/aircrafts?serialNumber=G8QgipNIContent-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T182346.400.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 6
+
+{
+
+}
+
+<> 2024-11-09T182232.200.json
+
+###
+
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+Content-Length: 20
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Visa"
+}
+
+###
+
+GET http://localhost:3000/airlines
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T182034.200.json
+
+###
+
+POST http://localhost:3000/airlines
+Content-Type: application/json
+Content-Length: 28
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Test Airline"
+}
+
+###
+
+POST http://localhost:3000/aircrafts?serialNumber=3WOMMYiu
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T151055.400.json
+
+###
+
 DELETE http://localhost:3000/aircrafts/57c32325-fb48-4434-8028-f90712e9d5f9
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -612,73 +684,6 @@ Accept: */*
 content-length: 0
 
 <> 2024-11-09T111043.500.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T110841.500.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T110840.500.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T110832.500.json
-
-###
-
-POST http://localhost:3000/aircrafts
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Embraer",
-  "model": "195",
-  "capacity": 120,
-  "airline": { "name": "Austrian Airlines" }
-}
-
-###
-
-GET http://localhost:3000/flights?flightNumber=LH1234
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-08T202434.200.json
-
-###
-
-GET http://localhost:3000/flights?flightNumber=LH12349
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-08T202430.404.json
 
 ###
 

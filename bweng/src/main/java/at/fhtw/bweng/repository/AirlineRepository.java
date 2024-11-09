@@ -12,5 +12,14 @@ public interface AirlineRepository extends CrudRepository<Airline, UUID> {
     @Override
     List<Airline> findAll();
 
+    @Override
+    Optional<Airline> findById(UUID id);
+
     Optional<Airline> findByName(String name);
+
+    @Override
+    boolean existsById(UUID id);
+
+    @Override
+    void deleteById(UUID id);
 }
