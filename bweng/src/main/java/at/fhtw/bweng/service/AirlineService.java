@@ -3,6 +3,7 @@ package at.fhtw.bweng.service;
 import at.fhtw.bweng.dto.AirlineDto;
 import at.fhtw.bweng.model.Airline;
 import at.fhtw.bweng.repository.AirlineRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,12 @@ public class AirlineService {
 
     public UUID addAirline(AirlineDto airlineDto) {
         Airline airline = new Airline(null, airlineDto.name());
-        return airlineRepository.save(airline).getId();
+
+        try {
+            return airlineRepository.save(airline).getId();
+        } catch (DataIntegrityViolationException ex) {
+            throw new DataIntegrityViolationException("Airline with the same data already exists.");
+        }
     }
 
     public List<Airline> getAllAirlines(){
