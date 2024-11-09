@@ -1,4 +1,4 @@
-###
+### Create an airline
 POST http://localhost:3000/airlines
 Content-Type: application/json
 
@@ -6,7 +6,7 @@ Content-Type: application/json
   "name": "Austrian Airlines"
 }
 
-###
+### Create an airline
 POST http://localhost:3000/airlines
 Content-Type: application/json
 
@@ -14,10 +14,10 @@ Content-Type: application/json
   "name": "Air France"
 }
 
-###
+### Retrieve all airlines
 GET http://localhost:3000/airlines
 
-###
+### Create an aircraft
 POST http://localhost:3000/aircrafts
 Content-Type: application/json
 
@@ -31,10 +31,10 @@ Content-Type: application/json
   }
 }
 
-###
+### Retrieve all aircrafts
 GET http://localhost:3000/aircrafts
 
-###
+### Create a payment method
 POST http://localhost:3000/paymentMethods
 Content-Type: application/json
 
@@ -42,7 +42,7 @@ Content-Type: application/json
   "name": "Credit Card"
 }
 
-###
+### Create a payment method
 POST http://localhost:3000/paymentMethods
 Content-Type: application/json
 
@@ -50,10 +50,10 @@ Content-Type: application/json
   "name": "PayPal"
 }
 
-###
+### Retreive all payment methods
 GET http://localhost:3000/paymentMethods
 
-###
+### Create a user
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -78,7 +78,7 @@ Content-Type: application/json
   }
 }
 
-###
+### Create a user
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -103,5 +103,5 @@ Content-Type: application/json
   }
 }
 
-###
+### Retreive all users
 GET http://localhost:3000/users

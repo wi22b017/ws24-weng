@@ -1,5 +1,4 @@
-###
-# POST a flight
+### Create a flight
 POST http://localhost:3000/flights
 Content-Type: application/json
 
@@ -26,8 +25,7 @@ Content-Type: application/json
   }
 }
 
-###
-# POST a second flight
+### Create a second flight
 POST http://localhost:3000/flights
 Content-Type: application/json
 
@@ -54,24 +52,19 @@ Content-Type: application/json
   }
 }
 
-###
-# GET all flights
+### Retrieve all flights
 GET http://localhost:3000/flights
 
-###
-# GET a flight with exisiting id
+### Retrieve a flight by an existing id
 GET http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
 
-###
-# GET a flight with exisiting flightNumber
+### Retrieve a flight by a non-existing id
+GET http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
+
+### Retrieve a flight by an existing flightnumber
 GET http://localhost:3000/flights?flightNumber=LH1234
 
-###
-# GET a flight with non-exisiting id
-GET http://localhost:3000/flights
-
-###
-# test PUT-request with an exisiting id
+### Update a flight with an existing id
 PUT http://localhost:3000/flights/ed033778-d1e5-4dd5-a8f6-54c99e3dad5f
 Content-Type: application/json
 
@@ -98,8 +91,7 @@ Content-Type: application/json
   }
 }
 
-###
-# test PUT-request with an non-exisiting id
+### Update a flight with a non-existing id
 PUT http://localhost:3000/flights/4bff276f-891f-43bf-b065-678a183c44e8
 Content-Type: application/json
 
@@ -126,12 +118,10 @@ Content-Type: application/json
   }
 }
 
-###
-# DELETE a flight with exisiting id
+### Delete a flight with an existing id
 DELETE http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
 
-###
-# DELETE a flight with non-exisiting id
+### Delete a flight with a non-existing id
 DELETE http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
 
 
