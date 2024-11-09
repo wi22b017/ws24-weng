@@ -29,4 +29,12 @@ public class ExceptionHandling {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    // Handle any other exceptions that are not explicitly handled
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+        Map<String, String> response = new HashMap<>();
+        response.put("error", ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

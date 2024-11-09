@@ -1,3 +1,133 @@
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+<> 2024-11-09T202448.409.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T202440.500.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T202321.500.json
+
+###
+
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+<> 2024-11-09T202317.409.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T201923.500.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T201812.200.json
+
+###
+
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+<> 2024-11-09T201809.409.json
+
+###
+
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+<> 2024-11-09T201808.201.json
+
+###
+
+POST http://localhost:3000/airports
+Content-Type: application/json
+Content-Length: 84
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+<> 2024-11-09T201807.201.json
+
+###
+
+GET http://localhost:3000/airports
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-09T201805.200.json
+
+###
+
 POST http://localhost:3000/aircrafts?serialNumber=G8QgipNIContent-Type: application/json
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -542,148 +672,6 @@ Accept: */*
 }
 
 <> 2024-11-09T112207.409.json
-
-###
-
-PUT http://localhost:3000/flights/ed033778-d1e5-4dd5-a8f6-54c99e3dad5f
-Content-Type: application/json
-Content-Length: 477
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-05T15:40:00",
-  "arrivalTime": "2024-11-05T19:45:00",
-  "flightOrigin": {
-    "airportCode": "LHR",
-    "airportText": "London Heathrow"
-  },
-  "flightDestination": {
-    "airportCode": "CPH",
-    "airportText": "Copenhagen Kastrup"
-  },
-  "aircraft": {
-    "serialNumber": "C123456789",
-    "manufacturer": "Airbus",
-    "model": "A321-211",
-    "capacity": 200,
-    "airline": {
-      "name": "Air France"
-    }
-  }
-}
-
-<> 2024-11-09T112053.200.json
-
-###
-
-GET http://localhost:3000/flights
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T112020.200.json
-
-###
-
-PUT http://localhost:3000/aircrafts/06951596-3c70-4eb3-8377-4f746be8ec03
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-1",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T111307.409.json
-
-###
-
-PUT http://localhost:3000/aircrafts/06951597-3c70-4eb3-8377-4f746be8ec03
-Content-Type: application/json
-Content-Length: 140
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T111257.404.json
-
-###
-
-GET http://localhost:3000/aircrafts/06951596-3c70-4eb3-8377-4f746be8ec03
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111247.200.json
-
-###
-
-GET http://localhost:3000/aircrafts?serialNumber=C123456789
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111238.200.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111222.200.json
-
-###
-
-GET http://localhost:3000/aircrafts/06951596-3c70-4eb3-8377-4f746be8ec03
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111155.200.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111134.200.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T111043.500.json
 
 ###
 
