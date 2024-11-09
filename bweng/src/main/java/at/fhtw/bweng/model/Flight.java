@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -20,8 +20,8 @@ public class Flight {
     private UUID id;
     @Column(unique = true)
     private String flightNumber;
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
+    private OffsetDateTime departureTime;
+    private OffsetDateTime arrivalTime;
     @ManyToOne
     private Airport flightOrigin;
     @ManyToOne

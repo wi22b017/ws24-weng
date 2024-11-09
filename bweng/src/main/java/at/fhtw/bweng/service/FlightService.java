@@ -13,6 +13,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import java.util.List;
@@ -25,7 +28,7 @@ public class FlightService {
     private AirportRepository airportRepository;
     private AirlineRepository airlineRepository;
     private AircraftRepository aircraftRepository;
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
     public FlightService(FlightRepository flightRepository, AirportRepository airportRepository, AirlineRepository airlineRepository, AircraftRepository aircraftRepository) {
         this.flightRepository = flightRepository;
@@ -36,8 +39,9 @@ public class FlightService {
 
     public UUID addFlight(FlightDto flightDto) {
 
-        LocalDateTime departureTime = LocalDateTime.parse(flightDto.departureTime(), DATE_TIME_FORMATTER);
-        LocalDateTime arrivalTime = LocalDateTime.parse(flightDto.arrivalTime(), DATE_TIME_FORMATTER);
+        // Parse OffsetDateTime from flightDto
+        OffsetDateTime departureTime = OffsetDateTime.parse(flightDto.departureTime(), DATE_TIME_FORMATTER);
+        OffsetDateTime arrivalTime = OffsetDateTime.parse(flightDto.arrivalTime(), DATE_TIME_FORMATTER);
 
         // Find or create the origin airport
         Airport flightOrigin = airportRepository.findByCode(flightDto.flightOrigin().airportCode())
@@ -79,19 +83,46 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlights(){
-        return flightRepository.findAll();
+        List<Flight> flights = flightRepository.findAll();
+
+        // Get the system's current timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+
+        // Convert each flight's departureTime and arrivalTime to the system's timezone
+        flights.forEach(flight -> {
+            // Convert to ZonedDateTime in the system timezone, then back to OffsetDateTime
+            flight.setDepartureTime(flight.getDepartureTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+            flight.setArrivalTime(flight.getArrivalTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+        });
+
+        return flights;
+
     }
 
     public Flight getFlightById(UUID id) {
         // Find flight by ID or throw exception if not found
-        return flightRepository.findById(id)
+        Flight flight = flightRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Flight with ID " + id + " not found"));
+
+        // Convert departureTime and arrivalTime to the system's timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+        flight.setDepartureTime(flight.getDepartureTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+        flight.setArrivalTime(flight.getArrivalTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+
+        return flight;
     }
 
     public Flight getFlightByFlightNumber(String flightNumber) {
         // Find flight by FlightNumber or throw exception if not found
-        return flightRepository.findByFlightNumber(flightNumber)
-                .orElseThrow(() -> new NoSuchElementException("Flight with flightnumber " + flightNumber + " not found"));
+        Flight flight = flightRepository.findByFlightNumber(flightNumber)
+                .orElseThrow(() -> new NoSuchElementException("Flight with flight number " + flightNumber + " not found"));
+
+        // Convert departureTime and arrivalTime to the system's timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+        flight.setDepartureTime(flight.getDepartureTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+        flight.setArrivalTime(flight.getArrivalTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+
+        return flight;
     }
 
     public void updateFlight(UUID id, FlightDto flightDto){
@@ -100,8 +131,8 @@ public class FlightService {
 
         flight.setFlightNumber(flightDto.flightNumber());
 
-        LocalDateTime departureTime = LocalDateTime.parse(flightDto.departureTime(), DATE_TIME_FORMATTER);
-        LocalDateTime arrivalTime = LocalDateTime.parse(flightDto.arrivalTime(), DATE_TIME_FORMATTER);
+        OffsetDateTime departureTime = OffsetDateTime.parse(flightDto.departureTime(), DATE_TIME_FORMATTER);
+        OffsetDateTime arrivalTime = OffsetDateTime.parse(flightDto.arrivalTime(), DATE_TIME_FORMATTER);
         flight.setDepartureTime(departureTime);
         flight.setArrivalTime(arrivalTime);
 

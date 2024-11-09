@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
   "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
   "flightOrigin": {
     "airportCode": "JFK",
     "airportText": "John F. Kennedy International Airport"
@@ -31,8 +31,8 @@ Content-Type: application/json
 
 {
   "flightNumber": "LH12345",
-  "departureTime": "2024-11-05T15:30:00",
-  "arrivalTime": "2024-11-05T19:25:00",
+  "departureTime": "2024-11-10T10:00:00+01:00",
+  "arrivalTime": "2024-11-11T13:00:00+01:00",
   "flightOrigin": {
     "airportCode": "LHR",
     "airportText": "London Heathrow"
@@ -56,7 +56,7 @@ Content-Type: application/json
 GET http://localhost:3000/flights
 
 ### Retrieve a flight by an existing id
-GET http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
+GET http://localhost:3000/flights/891f61f1-bc19-495b-920a-85c5dfcc43eb
 
 ### Retrieve a flight by a non-existing id
 GET http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9

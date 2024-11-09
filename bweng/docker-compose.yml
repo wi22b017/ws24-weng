@@ -19,10 +19,13 @@ services:
       MYSQL_DATABASE: spring
       MYSQL_USER: springuser
       MYSQL_PASSWORD: springpw
+      TZ: UTC  # Set container timezone to UTC
     ports:
       - "3306:3306"
     networks:
       - app
+    volumes:
+      - ./mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf
   minio:
     image: bitnami/minio:2024
     environment:
