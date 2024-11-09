@@ -72,13 +72,13 @@ GET http://localhost:3000/flights
 
 ###
 # test PUT-request with an exisiting id
-PUT http://localhost:3000/flights/4bff276f-891f-43bf-b065-678a123c44e8
+PUT http://localhost:3000/flights/ed033778-d1e5-4dd5-a8f6-54c99e3dad5f
 Content-Type: application/json
 
 {
-  "flightNumber": "LH12348",
+  "flightNumber": "LH1234",
   "departureTime": "2024-11-05T15:40:00",
-  "arrivalTime": "2024-11-05T19:35:00",
+  "arrivalTime": "2024-11-05T19:45:00",
   "flightOrigin": {
     "airportCode": "LHR",
     "airportText": "London Heathrow"
