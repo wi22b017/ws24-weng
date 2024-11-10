@@ -12,6 +12,7 @@ import at.fhtw.bweng.repository.PaymentMethodRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -37,8 +38,9 @@ public class BookingService {
     }
 
     //get a booking by its id
-    public Optional<Booking> getBookingById(UUID id) {
-        return bookingRepository.findById(id);
+    public Booking getBookingById(UUID id) {
+        return bookingRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Booking with ID " + id + " not found"));
     }
 
     //delete a booking by its id
@@ -46,7 +48,7 @@ public class BookingService {
         if (bookingRepository.existsById(id)) {
             bookingRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Booking with ID " + id + " not found.");
+            throw new NoSuchElementException("Booking with ID " + id + " not found.");
         }
     }
 
@@ -68,35 +70,15 @@ public class BookingService {
     private Booking mapBookingDtoToBookingEntity(BookingDto bookingDto, Booking booking){
         booking.setStatus(bookingDto.status());
         booking.setPrice(bookingDto.price());
-        booking.setSeatNumber(bookingDto.seatNumber());
         booking.setBookingDate(bookingDto.bookingDate());
-
         PaymentMethod paymentMethod = paymentMethodRepository.findById(bookingDto.paymentMethodId())
-                .orElseThrow(() -> new RuntimeException("Payment Method with ID " + bookingDto.paymentMethodId() + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("Payment Method with ID " + bookingDto.paymentMethodId() + " not found."));
         booking.setPaymentMethod(paymentMethod);
 
         Flight flight = flightRepository.findById(bookingDto.flightId())
-                .orElseThrow(() -> new RuntimeException("Flight with ID " + bookingDto.flightId() + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("Flight with ID " + bookingDto.flightId() + " not found."));
         booking.setFlight(flight);
 
-        if (bookingDto.baggages() != null) {
-            booking.setBaggages(bookingDto.baggages().stream()
-                    .map(baggageDto -> mapBaggageDtoToBaggageEntity(baggageDto, booking))
-                    .collect(Collectors.toList()));
-        }
         return booking;
     }
-
-    private Baggage mapBaggageDtoToBaggageEntity(BaggageDto baggageDto, Booking booking) {
-        Baggage baggage = new Baggage();
-        baggage.setType(baggageDto.type());
-        baggage.setFee(baggageDto.fee());
-        baggage.setWeight(baggageDto.weight());
-        baggage.setLength(baggageDto.length());
-        baggage.setWidth(baggageDto.width());
-        baggage.setHeight(baggageDto.height());
-        baggage.setBooking(booking);
-        return baggage;
-    }
-
 }

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,15 +16,7 @@ public class Baggage {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String type;
-    private BigDecimal fee;
-    private Float weight;
-    //dimensions
-    private Float length;
-    private Float width;
-    private Float height;
-
     @ManyToOne
-    @JoinColumn(name = "booking_id")
-    private Booking booking;
+    @JoinColumn(name = "baggage_type_id")
+    private BaggageType baggageType;
 }

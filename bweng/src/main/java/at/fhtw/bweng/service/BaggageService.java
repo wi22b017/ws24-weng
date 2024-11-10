@@ -2,24 +2,24 @@ package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.BaggageDto;
 import at.fhtw.bweng.model.Baggage;
-import at.fhtw.bweng.model.Booking;
+import at.fhtw.bweng.model.BaggageType;
 import at.fhtw.bweng.repository.BaggageRepository;
-import at.fhtw.bweng.repository.BookingRepository;
+import at.fhtw.bweng.repository.BaggageTypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
 public class BaggageService {
 
     private BaggageRepository baggageRepository;
-    private BookingRepository bookingRepository;
+    private BaggageTypeRepository baggageTypeRepository;
 
-    public BaggageService(BaggageRepository baggageRepository, BookingRepository bookingRepository) {
-        this.baggageRepository = baggageRepository;
-        this.bookingRepository = bookingRepository;
+    public BaggageService(BaggageRepository baggageRepository, BaggageTypeRepository baggageTypeRepository) {
+       this.baggageRepository = baggageRepository;
+       this.baggageTypeRepository = baggageTypeRepository;
     }
 
     //get all baggages
@@ -27,9 +27,15 @@ public class BaggageService {
         return baggageRepository.findAll();
     }
 
+    //get list of baggages by type
+    public List<Baggage> getBaggagesByType(UUID baggageTypeId) {
+        return baggageRepository.findByBaggageTypeId(baggageTypeId);
+    }
+
     //get a baggage by its id
-    public Optional<Baggage> getBaggageById(UUID id) {
-        return baggageRepository.findById(id);
+    public Baggage getBaggageById(UUID id) {
+        return baggageRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Baggage with ID " + id + " not found"));
     }
 
     //delete a baggage by its id
@@ -37,14 +43,16 @@ public class BaggageService {
         if (baggageRepository.existsById(id)) {
             baggageRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Baggage with ID " + id + " not found.");
+            throw new NoSuchElementException("Baggage with ID " + id + " not found.");
         }
     }
 
     //add a baggage
     public UUID addBaggage(BaggageDto baggageDto) {
+        BaggageType baggageType = baggageTypeRepository.findById(baggageDto.baggageTypeId())
+                .orElseThrow(() -> new NoSuchElementException("Baggage type with ID " + baggageDto.baggageTypeId() + " not found"));
         Baggage newBaggage = new Baggage();
-        mapBaggageDtoToBaggageEntity(baggageDto,newBaggage);
+        newBaggage.setBaggageType(baggageType);
         return baggageRepository.save(newBaggage).getId();
     }
 
@@ -52,25 +60,11 @@ public class BaggageService {
     //update a baggage
     public void updateBaggage(UUID id, BaggageDto baggageDto) {
         Baggage existingBaggage = baggageRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Baggage with ID" + id+"not found."));
-        mapBaggageDtoToBaggageEntity(baggageDto,existingBaggage);
+                .orElseThrow(() -> new NoSuchElementException("Baggage with ID " + id + " not found"));
+        BaggageType baggageType = baggageTypeRepository.findById(baggageDto.baggageTypeId())
+                .orElseThrow(() -> new NoSuchElementException("Baggage type with ID " + baggageDto.baggageTypeId() + " not found"));
+        existingBaggage.setBaggageType(baggageType);
         baggageRepository.save(existingBaggage);
     }
 
-    // helper method to map BaggageDto to Baggage entity
-    private Baggage mapBaggageDtoToBaggageEntity(BaggageDto baggageDto, Baggage baggage) {
-        baggage.setType(baggageDto.type());
-        baggage.setFee(baggageDto.fee());
-        baggage.setWeight(baggageDto.weight());
-        baggage.setLength(baggageDto.length());
-        baggage.setWidth(baggageDto.width());
-        baggage.setHeight(baggageDto.height());
-
-        // Fetch the associated booking entity
-        Booking booking = bookingRepository.findById(baggageDto.bookingId())
-                .orElseThrow(() -> new RuntimeException("Booking with ID " + baggageDto.bookingId() + " not found."));
-        baggage.setBooking(booking);
-
-        return baggage;
-    }
 }

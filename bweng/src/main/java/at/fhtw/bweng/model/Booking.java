@@ -22,7 +22,6 @@ public class Booking {
     private UUID id;
     private String status;
     private BigDecimal price;
-    private String seatNumber;
     private LocalDateTime bookingDate;
 
     @ManyToOne
@@ -32,8 +31,5 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
-
-    @OneToMany(mappedBy = "booking")
-    private List<Baggage> baggages;
 
 }

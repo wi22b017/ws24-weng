@@ -35,12 +35,18 @@ public class BaggageController {
     }
 
     @GetMapping(value = {"/baggages", "/baggages/{id}"})
-    public ResponseEntity<?> getBaggages(@PathVariable(required = false) UUID id) {
+    public ResponseEntity<?> getBaggages(@PathVariable(required = false) UUID id,
+                                         @RequestParam(required = false) UUID baggageTypeId) {
         if (id != null) {
-            Baggage baggage = baggageService.getBaggageById(id)
-                    .orElseThrow(() -> new RuntimeException("Baggage with ID " + id + " not found."));
+            // Fetch baggage by its id
+            Baggage baggage = baggageService.getBaggageById(id);
             return ResponseEntity.ok(baggage);
+        } else if(baggageTypeId !=null) {
+            // Fetch baggages by baggageTypeId if provided
+            List<Baggage> baggages = baggageService.getBaggagesByType(baggageTypeId);
+            return ResponseEntity.ok(baggages);
         } else {
+            // Fetch all baggages if no path variable or query parameter is provided
             List<Baggage> baggages = baggageService.getAllBaggages();
             return ResponseEntity.ok(baggages);
         }
@@ -52,7 +58,6 @@ public class BaggageController {
             @RequestBody @Valid BaggageDto baggageDto) {
 
         baggageService.updateBaggage(id, baggageDto);
-
         Map<String, String> response = new HashMap<>();
         response.put("message", "Baggage updated successfully");
         response.put("id", id.toString());
@@ -61,9 +66,7 @@ public class BaggageController {
 
     @DeleteMapping("/baggages/{id}")
     public ResponseEntity<Map<String, String>> deleteBaggage(@PathVariable UUID id) {
-
         baggageService.deleteBaggage(id);
-
         Map<String, String> response = new HashMap<>();
         response.put("message", "Baggage deleted successfully");
         response.put("id", id.toString());

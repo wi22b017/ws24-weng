@@ -35,8 +35,7 @@ public class BookingController {
     @GetMapping(value = {"/bookings", "/bookings/{id}"})
     public ResponseEntity<?> getBookings(@PathVariable(required = false) UUID id) {
         if (id != null) {
-            Booking booking = bookingService.getBookingById(id)
-                    .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+            Booking booking = bookingService.getBookingById(id);
             return ResponseEntity.ok(booking);
         } else {
             List<Booking> bookings = bookingService.getAllBookings();

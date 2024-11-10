@@ -1,0 +1,47 @@
+### create a new booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "status": "Confirmed",
+  "price": 150.00,
+  "bookingDate": "2024-11-08T10:00:00",
+  "paymentMethodId": "payment-method-uuid",
+  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
+}
+
+### create another booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-10-08T10:00:00",
+  "paymentMethodId": "payment-method-uuid",
+  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
+}
+
+### get all bookings
+GET http://localhost:3000/bookings
+
+### get a booking by an existing id
+GET http://localhost:3000/bookings/booking-uuid
+
+### get a booking by a non-existing id
+GET http://localhost:3000/bookings/booking-uuid
+
+### update a booking by ID
+PUT http://localhost:3000/bookings/booking-uuid
+Content-Type: application/json
+
+{
+  "status": "Updated",
+  "price": 200.00,
+  "bookingDate": "2024-11-09T14:30:00",
+  "paymentMethodId": "payment-method-uuid",
+  "flightId": "flight-uuid"
+}
+
+### Delete a booking by ID
+DELETE http://localhost:3000/bookings/booking-uuid

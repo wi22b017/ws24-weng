@@ -16,7 +16,7 @@ Content-Type: application/json
   "fee": 25.00
 }
 
-### craete third baggage type
+### create third baggage type
 POST http://localhost:3000/baggageTypes
 Content-Type: application/json
 

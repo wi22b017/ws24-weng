@@ -17,4 +17,6 @@ public interface BaggageRepository extends CrudRepository<Baggage, UUID> {
     boolean existsById(UUID id);
     @Override
     void deleteById(UUID uuid);
+    List<Baggage> findByBaggageTypeId(UUID baggageTypeId);
 }
+

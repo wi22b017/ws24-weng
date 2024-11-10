@@ -1,22 +1,17 @@
 package at.fhtw.bweng.dto;
 
-import at.fhtw.bweng.model.Baggage;
-import at.fhtw.bweng.model.PaymentMethod;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.cglib.core.Local;
-
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 public record BookingDto(
         @NotBlank String status,
-        @NotBlank BigDecimal price,
-        @NotBlank String seatNumber,
+        @NotNull @DecimalMin(value = "0.0", inclusive = false) BigDecimal price,
         @NotBlank LocalDateTime bookingDate,
         @NotBlank UUID paymentMethodId,
-        @NotBlank UUID flightId,
-        @NotBlank List<BaggageDto> baggages
+        @NotBlank UUID flightId
         ) {
 }
