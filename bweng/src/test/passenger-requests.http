@@ -1,0 +1,34 @@
+### Create a new passenger
+POST http://localhost:3000/passengers
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+}
+
+### Retrieve all passengers
+GET http://localhost:3000/passengers
+
+### Retrieve a passenger by ID
+GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+
+### Update an existing passenger
+PUT http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "birthday": "1985-05-15",
+  "seatNumber": "14B",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+}
+
+### Delete a passenger by ID
+DELETE http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2

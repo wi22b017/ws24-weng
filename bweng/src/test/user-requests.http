@@ -1,0 +1,60 @@
+### Create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+### Retrieve all users
+GET http://localhost:3000/users
+
+### Retrieve a user by ID
+GET http://localhost:3000/users/3fe44c18-61b1-4e04-95b3-81dee2fdbd18
+
+### Update an existing user
+PUT http://localhost:3000/users/3fe44c18-61b1-4e04-95b3-81dee2fdbd18
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe_updated",
+  "password": "newpassword456",
+  "email": "john.doe.updated@example.com",
+  "role": "ADMIN",
+  "status": "INACTIVE",
+  "address": {
+    "id": "78639879-5604-4b29-a1a8-63a189cf7f30",
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "id": "e3d48288-8e64-45c5-8ebc-136d2d9cb23b",
+    "name": "Credit Card"
+  }
+}
+
+### Delete a user by ID
+DELETE http://localhost:3000/users/3fe44c18-61b1-4e04-95b3-81dee2fdbd18

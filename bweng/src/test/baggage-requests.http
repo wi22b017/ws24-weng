@@ -3,7 +3,7 @@ POST http://localhost:3000/baggages
 Content-Type: application/json
 
 {
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+  "baggageTypeId": "39551bfb-ed03-402e-a944-3abe5d710e94"
 }
 
 ### add another baggage

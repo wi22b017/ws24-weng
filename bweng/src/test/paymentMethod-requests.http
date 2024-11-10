@@ -1,0 +1,32 @@
+### Create a payment method
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "Credit Card"
+}
+
+### Create a second payment method
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "PayPal"
+}
+
+### Retrieve all payment methods
+GET http://localhost:3000/paymentMethods
+
+### Retrieve a payment method by ID
+GET http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+
+### Update an existing payment method
+PUT http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+Content-Type: application/json
+
+{
+  "name": "Debit Card"
+}
+
+### Delete a payment method with an existing ID
+DELETE http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7

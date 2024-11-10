@@ -1,815 +1,700 @@
-GET http://localhost:3000/flights/891f61f1-bc19-495b-920a-85c5dfcc43eb
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T211653.200.json
-
-###
-
-GET http://localhost:3000/flights
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T211640.200.json
-
-###
-
-GET http://localhost:3000/flights/891f61f1-bc19-495b-920a-85c5dfcc43eb
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T211419.200.json
-
-###
-
-GET http://localhost:3000/flights
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T211210.200.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 501
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-10T10:00:00+01:00",
-  "arrivalTime": "2024-11-11T13:00:00+01:00",
-  "flightOrigin": {
-    "airportCode": "LHR",
-    "airportText": "London Heathrow"
-  },
-  "flightDestination": {
-    "airportCode": "CPH",
-    "airportText": "Copenhagen Kastrup"
-  },
-  "aircraft": {
-    "serialNumber": "B123456789",
-    "manufacturer": "Airbus",
-    "model": "A321-211",
-    "capacity": 200,
-    "airline": {
-      "name": "Scandinavian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T211120.201.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 534
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-09T15:00:00+02:00",
-  "arrivalTime": "2024-11-09T19:30:00+02:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "767-300ER",
-    "capacity": 211,
-    "airline": {
-      "name": "Austrian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T211118.201.json
-
-###
-
-GET http://localhost:3000/flights
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T210953.200.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 501
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-10T19:00:00+01:00",
-  "arrivalTime": "2024-11-11T00:00:00+01:00",
-  "flightOrigin": {
-    "airportCode": "LHR",
-    "airportText": "London Heathrow"
-  },
-  "flightDestination": {
-    "airportCode": "CPH",
-    "airportText": "Copenhagen Kastrup"
-  },
-  "aircraft": {
-    "serialNumber": "B123456789",
-    "manufacturer": "Airbus",
-    "model": "A321-211",
-    "capacity": 200,
-    "airline": {
-      "name": "Scandinavian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T210949.409.json
-
-###
-
-GET http://localhost:3000/flights
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T205726.200.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 501
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH12345",
-  "departureTime": "2024-11-10T19:00:00+01:00",
-  "arrivalTime": "2024-11-11T00:00:00+01:00",
-  "flightOrigin": {
-    "airportCode": "LHR",
-    "airportText": "London Heathrow"
-  },
-  "flightDestination": {
-    "airportCode": "CPH",
-    "airportText": "Copenhagen Kastrup"
-  },
-  "aircraft": {
-    "serialNumber": "B123456789",
-    "manufacturer": "Airbus",
-    "model": "A321-211",
-    "capacity": 200,
-    "airline": {
-      "name": "Scandinavian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T205647.201.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 534
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-09T15:00:00+00:00",
-  "arrivalTime": "2024-11-09T19:30:00+00:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "767-300ER",
-    "capacity": 211,
-    "airline": {
-      "name": "Austrian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T205315.201.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 522
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "767-300ER",
-    "capacity": 211,
-    "airline": {
-      "name": "Austrian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T205211.500.json
-
-###
-
-POST http://localhost:3000/flights
-Content-Type: application/json
-Content-Length: 522
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH1234",
-  "departureTime": "2024-11-03T15:30:00",
-  "arrivalTime": "2024-11-03T18:45:00",
-  "flightOrigin": {
-    "airportCode": "JFK",
-    "airportText": "John F. Kennedy International Airport"
-  },
-  "flightDestination": {
-    "airportCode": "LAX",
-    "airportText": "Los Angeles International Airport"
-  },
-  "aircraft": {
-    "serialNumber": "A123456789",
-    "manufacturer": "Boeing",
-    "model": "767-300ER",
-    "capacity": 211,
-    "airline": {
-      "name": "Austrian Airlines"
-    }
-  }
-}
-
-<> 2024-11-09T203657.201.json
-
-###
-
-PUT http://localhost:3000/flights/4bff276f-891f-43bf-b065-678a183c44e8
-Content-Type: application/json
-Content-Length: 478
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "flightNumber": "LH12348",
-  "departureTime": "2024-11-05T15:40:00",
-  "arrivalTime": "2024-11-05T19:35:00",
-  "flightOrigin": {
-    "airportCode": "LHR",
-    "airportText": "London Heathrow"
-  },
-  "flightDestination": {
-    "airportCode": "CPH",
-    "airportText": "Copenhagen Kastrup"
-  },
-  "aircraft": {
-    "serialNumber": "C123456789",
-    "manufacturer": "Airbus",
-    "model": "A321-211",
-    "capacity": 200,
-    "airline": {
-      "name": "Air France"
-    }
-  }
-}
-
-<> 2024-11-09T203647.404.json
-
-###
-
-POST http://localhost:3000/airports
-Content-Type: application/json
-Content-Length: 84
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-<> 2024-11-09T202448.409.json
-
-###
-
-GET http://localhost:3000/airports
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T202440.500.json
-
-###
-
-GET http://localhost:3000/airports
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T202321.500.json
-
-###
-
-POST http://localhost:3000/airports
-Content-Type: application/json
-Content-Length: 84
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-<> 2024-11-09T202317.409.json
-
-###
-
-GET http://localhost:3000/airports
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T201923.500.json
-
-###
-
-GET http://localhost:3000/airports
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T201812.200.json
-
-###
-
-POST http://localhost:3000/airports
-Content-Type: application/json
-Content-Length: 80
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "LAX",
-  "airportText": "Los Angeles International Airport"
-}
-
-<> 2024-11-09T201809.409.json
-
-###
-
-POST http://localhost:3000/airports
-Content-Type: application/json
-Content-Length: 80
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "LAX",
-  "airportText": "Los Angeles International Airport"
-}
-
-<> 2024-11-09T201808.201.json
-
-###
-
-POST http://localhost:3000/airports
-Content-Type: application/json
-Content-Length: 84
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "airportCode": "JFK",
-  "airportText": "John F. Kennedy International Airport"
-}
-
-<> 2024-11-09T201807.201.json
-
-###
-
-GET http://localhost:3000/airports
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T201805.200.json
-
-###
-
-POST http://localhost:3000/aircrafts?serialNumber=G8QgipNIContent-Type: application/json
+DELETE http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T182346.400.json
+<> 2024-11-10T232512.200.json
 
 ###
 
-GET http://localhost:3000/paymentMethods
-Content-Type: application/json
+GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
-content-length: 6
+content-length: 0
+
+<> 2024-11-10T232455.200.json
+
+###
+
+PUT http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
 
 {
-
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "birthday": "1985-05-15",
+  "seatNumber": "14B",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
 }
 
-<> 2024-11-09T182232.200.json
+<> 2024-11-10T232440.200.json
+
+###
+
+GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T232438.200.json
+
+###
+
+GET http://localhost:3000/passengers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T232329.200.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+}
+
+<> 2024-11-10T232325.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "39551bfb-ed03-402e-a944-3abe5d710e94"
+}
+
+<> 2024-11-10T232301.201.json
+
+###
+
+GET http://localhost:3000/baggageTypes
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T232224.200.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 43
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "First Class",
+  "fee": 35.00
+}
+
+<> 2024-11-10T232212.409.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 40
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Business",
+  "fee": 25.00
+}
+
+<> 2024-11-10T232209.409.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 39
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Economy",
+  "fee": 15.00
+}
+
+<> 2024-11-10T232206.409.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T232200.404.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T232156.404.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T232136.404.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T230845.500.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T230842.500.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T230815.500.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 213
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T230618.500.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 234
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
+  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
+}
+
+<> 2024-11-10T230605.500.json
+
+###
+
+GET http://localhost:3000/baggageTypes
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T230254.200.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T230244.404.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T230239.404.json
+
+###
+
+GET http://localhost:3000/baggageTypes
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T230234.200.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 43
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "First Class",
+  "fee": 35.00
+}
+
+<> 2024-11-10T230231.201.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 40
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Business",
+  "fee": 25.00
+}
+
+<> 2024-11-10T230228.201.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 39
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Economy",
+  "fee": 15.00
+}
+
+<> 2024-11-10T230226.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T230213.404.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
+}
+
+<> 2024-11-10T230206.404.json
+
+###
+
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T230158.200.json
+
+###
+
+GET http://localhost:3000/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T214051.200.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-10T214047.201.json
 
 ###
 
 POST http://localhost:3000/paymentMethods
 Content-Type: application/json
-Content-Length: 20
+Content-Length: 22
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Visa"
+  "name": "PayPal"
 }
+
+<> 2024-11-10T213807.201.json
+
+###
+
+DELETE http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213803.200.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213746.200.json
+
+###
+
+PUT http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Debit Card"
+}
+
+<> 2024-11-10T213740.200.json
+
+###
+
+GET http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213737.200.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213656.200.json
+
+###
+
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+Content-Length: 22
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "PayPal"
+}
+
+<> 2024-11-10T213651.201.json
+
+###
+
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Credit Card"
+}
+
+<> 2024-11-10T213646.201.json
+
+###
+
+DELETE http://localhost:3000/airlines/57c32325-fb48-4434-8028-f90712e9d5f9
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213445.404.json
+
+###
+
+DELETE http://localhost:3000/airlines/02b8168f-b9d2-4717-b073-b387637f26e8
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-10T213440.200.json
 
 ###
 
 GET http://localhost:3000/airlines
-Content-Type: application/json
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T182034.200.json
+<> 2024-11-10T213434.200.json
 
 ###
 
-POST http://localhost:3000/airlines
+PUT http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
 Content-Type: application/json
-Content-Length: 28
+Content-Length: 73
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Test Airline"
+  "name": "Air France Updated",
+  "code": "AF",
+  "country": "France"
 }
+
+<> 2024-11-10T213408.200.json
 
 ###
 
-POST http://localhost:3000/aircrafts?serialNumber=3WOMMYiu
+GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T151055.400.json
+<> 2024-11-10T213401.200.json
 
 ###
 
-DELETE http://localhost:3000/aircrafts/57c32325-fb48-4434-8028-f90712e9d5f9
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+GET http://localhost:3000/airlines
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113413.404.json
+<> 2024-11-10T213358.200.json
 
 ###
 
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113408.200.json
+<> 2024-11-10T213102.404.json
 
 ###
 
-DELETE http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+GET http://localhost:3000/airlines
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113401.200.json
+<> 2024-11-10T212958.200.json
 
 ###
 
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113336.200.json
+<> 2024-11-10T212955.404.json
 
 ###
 
-DELETE http://localhost:3000/flights/e4155d16-4019-4485-b48b-281326b25bf1
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+DELETE http://localhost:3000/airlines/02b8168f-b9d2-4717-b073-b387637f26e8
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113329.404.json
+<> 2024-11-10T212951.404.json
 
 ###
 
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+DELETE http://localhost:3000/airlines/57c32325-fb48-4434-8028-f90712e9d5f9
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-09T113319.200.json
-
-###
-
-GET http://localhost:3000/aircrafts?serialNumber=A12345
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T113252.200.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T113241.200.json
-
-###
-
-PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-Content-Type: application/json
-Content-Length: 144
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A123456",
-  "manufacturer": "Airbus",
-  "model": "A320neo-12",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T113230.200.json
-
-###
-
-PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-Content-Type: application/json
-Content-Length: 143
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-12",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T113221.409.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T113143.200.json
-
-###
-
-POST http://localhost:3000/aircrafts
-Content-Type: application/json
-Content-Length: 141
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "C123456789",
-  "manufacturer": "Airbus",
-  "model": "A321-211",
-  "capacity": 200,
-  "airline": {"name": "Air France"}
-}
-
-<> 2024-11-09T113139.409.json
-
-###
-
-POST http://localhost:3000/aircrafts
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Embraer",
-  "model": "195",
-  "capacity": 120,
-  "airline": { "name": "Austrian Airlines" }
-}
-
-<> 2024-11-09T113137.409.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T113126.200.json
-
-###
-
-POST http://localhost:3000/aircrafts
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Embraer",
-  "model": "195",
-  "capacity": 120,
-  "airline": { "name": "Austrian Airlines" }
-}
-
-<> 2024-11-09T112941.409.json
-
-###
-
-PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-Content-Type: application/json
-Content-Length: 143
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-12",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T112909.409.json
-
-###
-
-PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-1",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T112903.409.json
-
-###
-
-PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-1",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T112847.409.json
-
-###
-
-GET http://localhost:3000/aircrafts
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-09T112834.200.json
-
-###
-
-PUT http://localhost:3000/aircrafts/d4a6f96a-b82d-401a-85f3-196f4a42b9e3
-Content-Type: application/json
-Content-Length: 142
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "serialNumber": "A12345",
-  "manufacturer": "Airbus",
-  "model": "A320neo-1",
-  "capacity": 190,
-  "airline": { "name": "Sky Airlines" }
-}
-
-<> 2024-11-09T112830.404.json
+<> 2024-11-10T212948.404.json
 
 ###
 

@@ -23,40 +23,24 @@ public class PaymentMethodController {
 
     @PostMapping("/paymentMethods")
     public ResponseEntity<?> addPaymentMethod(@RequestBody @Valid PaymentMethodDto paymentMethodDto) {
-        try {
+
         UUID uuid = paymentMethodService.addPaymentMethod(paymentMethodDto);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method added successfully");
             response.put("id", uuid.toString());
             return ResponseEntity.created(URI.create("/paymentMethods/" + uuid.toString())).body(response);
-        } catch (Exception e) {
-            Map<String, String> response = new HashMap<>();
-            response.put("error", "Unable to create payment method");
-            response.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
+
 
     }
 
     @GetMapping(value = {"/paymentMethods", "/paymentMethods/{id}"})
     public ResponseEntity<?> getPaymentMethods(@PathVariable(required = false) UUID id) {
         if (id != null) {
-            try {
+
                 PaymentMethod paymentMethod = paymentMethodService.getPaymentMethodById(id);
                 return ResponseEntity.ok(paymentMethod);
 
-            } catch (NoSuchElementException e){
-                Map<String, String> response = new HashMap<>();
-                response.put("message", "Payment method not found");
-                response.put("id", id.toString());
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
 
-            } catch (Exception e){
-                Map<String, String> response = new HashMap<>();
-                response.put("error", "Unable to get payment method");
-                response.put("message", e.getMessage());
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-            }
         } else {
             List<PaymentMethod> paymentMethods = paymentMethodService.getAllPaymentMethods();
             return ResponseEntity.ok(paymentMethods);
@@ -69,30 +53,19 @@ public class PaymentMethodController {
     @PutMapping("/paymentMethods/{id}")
     public ResponseEntity<?> updatePaymentMethod( @PathVariable UUID id,
                                                   @RequestBody @Valid PaymentMethodDto paymentMethodDto) {
-        try{
+
             paymentMethodService.updatePaymentMethod(id, paymentMethodDto);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method updated successfully");
             response.put("id", id.toString());
             return ResponseEntity.ok(response);
 
-        } catch (NoSuchElementException e){
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Payment method not found");
-            response.put("id", id.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
 
-        } catch (Exception e){
-            Map<String, String> response = new HashMap<>();
-            response.put("error", "Unable to update payment method");
-            response.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
     }
 
     @DeleteMapping("/paymentMethods/{id}")
     public ResponseEntity<?> deletePaymentMethod(@PathVariable UUID id) {
-        try{
+
             paymentMethodService.deletePaymentMethod(id);
 
             Map<String, String> response = new HashMap<>();
@@ -100,18 +73,7 @@ public class PaymentMethodController {
             response.put("id", id.toString());
             return ResponseEntity.ok(response);
 
-        } catch (NoSuchElementException e){
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Payment method not found");
-            response.put("id", id.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
 
-        } catch (Exception e){
-            Map<String, String> response = new HashMap<>();
-            response.put("error", "Unable to delete payment method");
-            response.put("message", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
     }
 
 
