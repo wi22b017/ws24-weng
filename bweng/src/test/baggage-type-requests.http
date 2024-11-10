@@ -1,0 +1,65 @@
+### create a baggage type
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+
+{
+  "name": "Economy",
+  "fee": 15.00
+}
+
+### create second baggage type
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+
+{
+  "name": "Business",
+  "fee": 25.00
+}
+
+### craete third baggage type
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+
+{
+  "name": "First Class",
+  "fee": 35.00
+}
+
+### retrieve all baggage types
+GET http://localhost:3000/baggageTypes
+
+### retrieve a baggage type with an existing id
+GET http://localhost:3000/baggageTypes/4177ed95-4c75-48db-83c8-6fd58f5ad71a
+
+### retrieve a baggage type with a non-existing id
+GET http://localhost:3000/baggageTypes/4178ed95-4c75-48db-83c8-6fd58f5ad71a
+
+### retrieve a baggage type with an existing name
+GET http://localhost:3000/baggageTypes?name=economy
+
+### retrieve a baggage type with a non-existing name
+GET http://localhost:3000/baggageTypes?name=eco
+
+### update a baggage type with an existing id
+PUT http://localhost:3000/baggageTypes/4177ed95-4c75-48db-83c8-6fd58f5ad71a
+Content-Type: application/json
+
+{
+  "name": "Eco",
+  "fee": 18.00
+}
+
+### update a baggage type with a non-existing id
+PUT http://localhost:3000/baggageTypes/4178ed95-4c75-48db-83c8-6fd58f5ad71a
+Content-Type: application/json
+
+{
+  "name": "Eco",
+  "fee": 18.00
+}
+
+### delete a baggage type with an existing id
+DELETE http://localhost:3000/baggageTypes/4177ed95-4c75-48db-83c8-6fd58f5ad71a
+
+### delete a baggage type with a non-existing id
+DELETE http://localhost:3000/baggageTypes/4179ed95-4c75-48db-83c8-6fd58f5ad71a
