@@ -32,8 +32,7 @@ Content-Type: application/json
 
 {
   "name": "Air France Updated",
-  "code": "AF",
-  "country": "France"
+  "code": "AF"
 }
 
 
