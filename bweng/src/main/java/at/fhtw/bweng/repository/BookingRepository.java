@@ -19,6 +19,8 @@ public interface BookingRepository extends CrudRepository<Booking, UUID> {
     boolean existsById(UUID id);
 
     @Override
-    void deleteById(UUID uuid);
+    void deleteById(UUID id);
+
+    List<Booking> findBookingByUserId(UUID id);
 
 }

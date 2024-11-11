@@ -43,6 +43,13 @@ public class BookingController {
         }
     }
 
+    //get bookings made by a specific user
+    @GetMapping(value = {"/bookings/user/{userId}"})
+    public ResponseEntity<?> getBookingsByUserId(@PathVariable UUID userId) {
+        List<Booking> bookings = bookingService.getBookingsByUserId(userId);
+        return ResponseEntity.ok(bookings);
+    }
+
     @PutMapping("/bookings/{id}")
     public ResponseEntity<Map<String, String>> updateBooking(
             @PathVariable UUID id,

@@ -37,6 +37,18 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
+    //get all bookings by userId
+    public List<Booking> getBookingsByUserId(UUID userId) {
+        if(userId == null){
+            throw new IllegalArgumentException("User ID must not be null.");
+        }
+        List<Booking> bookings =  bookingRepository.findBookingByUserId(userId);
+        if(bookings.isEmpty()) {
+            throw new NoSuchElementException("No bookings found for user ID " + userId);
+        }
+        return bookings;
+    }
+
     //get a booking by its id
     public Booking getBookingById(UUID id) {
         return bookingRepository.findById(id)

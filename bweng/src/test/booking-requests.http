@@ -33,6 +33,12 @@ GET http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
 ### get a booking by a non-existing id
 GET http://localhost:3000/bookings/9b25b83a-a5d0-55e2-8b4d-9268a24edea8
 
+### get bookings by an existing user id
+GET http://localhost:3000/bookings/user/c259a6cb-94c5-4be9-b0bc-4666a4de1fcf
+
+### get bookings by a non-existing user id
+GET http://localhost:3000/bookings/user/c345a6cb-94c5-4be9-b0bc-4666a4de1fcf
+
 ### update a booking by id
 PUT http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
 Content-Type: application/json
