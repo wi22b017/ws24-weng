@@ -11,7 +11,7 @@ POST http://localhost:3000/baggages
 Content-Type: application/json
 
 {
-  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
+  "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
 }
 
 ### get all baggages

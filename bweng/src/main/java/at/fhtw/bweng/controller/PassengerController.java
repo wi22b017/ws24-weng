@@ -31,6 +31,7 @@ public class PassengerController {
         return ResponseEntity.created(URI.create("/passengers/" + uuid.toString())).body(response);
     }
 
+
     @GetMapping("/passengers")
     public ResponseEntity<?> getAllPassengers() {
         List<Passenger> passengers = passengerService.getAllPassengers();

@@ -11,6 +11,9 @@ public record PassengerDto(
         @NotBlank String lastName,
         @NotNull LocalDate birthday,
         @NotBlank String seatNumber,
-        @NotNull UUID baggageId
+        @NotNull BaggageDto baggage
 ) {
+    public record BaggageDto(
+            @NotNull UUID baggageTypeId
+    ) {}
 }
