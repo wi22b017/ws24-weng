@@ -1,3 +1,53 @@
+GET http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T161817.200.json
+
+###
+
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T161709.200.json
+
+###
+
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T161635.200.json
+
+###
+
+GET http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T161238.200.json
+
+###
+
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T161215.200.json
+
+###
+
 GET http://localhost:3000/bookings
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -1307,72 +1357,6 @@ Accept: */*
 }
 
 <> 2024-11-11T151842.404.json
-
-###
-
-GET http://localhost:3000/baggages
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-11T151756.200.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
-}
-
-<> 2024-11-11T151753.201.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
-}
-
-<> 2024-11-11T151751.201.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-11T151733.200.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 50
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Overweight luggage",
-  "fee": 35.00
-}
-
-<> 2024-11-11T151731.201.json
 
 ###
 

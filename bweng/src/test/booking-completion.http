@@ -118,3 +118,6 @@ Content-Type: application/json
 ### get all bookings
 GET http://localhost:3000/bookings
 
+### get booking by id
+GET http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+
