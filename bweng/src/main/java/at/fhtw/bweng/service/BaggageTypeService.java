@@ -3,6 +3,7 @@ package at.fhtw.bweng.service;
 import at.fhtw.bweng.dto.BaggageTypeDto;
 import at.fhtw.bweng.model.BaggageType;
 import at.fhtw.bweng.repository.BaggageTypeRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,7 +49,11 @@ public class BaggageTypeService {
         BaggageType newBaggageType = new BaggageType();
         newBaggageType.setName(baggageTypeDto.name());
         newBaggageType.setFee(baggageTypeDto.fee());
-        return baggageTypeRepository.save(newBaggageType).getId();
+        try {
+            return baggageTypeRepository.save(newBaggageType).getId();
+        } catch (DataIntegrityViolationException ex) {
+            throw new DataIntegrityViolationException("Bagagge Type with the same name already exists.");
+        }
     }
 
     //update a baggage type ny its id
