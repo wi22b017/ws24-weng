@@ -24,7 +24,7 @@ public class Passenger {
     private LocalDate birthday;
     private String seatNumber;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "baggage_id", referencedColumnName = "id")
     private Baggage baggage;
 
