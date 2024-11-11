@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -23,6 +22,10 @@ public class Booking {
     private String status;
     private BigDecimal price;
     private LocalDateTime bookingDate;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id", nullable = false)

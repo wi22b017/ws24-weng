@@ -1,21 +1,19 @@
 package at.fhtw.bweng.service;
 
-import at.fhtw.bweng.dto.BaggageDto;
 import at.fhtw.bweng.dto.BookingDto;
-import at.fhtw.bweng.model.Baggage;
 import at.fhtw.bweng.model.Booking;
 import at.fhtw.bweng.model.Flight;
 import at.fhtw.bweng.model.PaymentMethod;
+import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.repository.BookingRepository;
 import at.fhtw.bweng.repository.FlightRepository;
 import at.fhtw.bweng.repository.PaymentMethodRepository;
+import at.fhtw.bweng.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
@@ -23,14 +21,16 @@ public class BookingService {
     private BookingRepository bookingRepository;
     private PaymentMethodRepository paymentMethodRepository;
     private FlightRepository flightRepository;
+    private UserRepository userRepository;
 
 
     public BookingService(BookingRepository bookingRepository,
                           PaymentMethodRepository paymentMethodRepository,
-                          FlightRepository flightRepository) {
+                          FlightRepository flightRepository,UserRepository userRepository) {
         this.bookingRepository = bookingRepository;
         this.paymentMethodRepository = paymentMethodRepository;
         this.flightRepository = flightRepository;
+        this.userRepository = userRepository;
     }
     //get all bookings
     public List<Booking> getAllBookings() {
@@ -71,10 +71,12 @@ public class BookingService {
         booking.setStatus(bookingDto.status());
         booking.setPrice(bookingDto.price());
         booking.setBookingDate(bookingDto.bookingDate());
+        User user = userRepository.findById(bookingDto.userId())
+                .orElseThrow(() -> new NoSuchElementException("Payment Method with ID " + bookingDto.userId() + " not found."));
+        booking.setUser(user);
         PaymentMethod paymentMethod = paymentMethodRepository.findById(bookingDto.paymentMethodId())
                 .orElseThrow(() -> new NoSuchElementException("Payment Method with ID " + bookingDto.paymentMethodId() + " not found."));
         booking.setPaymentMethod(paymentMethod);
-
         Flight flight = flightRepository.findById(bookingDto.flightId())
                 .orElseThrow(() -> new NoSuchElementException("Flight with ID " + bookingDto.flightId() + " not found."));
         booking.setFlight(flight);

@@ -6,7 +6,8 @@ Content-Type: application/json
   "status": "Confirmed",
   "price": 150.00,
   "bookingDate": "2024-11-08T10:00:00",
-  "paymentMethodId": "payment-method-uuid",
+  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
+  "paymentMethodId": "81c2190a-fcf1-4dbf-9c6a-81aecb277603",
   "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
 }
 
@@ -18,7 +19,8 @@ Content-Type: application/json
   "status": "Confirmed",
   "price": 250.00,
   "bookingDate": "2024-10-08T10:00:00",
-  "paymentMethodId": "payment-method-uuid",
+  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
+  "paymentMethodId": "cbcce588-bf0b-40c3-8be9-3d5cd4d43622",
   "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
 }
 
@@ -26,22 +28,23 @@ Content-Type: application/json
 GET http://localhost:3000/bookings
 
 ### get a booking by an existing id
-GET http://localhost:3000/bookings/booking-uuid
+GET http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
 
 ### get a booking by a non-existing id
-GET http://localhost:3000/bookings/booking-uuid
+GET http://localhost:3000/bookings/9b25b83a-a5d0-55e2-8b4d-9268a24edea8
 
-### update a booking by ID
-PUT http://localhost:3000/bookings/booking-uuid
+### update a booking by id
+PUT http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
 Content-Type: application/json
 
 {
   "status": "Updated",
   "price": 200.00,
-  "bookingDate": "2024-11-09T14:30:00",
-  "paymentMethodId": "payment-method-uuid",
-  "flightId": "flight-uuid"
+  "bookingDate": "2024-11-11T10:00:00",
+  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
+  "paymentMethodId": "81c2190a-fcf1-4dbf-9c6a-81aecb277603",
+  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
 }
 
-### Delete a booking by ID
-DELETE http://localhost:3000/bookings/booking-uuid
+### delete a booking by id
+DELETE http://localhost:3000/bookings/a86a3c6c-f90e-4014-9937-5823469dc00d

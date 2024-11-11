@@ -10,8 +10,9 @@ import java.util.UUID;
 public record BookingDto(
         @NotBlank String status,
         @NotNull @DecimalMin(value = "0.0", inclusive = false) BigDecimal price,
-        @NotBlank LocalDateTime bookingDate,
-        @NotBlank UUID paymentMethodId,
-        @NotBlank UUID flightId
+        @NotNull LocalDateTime bookingDate,
+        @NotNull UUID userId,
+        @NotNull UUID paymentMethodId,
+        @NotNull UUID flightId
         ) {
 }
