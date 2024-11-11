@@ -12,9 +12,6 @@ Content-Type: application/json
   }
 }
 
-
-
-
 ### Retrieve all passengers
 GET http://localhost:3000/passengers
 

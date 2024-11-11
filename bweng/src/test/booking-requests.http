@@ -1,27 +1,30 @@
-### create a new booking
-POST http://localhost:3000/bookings
-Content-Type: application/json
-
-{
-  "status": "Confirmed",
-  "price": 150.00,
-  "bookingDate": "2024-11-08T10:00:00",
-  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
-  "paymentMethodId": "81c2190a-fcf1-4dbf-9c6a-81aecb277603",
-  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
-}
-
-### create another booking
+### Create a new Booking
 POST http://localhost:3000/bookings
 Content-Type: application/json
 
 {
   "status": "Confirmed",
   "price": 250.00,
-  "bookingDate": "2024-10-08T10:00:00",
-  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
-  "paymentMethodId": "cbcce588-bf0b-40c3-8be9-3d5cd4d43622",
-  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "57404b01-b8ba-436b-b8c9-d4b452ae8ead",
+  "paymentMethodId": "6c8f082e-1914-4945-8883-cd6a48e4f79e",
+  "flightId": "cfdd58ba-5ce4-4720-a975-c4d9ab0e8286",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "41860176-a23d-440e-8958-4c64d43035a0"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "8821fb89-f673-47eb-8987-9fd1d26b9f86"
+    }
+  ]
 }
 
 ### get all bookings
