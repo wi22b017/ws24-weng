@@ -18,12 +18,10 @@ import java.util.UUID;
 public class PassengerService {
 
     private PassengerRepository passengerRepository;
-    private UserRepository userRepository;
     private BaggageRepository baggageRepository;
 
-    public PassengerService(PassengerRepository passengerRepository, UserRepository userRepository, BaggageRepository baggageRepository) {
+    public PassengerService(PassengerRepository passengerRepository, BaggageRepository baggageRepository) {
         this.passengerRepository = passengerRepository;
-        this.userRepository = userRepository;
         this.baggageRepository = baggageRepository;
     }
 
@@ -67,6 +65,7 @@ public class PassengerService {
         passenger.setLastName(passengerDto.lastName());
         passenger.setBirthday(passengerDto.birthday());
         passenger.setSeatNumber(passengerDto.seatNumber());
+        passenger.setBaggage(baggage);
 
         try{
             passengerRepository.save(passenger);

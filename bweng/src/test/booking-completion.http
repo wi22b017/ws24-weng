@@ -91,25 +91,25 @@ Content-Type: application/json
   "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
   "passengers": [
     {
-      "firstName": "Alice",
+      "firstName": "Alice2",
       "lastName": "Smith",
       "birthday": "1990-05-15",
       "seatNumber": "",
-      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+      "baggageId": "3b7baa0c-eb2c-4328-9ef9-bd0ba80c53a7"
     },
     {
-      "firstName": "Bob",
+      "firstName": "Bob2",
       "lastName": "Johnson",
       "birthday": "1985-08-22",
       "seatNumber": "",
-      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+      "baggageId": "e181aaa1-55d5-4df7-ac7d-ad2b86719a61"
     },
     {
-      "firstName": "Charlie",
+      "firstName": "Charlie2",
       "lastName": "Brown",
       "birthday": "1992-02-10",
       "seatNumber": "",
-      "baggageId": "9a99a137-c776-4423-a776-96e58628b1b9"
+      "baggageId": "f6bde46a-887f-4a25-96a7-41dfb1cd0e37"
     }
   ]
 }

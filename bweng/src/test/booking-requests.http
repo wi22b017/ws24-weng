@@ -28,32 +28,59 @@ Content-Type: application/json
 GET http://localhost:3000/bookings
 
 ### get a booking by an existing id
-GET http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
+GET http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
 
 ### get a booking by a non-existing id
 GET http://localhost:3000/bookings/9b25b83a-a5d0-55e2-8b4d-9268a24edea8
 
 ### get bookings by an existing user id
-GET http://localhost:3000/bookings/user/c259a6cb-94c5-4be9-b0bc-4666a4de1fcf
+GET http://localhost:3000/bookings/user/7a998171-84c1-4539-bf1a-cd666cebff64
 
 ### get bookings by a non-existing user id
 GET http://localhost:3000/bookings/user/c345a6cb-94c5-4be9-b0bc-4666a4de1fcf
 
+
 ### update a booking by id
-PUT http://localhost:3000/bookings/9b25b83a-a5d0-44e2-8b4d-9268a24edea8
+PUT http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
 Content-Type: application/json
 
 {
   "status": "Updated",
-  "price": 200.00,
-  "bookingDate": "2024-11-11T10:00:00",
-  "userId":"c259a6cb-94c5-4be9-b0bc-4666a4de1fcf",
-  "paymentMethodId": "81c2190a-fcf1-4dbf-9c6a-81aecb277603",
-  "flightId": "9628fe84-e91a-4689-b662-265488a196a7"
+  "price": 230.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "id": "a1cb7e1d-71bd-4174-8182-514109aa5544",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "id": "b6a36bde-f2e0-4e67-a111-81e474ce700b",
+      "firstName": "John",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+    },
+    {
+      "id": "b7a81e49-f4f0-4c9b-9811-1518b7287f9c",
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "9a99a137-c776-4423-a776-96e58628b1b9"
+    }
+  ]
 }
 
 ### delete a booking by id
-DELETE http://localhost:3000/bookings/a86a3c6c-f90e-4014-9937-5823469dc00d
+DELETE http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
 
 
 
