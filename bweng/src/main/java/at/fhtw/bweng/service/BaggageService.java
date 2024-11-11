@@ -29,7 +29,14 @@ public class BaggageService {
 
     //get list of baggages by type
     public List<Baggage> getBaggagesByType(UUID baggageTypeId) {
-        return baggageRepository.findByBaggageTypeId(baggageTypeId);
+        if(baggageTypeId == null) {
+            throw new IllegalArgumentException("baggageTypeId must not be null.");
+        }
+        List<Baggage> baggages = baggageRepository.findByBaggageTypeId(baggageTypeId);
+        if(baggages.isEmpty()){
+            throw new NoSuchElementException("No baggages found for baggage type ID " + baggageTypeId);
+        }
+        return baggages;
     }
 
     //get a baggage by its id
