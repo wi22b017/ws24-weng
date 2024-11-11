@@ -65,15 +65,6 @@ public class BookingService {
                 .orElseThrow(() -> new NoSuchElementException("Booking with ID " + id + " not found"));
     }
 
-    //delete a booking by its id
-    /*public void deleteBooking(UUID id) {
-        if (bookingRepository.existsById(id)) {
-            bookingRepository.deleteById(id);
-        } else {
-            throw new NoSuchElementException("Booking with ID " + id + " not found.");
-        }
-    }*/
-
     @Transactional
     public void deleteBooking(UUID id) {
         if (!bookingRepository.existsById(id)) {
@@ -122,10 +113,25 @@ public class BookingService {
     }
 
     //update a booking
+    @Transactional
     public void updateBooking(UUID id, BookingDto bookingDto) {
+        // Retrieve existing booking
         Booking existingBooking = bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking with ID" + id +"not found."));
+                .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+
+        // Update booking fields
         mapBookingDtoToBookingEntity(bookingDto, existingBooking);
+
+        // Update passengers based on the BookingDto
+        bookingDto.passengers().forEach(passengerDto -> {
+            if (passengerDto.id() != null) {
+                passengerService.updatePassenger(passengerDto.id(), passengerDto);
+            } else {
+                throw new IllegalArgumentException("Passenger ID must not be null for updating.");
+            }
+        });
+
+        // Save the updated booking
         bookingRepository.save(existingBooking);
     }
 
