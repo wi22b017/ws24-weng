@@ -87,4 +87,10 @@ public class PassengerService {
 
 
     }
+
+    public List<Passenger> findPassengersByBookingId(UUID bookingId) {
+        return passengerRepository.findPassengersByBookingId(bookingId);
+    }
+
+
 }

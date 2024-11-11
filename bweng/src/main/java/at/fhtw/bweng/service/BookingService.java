@@ -66,12 +66,26 @@ public class BookingService {
     }
 
     //delete a booking by its id
-    public void deleteBooking(UUID id) {
+    /*public void deleteBooking(UUID id) {
         if (bookingRepository.existsById(id)) {
             bookingRepository.deleteById(id);
         } else {
             throw new NoSuchElementException("Booking with ID " + id + " not found.");
         }
+    }*/
+
+    @Transactional
+    public void deleteBooking(UUID id) {
+        if (!bookingRepository.existsById(id)) {
+            throw new NoSuchElementException("Booking with ID " + id + " not found.");
+        }
+
+        // Find passengers associated with this booking and delete them
+        List<Passenger> passengers = passengerService.findPassengersByBookingId(id);
+        passengers.forEach(passenger -> passengerService.deletePassenger(passenger.getId()));
+
+        // Delete the booking itself
+        bookingRepository.deleteById(id);
     }
 
     //add a booking
