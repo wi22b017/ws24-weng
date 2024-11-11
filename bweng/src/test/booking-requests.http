@@ -54,3 +54,6 @@ Content-Type: application/json
 
 ### delete a booking by id
 DELETE http://localhost:3000/bookings/a86a3c6c-f90e-4014-9937-5823469dc00d
+
+
+

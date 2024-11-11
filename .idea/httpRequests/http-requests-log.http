@@ -1,458 +1,344 @@
-DELETE http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T232512.200.json
+<> 2024-11-11T160731.200.json
 
 ###
 
-GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T232455.200.json
+<> 2024-11-11T160652.200.json
 
 ###
 
-PUT http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+POST http://localhost:3000/bookings
 Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "firstName": "Jane",
-  "lastName": "Doe",
-  "birthday": "1985-05-15",
-  "seatNumber": "14B",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "9a99a137-c776-4423-a776-96e58628b1b9"
+    }
+  ]
 }
 
-<> 2024-11-10T232440.200.json
-
-###
-
-GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T232438.200.json
-
-###
-
-GET http://localhost:3000/passengers
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T232329.200.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
-}
-
-<> 2024-11-10T232325.201.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "39551bfb-ed03-402e-a944-3abe5d710e94"
-}
-
-<> 2024-11-10T232301.201.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T232224.200.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 43
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "First Class",
-  "fee": 35.00
-}
-
-<> 2024-11-10T232212.409.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 40
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Business",
-  "fee": 25.00
-}
-
-<> 2024-11-10T232209.409.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 39
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Economy",
-  "fee": 15.00
-}
-
-<> 2024-11-10T232206.409.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T232200.404.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T232156.404.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T232136.404.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T230845.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T230842.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 204
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T230815.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 213
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T230618.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 234
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "87ac5fca-f466-40d0-8068-93ed81608cb4"
-}
-
-<> 2024-11-10T230605.500.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T230254.200.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T230244.404.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T230239.404.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T230234.200.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 43
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "First Class",
-  "fee": 35.00
-}
-
-<> 2024-11-10T230231.201.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 40
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Business",
-  "fee": 25.00
-}
-
-<> 2024-11-10T230228.201.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 39
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "Economy",
-  "fee": 15.00
-}
-
-<> 2024-11-10T230226.201.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T230213.404.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "3ebbf993-371f-4fe6-a5ed-57bedc6ea67a"
-}
-
-<> 2024-11-10T230206.404.json
+<> 2024-11-11T160627.201.json
 
 ###
 
 GET http://localhost:3000/baggages
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T230158.200.json
+<> 2024-11-11T160610.200.json
 
 ###
 
-GET http://localhost:3000/users
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+    }
+  ]
+}
+
+<> 2024-11-11T160600.404.json
+
+###
+
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T214051.200.json
+<> 2024-11-11T160549.200.json
+
+###
+
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+    }
+  ]
+}
+
+<> 2024-11-11T160542.404.json
+
+###
+
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T160536.200.json
+
+###
+
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+    }
+  ]
+}
+
+<> 2024-11-11T160529.404.json
+
+###
+
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T160502.200.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+}
+
+<> 2024-11-11T160454-1.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+}
+
+<> 2024-11-11T160454.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+}
+
+<> 2024-11-11T160453.201.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "carry-on luggage",
+  "fee": 15.00
+}
+
+<> 2024-11-11T160433.201.json
+
+###
+
+POST http://localhost:3000/flights
+Content-Type: application/json
+Content-Length: 534
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+<> 2024-11-11T160416.201.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-11T160346.200.json
 
 ###
 
 POST http://localhost:3000/users
 Content-Type: application/json
 Content-Length: 379
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
@@ -477,99 +363,273 @@ Accept: */*
   }
 }
 
-<> 2024-11-10T214047.201.json
+<> 2024-11-11T160332.201.json
 
 ###
 
-POST http://localhost:3000/paymentMethods
+POST http://localhost:3000/bookingsNew
 Content-Type: application/json
-Content-Length: 22
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "PayPal"
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "4096d7bd-d5fa-4aba-b110-e6786f078058",
+  "paymentMethodId": "192bf602-3822-4f65-bb62-54875f9e49d7",
+  "flightId": "2b4196b4-198a-4d5e-9731-6126a2dc417e",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "ca0963ab-ed50-4055-b22c-8162307a3d88"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "fef663bf-9324-411b-8363-81894a66faac"
+    }
+  ]
 }
 
-<> 2024-11-10T213807.201.json
+<> 2024-11-11T155814.201.json
 
 ###
 
-DELETE http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T213803.200.json
+<> 2024-11-11T155737.200.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "0173d012-9f27-4477-8007-a39d9062da1a"
+}
+
+<> 2024-11-11T155710.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "0173d012-9f27-4477-8007-a39d9062da1a"
+}
+
+<> 2024-11-11T155709.201.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "4096d7bd-d5fa-4aba-b110-e6786f078058",
+  "paymentMethodId": "192bf602-3822-4f65-bb62-54875f9e49d7",
+  "flightId": "2b4196b4-198a-4d5e-9731-6126a2dc417e",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    }
+  ]
+}
+
+<> 2024-11-11T155543.409.json
 
 ###
 
 GET http://localhost:3000/paymentMethods
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T213746.200.json
+<> 2024-11-11T155532.200.json
 
 ###
 
-PUT http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
+POST http://localhost:3000/bookingsNew
 Content-Type: application/json
-Content-Length: 26
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Debit Card"
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "4096d7bd-d5fa-4aba-b110-e6786f078058",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "2b4196b4-198a-4d5e-9731-6126a2dc417e",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "288dd7e1-a99b-4442-9ca9-d741e99d83bc"
+    }
+  ]
 }
 
-<> 2024-11-10T213740.200.json
+<> 2024-11-11T155502.404.json
 
 ###
 
-GET http://localhost:3000/paymentMethods/2458a892-c19f-4505-8816-819cfb525bd7
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T213737.200.json
-
-###
-
-GET http://localhost:3000/paymentMethods
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T213656.200.json
-
-###
-
-POST http://localhost:3000/paymentMethods
+POST http://localhost:3000/flights
 Content-Type: application/json
-Content-Length: 22
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Content-Length: 534
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "PayPal"
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
 }
 
-<> 2024-11-10T213651.201.json
+<> 2024-11-11T155449.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "0173d012-9f27-4477-8007-a39d9062da1a"
+}
+
+<> 2024-11-11T155417.201.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "carry-on luggage",
+  "fee": 15.00
+}
+
+<> 2024-11-11T155406.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
+}
+
+<> 2024-11-11T155331.404.json
 
 ###
 
 POST http://localhost:3000/paymentMethods
 Content-Type: application/json
 Content-Length: 27
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
@@ -577,124 +637,742 @@ Accept: */*
   "name": "Credit Card"
 }
 
-<> 2024-11-10T213646.201.json
+<> 2024-11-11T155305.409.json
 
 ###
 
-DELETE http://localhost:3000/airlines/57c32325-fb48-4434-8028-f90712e9d5f9
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T213445.404.json
-
-###
-
-DELETE http://localhost:3000/airlines/02b8168f-b9d2-4717-b073-b387637f26e8
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T213440.200.json
-
-###
-
-GET http://localhost:3000/airlines
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T213434.200.json
-
-###
-
-PUT http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
+POST http://localhost:3000/users
 Content-Type: application/json
-Content-Length: 73
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 {
-  "name": "Air France Updated",
-  "code": "AF",
-  "country": "France"
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
 }
 
-<> 2024-11-10T213408.200.json
+<> 2024-11-11T155249.201.json
 
 ###
 
-GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 823
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T155158.409.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T154923.500.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T154402.500.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T153945.500.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T153347.201.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T153121.201.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T153105.201.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "46e2201e-dc06-4cd7-9d6a-4dbcddbe0210",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T152808.201.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-11T152745.201.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T152623.404.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T152608.404.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T152141.404.json
+
+###
+
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T151916.404.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T213401.200.json
+<> 2024-11-11T151855.200.json
 
 ###
 
-GET http://localhost:3000/airlines
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+POST http://localhost:3000/bookingsNew
+Content-Type: application/json
+Content-Length: 883
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "123e4567-e89b-12d3-a456-426614174000",
+  "paymentMethodId": "ffb5762b-ea88-403c-9add-82769de183f0",
+  "flightId": "f85ad7a6-ece2-4f31-96c3-75fd05fc9e77",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "userId": "",
+      "baggageId": "5307988e-c464-4c96-ab38-df2a507821d2"
+    }
+  ]
+}
+
+<> 2024-11-11T151842.404.json
+
+###
+
+GET http://localhost:3000/baggages
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T213358.200.json
+<> 2024-11-11T151756.200.json
 
 ###
 
-GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
+}
+
+<> 2024-11-11T151753.201.json
+
+###
+
+POST http://localhost:3000/baggages
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
+}
+
+<> 2024-11-11T151751.201.json
+
+###
+
+GET http://localhost:3000/baggageTypes
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 content-length: 0
 
-<> 2024-11-10T213102.404.json
+<> 2024-11-11T151733.200.json
 
 ###
 
-GET http://localhost:3000/airlines
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 50
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.4
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
-content-length: 0
 
-<> 2024-11-10T212958.200.json
+{
+  "name": "Overweight luggage",
+  "fee": 35.00
+}
 
-###
-
-GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T212955.404.json
-
-###
-
-DELETE http://localhost:3000/airlines/02b8168f-b9d2-4717-b073-b387637f26e8
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T212951.404.json
-
-###
-
-DELETE http://localhost:3000/airlines/57c32325-fb48-4434-8028-f90712e9d5f9
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-10T212948.404.json
+<> 2024-11-11T151731.201.json
 
 ###
 

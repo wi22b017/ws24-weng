@@ -28,8 +28,6 @@ public class PassengerService {
     }
 
     public UUID addPassenger(PassengerDto passengerDto) {
-        User user = userRepository.findById(passengerDto.userId())
-                .orElseThrow(() -> new NoSuchElementException("User with ID " + passengerDto.userId() + " not found"));
         Baggage baggage = baggageRepository.findById(passengerDto.baggageId())
                 .orElseThrow(() -> new NoSuchElementException("Baggage with ID " + passengerDto.baggageId() + " not found"));
         Passenger passenger = new Passenger(
@@ -38,14 +36,13 @@ public class PassengerService {
                 passengerDto.lastName(),
                 passengerDto.birthday(),
                 passengerDto.seatNumber(),
-                user,
                 baggage
         );
 
         try {
             return passengerRepository.save(passenger).getId();
         } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("User with ID " + passengerDto.userId() + " already exists");
+            throw new DataIntegrityViolationException("Passenger already exists");
 
         }
 
@@ -62,8 +59,6 @@ public class PassengerService {
 
     public void updatePassenger(UUID id, PassengerDto passengerDto) {
         Passenger passenger = getPassengerById(id);
-        User user = userRepository.findById(passengerDto.userId())
-                .orElseThrow(() -> new NoSuchElementException("User with ID " + passengerDto.userId() + " not found"));
 
         Baggage baggage = baggageRepository.findById(passengerDto.baggageId())
                 .orElseThrow(() -> new NoSuchElementException("Baggage with ID " + passengerDto.baggageId() + " not found"));
@@ -72,7 +67,6 @@ public class PassengerService {
         passenger.setLastName(passengerDto.lastName());
         passenger.setBirthday(passengerDto.birthday());
         passenger.setSeatNumber(passengerDto.seatNumber());
-        passenger.setUser(user);
 
         try{
             passengerRepository.save(passenger);

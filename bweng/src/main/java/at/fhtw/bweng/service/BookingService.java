@@ -2,14 +2,16 @@ package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.BookingDto;
 import at.fhtw.bweng.model.Booking;
+import at.fhtw.bweng.model.BookingPassenger;
 import at.fhtw.bweng.model.Flight;
+import at.fhtw.bweng.model.Passenger;
 import at.fhtw.bweng.model.PaymentMethod;
 import at.fhtw.bweng.model.User;
-import at.fhtw.bweng.repository.BookingRepository;
-import at.fhtw.bweng.repository.FlightRepository;
-import at.fhtw.bweng.repository.PaymentMethodRepository;
-import at.fhtw.bweng.repository.UserRepository;
+import at.fhtw.bweng.repository.*;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -22,15 +24,23 @@ public class BookingService {
     private PaymentMethodRepository paymentMethodRepository;
     private FlightRepository flightRepository;
     private UserRepository userRepository;
+    private BookingPassengerRepository bookingPassengerRepository;
+    private PassengerService passengerService;
 
 
     public BookingService(BookingRepository bookingRepository,
                           PaymentMethodRepository paymentMethodRepository,
-                          FlightRepository flightRepository,UserRepository userRepository) {
+                          FlightRepository flightRepository,
+                          UserRepository userRepository,
+                          PassengerRepository passengerRepository,
+                          BookingPassengerRepository bookingPassengerRepository,
+                          PassengerService passengerService) {
         this.bookingRepository = bookingRepository;
         this.paymentMethodRepository = paymentMethodRepository;
         this.flightRepository = flightRepository;
         this.userRepository = userRepository;
+        this.bookingPassengerRepository = bookingPassengerRepository;
+        this.passengerService = passengerService;
     }
     //get all bookings
     public List<Booking> getAllBookings() {
@@ -65,11 +75,38 @@ public class BookingService {
     }
 
     //add a booking
+    @Transactional
     public UUID addBooking(BookingDto bookingDto) {
-        Booking newBooking = new Booking();
-        mapBookingDtoToBookingEntity(bookingDto, newBooking);
-        return bookingRepository.save(newBooking).getId();
+        Booking booking = new Booking();
+        mapBookingDtoToBookingEntity(bookingDto, booking);
+        bookingRepository.save(booking);
+
+        // Process passengers in bookingDto and create BookingPassenger entries
+        List<BookingPassenger> bookingPassengers = bookingDto.passengers().stream()
+                .map(passengerDto -> {
+                    UUID passengerId = passengerService.addPassenger(passengerDto);
+                    Passenger passenger = passengerService.getPassengerById(passengerId);
+
+                    // Create a BookingPassenger entry linking booking and passenger
+                    BookingPassenger bookingPassenger = new BookingPassenger();
+                    bookingPassenger.setBooking(booking);
+                    bookingPassenger.setPassenger(passenger);
+
+                    return bookingPassenger;
+                })
+                .collect(Collectors.toList());
+
+        // Print the List<BookingPassenger> to the console
+        System.out.println("BookingPassenger List before saving: ");
+        bookingPassengers.forEach(System.out::println);
+
+        // Save all BookingPassenger entries
+        bookingPassengerRepository.saveAll(bookingPassengers);
+
+        return booking.getId();
+
     }
+
     //update a booking
     public void updateBooking(UUID id, BookingDto bookingDto) {
         Booking existingBooking = bookingRepository.findById(id)
@@ -84,7 +121,7 @@ public class BookingService {
         booking.setPrice(bookingDto.price());
         booking.setBookingDate(bookingDto.bookingDate());
         User user = userRepository.findById(bookingDto.userId())
-                .orElseThrow(() -> new NoSuchElementException("Payment Method with ID " + bookingDto.userId() + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("User with ID " + bookingDto.userId() + " not found."));
         booking.setUser(user);
         PaymentMethod paymentMethod = paymentMethodRepository.findById(bookingDto.paymentMethodId())
                 .orElseThrow(() -> new NoSuchElementException("Payment Method with ID " + bookingDto.paymentMethodId() + " not found."));

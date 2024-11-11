@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.List;
 
 public record BookingDto(
         @NotBlank String status,
@@ -13,6 +14,7 @@ public record BookingDto(
         @NotNull LocalDateTime bookingDate,
         @NotNull UUID userId,
         @NotNull UUID paymentMethodId,
-        @NotNull UUID flightId
+        @NotNull UUID flightId,
+        @NotNull List<PassengerDto> passengers
         ) {
 }

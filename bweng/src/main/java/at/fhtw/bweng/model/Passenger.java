@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.UUID;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,11 +24,19 @@ public class Passenger {
     private LocalDate birthday;
     private String seatNumber;
 
-    @ManyToOne
-    private User user;
-
-
     @OneToOne
     @JoinColumn(name = "baggage_id", referencedColumnName = "id")
     private Baggage baggage;
+
+    @OneToMany(mappedBy = "passenger", cascade = CascadeType.ALL)
+    private List<BookingPassenger> bookingPassengers;
+
+    public Passenger(UUID id, String firstName, String lastName, LocalDate birthday, String seatNumber, Baggage baggage) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.seatNumber = seatNumber;
+        this.baggage = baggage;
+    }
 }

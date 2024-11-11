@@ -10,7 +10,6 @@ public record PassengerDto(
         @NotBlank String lastName,
         @NotNull LocalDate birthday,
         @NotBlank String seatNumber,
-        @NotNull UUID userId,
         @NotNull UUID baggageId
 ) {
 }

@@ -22,7 +22,7 @@ public class BookingController {
     }
 
     @PostMapping("/bookings")
-    public ResponseEntity<Map<String, String>> addBooking(@RequestBody @Valid BookingDto bookingDto) {
+    public ResponseEntity<Map<String, String>> addBookingNew(@RequestBody @Valid BookingDto bookingDto) {
         UUID uuid = bookingService.addBooking(bookingDto);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Booking created successfully");
@@ -32,6 +32,7 @@ public class BookingController {
                 .created(URI.create("/bookings/" + uuid))
                 .body(response);
     }
+
     @GetMapping(value = {"/bookings", "/bookings/{id}"})
     public ResponseEntity<?> getBookings(@PathVariable(required = false) UUID id) {
         if (id != null) {

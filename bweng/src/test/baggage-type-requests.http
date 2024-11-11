@@ -3,7 +3,7 @@ POST http://localhost:3000/baggageTypes
 Content-Type: application/json
 
 {
-  "name": "Economy",
+  "name": "carry-on luggage",
   "fee": 15.00
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/baggageTypes
 Content-Type: application/json
 
 {
-  "name": "Business",
+  "name": "checked baggage",
   "fee": 25.00
 }
 
@@ -21,7 +21,7 @@ POST http://localhost:3000/baggageTypes
 Content-Type: application/json
 
 {
-  "name": "First Class",
+  "name": "Overweight luggage",
   "fee": 35.00
 }
 

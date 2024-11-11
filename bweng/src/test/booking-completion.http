@@ -1,0 +1,120 @@
+### Create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+### Retrieve all payment methods
+GET http://localhost:3000/paymentMethods
+
+### Create a flight
+POST http://localhost:3000/flights
+Content-Type: application/json
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+
+### create a baggage type
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+
+{
+  "name": "carry-on luggage",
+  "fee": 15.00
+}
+
+
+### add a new baggage --> Do this three times because of the three passengers
+POST http://localhost:3000/baggages
+Content-Type: application/json
+
+{
+  "baggageTypeId": "f48badcd-bffa-400d-8983-6b87ea3f76d4"
+}
+
+
+### get all baggages
+GET http://localhost:3000/baggages
+
+
+
+### Create a Booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
+  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
+  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggageId": "9a99a137-c776-4423-a776-96e58628b1b9"
+    }
+  ]
+}
+
+
+### get all bookings
+GET http://localhost:3000/bookings
+
