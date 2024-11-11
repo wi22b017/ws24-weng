@@ -7,9 +7,13 @@ Content-Type: application/json
   "lastName": "Doe",
   "birthday": "1980-01-01",
   "seatNumber": "12A",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+  "baggage": {
+    "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
+  }
 }
+
+
+
 
 ### Retrieve all passengers
 GET http://localhost:3000/passengers
@@ -31,4 +35,4 @@ Content-Type: application/json
 }
 
 ### Delete a passenger by ID
-DELETE http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+DELETE http://localhost:3000/passengers/474e4928-aa1a-45f5-952f-b30fb0a55da4
