@@ -8,7 +8,7 @@ Content-Type: application/json
   "birthday": "1980-01-01",
   "seatNumber": "12A",
   "baggage": {
-    "baggageTypeId": "dc9e07a5-04e4-48cf-a92d-df50e288e463"
+    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
   }
 }
 
@@ -19,7 +19,7 @@ GET http://localhost:3000/passengers
 GET http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
 
 ### Update an existing passenger
-PUT http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
+PUT http://localhost:3000/passengers/83ae6d2f-cda9-4bab-8b82-324777f492f1
 Content-Type: application/json
 
 {
@@ -28,12 +28,7 @@ Content-Type: application/json
   "birthday": "1985-05-15",
   "seatNumber": "14B",
   "baggage": {
-    "id": "ee0db989-2597-4ea0-85f7-f56c1a395f14",
-    "baggageType": {
-      "id": "dc9e07a5-04e4-48cf-a92d-df50e288e463",
-      "name": "carry-on luggage",
-      "fee": 15.00
-    }
+    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
   }
 }
 

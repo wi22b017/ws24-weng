@@ -48,45 +48,45 @@ GET http://localhost:3000/bookings/user/c345a6cb-94c5-4be9-b0bc-4666a4de1fcf
 
 
 ### update a booking by id
-PUT http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+PUT http://localhost:3000/bookings/42993d4c-3462-4690-b4cf-c7f3f58283a2
 Content-Type: application/json
 
 {
   "status": "Updated",
-  "price": 230.00,
+  "price": 250.00,
   "bookingDate": "2024-11-11T14:30:00",
-  "userId": "7a998171-84c1-4539-bf1a-cd666cebff63",
-  "paymentMethodId": "e537b5aa-84c1-48c9-8afe-b1759e128766",
-  "flightId": "79865b3f-6400-4cc3-b9a8-6af43b4ded13",
+  "userId": "e921af07-73a7-4589-96c4-f4208b356d18",
+  "paymentMethodId": "cffd31dd-29be-4af9-82a7-b645fbf73e10",
+  "flightId": "2e100572-cc47-44b3-8510-7dad3e25a169",
   "passengers": [
     {
-      "id": "a1cb7e1d-71bd-4174-8182-514109aa5544",
-      "firstName": "Alice",
+      "id": "216a8b6c-2373-4c16-913f-9258774dc174",
+      "firstName": "Alice2",
       "lastName": "Smith",
       "birthday": "1990-05-15",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     },
     {
-      "id": "b6a36bde-f2e0-4e67-a111-81e474ce700b",
-      "firstName": "John",
+      "id": "7264ab1e-c24c-4fde-8d6f-8fde038c2331",
+      "firstName": "Bo2b",
       "lastName": "Johnson",
       "birthday": "1985-08-22",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     },
     {
-      "id": "b7a81e49-f4f0-4c9b-9811-1518b7287f9c",
-      "firstName": "Charlie",
+      "id": "f4ee4cd2-c392-4676-b894-656d3147544e",
+      "firstName": "Charlie2",
       "lastName": "Brown",
       "birthday": "1992-02-10",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     }
   ]

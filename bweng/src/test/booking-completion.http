@@ -72,9 +72,9 @@ Content-Type: application/json
   "status": "Confirmed",
   "price": 250.00,
   "bookingDate": "2024-11-11T14:30:00",
-  "userId": "3233398c-561d-4b15-ba59-cf0e8980f61e",
-  "paymentMethodId": "2165478d-80db-4fb3-93f2-70dd348ac2d8",
-  "flightId": "c86f3ffb-a656-4215-9cf7-073f28824c58",
+  "userId": "e921af07-73a7-4589-96c4-f4208b356d18",
+  "paymentMethodId": "cffd31dd-29be-4af9-82a7-b645fbf73e10",
+  "flightId": "2e100572-cc47-44b3-8510-7dad3e25a169",
   "passengers": [
     {
       "firstName": "Alice",
@@ -82,7 +82,7 @@ Content-Type: application/json
       "birthday": "1990-05-15",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     },
     {
@@ -91,7 +91,7 @@ Content-Type: application/json
       "birthday": "1985-08-22",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     },
     {
@@ -100,7 +100,7 @@ Content-Type: application/json
       "birthday": "1992-02-10",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
       }
     }
   ]
