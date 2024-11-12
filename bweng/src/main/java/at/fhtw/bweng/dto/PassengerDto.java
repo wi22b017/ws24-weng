@@ -19,8 +19,4 @@ public record PassengerDto(
         @Valid
         BaggageDto baggage
 ) {
-    /*public record BaggageDto(
-            @NotNull(message = "Baggage type ID cannot be null")
-            UUID baggageTypeId
-    ) {}*/
 }
