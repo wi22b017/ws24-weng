@@ -7,7 +7,10 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public record BaggageTypeDto(
-        @NotBlank String name,
-        @NotNull @DecimalMin(value = "0.0", inclusive = false) BigDecimal fee
+        @NotBlank(message = "Baggage type name cannot be blank")
+        String name,
+        @NotNull
+        @DecimalMin(value = "0.0", inclusive = false, message = "Fee must be greater than 0")
+        BigDecimal fee
 ) {
 }
