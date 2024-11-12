@@ -2,10 +2,23 @@ package at.fhtw.bweng.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.Valid;
 
-public record FlightDto(@NotBlank String flightNumber,
-                        @NotBlank String departureTime,
-                        @NotBlank String arrivalTime,
-                        @NotNull AirportDto flightOrigin,
-                        @NotNull AirportDto flightDestination,
-                        @NotNull AircraftDto aircraft) {}
+public record FlightDto(
+        @NotBlank(message = "Flight number code cannot be blank")
+        String flightNumber,
+        @NotBlank(message = "Departure time code cannot be blank")
+        String departureTime,
+        @NotBlank(message = "Departure time cannot be blank")
+        String arrivalTime,
+        @Valid
+        @NotNull
+        AirportDto flightOrigin,
+        @Valid
+        @NotNull
+        AirportDto flightDestination,
+        @Valid
+        @NotNull
+        AircraftDto aircraft
+) {
+}
