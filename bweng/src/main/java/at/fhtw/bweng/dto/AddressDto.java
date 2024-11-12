@@ -6,11 +6,13 @@ import jakarta.validation.constraints.Positive;
 public record AddressDto(
         @NotBlank(message = "Street name cannot be blank")
         String street,
-        @Positive int number,
-        @Positive int zip,
+        @Positive(message = "Street number must be a positive number")
+        int number,
+        @Positive(message = "ZIP code must be a positive number")
+        int zip,
         @NotBlank(message = "city cannot be blank")
-        @NotBlank String city,
+        String city,
         @NotBlank(message = "country cannot be blank")
-        @NotBlank String country
+        String country
 ) {
 }
