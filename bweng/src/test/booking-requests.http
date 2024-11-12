@@ -15,14 +15,18 @@ Content-Type: application/json
       "lastName": "Smith",
       "birthday": "1990-05-15",
       "seatNumber": "",
-      "baggageId": "41860176-a23d-440e-8958-4c64d43035a0"
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
     },
     {
       "firstName": "Bob",
       "lastName": "Johnson",
       "birthday": "1985-08-22",
       "seatNumber": "",
-      "baggageId": "8821fb89-f673-47eb-8987-9fd1d26b9f86"
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
     }
   ]
 }
@@ -61,7 +65,9 @@ Content-Type: application/json
       "lastName": "Smith",
       "birthday": "1990-05-15",
       "seatNumber": "",
-      "baggageId": "51586b1e-db7d-43a4-8b6b-9ccc7ec1547c"
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
     },
     {
       "id": "b6a36bde-f2e0-4e67-a111-81e474ce700b",
@@ -69,7 +75,9 @@ Content-Type: application/json
       "lastName": "Johnson",
       "birthday": "1985-08-22",
       "seatNumber": "",
-      "baggageId": "7cf9d488-c52a-4102-bca9-02715cdeefb8"
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
     },
     {
       "id": "b7a81e49-f4f0-4c9b-9811-1518b7287f9c",
@@ -77,7 +85,9 @@ Content-Type: application/json
       "lastName": "Brown",
       "birthday": "1992-02-10",
       "seatNumber": "",
-      "baggageId": "9a99a137-c776-4423-a776-96e58628b1b9"
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
     }
   ]
 }

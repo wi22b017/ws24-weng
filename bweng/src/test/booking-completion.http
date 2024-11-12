@@ -63,10 +63,6 @@ Content-Type: application/json
   "fee": 15.00
 }
 
-### get all baggages
-GET http://localhost:3000/baggages
-
-
 
 ### Create a Booking
 POST http://localhost:3000/bookings
@@ -76,9 +72,9 @@ Content-Type: application/json
   "status": "Confirmed",
   "price": 250.00,
   "bookingDate": "2024-11-11T14:30:00",
-  "userId": "a27ed6be-27ec-4584-ae8a-8a74a7b91c4c",
-  "paymentMethodId": "ce457968-b397-49d6-aa16-d2ff587c21bb",
-  "flightId": "95a7244b-0e71-40f4-ab0f-179f430ecf4d",
+  "userId": "3233398c-561d-4b15-ba59-cf0e8980f61e",
+  "paymentMethodId": "2165478d-80db-4fb3-93f2-70dd348ac2d8",
+  "flightId": "c86f3ffb-a656-4215-9cf7-073f28824c58",
   "passengers": [
     {
       "firstName": "Alice",
@@ -86,7 +82,7 @@ Content-Type: application/json
       "birthday": "1990-05-15",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
       }
     },
     {
@@ -95,7 +91,7 @@ Content-Type: application/json
       "birthday": "1985-08-22",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
       }
     },
     {
@@ -104,7 +100,7 @@ Content-Type: application/json
       "birthday": "1992-02-10",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+        "baggageTypeId": "ce73e1e7-a6a8-436b-a40d-bcf7e1f410b1"
       }
     }
   ]
@@ -115,8 +111,8 @@ Content-Type: application/json
 GET http://localhost:3000/bookings
 
 ### get booking by id
-GET http://localhost:3000/bookings/d3dc2e53-fc07-49a1-a0f3-820ab66f8e11
+GET http://localhost:3000/bookings/33d9f4f1-869f-4b43-a9e4-e3bea193b527
 
 ### delete booking by id
-DELETE http://localhost:3000/bookings/d3dc2e53-fc07-49a1-a0f3-820ab66f8e11
+DELETE http://localhost:3000/bookings/33d9f4f1-869f-4b43-a9e4-e3bea193b527
 

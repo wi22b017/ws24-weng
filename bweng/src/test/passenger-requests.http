@@ -8,7 +8,7 @@ Content-Type: application/json
   "birthday": "1980-01-01",
   "seatNumber": "12A",
   "baggage": {
-    "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
+    "baggageTypeId": "dc9e07a5-04e4-48cf-a92d-df50e288e463"
   }
 }
 
@@ -16,10 +16,10 @@ Content-Type: application/json
 GET http://localhost:3000/passengers
 
 ### Retrieve a passenger by ID
-GET http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+GET http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
 
 ### Update an existing passenger
-PUT http://localhost:3000/passengers/02bc99d5-d218-4d33-a505-0af18f19dcf2
+PUT http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
 Content-Type: application/json
 
 {
@@ -27,8 +27,14 @@ Content-Type: application/json
   "lastName": "Doe",
   "birthday": "1985-05-15",
   "seatNumber": "14B",
-  "userId": "3fe44c18-61b1-4e04-95b3-81dee2fdbd18",
-  "baggageId": "10f24ea0-2c92-48a7-98c4-e6e03117c57f"
+  "baggage": {
+    "id": "ee0db989-2597-4ea0-85f7-f56c1a395f14",
+    "baggageType": {
+      "id": "dc9e07a5-04e4-48cf-a92d-df50e288e463",
+      "name": "carry-on luggage",
+      "fee": 15.00
+    }
+  }
 }
 
 ### Delete a passenger by ID
