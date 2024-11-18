@@ -1,12 +1,8 @@
 package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.BookingDto;
-import at.fhtw.bweng.model.Booking;
-import at.fhtw.bweng.model.BookingPassenger;
-import at.fhtw.bweng.model.Flight;
-import at.fhtw.bweng.model.Passenger;
-import at.fhtw.bweng.model.PaymentMethod;
-import at.fhtw.bweng.model.User;
+import at.fhtw.bweng.dto.PassengerDto;
+import at.fhtw.bweng.model.*;
 import at.fhtw.bweng.repository.*;
 import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
@@ -24,7 +20,6 @@ public class BookingService {
     private PaymentMethodRepository paymentMethodRepository;
     private FlightRepository flightRepository;
     private UserRepository userRepository;
-    private BookingPassengerRepository bookingPassengerRepository;
     private PassengerService passengerService;
 
 
@@ -33,13 +28,11 @@ public class BookingService {
                           FlightRepository flightRepository,
                           UserRepository userRepository,
                           PassengerRepository passengerRepository,
-                          BookingPassengerRepository bookingPassengerRepository,
                           PassengerService passengerService) {
         this.bookingRepository = bookingRepository;
         this.paymentMethodRepository = paymentMethodRepository;
         this.flightRepository = flightRepository;
         this.userRepository = userRepository;
-        this.bookingPassengerRepository = bookingPassengerRepository;
         this.passengerService = passengerService;
     }
     //get all bookings
@@ -84,32 +77,25 @@ public class BookingService {
     public UUID addBooking(BookingDto bookingDto) {
         Booking booking = new Booking();
         mapBookingDtoToBookingEntity(bookingDto, booking);
+
         bookingRepository.save(booking);
 
-        // Process passengers in bookingDto and create BookingPassenger entries
-        List<BookingPassenger> bookingPassengers = bookingDto.passengers().stream()
+        // Process passengers in bookingDto and attach to the booking
+        List<Passenger> passengers = bookingDto.passengers().stream()
                 .map(passengerDto -> {
-                    UUID passengerId = passengerService.addPassenger(passengerDto);
+                    UUID passengerId = passengerService.addPassenger(passengerDto, booking);
                     Passenger passenger = passengerService.getPassengerById(passengerId);
-
-                    // Create a BookingPassenger entry linking booking and passenger
-                    BookingPassenger bookingPassenger = new BookingPassenger();
-                    bookingPassenger.setBooking(booking);
-                    bookingPassenger.setPassenger(passenger);
-
-                    return bookingPassenger;
+                    passenger.setBooking(booking);
+                    return passenger;
                 })
                 .collect(Collectors.toList());
 
-        // Print the List<BookingPassenger> to the console
-        System.out.println("BookingPassenger List before saving: ");
-        bookingPassengers.forEach(System.out::println);
+        booking.setPassengers(passengers);
 
-        // Save all BookingPassenger entries
-        bookingPassengerRepository.saveAll(bookingPassengers);
+        // Save the booking (cascades to passengers)
+        bookingRepository.save(booking);
 
         return booking.getId();
-
     }
 
     //update a booking
@@ -152,4 +138,5 @@ public class BookingService {
 
         return booking;
     }
+
 }

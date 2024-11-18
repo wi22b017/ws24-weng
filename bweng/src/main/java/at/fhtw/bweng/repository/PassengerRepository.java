@@ -16,13 +16,14 @@ public interface PassengerRepository extends CrudRepository<Passenger, UUID> {
     @Override
     Optional<Passenger> findById(UUID id);
 
+    Optional<List<Passenger>> findByBookingId(UUID bookingId);
+
     @Override
     boolean existsById(UUID id);
 
     @Override
     void delete(Passenger passenger);
 
-    @Query("SELECT p FROM Passenger p JOIN p.bookingPassengers bp WHERE bp.booking.id = :bookingId")
-    List<Passenger> findPassengersByBookingId(@Param("bookingId") UUID bookingId);
+
 
 }

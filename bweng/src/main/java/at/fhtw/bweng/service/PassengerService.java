@@ -1,10 +1,7 @@
 package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.PassengerDto;
-import at.fhtw.bweng.model.Baggage;
-import at.fhtw.bweng.model.BaggageType;
-import at.fhtw.bweng.model.Passenger;
-import at.fhtw.bweng.model.User;
+import at.fhtw.bweng.model.*;
 import at.fhtw.bweng.repository.BaggageRepository;
 import at.fhtw.bweng.repository.BaggageTypeRepository;
 import at.fhtw.bweng.repository.PassengerRepository;
@@ -47,6 +44,35 @@ public class PassengerService {
                 passengerDto.seatNumber(),
                 baggage
         );
+
+        /*try {
+            return passengerRepository.save(passenger).getId();
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("Passenger already exists");
+        }*/
+        return passengerRepository.save(passenger).getId();
+    }
+
+    public UUID addPassenger(PassengerDto passengerDto, Booking booking) {
+
+        UUID baggageTypeId = passengerDto.baggage().baggageTypeId(); // Access baggageTypeId
+        BaggageType baggageType = baggageTypeRepository.findById(baggageTypeId)
+                .orElseThrow(() -> new NoSuchElementException("Baggage type with ID " + baggageTypeId + " not found"));
+
+        Baggage baggage = new Baggage();
+        baggage.setBaggageType(baggageType);
+        baggage = baggageRepository.save(baggage);
+
+        Passenger passenger = new Passenger(
+                null,
+                passengerDto.firstName(),
+                passengerDto.lastName(),
+                passengerDto.birthday(),
+                passengerDto.seatNumber(),
+                baggage
+        );
+
+        passenger.setBooking(booking);
 
         try {
             return passengerRepository.save(passenger).getId();
@@ -110,8 +136,8 @@ public class PassengerService {
     }
 
     public List<Passenger> findPassengersByBookingId(UUID bookingId) {
-        return passengerRepository.findPassengersByBookingId(bookingId);
+        return passengerRepository.findByBookingId(bookingId)
+                .orElseGet(List::of); // Return an empty list if no passengers are found
     }
-
 
 }

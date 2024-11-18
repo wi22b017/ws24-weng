@@ -1,5 +1,7 @@
 package at.fhtw.bweng.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +38,8 @@ public class Booking {
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
-    private List<BookingPassenger> bookingPassengers;
+    private List<Passenger> passengers;
 
 }

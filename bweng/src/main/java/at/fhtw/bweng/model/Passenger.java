@@ -1,5 +1,6 @@
 package at.fhtw.bweng.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +9,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.UUID;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,8 +28,10 @@ public class Passenger {
     @JoinColumn(name = "baggage_id", referencedColumnName = "id")
     private Baggage baggage;
 
-    @OneToMany(mappedBy = "passenger", cascade = CascadeType.ALL)
-    private List<BookingPassenger> bookingPassengers;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "booking_id", nullable = false)
+    private Booking booking;
 
     public Passenger(UUID id, String firstName, String lastName, LocalDate birthday, String seatNumber, Baggage baggage) {
         this.id = id;
