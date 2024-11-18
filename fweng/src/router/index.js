@@ -22,6 +22,12 @@ const routes = [
             ),
   },
   {
+    path: "/userdata",
+    name: "userdata",
+    component: () =>
+        import(/* webpackChunkName: "ManageUserdataView" */ "../views/ManageUserdataView.vue"),
+  },
+  {
     path: "/register",
     name: "register",
     component: () =>

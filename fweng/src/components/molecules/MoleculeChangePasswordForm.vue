@@ -1,0 +1,126 @@
+<template>
+  <div class="container">
+    <Form
+        :validation-schema="changePasswordFormSchema"
+        v-model="formData"
+        @submit="onSubmit">
+      <AtomInput
+          label="Please enter your current password"
+          name="currentPassword"
+          id="currentPassword"
+          type="password"
+          placeholder="Enter current password"
+      />
+      <AtomInput
+          label="Please enter your NEW password"
+          name="newPassword"
+          id="newPassword"
+          type="password"
+          placeholder="Enter new password"
+      />
+      <AtomInput
+          label="Confirm your NEW password"
+          name="confirmNewPassword"
+          id="confirmNewPassword"
+          type="password"
+          placeholder="Confirm your new password"
+      />
+      <AtomButton type="submit" :disabled="isSubmitting" label="Change Password"/>
+      <div v-if="changePasswordError" class="alert alert-danger mt-3" role="alert">
+        {{ changePasswordError }}
+      </div>
+      <div v-if="changePasswordSuccess" class="alert alert-info mt-3" role="alert">
+        {{ changePasswordSuccess }}
+      </div>
+    </Form>
+  </div>
+</template>
+
+<script setup>
+
+import {Form} from "vee-validate";
+import AtomButton from "@/components/atoms/AtomButton.vue";
+import AtomInput from "@/components/atoms/AtomInput.vue";
+import {inject, ref as vueRef, ref} from "vue";
+//import {useAuth} from "@/composables/useAuth";
+import axios from "axios";
+import {object, string, ref as yupRef} from "yup";
+
+const changePasswordFormSchema = object({
+  currentPassword: string()
+      .required("Password is required")
+      .min(3, "Password must be at least 3 characters long"),
+      /*.matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+          "Password must include uppercase, lowercase letters, numbers, and symbols"
+      ),*/
+  newPassword: string()
+      .required("Password is required")
+      .min(3, "Password must be at least 3 characters long"),
+      /*.matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+          "Password must include uppercase, lowercase letters, numbers, and symbols"
+      ),*/
+  confirmNewPassword: string()
+      .required("Please repeat your password")
+      .oneOf([yupRef("newPassword")], "Passwords must match"),
+})
+
+const formData = vueRef({
+  currentPassword: "",
+  newPassword: "",
+  confirmPassword: ""
+});
+
+const isSubmitting = ref(false);
+const changePasswordError = ref('');
+const changePasswordSuccess = ref('');
+
+//const { checkLoginStatus } = useAuth();
+
+// Inject the method to control modals from parent
+const hideChangePasswordModal = inject('hideChangePasswordModal');
+
+
+async function onSubmit(values) {
+  isSubmitting.value = true;
+  changePasswordError.value = null;
+  changePasswordSuccess.value = null;
+  console.log(values);
+
+  try {
+    const response = await axios.post('http://localhost:3000/users/update/password/${user.value.id}', {
+          currentPassword: values.currentPassword,
+          newPassword: values.newPassword
+        }
+    );
+
+    // Check if the response contains userId and username
+    if (response.data && response.data.message && response.data.message==='Change Password successful') {
+
+      changePasswordSuccess.value = response.data.message;
+
+      //await checkLoginStatus(); // Ensure navbar updates after login
+
+      setTimeout(() => {
+        hideChangePasswordModal();
+      }, 1000);
+
+    }
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      changePasswordError.value = error.response.data.message;
+    }
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+
+</script>
+
+<style scoped>
+.container {
+  text-align: start;
+}
+</style>

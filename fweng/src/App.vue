@@ -14,6 +14,7 @@ import OrganismRegisterModal from "@/components/organisms/OrganismRegisterModal.
 // Create refs to control the modals
 const loginModalRef = ref(null);
 const registerModalRef = ref(null);
+const changePasswordModalRef = ref(null);
 
 // Methods to show modals
 const showLoginModal = () => {
@@ -29,8 +30,13 @@ const switchToRegisterModal = () => {
   registerModalRef.value.showModal();
 };
 
+function hideChangePasswordModal() {
+  changePasswordModalRef.value = false;
+}
+
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);
+provide('hideChangePasswordModal', hideChangePasswordModal);
 
 </script>
 
