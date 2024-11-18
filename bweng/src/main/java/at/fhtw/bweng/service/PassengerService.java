@@ -45,12 +45,11 @@ public class PassengerService {
                 baggage
         );
 
-        /*try {
+        try {
             return passengerRepository.save(passenger).getId();
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("Passenger already exists");
-        }*/
-        return passengerRepository.save(passenger).getId();
+        }
     }
 
     public UUID addPassenger(PassengerDto passengerDto, Booking booking) {
