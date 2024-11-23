@@ -1,21 +1,23 @@
 import {defineStore} from 'pinia'
 import apiClient from '../utils/axiosClient';
+import router from '@/router';
 
 export const useUserStore = defineStore('user', {
     state: () => ({
         id: 1,
-        gender: 'male',
-        firstName: 'John',
-        lastName: 'Doe',
-        username: 'Johnboy',
-        email: 'john.doe@email.com',
-        role: 'user',
-        status: 'active',
-        street: 'Main Street',
-        number: 8,
-        zip: 1050,
-        city: 'Vienna',
-        paymentMethodName: 'Credit Card'
+        gender: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        role: '',
+        status: '',
+        street: '',
+        number: 1,
+        zip: 1,
+        city: '',
+        paymentMethodName: '',
+        isLoggedIn: false
     }),
     getters: {
         fullName() {
@@ -49,6 +51,18 @@ export const useUserStore = defineStore('user', {
               };
           }
         },
+        async logout(){
+            try {
+                // Clear the access token from localStorage
+                localStorage.removeItem('access_token');
+
+                // Reset all state fields to their default values
+                this.$reset();
+                await router.push({name: 'home'}); // Redirect to homepage
+            } catch (error) {
+                console.error('Error during logout:', error);
+            }
+        },
         async fetchUserData(userId) {
             try {
                 const response = await apiClient.get(`/users/${userId}`);
@@ -57,14 +71,15 @@ export const useUserStore = defineStore('user', {
                 this.firstName = response.data.firstName;
                 this.lastName = response.data.lastName;
                 this.username = response.data.username;
-                this.email= response.data.email;
-                this.role= response.data.role;
-                this.status= response.data.status;
-                this.street= response.data.address.street;
-                this.number= response.data.address.number;
-                this.zip= response.data.address.zip;
-                this.city= response.data.address.city;
-                this.paymentMethodName= response.data.paymentMethod.name;
+                this.email = response.data.email;
+                this.role = response.data.role;
+                this.status = response.data.status;
+                this.street = response.data.address.street;
+                this.number = response.data.address.number;
+                this.zip = response.data.address.zip;
+                this.city = response.data.address.city;
+                this.paymentMethodName = response.data.paymentMethod.name;
+                this.isLoggedIn = true;
             } catch (error) {
                 return error.response.data.message;
             }
