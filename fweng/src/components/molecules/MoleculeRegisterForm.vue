@@ -156,7 +156,8 @@ import {computed, ref as vueRef} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
-import axios from "axios";
+import {useUserStore} from "@/store/user";
+import apiClient from "@/utils/axiosClient";
 
 const registerFormSchema = object({
   salutation: string().required("Salutation is required"),
@@ -277,12 +278,18 @@ async function onSubmit(values) {
     }
     console.log("Payload:", payload);
     // Send the payload to the backend
-    const response = await axios.post("http://localhost:3000/users", payload,{
+    const response = await apiClient.post("http://localhost:3000/users", payload,{
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log("Registration successful:", response.data);
+    // Handle success
+    if (response.status >= 200 && response.status < 300) {
+      console.log("Registration successful:", response.data);
+      await useUserStore().login(values.username, values.password);
+    } else {
+      throw new Error(`Unexpected response status: ${response.status}`);
+    }
 
   } catch (error) {
     // console.error("Error:", error);
