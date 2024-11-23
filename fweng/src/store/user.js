@@ -10,12 +10,14 @@ export const useUserStore = defineStore('user', {
         lastName: '',
         username: '',
         email: '',
+        dateOfBirth: '',
         role: '',
         status: '',
         street: '',
         number: 1,
         zip: 1,
         city: '',
+        country:'',
         paymentMethodName: '',
         isLoggedIn: false
     }),
@@ -72,12 +74,14 @@ export const useUserStore = defineStore('user', {
                 this.lastName = response.data.lastName;
                 this.username = response.data.username;
                 this.email = response.data.email;
+                this.dateOfBirth = response.data.dateOfBirth;
                 this.role = response.data.role;
                 this.status = response.data.status;
                 this.street = response.data.address.street;
                 this.number = response.data.address.number;
                 this.zip = response.data.address.zip;
                 this.city = response.data.address.city;
+                this.country = response.data.address.country;
                 this.paymentMethodName = response.data.paymentMethod.name;
                 this.isLoggedIn = true;
             } catch (error) {

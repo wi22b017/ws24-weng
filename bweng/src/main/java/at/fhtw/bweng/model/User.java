@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -25,6 +26,7 @@ public class User {
     private String password;
     @Column(unique = true)
     private String email;
+    private LocalDate dateOfBirth;
     private String role;
     private String status;
     @ManyToOne
