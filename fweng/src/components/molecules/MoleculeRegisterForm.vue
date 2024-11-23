@@ -149,7 +149,7 @@
 <script setup>
 import { Form } from "vee-validate";
 import {object, string, ref as yupRef, number} from "yup";
-import {computed, onMounted, ref as vueRef} from "vue";
+import {computed, onMounted, ref as vueRef, defineEmits} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
@@ -259,6 +259,7 @@ const formData = vueRef({
 
 const registerError = vueRef("");
 const isSubmitting = vueRef(false);
+const emit = defineEmits(['registration-success']);
 
 async function onSubmit(values) {
   isSubmitting.value = true;
@@ -298,6 +299,7 @@ async function onSubmit(values) {
     // Handle success
     if (response.status >= 200 && response.status < 300) {
       console.log("Registration successful:", response.data);
+      emit('registration-success')
       await useUserStore().login(values.username, values.password);
     } else {
       throw new Error(`Unexpected response status: ${response.status}`);
