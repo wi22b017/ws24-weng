@@ -107,8 +107,8 @@
           placeholder="Select a payment method"
           v-model="formData.paymentMethod"
           :options="[
-          { value: 'credit', text: 'Credit Card' },
-          { value: 'cash', text: 'Cash' }
+          { value: 'creditCard', text: 'Credit Card' },
+          { value: 'paypal', text: 'Paypal' }
         ]"
       />
       <AtomInput
@@ -156,6 +156,7 @@ import {computed, ref as vueRef} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
+import axios from "axios";
 
 const registerFormSchema = object({
   salutation: string().required("Salutation is required"),
@@ -238,42 +239,56 @@ const formData = vueRef({
   username: "",
   password: "",
   confirmPassword: "",
-  role: "user",
-  status: "active"
+  role: "USER",
+  status: "ACTIVE"
 });
 
 
 const registerError = vueRef("");
 const isSubmitting = vueRef(false);
 
-
-/*function onSubmit(values) {
-  alert(JSON.stringify(values, null, 2));
-}*/
-
-// Form submit handler
-/*function onSubmit(values) {
-  try {
-    // Form submission logic
-    alert(JSON.stringify(values, null, 2));
-    registerError.value = null; // Clear any previous errors
-  } catch (error) {
-    registerError.value = "An error occurred during registration"; // Set the error message
-  }
-}*/
-// Form submit handler
 async function onSubmit(values) {
   isSubmitting.value = true;
   registerError.value = null;
-
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const gender = values.salutation === "other"
+        ? values.otherSalutation
+        : values.salutation;
 
-    // Handle successful submission
-    alert(JSON.stringify(values, null, 2));
+    const payload = {
+      gender: gender,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      username: values.username,
+      password: values.password,
+      email: values.email,
+      dateOfBirth:values.dateOfBirth,
+      role: values.role,
+      status: values.status,
+      address: {
+        street: values.address.street,
+        number: values.address.number,
+        zip: values.address.zip,
+        city: values.address.city,
+        country: values.address.country,
+      },
+      paymentMethod: {
+        name: values.paymentMethod }
+    }
+    console.log("Payload:", payload);
+    // Send the payload to the backend
+    const response = await axios.post("http://localhost:3000/users", payload,{
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("Registration successful:", response.data);
+
   } catch (error) {
-    // Handle any errors during submission
-    registerError.value = "An error occurred during registration";
+    // console.error("Error:", error);
+    console.error("Error Response:", error.response.data); // Log server response
+    console.error("Status Code:", error.response.status); // Log status code
+    registerError.value = error.response?.data?.message || "An error occurred.";
   } finally {
     isSubmitting.value = false; // Enable form submission
   }
