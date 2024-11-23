@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia'
-//import axios from "axios";
 import apiClient from '../utils/axiosClient';
 
 export const useUserStore = defineStore('user', {
@@ -25,12 +24,6 @@ export const useUserStore = defineStore('user', {
     },
     actions: {
         async login(usernameOrEmail, password) {
-            // call an API
-            /*const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
-            const user = await res.json();
-            this.id = user.id;
-            */
-
           try {
             const response = await apiClient.post('auth/token', {
                   usernameOrEmail: usernameOrEmail,
@@ -38,38 +31,40 @@ export const useUserStore = defineStore('user', {
                 }
             );
 
-            // Check if the response contains userId and username
             if (response.data && response.data.token) {
-
                 localStorage.setItem('access_token', response.data.token);
-
                 const userId = this.getUserIdFromToken(response.data.token);
-
                 await this.fetchUserData(userId);
-
-              //await checkLoginStatus(); // Ensure navbar updates after login
-
+                //await updateNavbar(); // Ensure navbar updates correctly after fetching user.role
             }
+
               return {
                 success: true,
                 message: 'Login Successful'
             };
           } catch (error) {
-              //return error.response.data.message;
               return {
                   success: false,
-                  message: 'Login failed'
+                  message: error.response.data.message
               };
           }
         },
         async fetchUserData(userId) {
             try {
                 const response = await apiClient.get(`/users/${userId}`);
-                console.log(response);
                 this.id = response.data.id;
+                this.gender = response.data.gender;
                 this.firstName = response.data.firstName;
                 this.lastName = response.data.lastName;
                 this.username = response.data.username;
+                this.email= response.data.email;
+                this.role= response.data.role;
+                this.status= response.data.status;
+                this.street= response.data.address.street;
+                this.number= response.data.address.number;
+                this.zip= response.data.address.zip;
+                this.city= response.data.address.city;
+                this.paymentMethodName= response.data.paymentMethod.name;
             } catch (error) {
                 return error.response.data.message;
             }

@@ -66,20 +66,13 @@ const switchToRegister = () => {
   switchToRegisterModal(); // Call the injected method to switch modals
 };
 
+// Login
 const onSubmit = async (values) => {
-  /*isSubmitting.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  alert(JSON.stringify(values, null, 2));
-  // Simulate a login error
-  loginError.value = '!!Simulated error!! Invalid credentials. Please try again.';
-  isSubmitting.value = false;*/
-
   isSubmitting.value = true;
   loginError.value = null;
   loginSuccess.value = null;
 
   const result = await userStore.login(values.usernameOrEmail, values.password);
-  console.log(result);
 
   if(result.success===true){
     loginSuccess.value = result.message;
@@ -87,43 +80,11 @@ const onSubmit = async (values) => {
     loginError.value = result.message;
   }
 
+  isSubmitting.value = false;
+
   setTimeout(() => {
     hideLoginModal();
   }, 1000);
-
-  isSubmitting.value = false;
-
-  /*
-  try {
-    const response = await axios.post('http://localhost:3000/auth/login', {
-          usernameOrEmail: values.usernameOrEmail,
-          password: values.password
-        }
-    );
-
-    // Check if the response contains userId and username
-    if (response.data && response.data.message && response.data.message==='Login successful') {
-
-      loginSuccess.value = response.data.message;
-
-      await checkLoginStatus(); // Ensure navbar updates after login
-
-      setTimeout(() => {
-        hideLoginModal();
-      }, 1000);
-
-    }
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.data && error.response.data.message) {
-      loginError.value = error.response.data.message;
-    }
-  } finally {
-    isSubmitting.value = false;
-  }*/
-
-
-
 
 };
 </script>
