@@ -18,6 +18,9 @@
       <div v-if="loginError" class="alert alert-danger mt-3" role="alert">
         {{ loginError }}
       </div>
+      <div v-if="loginSuccess" class="alert alert-info mt-3" role="alert">
+        {{ loginSuccess }}
+      </div>
       <a href="#" @click.prevent="switchToRegister">No Account? Register Here!</a>
     </Form>
   </div>
@@ -30,6 +33,7 @@ import * as yup from 'yup';
 import {inject, ref} from 'vue';
 import AtomInput from '@/components/atoms/AtomInput.vue';
 import AtomButton from '@/components/atoms/AtomButton.vue';
+import { useUserStore } from '@/store/user';
 
 const validationSchema = yup.object({
   usernameOrEmail: yup
@@ -50,9 +54,12 @@ const validationSchema = yup.object({
 
 const isSubmitting = ref(false);
 const loginError = ref('');
+const loginSuccess = ref('');
+const userStore = useUserStore();
 
 // Inject the method to control modals from parent
 const switchToRegisterModal = inject('switchToRegisterModal');
+const hideLoginModal = inject('hideLoginModal');
 
 // Method to handle the switch from login to register modal
 const switchToRegister = () => {
@@ -60,12 +67,64 @@ const switchToRegister = () => {
 };
 
 const onSubmit = async (values) => {
-  isSubmitting.value = true;
+  /*isSubmitting.value = true;
   await new Promise((resolve) => setTimeout(resolve, 1000));
   alert(JSON.stringify(values, null, 2));
   // Simulate a login error
   loginError.value = '!!Simulated error!! Invalid credentials. Please try again.';
+  isSubmitting.value = false;*/
+
+  isSubmitting.value = true;
+  loginError.value = null;
+  loginSuccess.value = null;
+
+  const result = await userStore.login(values.usernameOrEmail, values.password);
+  console.log(result);
+
+  if(result.success===true){
+    loginSuccess.value = result.message;
+  }else{
+    loginError.value = result.message;
+  }
+
+  setTimeout(() => {
+    hideLoginModal();
+  }, 1000);
+
   isSubmitting.value = false;
+
+  /*
+  try {
+    const response = await axios.post('http://localhost:3000/auth/login', {
+          usernameOrEmail: values.usernameOrEmail,
+          password: values.password
+        }
+    );
+
+    // Check if the response contains userId and username
+    if (response.data && response.data.message && response.data.message==='Login successful') {
+
+      loginSuccess.value = response.data.message;
+
+      await checkLoginStatus(); // Ensure navbar updates after login
+
+      setTimeout(() => {
+        hideLoginModal();
+      }, 1000);
+
+    }
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      loginError.value = error.response.data.message;
+    }
+  } finally {
+    isSubmitting.value = false;
+  }*/
+
+
+
+
 };
 </script>
 

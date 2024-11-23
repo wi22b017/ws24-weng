@@ -1,3 +1,44 @@
+GET http://localhost:3000/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-23T094516.200.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-23T094513.201.json
+
+###
+
 POST http://localhost:3000/passengers
 Content-Type: application/json
 Content-Length: 246
@@ -950,36 +991,6 @@ Accept: */*
 }
 
 <> 2024-11-11T204806.409.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
-}
-
-<> 2024-11-11T204645.201.json
-
-###
-
-POST http://localhost:3000/baggages
-Content-Type: application/json
-Content-Length: 61
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
-}
-
-<> 2024-11-11T204618.404.json
 
 ###
 
