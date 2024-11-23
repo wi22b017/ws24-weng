@@ -18,6 +18,9 @@
       <div v-if="loginError" class="alert alert-danger mt-3" role="alert">
         {{ loginError }}
       </div>
+      <div v-if="loginSuccess" class="alert alert-info mt-3" role="alert">
+        {{ loginSuccess }}
+      </div>
       <a href="#" @click.prevent="switchToRegister">No Account? Register Here!</a>
     </Form>
   </div>
@@ -30,6 +33,7 @@ import * as yup from 'yup';
 import {inject, ref} from 'vue';
 import AtomInput from '@/components/atoms/AtomInput.vue';
 import AtomButton from '@/components/atoms/AtomButton.vue';
+import { useUserStore } from '@/store/user';
 
 const validationSchema = yup.object({
   usernameOrEmail: yup
@@ -50,22 +54,38 @@ const validationSchema = yup.object({
 
 const isSubmitting = ref(false);
 const loginError = ref('');
+const loginSuccess = ref('');
+const userStore = useUserStore();
 
 // Inject the method to control modals from parent
 const switchToRegisterModal = inject('switchToRegisterModal');
+const hideLoginModal = inject('hideLoginModal');
 
 // Method to handle the switch from login to register modal
 const switchToRegister = () => {
   switchToRegisterModal(); // Call the injected method to switch modals
 };
 
+// Login
 const onSubmit = async (values) => {
   isSubmitting.value = true;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  alert(JSON.stringify(values, null, 2));
-  // Simulate a login error
-  loginError.value = '!!Simulated error!! Invalid credentials. Please try again.';
+  loginError.value = null;
+  loginSuccess.value = null;
+
+  const result = await userStore.login(values.usernameOrEmail, values.password);
+
+  if(result.success===true){
+    loginSuccess.value = result.message;
+  }else{
+    loginError.value = result.message;
+  }
+
   isSubmitting.value = false;
+
+  setTimeout(() => {
+    hideLoginModal();
+  }, 1000);
+
 };
 </script>
 

@@ -35,12 +35,35 @@ const routes = [
             /* webpackChunkName: "register" */ "../components/organisms/OrganismRegisterModal.vue"
             ),
   },
-
   {
     path: "/imprint",
     name: "imprint",
     component: () =>
         import(/* webpackChunkName: "imprint" */ "../views/ImprintView.vue"),
+  },
+  {
+    path: "/myBookings",
+    name: "myBookings",
+    component: () =>
+        import(/* webpackChunkName: "myBookings" */ "../views/MyBookingsView.vue"),
+  },
+  {
+    path: "/manageBookings",
+    name: "manageBookings",
+    component: () =>
+        import(/* webpackChunkName: "manageBookings" */ "../views/ManageBookingsView.vue"),
+  },
+  {
+    path: "/manageUsers",
+    name: "manageUsers",
+    component: () =>
+        import(/* webpackChunkName: "manageUsers" */ "../views/ManageUsersView.vue"),
+  },
+  {
+    path: "/manageFlights",
+    name: "manageFlights",
+    component: () =>
+        import(/* webpackChunkName: "manageFlights" */ "../views/ManageFlightsView.vue"),
   },
 ];
 

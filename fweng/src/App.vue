@@ -21,6 +21,12 @@ const showLoginModal = () => {
   loginModalRef.value.showModal();
 };
 
+// Methods to hide modals
+// eslint-disable-next-line no-unused-vars
+const hideLoginModal = () => {
+  loginModalRef.value.hideModal();
+};
+
 const showRegisterModal = () => {
   registerModalRef.value.showModal();
 };
@@ -37,6 +43,7 @@ function hideChangePasswordModal() {
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);
 provide('hideChangePasswordModal', hideChangePasswordModal);
+provide('hideLoginModal', hideLoginModal);
 
 </script>
 
