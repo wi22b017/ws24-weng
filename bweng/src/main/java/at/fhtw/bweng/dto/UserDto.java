@@ -22,6 +22,8 @@ public record UserDto(
         @NotBlank(message = "Email name cannot be blank")
         @Email(message = "Email must be a valid email address")
         String email,
+        @NotBlank(message = "Date of birth cannot be blank")
+        String dateOfBirth,
         @NotBlank(message = "Role name cannot be blank")
         String role,
         @NotBlank(message = "Status name cannot be blank")

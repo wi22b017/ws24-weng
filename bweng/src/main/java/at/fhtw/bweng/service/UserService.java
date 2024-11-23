@@ -10,6 +10,7 @@ import at.fhtw.bweng.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -52,6 +53,7 @@ public class UserService {
                 userDto.username(),
                 userDto.password(),
                 userDto.email(),
+                LocalDate.parse(userDto.dateOfBirth()),
                 userDto.role(),
                 userDto.status(),
                 userAddress,
@@ -107,6 +109,7 @@ public class UserService {
         user.setUsername(userDto.username());
         user.setPassword(userDto.password());
         user.setEmail(userDto.email());
+        user.setDateOfBirth(LocalDate.parse(userDto.dateOfBirth()));
         user.setRole(userDto.role());
         user.setStatus(userDto.status());
         user.setAddress(address);
