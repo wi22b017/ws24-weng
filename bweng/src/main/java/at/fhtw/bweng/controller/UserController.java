@@ -72,7 +72,6 @@ public class UserController {
 
     @PatchMapping("/users/{id}")
     public ResponseEntity<?> updateUserStatus(@PathVariable UUID id, @RequestBody Map<String, String> updates) {
-        System.out.println("Request recieved");
         if (!updates.containsKey("status")) {
             return ResponseEntity.badRequest().body("Missing required field: status");
         }
