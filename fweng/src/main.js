@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
 // Bootstrap styles and scripts
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ import { faPlaneDeparture, faPlaneArrival, faClock, faPlane } from '@fortawesome
 library.add(faPlaneDeparture, faPlaneArrival, faClock, faPlane);
 
 const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
 
 createApp(App)
     .use(pinia)
