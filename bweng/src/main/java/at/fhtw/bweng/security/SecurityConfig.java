@@ -30,23 +30,31 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .cors(cors -> cors.configurationSource(request -> new org.springframework.web.cors.CorsConfiguration().applyPermitDefaultValues())) // Enable CORS
+                .cors(cors -> cors.configurationSource(request -> {
+                    var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+                    corsConfig.addAllowedOrigin("http://localhost:8080"); // Frontend origin
+                    corsConfig.addAllowedMethod("*"); // Allow all HTTP methods
+                    corsConfig.addAllowedHeader("*"); // Allow all headers
+                    corsConfig.setAllowCredentials(true); // Allow credentials
+                    return corsConfig;
+                }))
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(registry ->
                         registry
-                                .requestMatchers(HttpMethod.POST,"/auth/token").permitAll() // for login
-                                .requestMatchers(HttpMethod.POST,"/users").permitAll() // for registration
-                                .requestMatchers(HttpMethod.GET,"/airports").permitAll() // for fetching airports in search bar
-                                .requestMatchers(HttpMethod.GET,"/paymentMethods").permitAll() // for fetching paymentMethods in registration process
-                                .requestMatchers(HttpMethod.PATCH,"/users/**").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/flights").permitAll() // for fetching flights
-                                .requestMatchers(HttpMethod.GET,"/users").permitAll() // for fetching flights
+                                .requestMatchers(HttpMethod.POST, "/auth/token").permitAll() // Login
+                                .requestMatchers(HttpMethod.POST, "/users").permitAll() // Registration
+                                .requestMatchers(HttpMethod.GET, "/airports").permitAll() // Airports
+                                .requestMatchers(HttpMethod.GET, "/paymentMethods").permitAll() // Payment methods
+                                .requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // User updates
+                                .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
+                                .requestMatchers(HttpMethod.GET, "/users").permitAll() // Fetch user
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//                .httpBasic(basic -> {
+        //                .httpBasic(basic -> {
 //                });
 
         return httpSecurity.build();
@@ -68,3 +76,4 @@ public class SecurityConfig {
         return authenticationManagerBuilder.build();
     }
 }
+
