@@ -5,7 +5,7 @@
     <!-- User Table -->
     <UserTableTemplate
         v-if="!isLoading && users.length > 0"
-        :users="users"
+        :users="adminUserStore.users"
         :onToggle="toggleStatus"
         :onDelete="confirmDelete"
     />

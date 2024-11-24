@@ -11,3 +11,12 @@ Content-Type: application/json
 GET http://localhost:8080/books
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwY2RjZGE1ZS1hMWVjLTExZWYtYjQ4ZC0wMjQyYWMxMzAwMDIiLCJleHAiOjE3MzIyMTQ4OTQsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJST0xFX1VTRVIifQ.Dki8IhXxoy-eJi8-C4flDD60XOMoOnBxNbKDW3NgOvI
 
+
+###
+PATCH http://localhost:3000/users/2d427e4b-c610-443b-b581-3b02c3bd6e53
+Content-Type: application/json
+
+{
+  "status": "INACTIVE"
+}
+

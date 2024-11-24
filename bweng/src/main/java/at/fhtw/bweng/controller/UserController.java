@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.sql.SQLOutput;
 import java.util.*;
 
 
@@ -71,6 +72,7 @@ public class UserController {
 
     @PatchMapping("/users/{id}")
     public ResponseEntity<?> updateUserStatus(@PathVariable UUID id, @RequestBody Map<String, String> updates) {
+        System.out.println("Request recieved");
         if (!updates.containsKey("status")) {
             return ResponseEntity.badRequest().body("Missing required field: status");
         }

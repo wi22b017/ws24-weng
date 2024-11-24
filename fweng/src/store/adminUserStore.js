@@ -45,4 +45,13 @@ export const useAdminUserStore = defineStore("adminUserStore", {
             }
         },
     },
+    persist: {
+        enabled: true,
+        strategies: [
+            {
+                key: 'admin',
+                storage: localStorage,
+            },
+        ],
+    },
 });
