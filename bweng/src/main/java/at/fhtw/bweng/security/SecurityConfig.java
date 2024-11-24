@@ -52,10 +52,10 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/paymentMethods").permitAll() // Payment methods
                                 //.requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // Implemented with UserPermissionEvaluator and @PreAuthorize in UserController
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
-                                .requestMatchers(HttpMethod.POST, "/flights").hasRole("ADMIN") // Restrict flight creation to ADMIN
-                                .requestMatchers(HttpMethod.GET, "/users").permitAll() // for fetching userlist for admin
+                                .requestMatchers(HttpMethod.POST, "/flights").hasAuthority("ADMIN") // Restrict flight creation to ADMIN
+                                .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN") // Match exact role name
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
-                                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN") // Restrict deletion to ADMIN
+                                .requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("ADMIN") // Restrict deletion to ADMIN
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
