@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST,"/users").permitAll() // for registration
                                 .requestMatchers(HttpMethod.GET,"/airports").permitAll() // for fetching airports in search bar
                                 .requestMatchers(HttpMethod.GET,"/paymentMethods").permitAll() // for fetching paymentMethods in registration process
+                                .requestMatchers(HttpMethod.GET,"/flights").permitAll() // for fetching flights
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
