@@ -6,6 +6,7 @@ import at.fhtw.bweng.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -71,6 +72,7 @@ public class UserController {
     }
 
     @PatchMapping("/users/{id}")
+    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
     public ResponseEntity<?> updateUserStatus(@PathVariable UUID id, @RequestBody Map<String, String> updates) {
         if (!updates.containsKey("status")) {
             return ResponseEntity.badRequest().body("Missing required field: status");

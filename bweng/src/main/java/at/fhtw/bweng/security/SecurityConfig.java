@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -18,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CustomUserDetailService customUserDetailService;
@@ -47,12 +50,12 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/users").permitAll() // Registration
                                 .requestMatchers(HttpMethod.GET, "/airports").permitAll() // Airports
                                 .requestMatchers(HttpMethod.GET, "/paymentMethods").permitAll() // Payment methods
-                                .requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // User updates
+                                //.requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // Implemented with UserPermissionEvaluator and @PreAuthorize in UserController
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
-                                .requestMatchers(HttpMethod.POST, "/flights").permitAll() // Flight creation
-                                .requestMatchers(HttpMethod.GET, "/users").permitAll() // Fetch user
+                                .requestMatchers(HttpMethod.POST, "/flights").hasRole("ADMIN") // Restrict flight creation to ADMIN
+                                .requestMatchers(HttpMethod.GET, "/users").permitAll() // for fetching userlist for admin
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
-                                .requestMatchers(HttpMethod.DELETE, "/users/**").permitAll() // Delete user
+                                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN") // Restrict deletion to ADMIN
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
