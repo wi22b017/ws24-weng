@@ -39,7 +39,6 @@ export const useUserStore = defineStore('user', {
                 localStorage.setItem('access_token', response.data.token);
                 const userId = this.getUserIdFromToken(response.data.token);
                 await this.fetchUserData(userId);
-                //await updateNavbar(); // Ensure navbar updates correctly after fetching user.role
             }
 
               return {
