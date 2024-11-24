@@ -36,9 +36,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(registry ->
                         registry
-//                                .requestMatchers(HttpMethod.GET,"/books/**").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/auth/token").permitAll()
-                                .requestMatchers(HttpMethod.GET,"/airports").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/auth/token").permitAll() // for login
+                                .requestMatchers(HttpMethod.POST,"/users").permitAll() // for registration
+                                .requestMatchers(HttpMethod.GET,"/airports").permitAll() // for fetching airports in search bar
+                                .requestMatchers(HttpMethod.GET,"/paymentMethods").permitAll() // for fetching paymentMethods in registration process
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
