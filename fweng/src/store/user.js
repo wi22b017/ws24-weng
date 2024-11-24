@@ -56,6 +56,7 @@ export const useUserStore = defineStore('user', {
             try {
                 // Clear the access token from localStorage
                 localStorage.removeItem('access_token');
+                localStorage.removeItem('user'); // delete stored userObject from pinia
 
                 // Reset all state fields to their default values
                 this.$reset();
@@ -98,5 +99,14 @@ export const useUserStore = defineStore('user', {
                 console.error('Invalid token', error);
             }
         }
+    },
+    persist: {
+        enabled: true,
+        strategies: [
+            {
+                key: 'user',
+                storage: localStorage,
+            },
+        ],
     },
 })
