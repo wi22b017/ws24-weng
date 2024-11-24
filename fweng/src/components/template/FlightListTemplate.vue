@@ -1,21 +1,35 @@
 <template>
   <div>
-    <div v-for="flight in flightData.flights" :key="flight.id">
-      <OrganismFlightInfoEntry
-          :flight-departure-info="flight.flightDepartureInfo"
-          :flight-arrival-info="flight.flightArrivalInfo"
-          :stops="flight.stops"
-          :flight-duration="flight.flightDuration"
-          :airline="flight.airline"
-          :economy-class-card="flight.economyClassCard"
-          :business-class-card="flight.businessClassCard"
-          :first-class-card="flight.firstClassCard"
-      />
+    <div>
+      <div v-for="flight in flights" :key="flight.id">
+        <OrganismFlightInfoEntry
+            :flight-departure-info="flight.flightOrigin"
+            :flight-arrival-info="flight.flightDestination"
+            :flight-departure-time="flight.departureTime"
+            :flight-arrival-time="flight.arrivalTime"
+            :flight-duration="calculateDurationInMinutes(flight.departureTime, flight.arrivalTime)"
+            :airline="flight.aircraft.airline.name"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import OrganismFlightInfoEntry from "@/components/organisms/OrganismFlightInfoEntry.vue";
-import flightData from "/mock/flightData.json";
+import { defineProps } from "vue";
+
+const calculateDurationInMinutes = (departureTime, arrivalTime) => {
+  const departure = new Date(departureTime);
+  const arrival = new Date(arrivalTime);
+  return Math.floor((arrival - departure) / (1000 * 60)); // Duration in minutes
+};
+defineProps({
+  flights: {
+    type: Array,
+    required: true,
+  },
+});
+
+
 </script>

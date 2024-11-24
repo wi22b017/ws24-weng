@@ -1,9 +1,8 @@
 <template>
   <div>
     <MoleculeFlightSearchForm
-        v-bind:flightTypes="flightTypes"
+
         v-bind:cityOptions="cityOptions"
-        v-bind:flightClassOptions="flightClassOptions"
         @submit="onSubmit"
     />
   </div>
@@ -17,18 +16,8 @@ import axios from "axios";
 // Reactive cityOptions variable
 const cityOptions = ref([]);
 
-// Flight types
-const flightTypes = [
-  { value: 'roundTrip', text: 'Round Trip' },
-  { value: 'oneWay', text: 'One Way' },
-];
 
-// Flight Class options
-const flightClassOptions = [
-  { value: 'economy', text: 'Economy' },
-  { value: 'business', text: 'Business' },
-  { value: 'first', text: 'First' }
-];
+
 
 const emit = defineEmits(['submit']);
 
