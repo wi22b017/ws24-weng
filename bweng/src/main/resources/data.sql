@@ -51,10 +51,10 @@ INSERT INTO baggage_type (id, name, fee) VALUES
 (UNHEX(REPLACE(UUID(),'-','')), 'Oversize Baggage', 100.00);
 
 INSERT INTO address (id, street, number, zip, city, country) VALUES
-(UNHEX(REPLACE(UUID(),'-','')), 'Main Street', 123, '10115', 'Berlin', 'Germany'),
-(UNHEX(REPLACE(UUID(),'-','')), 'Queen Street', 45, '10506', 'London', 'UK'),
-(UNHEX(REPLACE(UUID(),'-','')), 'Champs-Élysées', 99, '75008', 'Paris', 'France'),
-(UNHEX(REPLACE(UUID(),'-','')), 'Kaerntner Straße', 12, '1010', 'Vienna', 'Austria');
+(UNHEX(REPLACE(UUID(),'-','')), 'Main Street', 123, '10115', 'Berlin', 'DE'),
+(UNHEX(REPLACE(UUID(),'-','')), 'Queen Street', 45, '10506', 'London', 'GB'),
+(UNHEX(REPLACE(UUID(),'-','')), 'Champs-Élysées', 99, '75008', 'Paris', 'FR'),
+(UNHEX(REPLACE(UUID(),'-','')), 'Kaerntner Straße', 12, '1010', 'Vienna', 'AT');
 
 INSERT INTO payment_method (id, name) VALUES
 (UNHEX(REPLACE(UUID(),'-','')), 'Credit Card'),

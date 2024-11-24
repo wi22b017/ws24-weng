@@ -9,8 +9,8 @@
 
       <AtomFormSelect
           label="Salutation"
-          name="salutation"
-          id="salutation"
+          name="gender"
+          id="gender"
           placeholder="Select salutation"
           v-model="formData.gender"
           :options="[
@@ -51,7 +51,7 @@
 
       <AtomInput
           label="Address Line 1"
-          name="address.street"
+          name="street"
           id="street"
           placeholder="Street address"
           v-model="formData.street"
@@ -59,20 +59,20 @@
       <AtomInput
           type="number"
           label="Address Line 2"
-          name="address.number"
+          name="number"
           id="streetNumber"
           placeholder="Building number"
           v-model="formData.number"
       />
       <AtomInput
           label="City"
-          name="address.city"
+          name="city"
           id="city"
           v-model="formData.city"
       />
       <AtomFormSelect
           label="Country"
-          name="address.country"
+          name="country"
           id="country"
           placeholder="Select country"
           v-model="formData.country"
@@ -95,7 +95,7 @@
       <AtomInput
           type="number"
           label="Zip Code"
-          name="address.zip"
+          name="zip"
           id="zip"
           v-model="formData.zip"
       />
@@ -182,8 +182,23 @@ const userdataChangeFormSchema = object({
 });
 
 // Bind form data to userStore state
-const formData = vueRef({ ...userStore.$state });
-console.log(userStore.$state);
+const formData = vueRef({
+  id: userStore.id,
+  gender: userStore.gender,
+  firstName: userStore.firstName,
+  lastName: userStore.lastName,
+  username: userStore.username,
+  email: userStore.email,
+  dateOfBirth: userStore.dateOfBirth,
+  street: userStore.street,
+  number: userStore.number,
+  zip: userStore.zip,
+  city: userStore.city,
+  country: userStore.country,
+  paymentMethodName: userStore.paymentMethodName,
+});
+
+
 
 // Check for form changes
 const isFormChanged = computed(() => {
@@ -228,6 +243,22 @@ function openChangePasswordModal() {
     changePasswordModal.value.showModal();
   }
 }
+
+const otherCountries = vueRef([
+  { code: "US", name: "United States" },
+  { code: "GB", name: "United Kingdom" },
+  { code: "FR", name: "France" },
+  { code: "CA", name: "Canada" },
+  { code: "AU", name: "Australia" },
+]);
+
+// Ensure it is not undefined
+const otherCountriesOptions = computed(() =>
+    otherCountries.value.map((country) => ({
+      value: country.code,
+      text: country.name,
+    }))
+);
 
 /*const errors = vueRef({
   firstName: "",
@@ -308,7 +339,6 @@ function openChangePasswordModal() {
     changePasswordModal.value.showModal();
   }
 }*/
-
 
 </script>
 
