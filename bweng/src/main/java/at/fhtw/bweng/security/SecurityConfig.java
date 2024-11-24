@@ -51,6 +51,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
                                 .requestMatchers(HttpMethod.GET, "/users").permitAll() // Fetch user
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
+                                .requestMatchers(HttpMethod.DELETE, "/users/**").permitAll() // Delete user
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
