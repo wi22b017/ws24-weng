@@ -1,3 +1,83 @@
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password1"
+}
+
+<> 2024-11-24T100209.200.json
+
+###
+
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password12"
+}
+
+<> 2024-11-24T100205.500.json
+
+###
+
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "usernameOrEmail": "johndoe1",
+  "password": "password1"
+}
+
+<> 2024-11-24T100159.500.json
+
+###
+
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password1"
+}
+
+<> 2024-11-24T095727.200.json
+
+###
+
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+Content-Length: 61
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password1"
+}
+
+<> 2024-11-24T095632.500.json
+
+###
+
 GET http://localhost:3000/users
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
 Accept-Encoding: br, deflate, gzip, x-gzip
@@ -913,84 +993,6 @@ Accept: */*
 }
 
 <> 2024-11-11T205303.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
-  }
-}
-
-<> 2024-11-11T205118.500.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
-  }
-}
-
-<> 2024-11-11T204952.500.json
-
-###
-
-GET http://localhost:3000/baggages
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-11T204851.200.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-11T204831.200.json
-
-###
-
-POST http://localhost:3000/baggageTypes
-Content-Type: application/json
-Content-Length: 48
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "name": "carry-on luggage",
-  "fee": 15.00
-}
-
-<> 2024-11-11T204806.409.json
 
 ###
 

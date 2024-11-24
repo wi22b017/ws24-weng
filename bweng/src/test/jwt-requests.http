@@ -1,0 +1,13 @@
+###
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password1"
+}
+
+###
+GET http://localhost:8080/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwY2RjZGE1ZS1hMWVjLTExZWYtYjQ4ZC0wMjQyYWMxMzAwMDIiLCJleHAiOjE3MzIyMTQ4OTQsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJST0xFX1VTRVIifQ.Dki8IhXxoy-eJi8-C4flDD60XOMoOnBxNbKDW3NgOvI
+

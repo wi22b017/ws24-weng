@@ -49,7 +49,7 @@ export const useUserStore = defineStore('user', {
           } catch (error) {
               return {
                   success: false,
-                  message: error.response.data.message
+                  message: error.response.data.error
               };
           }
         },
