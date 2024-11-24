@@ -115,7 +115,7 @@
           v-model="formData.username"
       />
 
-      <AtomButton type="submit" :disabled="!isFormChanged || isSubmitting" label="Change Userdata" />
+      <AtomButton type="submit" :disabled="!formChanged || isSubmitting" label="Change Userdata" />
 
     </Form>
   </div>
@@ -136,7 +136,7 @@
 <script setup>
 import { Form } from "vee-validate";
 import {number, object, string} from "yup";
-import {computed, ref as vueRef} from "vue";
+import {computed, ref as vueRef, watch} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
@@ -148,6 +148,7 @@ const changeError = vueRef("");
 const changeSuccess = vueRef("");
 const isSubmitting = vueRef(false);
 const changePasswordModal = vueRef(null);
+const formChanged = vueRef(false);
 
 // Pinia store instance
 const userStore = useUserStore();
@@ -198,12 +199,15 @@ const formData = vueRef({
   paymentMethodName: userStore.paymentMethodName,
 });
 
-
-
-// Check for form changes
-const isFormChanged = computed(() => {
-  return JSON.stringify(formData.value) !== JSON.stringify(userStore.$state);
-});
+watch(
+    formData,
+    (newValues) => {
+      formChanged.value = Object.keys(newValues).some(
+          (key) => newValues[key] !== userStore.$state[key]
+      );
+    },
+    { deep: true }
+);
 
 // Collect only changed data
 function getChangedData() {
@@ -259,86 +263,6 @@ const otherCountriesOptions = computed(() =>
       text: country.name,
     }))
 );
-
-/*const errors = vueRef({
-  firstName: "",
-  lastName: "",
-  email: "",
-  username: "",
-});*/
-
-// Watch each form field for changes and validate individually
-/*watch(formData, async (newValues, oldValues) => {
-  for (const field in newValues) {
-    if (newValues[field] !== oldValues[field]) {
-      try {
-        await userdataChangeFormSchema.validateAt(field, newValues);
-        errors.value[field] = ""; // Clear error if validation succeeds
-      } catch (validationError) {
-        errors.value[field] = validationError.message; // Set error message if validation fails
-      }
-    }
-  }
-}, { deep: true });*/
-
-/*const isFormChanged = computed(() => {
-  return (
-      formData.value.firstName !== user.value.firstname ||
-      formData.value.lastName !== user.value.lastname ||
-      formData.value.email !== user.value.email ||
-      formData.value.username !== user.value.username
-  );
-});*/
-
-// Helper function to get only changed fields
-/*function getChangedData() {
-  const changedData = {};
-
-  if (formData.value.firstName !== user.value.firstname) {
-    changedData.firstName = formData.value.firstName;
-  }
-  if (formData.value.lastName !== user.value.lastname) {
-    changedData.lastName = formData.value.lastName;
-  }
-  if (formData.value.email !== user.value.email) {
-    changedData.email = formData.value.email;
-  }
-  if (formData.value.username !== user.value.username) {
-    changedData.username = formData.value.username;
-  }
-
-  return changedData;
-}*/
-
-
-
-/*async function onSubmit() {
-  try {
-
-    const changedData = getChangedData();
-    console.log(changedData);
-    const response = await axios.patch(`http://localhost:3000/users/${user.value.id}`, changedData);
-    console.log(changedData);
-
-    if (response.data && response.data.message && response.data.message === 'Change successful') {
-      changeSuccess.value = response.data.message;
-    }
-
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.data && error.response.data.message) {
-      changeError.value = error.response.data.message;
-    }
-  } finally {
-    isSubmitting.value = false;
-  }
-}
-
-function openChangePasswordModal() {
-  if (changePasswordModal.value) {
-    changePasswordModal.value.showModal();
-  }
-}*/
 
 </script>
 
