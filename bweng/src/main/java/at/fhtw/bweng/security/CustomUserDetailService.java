@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.NoSuchElementException;
+
 @Component
 public class CustomUserDetailService implements UserDetailsService {
 
@@ -18,12 +20,17 @@ public class CustomUserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         try {
-            User user = userService.getUserByUsername(username);
+            User user = userService.getUserByUsername(usernameOrEmail);
             return new UserPrincipal(user.getId(), user.getUsername(), user.getPassword(), user.getRole());
-        } catch (EntityNotFoundException e) {
-            throw new UsernameNotFoundException(e.getMessage() + " for " + username);
+        } catch (NoSuchElementException e) {
+            try {
+                User user = userService.getUserByEmail(usernameOrEmail);
+                return new UserPrincipal(user.getId(), user.getUsername(), user.getPassword(), user.getRole());
+            } catch (NoSuchElementException emailException) {
+                throw new NoSuchElementException("User not found with username or email: " + usernameOrEmail);
+            }
         }
     }
 }
