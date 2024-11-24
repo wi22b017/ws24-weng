@@ -26,20 +26,31 @@
       </div>
     </div>
 
-    <!-- Airline Information -->
-    <div class="row mt-3 airline-info">
-      <div class="col text-center">
+    <!-- Airline and Book Now Button -->
+    <div class="row mt-3 align-items-center justify-content-center">
+      <div class="col-12 text-center">
         <p class="airline-text">
-          <font-awesome-icon icon="plane" class="airline-icon" />
+          <i class="bi bi-plane text-secondary"></i>
           Operated by: {{ airline }}
         </p>
       </div>
     </div>
+    <div class="row mt-3 justify-content-center">
+      <div class="col-auto">
+        <AtomButton
+            label="Book Now"
+            :onClick="handleBookNow"
+            class="btn-book"
+        />
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
+import AtomButton from "@/components/atoms/AtomButton.vue";
 
 // Props for flight information
 defineProps({
@@ -80,7 +91,16 @@ const formatDuration = (minutes) => {
 const formatTime = (isoString) => {
   const date = new Date(isoString);
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+
+  };
+
+// Placeholder function for the Book Now button
+const handleBookNow = () => {
+  console.log("Book Now button clicked");
 };
+
+
 </script>
 
 <style scoped>
@@ -148,20 +168,32 @@ const formatTime = (isoString) => {
   margin-top: 5px;
 }
 
-.airline-info {
-  border-top: 1px solid #e0e0e0;
-  margin-top: 20px;
-  padding-top: 10px;
-}
-
-.airline-icon {
-  color: #007bff;
-  margin-right: 5px;
-}
 
 .airline-text {
   font-size: 1rem;
   font-weight: 500;
   color: #333;
+  text-align: center; /* Centers text horizontally */
+  margin: 0 auto; /* Ensures it remains centered */
+  width: 100%; /* Ensures the text spans the full width of the row */
 }
+
+
+
+.btn-book {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-book:hover {
+  background-color: #0056b3;
+}
+
+
 </style>

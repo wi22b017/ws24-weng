@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/paymentMethods").permitAll() // Payment methods
                                 .requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // User updates
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
+                                .requestMatchers(HttpMethod.POST, "/flights").permitAll() // Flight creation
                                 .requestMatchers(HttpMethod.GET, "/users").permitAll() // Fetch user
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
                                 .requestMatchers(HttpMethod.DELETE, "/users/**").permitAll() // Delete user
