@@ -140,4 +140,11 @@ public class UserService {
         userRepository.deleteById(id);
 
     }
+
+    public void updateUserStatus(UUID id, String status) {
+        User user = getUserById(id); // Reuse the existing method to fetch the user
+        user.setStatus(status); // Update the status
+        userRepository.save(user); // Save the updated user
+    }
+
 }

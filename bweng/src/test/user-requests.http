@@ -85,3 +85,14 @@ Content-Type: application/json
 
 ### Delete a user by ID
 DELETE http://localhost:3000/users/c259a6cb-94c5-4be9-b0bc-4666a4de1fcf
+
+### Patch a user by ID
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+
+{
+  "status": "INACTIVE"
+}
+
+###Patch test
+PATCH localhost:3000/users/test-patch

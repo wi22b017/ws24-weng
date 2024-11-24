@@ -69,4 +69,24 @@ public class UserController {
 
     }
 
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<?> updateUserStatus(@PathVariable UUID id, @RequestBody Map<String, String> updates) {
+        if (!updates.containsKey("status")) {
+            return ResponseEntity.badRequest().body("Missing required field: status");
+        }
+
+        String status = updates.get("status");
+        userService.updateUserStatus(id, status);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User status updated successfully");
+        response.put("id", id.toString());
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/users/test-patch")
+    public ResponseEntity<?> testPatch() {
+        return ResponseEntity.ok("PATCH method is working!");
+    }
+
 }
