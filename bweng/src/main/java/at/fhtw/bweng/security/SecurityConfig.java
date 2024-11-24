@@ -38,6 +38,7 @@ public class SecurityConfig {
                         registry
 //                                .requestMatchers(HttpMethod.GET,"/books/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/auth/token").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/airports").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
