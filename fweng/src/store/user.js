@@ -39,7 +39,6 @@ export const useUserStore = defineStore('user', {
                 localStorage.setItem('access_token', response.data.token);
                 const userId = this.getUserIdFromToken(response.data.token);
                 await this.fetchUserData(userId);
-                //await updateNavbar(); // Ensure navbar updates correctly after fetching user.role
             }
 
               return {
@@ -49,7 +48,7 @@ export const useUserStore = defineStore('user', {
           } catch (error) {
               return {
                   success: false,
-                  message: error.response.data.message
+                  message: error.response.data.error
               };
           }
         },

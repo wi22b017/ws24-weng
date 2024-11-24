@@ -8,7 +8,7 @@
     </template>
     <template #body>
     <div class="modal-body">
-      <MoleculeRegisterForm />
+      <MoleculeRegisterForm @registration-success="handleRegistrationSuccess" />
     </div>
     </template>
   </AtomModal>
@@ -20,6 +20,15 @@ import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeRegisterForm from '@/components/molecules/MoleculeRegisterForm.vue';
 
 const isVisible = ref(false);
+
+const handleRegistrationSuccess = () => {
+  hideModal();
+  showSuccessMessage();
+};
+
+const showSuccessMessage = () => {
+  alert("Registration successful!");
+};
 
 // Define a method to show the modal and expose it to parent components
 const showModal = () => {

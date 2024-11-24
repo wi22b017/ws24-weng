@@ -15,7 +15,10 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all paths
                         .allowedOrigins("http://localhost:8080") // Adjust this to match your frontend origin
-                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE"); // Allow specific HTTP methods
+                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS") // Allow specific HTTP methods
+                        .allowedHeaders("*") // Allow all headers
+                        .allowCredentials(true); // Allow credentials (e.g., cookies or Authorization header)
+
 
             }
         };

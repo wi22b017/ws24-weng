@@ -76,15 +76,16 @@ const onSubmit = async (values) => {
 
   if(result.success===true){
     loginSuccess.value = result.message;
+    setTimeout(() => {
+      hideLoginModal();
+    }, 1000);
   }else{
     loginError.value = result.message;
   }
 
   isSubmitting.value = false;
 
-  setTimeout(() => {
-    hideLoginModal();
-  }, 1000);
+
 
 };
 </script>

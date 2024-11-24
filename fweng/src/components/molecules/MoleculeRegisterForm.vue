@@ -106,10 +106,7 @@
           id="paymentMethod"
           placeholder="Select a payment method"
           v-model="formData.paymentMethod"
-          :options="[
-          { value: 'creditCard', text: 'Credit Card' },
-          { value: 'paypal', text: 'Paypal' }
-        ]"
+          :options="paymentMethodOptions"
       />
       <AtomInput
         label="Username"
@@ -152,7 +149,7 @@
 <script setup>
 import { Form } from "vee-validate";
 import {object, string, ref as yupRef, number} from "yup";
-import {computed, ref as vueRef} from "vue";
+import {computed, onMounted, ref as vueRef, defineEmits} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
@@ -222,6 +219,21 @@ const otherCountriesOptions = computed(() =>
     }))
 );
 
+const paymentMethodOptions = vueRef([]);
+// Fetch payment methods on component mount
+onMounted(async () => {
+  try {
+    const paymentMethodOptionsResponse = await apiClient.get("http://localhost:3000/paymentMethods");
+    // Map API response to the structure required by AtomFormSelect
+    paymentMethodOptions.value = paymentMethodOptionsResponse.data.map((method) => ({
+      value: method.id, // Use the id as the value
+      text: method.name, // Display the name
+    }));
+  } catch (error) {
+    console.error("Failed to fetch payment methods:", error);
+  }
+});
+
 const formData = vueRef({
   salutation: "",
   otherSalutation: "",
@@ -247,6 +259,7 @@ const formData = vueRef({
 
 const registerError = vueRef("");
 const isSubmitting = vueRef(false);
+const emit = defineEmits(['registration-success']);
 
 async function onSubmit(values) {
   isSubmitting.value = true;
@@ -286,6 +299,7 @@ async function onSubmit(values) {
     // Handle success
     if (response.status >= 200 && response.status < 300) {
       console.log("Registration successful:", response.data);
+      emit('registration-success')
       await useUserStore().login(values.username, values.password);
     } else {
       throw new Error(`Unexpected response status: ${response.status}`);

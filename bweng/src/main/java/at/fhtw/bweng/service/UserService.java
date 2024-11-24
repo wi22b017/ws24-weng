@@ -78,6 +78,16 @@ public class UserService {
                 orElseThrow(() -> new NoSuchElementException("User with id " + id + " not found"));
     }
 
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).
+                orElseThrow(() -> new NoSuchElementException("User with username " + username + " not found"));
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email).
+                orElseThrow(() -> new NoSuchElementException("User with email " + email + " not found"));
+    }
+
     public void updateUser(UUID id, UserDto userDto) {
         User user = getUserById(id);
         Address address = addressRepository.findByStreetAndNumberAndZipAndCity(
