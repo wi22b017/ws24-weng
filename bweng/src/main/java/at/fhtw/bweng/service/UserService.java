@@ -8,6 +8,7 @@ import at.fhtw.bweng.repository.AddressRepository;
 import at.fhtw.bweng.repository.PaymentMethodRepository;
 import at.fhtw.bweng.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,10 +23,13 @@ public class UserService {
     AddressRepository addressRepository;
     PaymentMethodRepository paymentMethodRepository;
 
-    public UserService(UserRepository userRepository, AddressRepository addressRepository, PaymentMethodRepository paymentMethodRepository) {
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, AddressRepository addressRepository, PaymentMethodRepository paymentMethodRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.addressRepository = addressRepository;
         this.paymentMethodRepository = paymentMethodRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UUID addUser(UserDto userDto) {
@@ -44,6 +48,7 @@ public class UserService {
                     PaymentMethod newPaymentMethod = new PaymentMethod(null, userDto.paymentMethod().name());
                     return paymentMethodRepository.save(newPaymentMethod);
                 });
+        String hashedPassword = passwordEncoder.encode(userDto.password());
 
         User user = new User(
                 null,
@@ -51,7 +56,7 @@ public class UserService {
                 userDto.firstName(),
                 userDto.lastName(),
                 userDto.username(),
-                userDto.password(),
+                hashedPassword,
                 userDto.email(),
                 LocalDate.parse(userDto.dateOfBirth()),
                 userDto.role(),
