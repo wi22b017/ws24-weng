@@ -320,7 +320,7 @@ async function onSubmit() {
 
     }
   } catch (error) {
-    changeError.value = error.response?.data?.message || "Failed to update user data.";
+    changeError.value = error.response?.data?.error || "Failed to update user data.";
   } finally {
     isSubmitting.value = false;
   }

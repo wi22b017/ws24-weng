@@ -309,7 +309,7 @@ async function onSubmit(values) {
     // console.error("Error:", error);
     console.error("Error Response:", error.response.data); // Log server response
     console.error("Status Code:", error.response.status); // Log status code
-    registerError.value = error.response?.data?.message || "An error occurred.";
+    registerError.value = error.response?.data?.error || "An error occurred.";
   } finally {
     isSubmitting.value = false; // Enable form submission
   }
