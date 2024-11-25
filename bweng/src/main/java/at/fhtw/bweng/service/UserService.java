@@ -13,16 +13,16 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
 public class UserService {
 
-    UserRepository userRepository;
-    AddressRepository addressRepository;
-    PaymentMethodRepository paymentMethodRepository;
-
+    private final UserRepository userRepository;
+    private final AddressRepository addressRepository;
+    private  final PaymentMethodRepository paymentMethodRepository;
     private final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository, AddressRepository addressRepository, PaymentMethodRepository paymentMethodRepository, PasswordEncoder passwordEncoder) {
@@ -129,6 +129,73 @@ public class UserService {
         user.setStatus(userDto.status());
         user.setAddress(address);
         user.setPaymentMethod(paymentMethod);
+
+        try {
+            userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("User with the same username or email already exists");
+        }
+    }
+
+    public void updateUserProfile(UUID id, Map<String, Object> updates) {
+        User user = getUserById(id);
+
+        updates.forEach((key, value) -> {
+            switch (key) {
+                case "gender":
+                    user.setGender((String) value);
+                    break;
+                case "firstName":
+                    user.setFirstName((String) value);
+                    break;
+                case "lastName":
+                    user.setLastName((String) value);
+                    break;
+                case "username":
+                    user.setUsername((String) value);
+                    break;
+                case "email":
+                    user.setEmail((String) value);
+                    break;
+                case "dateOfBirth":
+                    if (value != null) {
+                        user.setDateOfBirth(LocalDate.parse((String) value));
+                    }
+                    break;
+                case "address":
+                    Map<String, Object> addressMap = (Map<String, Object>) value;
+                    Address address = addressRepository.findByStreetAndNumberAndZipAndCity(
+                            (String) addressMap.get("street"),
+                            (Integer) addressMap.get("number"),
+                            (Integer) addressMap.get("zip"),
+                            (String) addressMap.get("city")
+
+                    ).orElseGet(() -> {
+                        Address newAddress = new Address(
+                                null,
+                                (String) addressMap.get("street"),
+                                (Integer) addressMap.get("number"),
+                                (Integer) addressMap.get("zip"),
+                                (String) addressMap.get("city"),
+                                (String) addressMap.get("country")
+                        );
+                        return addressRepository.save(newAddress);
+                    });
+                    user.setAddress(address);
+                    break;
+                case "paymentMethodName":
+                    PaymentMethod paymentMethod = paymentMethodRepository.findByName((String) value)
+                            .orElseGet(() -> {
+                                PaymentMethod newPaymentMethod = new PaymentMethod(null, (String) value);
+                                return paymentMethodRepository.save(newPaymentMethod);
+                            });
+                            ;
+                    user.setPaymentMethod(paymentMethod);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid field: " + key);
+            }
+        });
 
         try {
             userRepository.save(user);

@@ -17,7 +17,7 @@ import java.util.*;
 @RestController
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -58,6 +58,20 @@ public class UserController {
             response.put("id", id.toString());
             return ResponseEntity.ok(response);
 
+    }
+
+    @PatchMapping("/users/{id}/profile")
+    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
+    public ResponseEntity<?> updateUserProfile(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
+        if (updates.isEmpty()) {
+            return ResponseEntity.badRequest().body("No fields provided to update");
+        }
+
+        userService.updateUserProfile(id, updates);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User profile updated successfully");
+        response.put("id", id.toString());
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/users/{id}")
