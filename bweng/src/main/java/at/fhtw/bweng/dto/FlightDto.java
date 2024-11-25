@@ -7,7 +7,7 @@ import jakarta.validation.Valid;
 public record FlightDto(
         @NotBlank(message = "Flight number code cannot be blank")
         String flightNumber,
-        @NotBlank(message = "Departure time code cannot be blank")
+        @NotBlank(message = "Departure time cannot be blank")
         String departureTime,
         @NotBlank(message = "Departure time cannot be blank")
         String arrivalTime,

@@ -1,10 +1,14 @@
 package at.fhtw.bweng.service;
 
 import at.fhtw.bweng.dto.BookingDto;
-import at.fhtw.bweng.dto.PassengerDto;
 import at.fhtw.bweng.model.*;
 import at.fhtw.bweng.repository.*;
 import org.springframework.stereotype.Service;
+
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +25,7 @@ public class BookingService {
     private FlightRepository flightRepository;
     private UserRepository userRepository;
     private PassengerService passengerService;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
 
     public BookingService(BookingRepository bookingRepository,
@@ -37,7 +42,18 @@ public class BookingService {
     }
     //get all bookings
     public List<Booking> getAllBookings() {
-        return bookingRepository.findAll();
+        List<Booking> bookings = bookingRepository.findAll();
+
+        // Get the system's current timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+
+        // Convert each booking's bookingDateTime to the system's timezone
+        bookings.forEach(booking -> {
+            booking.setBookingDate(booking.getBookingDate().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+        });
+
+        return bookings;
+
     }
 
     //get all bookings by userId
@@ -49,13 +65,28 @@ public class BookingService {
         if(bookings.isEmpty()) {
             throw new NoSuchElementException("No bookings found for user ID " + userId);
         }
+
+        // Get the system's current timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+        // Convert each booking's bookingDateTime to the system's timezone
+        bookings.forEach(booking -> {
+            booking.setBookingDate(booking.getBookingDate().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+        });
+
         return bookings;
     }
 
     //get a booking by its id
     public Booking getBookingById(UUID id) {
-        return bookingRepository.findById(id)
+        Booking booking = bookingRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Booking with ID " + id + " not found"));
+
+        // Get the system's current timezone
+        ZoneId systemZone = ZoneId.systemDefault();
+        // Convert each booking's bookingDateTime to the system's timezone
+        booking.setBookingDate(booking.getBookingDate().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
+
+        return booking;
     }
 
     @Transactional
@@ -75,6 +106,7 @@ public class BookingService {
     //add a booking
     @Transactional
     public UUID addBooking(BookingDto bookingDto) {
+
         Booking booking = new Booking();
         mapBookingDtoToBookingEntity(bookingDto, booking);
 
@@ -122,10 +154,13 @@ public class BookingService {
     }
 
     //helper method to map BookingDto to Booking entity
-    private Booking mapBookingDtoToBookingEntity(BookingDto bookingDto, Booking booking){
+    private void mapBookingDtoToBookingEntity(BookingDto bookingDto, Booking booking){
         booking.setStatus(bookingDto.status());
         booking.setPrice(bookingDto.price());
-        booking.setBookingDate(bookingDto.bookingDate());
+
+        OffsetDateTime bookingDate = OffsetDateTime.parse(bookingDto.bookingDate(), DATE_TIME_FORMATTER);
+        booking.setBookingDate(bookingDate);
+
         User user = userRepository.findById(bookingDto.userId())
                 .orElseThrow(() -> new NoSuchElementException("User with ID " + bookingDto.userId() + " not found."));
         booking.setUser(user);
@@ -136,7 +171,6 @@ public class BookingService {
                 .orElseThrow(() -> new NoSuchElementException("Flight with ID " + bookingDto.flightId() + " not found."));
         booking.setFlight(flight);
 
-        return booking;
     }
 
 }

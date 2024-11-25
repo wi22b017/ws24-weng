@@ -54,6 +54,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
                                 .requestMatchers(HttpMethod.POST, "/flights").hasAuthority("ADMIN") // Restrict flight creation to ADMIN
                                 .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN") // Match exact role name
+                                .requestMatchers(HttpMethod.POST, "/bookings").permitAll() // User can create bookings
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
                                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("ADMIN") // Restrict deletion to ADMIN
                                 .anyRequest().authenticated()

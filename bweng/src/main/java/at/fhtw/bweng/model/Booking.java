@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ public class Booking {
     private UUID id;
     private String status;
     private BigDecimal price;
-    private LocalDateTime bookingDate;
+    private OffsetDateTime bookingDate;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)

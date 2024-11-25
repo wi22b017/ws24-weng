@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "status": "Confirmed",
   "price": 250.00,
-  "bookingDate": "2024-11-11T14:30:00",
+  "bookingDate": "2024-11-11T14:30:00+02:00",
   "userId": "57404b01-b8ba-436b-b8c9-d4b452ae8ead",
   "paymentMethodId": "6c8f082e-1914-4945-8883-cd6a48e4f79e",
   "flightId": "cfdd58ba-5ce4-4720-a975-c4d9ab0e8286",
@@ -54,7 +54,7 @@ Content-Type: application/json
 {
   "status": "Updated",
   "price": 250.00,
-  "bookingDate": "2024-11-11T14:30:00",
+  "bookingDate": "2024-11-11T14:30:00+02:00",
   "userId": "e921af07-73a7-4589-96c4-f4208b356d18",
   "paymentMethodId": "cffd31dd-29be-4af9-82a7-b645fbf73e10",
   "flightId": "2e100572-cc47-44b3-8510-7dad3e25a169",

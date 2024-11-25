@@ -6,6 +6,7 @@ Content-Type: application/json
   "gender": "Male",
   "firstName": "John",
   "lastName": "Doe",
+  "dateOfBirth": "1990-12-25",
   "username": "johndoe",
   "password": "password123",
   "email": "john.doe@example.com",
@@ -71,10 +72,10 @@ Content-Type: application/json
 {
   "status": "Confirmed",
   "price": 250.00,
-  "bookingDate": "2024-11-11T14:30:00",
-  "userId": "09b4690a-4d96-4bd7-84e0-df1dc48af571",
-  "paymentMethodId": "84d540b9-7931-4399-9f66-e732be79d5d3",
-  "flightId": "8da985b9-c84f-4e0d-98da-1ff2d953724f",
+  "bookingDate": "2024-11-11T14:30:00+02:00",
+  "userId": "686e877d-503d-477b-b51b-3c731ba4a12d",
+  "paymentMethodId": "c167f3d0-aa35-11ef-a7d0-0242ac120002",
+  "flightId": "c1635729-aa35-11ef-a7d0-0242ac120002",
   "passengers": [
     {
       "firstName": "Alice",
@@ -82,7 +83,7 @@ Content-Type: application/json
       "birthday": "1990-05-15",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
       }
     },
     {
@@ -91,7 +92,7 @@ Content-Type: application/json
       "birthday": "1985-08-22",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
       }
     },
     {
@@ -100,7 +101,7 @@ Content-Type: application/json
       "birthday": "1992-02-10",
       "seatNumber": "",
       "baggage": {
-        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
       }
     }
   ]
