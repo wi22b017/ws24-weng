@@ -63,16 +63,16 @@ INSERT INTO payment_method (id, name) VALUES
 (UNHEX(REPLACE(UUID(),'-','')), 'Apple Pay');
 
 INSERT INTO user (id, gender, first_name, last_name, username, password, email, date_of_birth, role, status, payment_method_id, address_id) VALUES
-(UNHEX(REPLACE(UUID(),'-','')), 'male', 'John', 'Doe', 'johndoe', 'password1', 'john.doe@example.com', '1995-05-15', 'USER', 'ACTIVE',
+(UNHEX(REPLACE(UUID(),'-','')), 'male', 'John', 'Doe', 'johndoe', '$2y$10$FmgJoZP8UisX.21IPz.J6.i19FX87BdrBTgYMEKNhLH/YCs6GKsq.', 'john.doe@example.com', '1995-05-15', 'USER', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='Credit Card'),
 (SELECT id FROM address WHERE street='Main Street')),
-(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Jane', 'Smith', 'janesmith', 'password2', 'jane.smith@example.com', '1991-05-15', 'USER', 'ACTIVE',
+(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Jane', 'Smith', 'janesmith', '$2y$10$R8so6DZwQPmOM97Fsqvu2eq2zUlD2QGm5YU/KXKmzBD.6XpMglqGK', 'jane.smith@example.com', '1991-05-15', 'USER', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='PayPal'),
 (SELECT id FROM address WHERE street='Queen Street')),
-(UNHEX(REPLACE(UUID(),'-','')), 'male', 'Admin', 'User', 'admin', 'password3', 'admin@example.com','1985-06-15', 'ADMIN', 'ACTIVE',
+(UNHEX(REPLACE(UUID(),'-','')), 'male', 'Admin', 'User', 'admin', '$2y$10$QqzzRscRDbrWBsXbfWxvaufOFk4m6B.A37JhuL6RGNsXc/s5mHpMC', 'admin@example.com','1985-06-15', 'ADMIN', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='Bank Transfer'),
 (SELECT id FROM address WHERE street='Champs-Élysées')),
-(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Emily', 'Johnson', 'emilyj', 'password4', 'emily.johnson@example.com', '1989-05-15', 'USER', 'ACTIVE',
+(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Emily', 'Johnson', 'emilyj', '$2y$10$69kexWDnfN/CztYPzdTp/.8bKd2nR174gOXNJUU8rIA7kpyoWvOlq', 'emily.johnson@example.com', '1989-05-15', 'USER', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='Apple Pay'),
 (SELECT id FROM address WHERE street='Kaerntner Straße'));
 
