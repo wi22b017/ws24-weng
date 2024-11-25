@@ -4,6 +4,7 @@ import apiClient from "@/utils/axiosClient";
 export const useAdminUserStore = defineStore("adminUserStore", {
     state: () => ({
         users: [],
+        flights: [],
         isLoading: false,
     }),
     actions: {
@@ -42,6 +43,25 @@ export const useAdminUserStore = defineStore("adminUserStore", {
             } catch (error) {
                 console.error("Error deleting user:", error);
                 throw error;
+            }
+        },
+        async fetchFlights() {
+            try {
+                this.isLoading = true;
+                const response = await apiClient.get("/flights");
+                this.flights = response.data;
+
+                return {
+                    success: true,
+                    message: 'Fetch Flights Successful'
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    message: error.response.data.error
+                };
+            } finally {
+                this.isLoading = false;
             }
         },
     },
