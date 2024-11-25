@@ -96,3 +96,13 @@ Content-Type: application/json
 
 ###Patch test
 PATCH localhost:3000/users/test-patch
+
+
+### Patch: update the password
+PATCH http://localhost:3000/users/06244794-f2b3-4c86-ba83-5688cd5d48f6/password
+Content-Type: application/json
+
+{
+  "currentPassword": "1234567",
+  "newPassword": "7654321!"
+}
