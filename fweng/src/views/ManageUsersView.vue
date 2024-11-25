@@ -45,9 +45,7 @@ watch(
 );
 
 onMounted(async () => {
-  console.log("Fetching users in ManageUsersView...");
   await adminUserStore.fetchUsers();
-  console.log("Users after fetch in ManageUsersView:", users);
 });
 
 // Toggle user status
