@@ -211,7 +211,6 @@ const otherCountries = vueRef([
   { code: "AU", name: "Australia" },
 ]);
 
-// Ensure it is not undefined
 const otherCountriesOptions = computed(() =>
     otherCountries.value.map((country) => ({
       value: country.code,
@@ -223,11 +222,11 @@ const paymentMethodOptions = vueRef([]);
 // Fetch payment methods on component mount
 onMounted(async () => {
   try {
-    const paymentMethodOptionsResponse = await apiClient.get("http://localhost:3000/paymentMethods");
+    const paymentMethodOptionsResponse = await apiClient.get(`/paymentMethods`);
     // Map API response to the structure required by AtomFormSelect
     paymentMethodOptions.value = paymentMethodOptionsResponse.data.map((method) => ({
-      value: method.id, // Use the id as the value
-      text: method.name, // Display the name
+      value: method.name,
+      text: method.name,
     }));
   } catch (error) {
     console.error("Failed to fetch payment methods:", error);
@@ -262,6 +261,7 @@ const isSubmitting = vueRef(false);
 const emit = defineEmits(['registration-success']);
 
 async function onSubmit(values) {
+  console.log(values)
   isSubmitting.value = true;
   registerError.value = null;
   try {
@@ -287,7 +287,7 @@ async function onSubmit(values) {
         country: values.address.country,
       },
       paymentMethod: {
-        name: values.paymentMethod }
+        name: values.paymentMethod}
     }
     console.log("Payload:", payload);
     // Send the payload to the backend
