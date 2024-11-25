@@ -4,13 +4,10 @@ import at.fhtw.bweng.dto.UserDto;
 import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
-import java.sql.SQLOutput;
 import java.util.*;
 
 
@@ -59,21 +56,6 @@ public class UserController {
             return ResponseEntity.ok(response);
 
     }
-
-    @PatchMapping("/users/{id}/profile")
-    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
-    public ResponseEntity<?> updateUserProfile(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
-        if (updates.isEmpty()) {
-            return ResponseEntity.badRequest().body("No fields provided to update");
-        }
-
-        userService.updateUserProfile(id, updates);
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "User profile updated successfully");
-        response.put("id", id.toString());
-        return ResponseEntity.ok(response);
-    }
-
     @DeleteMapping("/users/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
 
@@ -87,18 +69,24 @@ public class UserController {
 
     @PatchMapping("/users/{id}")
     @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
-    public ResponseEntity<?> updateUserStatus(@PathVariable UUID id, @RequestBody Map<String, String> updates) {
-        if (!updates.containsKey("status")) {
-            return ResponseEntity.badRequest().body("Missing required field: status");
+    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
+        if (updates.isEmpty()) {
+            return ResponseEntity.badRequest().body("No fields provided to update");
         }
-
-        String status = updates.get("status");
-        userService.updateUserStatus(id, status);
-
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "User status updated successfully");
-        response.put("id", id.toString());
-        return ResponseEntity.ok(response);
+        if (updates.containsKey("status")) {
+            String status = (String) updates.get("status");
+            userService.updateUserStatus(id, status);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User status updated successfully");
+            response.put("id", id.toString());
+            return ResponseEntity.ok(response);
+        } else {
+            userService.updateUserProfile(id, updates);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User profile updated successfully");
+            response.put("id", id.toString());
+            return ResponseEntity.ok(response);
+        }
     }
 
     @PatchMapping("/users/test-patch")

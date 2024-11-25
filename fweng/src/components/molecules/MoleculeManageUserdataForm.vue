@@ -312,7 +312,7 @@ async function onSubmit() {
   }
   try {
     isSubmitting.value = true;
-    const response = await apiClient.patch(`http://localhost:3000/users/${userStore.id}/profile`, changedData);
+    const response = await apiClient.patch(`http://localhost:3000/users/${userStore.id}`, changedData);
     if (response.status >= 200 && response.status < 300) {
       changeSuccess.value = "User data updated successfully.";
       // Object.assign(userStore.$state, formData.value);
