@@ -137,6 +137,14 @@ public class UserService {
         }
     }
 
+    public void deleteUser(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new NoSuchElementException("User with ID " + id + " not found");
+        }
+        userRepository.deleteById(id);
+
+    }
+
     public void updateUserProfile(UUID id, Map<String, Object> updates) {
         User user = getUserById(id);
 
@@ -205,18 +213,20 @@ public class UserService {
     }
 
 
-    public void deleteUser(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new NoSuchElementException("User with ID " + id + " not found");
-        }
-        userRepository.deleteById(id);
-
-    }
-
     public void updateUserStatus(UUID id, String status) {
         User user = getUserById(id); // Reuse the existing method to fetch the user
         user.setStatus(status); // Update the status
         userRepository.save(user); // Save the updated user
+    }
+
+    public void updateUserPassword(UUID id, String currentPassword,String newPassword) {
+        User user = getUserById(id);
+        if(!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Current password is incorrect");
+        }
+        String hashedNewPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(hashedNewPassword);
+        userRepository.save(user);
     }
 
 }

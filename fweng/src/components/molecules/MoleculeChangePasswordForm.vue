@@ -42,9 +42,9 @@ import {Form} from "vee-validate";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import {inject, ref as vueRef, ref} from "vue";
-//import {useAuth} from "@/composables/useAuth";
-import axios from "axios";
 import {object, string, ref as yupRef} from "yup";
+import apiClient from "@/utils/axiosClient";
+import {useUserStore} from "@/store/user";
 
 const changePasswordFormSchema = object({
   currentPassword: string()
@@ -76,7 +76,8 @@ const isSubmitting = ref(false);
 const changePasswordError = ref('');
 const changePasswordSuccess = ref('');
 
-//const { checkLoginStatus } = useAuth();
+// Pinia store instance
+const userStore = useUserStore();
 
 // Inject the method to control modals from parent
 const hideChangePasswordModal = inject('hideChangePasswordModal');
@@ -86,31 +87,21 @@ async function onSubmit(values) {
   isSubmitting.value = true;
   changePasswordError.value = null;
   changePasswordSuccess.value = null;
-  console.log(values);
 
   try {
-    const response = await axios.post('http://localhost:3000/users/update/password/${user.value.id}', {
-          currentPassword: values.currentPassword,
-          newPassword: values.newPassword
-        }
-    );
-
-    // Check if the response contains userId and username
-    if (response.data && response.data.message && response.data.message==='Change Password successful') {
-
-      changePasswordSuccess.value = response.data.message;
-
-      //await checkLoginStatus(); // Ensure navbar updates after login
-
-      setTimeout(() => {
+    const response = await apiClient.patch(`http://localhost:3000/users/${userStore.id}/password`, {
+    "currentPassword": values.currentPassword,
+    "newPassword": values.newPassword
+    });
+    // console.log("response", response)
+    changePasswordSuccess.value = response.data.message;
+    setTimeout(() => {
         hideChangePasswordModal();
       }, 1000);
-
-    }
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.data && error.response.data.message) {
-      changePasswordError.value = error.response.data.message;
+  }
+   catch (error) {
+    if (error.response && error.response.data) {
+      changePasswordError.value = error.response.data.error;
     }
   } finally {
     isSubmitting.value = false;

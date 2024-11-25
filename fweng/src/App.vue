@@ -3,6 +3,7 @@
   <router-view />
   <OrganismLoginModal ref="loginModalRef" />
   <OrganismRegisterModal ref="registerModalRef" />
+  <OrganismChangePasswordModal ref="changePasswordModalRef"/>
 </template>
 
 <script setup>
@@ -10,6 +11,7 @@ import {provide, ref} from "vue";
 import AppNavbar from "@/components/organisms/OrganismNavbar.vue";
 import OrganismLoginModal from "@/components/organisms/OrganismLoginModal.vue";
 import OrganismRegisterModal from "@/components/organisms/OrganismRegisterModal.vue";
+import OrganismChangePasswordModal from "@/components/organisms/OrganismChangePasswordModal.vue";
 
 // Create refs to control the modals
 const loginModalRef = ref(null);
@@ -36,9 +38,11 @@ const switchToRegisterModal = () => {
   registerModalRef.value.showModal();
 };
 
-function hideChangePasswordModal() {
-  changePasswordModalRef.value = false;
-}
+const hideChangePasswordModal = () => {
+  if (changePasswordModalRef.value) {
+    changePasswordModalRef.value.hideModal();
+  }
+};
 
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);

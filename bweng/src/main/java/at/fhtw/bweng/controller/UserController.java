@@ -89,6 +89,23 @@ public class UserController {
         }
     }
 
+    @PatchMapping("/users/{id}/password")
+    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
+    public ResponseEntity<?> updateUserPassword(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
+        // Check if required fields are present
+        if (!updates.containsKey("currentPassword") || !updates.containsKey("newPassword")) {
+            return ResponseEntity.badRequest().body("Missing required fields: currentPassword and/or newPassword");
+        }
+
+        String currentPassword = (String) updates.get("currentPassword");
+        String newPassword =(String) updates.get("newPassword");
+        userService.updateUserPassword(id, currentPassword, newPassword);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Password updated successfully");
+        response.put("id", id.toString());
+        return ResponseEntity.ok(response);
+    }
+
     @PatchMapping("/users/test-patch")
     public ResponseEntity<?> testPatch() {
         return ResponseEntity.ok("PATCH method is working!");
