@@ -128,7 +128,7 @@
     </Form>
   </div>
   <div class="container mt-3">
-    <AtomButton type="button" @click="openChangePasswordModal" label="Change Password" />
+    <AtomButton type="button" @click="showChangePasswordModal" label="Change Password" />
   </div>
   <div class="container">
     <div v-if="changeError" class="alert alert-danger mt-3" role="alert">
@@ -138,29 +138,30 @@
       {{ changeSuccess }}
     </div>
   </div>
-  <OrganismChangePasswordModal ref="changePasswordModal" />
+
 
 </template>
 
 <script setup>
 import { Form } from "vee-validate";
 import {number, object, string} from "yup";
-import {computed, onMounted, ref as vueRef, watch} from "vue";
+import {computed, inject, onMounted, ref as vueRef, watch} from "vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import { useUserStore } from "@/store/user";
-import OrganismChangePasswordModal from "@/components/organisms/OrganismChangePasswordModal.vue";
 import apiClient from "@/utils/axiosClient";
 
 const changeError = vueRef("");
 const changeSuccess = vueRef("");
 const isSubmitting = vueRef(false);
-const changePasswordModal = vueRef(null);
 const formChanged = vueRef(false);
 
 // Pinia store instance
 const userStore = useUserStore();
+
+// Inject the method to control modals from parent
+const showChangePasswordModal = inject('showChangePasswordModal');
 
 // Validation schema
 const userdataChangeFormSchema = object({
@@ -323,13 +324,6 @@ async function onSubmit() {
     changeError.value = error.response?.data?.error || "Failed to update user data.";
   } finally {
     isSubmitting.value = false;
-  }
-}
-
-// Open password modal
-function openChangePasswordModal() {
-  if (changePasswordModal.value) {
-    changePasswordModal.value.showModal();
   }
 }
 

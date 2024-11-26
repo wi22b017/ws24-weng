@@ -39,13 +39,18 @@ const switchToRegisterModal = () => {
 };
 
 const hideChangePasswordModal = () => {
-  if (changePasswordModalRef.value) {
-    changePasswordModalRef.value.hideModal();
-  }
+  changePasswordModalRef.value.hideModal();
 };
+
+const showChangePasswordModal = () => {
+  changePasswordModalRef.value.showModal();
+};
+
+
 
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);
+provide('showChangePasswordModal', showChangePasswordModal);
 provide('hideChangePasswordModal', hideChangePasswordModal);
 provide('hideLoginModal', hideLoginModal);
 
