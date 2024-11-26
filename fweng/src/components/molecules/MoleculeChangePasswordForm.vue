@@ -41,7 +41,7 @@
 import {Form} from "vee-validate";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import AtomInput from "@/components/atoms/AtomInput.vue";
-import {inject, ref as vueRef, ref} from "vue";
+import {ref as vueRef, ref, defineEmits} from "vue";
 import {object, string, ref as yupRef} from "yup";
 import apiClient from "@/utils/axiosClient";
 import {useUserStore} from "@/store/user";
@@ -75,12 +75,13 @@ const formData = vueRef({
 const isSubmitting = ref(false);
 const changePasswordError = ref('');
 const changePasswordSuccess = ref('');
+const emit = defineEmits(['password-change-success'])
 
 // Pinia store instance
 const userStore = useUserStore();
 
 // Inject the method to control modals from parent
-const hideChangePasswordModal = inject('hideChangePasswordModal');
+// const hideChangePasswordModal = inject('hideChangePasswordModal');
 
 
 async function onSubmit(values) {
@@ -96,7 +97,8 @@ async function onSubmit(values) {
     // console.log("response", response)
     changePasswordSuccess.value = response.data.message;
     setTimeout(() => {
-        hideChangePasswordModal();
+      //   hideChangePasswordModal();
+      emit('password-change-success')
       }, 1000);
   }
    catch (error) {
