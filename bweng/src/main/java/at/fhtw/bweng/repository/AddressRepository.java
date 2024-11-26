@@ -12,6 +12,6 @@ public interface AddressRepository extends CrudRepository<Address, UUID> {
     @Override
     List<Address> findAll();
 
-    Optional<Address> findByStreetAndNumberAndZipAndCity(String street, int number, int zip, String city);
+    Optional<Address> findByStreetAndNumberAndZipAndCityAndCountry(String street, int number, int zip, String city, String country);
 
 }

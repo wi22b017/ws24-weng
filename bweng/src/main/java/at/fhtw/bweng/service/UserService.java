@@ -35,8 +35,12 @@ public class UserService {
     public UUID addUser(UserDto userDto) {
 
         // Find or create the address
-        Address userAddress = addressRepository.findByStreetAndNumberAndZipAndCity(
-                        userDto.address().street(), userDto.address().number(), userDto.address().zip(), userDto.address().city())
+        Address userAddress = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
+                        userDto.address().street(),
+                        userDto.address().number(),
+                        userDto.address().zip(),
+                        userDto.address().city(),
+                        userDto.address().country())
                 .orElseGet(() -> {
                     Address newUserAddress = new Address(null, userDto.address().street(), userDto.address().number(), userDto.address().zip(), userDto.address().city(), userDto.address().country());
                     return addressRepository.save(newUserAddress);
@@ -95,11 +99,12 @@ public class UserService {
 
     public void updateUser(UUID id, UserDto userDto) {
         User user = getUserById(id);
-        Address address = addressRepository.findByStreetAndNumberAndZipAndCity(
+        Address address = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
                 userDto.address().street(),
                 userDto.address().number(),
                 userDto.address().zip(),
-                userDto.address().city()
+                userDto.address().city(),
+                userDto.address().country()
         ).orElseGet(() -> {
             Address newAddress = new Address(
                     null,
@@ -172,11 +177,12 @@ public class UserService {
                     break;
                 case "address":
                     Map<String, Object> addressMap = (Map<String, Object>) value;
-                    Address address = addressRepository.findByStreetAndNumberAndZipAndCity(
+                    Address address = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
                             (String) addressMap.get("street"),
                             (Integer) addressMap.get("number"),
                             (Integer) addressMap.get("zip"),
-                            (String) addressMap.get("city")
+                            (String) addressMap.get("city"),
+                            (String) addressMap.get("country")
 
                     ).orElseGet(() -> {
                         Address newAddress = new Address(
