@@ -23,11 +23,6 @@ const isVisible = ref(false);
 
 const handleRegistrationSuccess = () => {
   hideModal();
-  showSuccessMessage();
-};
-
-const showSuccessMessage = () => {
-  alert("Registration successful!");
 };
 
 // Define a method to show the modal and expose it to parent components
