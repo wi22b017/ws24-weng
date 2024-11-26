@@ -8,7 +8,7 @@
     </template>
     <template #body>
       <div class="modal-body">
-        <MoleculeChangePasswordForm @password-change-success = "hideModal" />
+        <MoleculeChangePasswordForm/>
       </div>
     </template>
   </AtomModal>
