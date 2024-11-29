@@ -20,3 +20,12 @@ Content-Type: application/json
   "status": "INACTIVE"
 }
 
+###
+PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlNi1hYzg4LTExZWYtODM3YS0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzI5ODQ5MDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.tDv3Vtwo3dFOItA3hcMmZ2mdbKBGfss28zd2oTGV6IM
+
+{
+  "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AT"}
+}
+

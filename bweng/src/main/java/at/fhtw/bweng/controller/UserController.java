@@ -44,7 +44,7 @@ public class UserController {
         }
     }
 
-
+    // Not used by the frontend
     @PutMapping("/users/{id}")
     public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody @Valid UserDto userDto) {
 

@@ -44,6 +44,14 @@ public class ExceptionHandling {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    // Handle IllegalArgumentException (for invalid arguments)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalArgumentException(IllegalArgumentException ex) {
+        Map<String, String> response = new HashMap<>();
+        response.put("error", ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
     // Handle IllegalStateException (for invalid application state)
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<Map<String, String>> handleIllegalStateException(IllegalStateException ex) {

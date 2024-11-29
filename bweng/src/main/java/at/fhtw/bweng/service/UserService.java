@@ -7,6 +7,7 @@ import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.repository.AddressRepository;
 import at.fhtw.bweng.repository.PaymentMethodRepository;
 import at.fhtw.bweng.repository.UserRepository;
+import at.fhtw.bweng.util.IsoUtil;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,16 @@ public class UserService {
     }
 
     public UUID addUser(UserDto userDto) {
+
+        // if country code ist not a valid ISOCountry, throw IllegalArgumentException
+        if (!IsoUtil.isValidISOCountry(userDto.address().country())) {
+            throw new IllegalArgumentException("Invalid country code: " + userDto.address().country());
+        }
+
+        // if country code ist not a valid ISOCountry, throw IllegalArgumentException
+        if (!IsoUtil.isValidISOLanguage(userDto.address().country())) {
+            throw new IllegalArgumentException("Invalid country code: " + userDto.address().country());
+        }
 
         // Find or create the address
         Address userAddress = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
@@ -98,6 +109,12 @@ public class UserService {
     }
 
     public void updateUser(UUID id, UserDto userDto) {
+
+        // if country code ist not a valid ISOCountry, throw IllegalArgumentException
+        if (!IsoUtil.isValidISOCountry(userDto.address().country())) {
+            throw new IllegalArgumentException("Invalid country code: " + userDto.address().country());
+        }
+
         User user = getUserById(id);
         Address address = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
                 userDto.address().street(),
@@ -177,6 +194,12 @@ public class UserService {
                     break;
                 case "address":
                     Map<String, Object> addressMap = (Map<String, Object>) value;
+
+                    // if country code ist not a valid ISOCountry, throw IllegalArgumentException
+                    if (!IsoUtil.isValidISOCountry( (String) addressMap.get("country"))) {
+                    throw new IllegalArgumentException("Invalid country code: " + (String) addressMap.get("country"));
+                }
+
                     Address address = addressRepository.findByStreetAndNumberAndZipAndCityAndCountry(
                             (String) addressMap.get("street"),
                             (Integer) addressMap.get("number"),
