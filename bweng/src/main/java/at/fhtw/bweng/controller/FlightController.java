@@ -1,7 +1,6 @@
 package at.fhtw.bweng.controller;
 
 import at.fhtw.bweng.dto.FlightDto;
-import at.fhtw.bweng.model.Airport;
 import at.fhtw.bweng.model.Flight;
 import at.fhtw.bweng.service.FlightService;
 import jakarta.validation.Valid;
@@ -41,20 +40,8 @@ public class FlightController {
     public ResponseEntity<?> getFlights(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String flightNumber) {
-
-        if (flightNumber != null) {
-            // Fetch flight by flight number if query parameter is provided
-            Flight flight = flightService.getFlightByFlightNumber(flightNumber);
-            return ResponseEntity.ok(flight);
-        } else if (id != null) {
-            // Fetch flight by ID if path variable is provided
-            Flight flight = flightService.getFlightById(id);
-            return ResponseEntity.ok(flight);
-        } else {
-            // Fetch all flights if neither flightNumber nor ID is provided
-            List<Flight> flights = flightService.getAllFlights();
-            return ResponseEntity.ok(flights);
-        }
+        Object result = flightService.getFlights(id, flightNumber);
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/flights/{id}")

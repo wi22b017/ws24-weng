@@ -19,6 +19,7 @@ export const useUserStore = defineStore('user', {
         city: '',
         country:'',
         paymentMethodName: '',
+        profilePictureUrl: null,
         isLoggedIn: false
     }),
     getters: {
@@ -84,6 +85,7 @@ export const useUserStore = defineStore('user', {
                 this.city = response.data.address.city;
                 this.country = response.data.address.country;
                 this.paymentMethodName = response.data.paymentMethod.name;
+                this.profilePictureUrl = response.data.profilePictureUrl;
                 this.isLoggedIn = true;
             } catch (error) {
                 return error.response.data.message;

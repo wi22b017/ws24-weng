@@ -31,21 +31,26 @@ public class PaymentMethodService {
         }
     }
 
-    public List<PaymentMethod> getAllPaymentMethods(){
+    public Object getPaymentMethods(UUID id) {
+        if (id != null) {
+            return getPaymentMethodById(id);
+        } else {
+            return getAllPaymentMethods();
+        }
+    }
 
+    public List<PaymentMethod> getAllPaymentMethods(){
         return paymentMethodRepository.findAll();
     }
 
     public PaymentMethod getPaymentMethodById(UUID id) {
         return paymentMethodRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Payment method with id " + id + " not found.") );
-
     }
 
     public void updatePaymentMethod(UUID id, PaymentMethodDto paymentMethodDto) {
         PaymentMethod paymentMethod = getPaymentMethodById(id);
 
         paymentMethod.setName(paymentMethodDto.name());
-
 
         try{
             paymentMethodRepository.save(paymentMethod);
@@ -64,5 +69,4 @@ public class PaymentMethodService {
             throw new NoSuchElementException("Payment method with id " + id + " not found.");
         }
     }
-
 }

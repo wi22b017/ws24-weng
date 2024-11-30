@@ -36,13 +36,8 @@ public class AirportController {
 
     @GetMapping(value = {"/airports", "/airports/{id}"})
     public ResponseEntity<?> getAirports(@PathVariable(required = false) UUID id) {
-        if (id != null) {
-            Airport airport = airportService.getAirportById(id);
-            return ResponseEntity.ok(airport);
-        } else {
-            List<Airport> airports = airportService.getAllAirports();
-            return ResponseEntity.ok(airports);
-        }
+        Object result = airportService.getAirports(id);
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/airports/{id}")

@@ -29,3 +29,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlN
   "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AT"}
 }
 
+###
+PATCH http://localhost:3000/users/b05c98de-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+
+{
+  "status": "INACTIVE"
+}
+
+
+###
+POST http://localhost:3000/pictures
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit.jpg"
+
+< /Users/philhub/Downloads/the_hobbit.jpg
+
+###
+GET http://localhost:3000/pictures/07ad7254-d771-4d00-a9c2-6a30f99cf31d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+
+
+
+
+

@@ -35,21 +35,11 @@ public class BaggageController {
     }
 
     @GetMapping(value = {"/baggages", "/baggages/{id}"})
-    public ResponseEntity<?> getBaggages(@PathVariable(required = false) UUID id,
-                                         @RequestParam(required = false) UUID baggageTypeId) {
-        if (id != null) {
-            // Fetch baggage by its id
-            Baggage baggage = baggageService.getBaggageById(id);
-            return ResponseEntity.ok(baggage);
-        } else if(baggageTypeId !=null) {
-            // Fetch baggages by baggageTypeId if provided
-            List<Baggage> baggages = baggageService.getBaggagesByType(baggageTypeId);
-            return ResponseEntity.ok(baggages);
-        } else {
-            // Fetch all baggages if no path variable or query parameter is provided
-            List<Baggage> baggages = baggageService.getAllBaggages();
-            return ResponseEntity.ok(baggages);
-        }
+    public ResponseEntity<?> getBaggages(
+            @PathVariable(required = false) UUID id,
+            @RequestParam(required = false) UUID baggageTypeId) {
+        Object result = baggageService.getBaggages(id, baggageTypeId);
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/baggages/{id}")

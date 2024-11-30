@@ -35,32 +35,18 @@ public class PaymentMethodController {
 
     @GetMapping(value = {"/paymentMethods", "/paymentMethods/{id}"})
     public ResponseEntity<?> getPaymentMethods(@PathVariable(required = false) UUID id) {
-        if (id != null) {
-
-                PaymentMethod paymentMethod = paymentMethodService.getPaymentMethodById(id);
-                return ResponseEntity.ok(paymentMethod);
-
-
-        } else {
-            List<PaymentMethod> paymentMethods = paymentMethodService.getAllPaymentMethods();
-            return ResponseEntity.ok(paymentMethods);
-        }
-
+        Object result = paymentMethodService.getPaymentMethods(id);
+        return ResponseEntity.ok(result);
     }
-
-
 
     @PutMapping("/paymentMethods/{id}")
     public ResponseEntity<?> updatePaymentMethod( @PathVariable UUID id,
                                                   @RequestBody @Valid PaymentMethodDto paymentMethodDto) {
-
             paymentMethodService.updatePaymentMethod(id, paymentMethodDto);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method updated successfully");
             response.put("id", id.toString());
             return ResponseEntity.ok(response);
-
-
     }
 
     @DeleteMapping("/paymentMethods/{id}")
@@ -72,9 +58,5 @@ public class PaymentMethodController {
             response.put("message", "Payment method deleted successfully");
             response.put("id", id.toString());
             return ResponseEntity.ok(response);
-
-
     }
-
-
 }

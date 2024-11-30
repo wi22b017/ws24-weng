@@ -2,7 +2,6 @@ package at.fhtw.bweng.security;
 
 import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

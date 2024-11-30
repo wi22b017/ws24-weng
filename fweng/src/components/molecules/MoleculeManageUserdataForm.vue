@@ -7,6 +7,36 @@
         :initial-values="formData"
     >
 
+      <div class="form-group mb-3">
+        <label for="profilePicture" class="form-label">Profile Picture</label>
+        <input
+            id="profilePicture"
+            type="file"
+            class="form-control"
+            ref="fileInput"
+            accept="image/*"
+            @change="handleFileChange"
+        />
+      </div>
+
+      <div class="profile-picture-container">
+        <div v-if="imagePreview || userStore.profilePictureUrl" class="image-preview mb-3">
+          <img :src="imagePreview || userStore.profilePictureUrl" alt="Uploaded Image" />
+        </div>
+      </div>
+
+      <AtomButton
+          type="button"
+          @click="uploadProfilePicture"
+          :disabled="!selectedFile || isSubmitting"
+          label="Save Profile Picture"
+          class="mb-3"
+      />
+
+      <div v-if="profilePictureSuccess" class="alert alert-success mt-3" role="alert">
+        {{ profilePictureSuccess }}
+      </div>
+
       <AtomFormSelect
           label="Salutation"
           name="salutation"
@@ -152,8 +182,13 @@ import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import { useUserStore } from "@/store/user";
 import apiClient from "@/utils/axiosClient";
 
+const selectedFile = vueRef(null);
+const imagePreview = vueRef(null);
+const fileInput = vueRef(null);
+
 const changeError = vueRef("");
 const changeSuccess = vueRef("");
+const profilePictureSuccess = vueRef("");
 const isSubmitting = vueRef(false);
 const formChanged = vueRef(false);
 
@@ -343,10 +378,63 @@ const otherCountriesOptions = computed(() =>
     }))
 );
 
+// Method to handle file selection
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file.');
+      return;
+    }
+    selectedFile.value = file;
+    imagePreview.value = URL.createObjectURL(file);
+  }
+};
+
+async function uploadProfilePicture() {
+  if (!selectedFile.value) return;
+
+  try {
+    isSubmitting.value = true;
+    const formData = new FormData();
+    formData.append("file", selectedFile.value);
+
+    const response = await apiClient.post(`/users/${userStore.id}/picture`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    if (response.status >= 200 && response.status < 300) {
+      profilePictureSuccess.value = "Profile picture updated successfully.";
+      await userStore.fetchUserData(userStore.id); // Refresh user data
+    }
+  } catch (error) {
+    changeError.value = error.response?.data?.error || "Failed to update profile picture.";
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+
 </script>
 
 <style scoped>
 .container {
   text-align: start;
 }
+
+.profile-picture-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 </style>

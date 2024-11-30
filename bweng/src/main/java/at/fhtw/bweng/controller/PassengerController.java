@@ -31,17 +31,10 @@ public class PassengerController {
         return ResponseEntity.created(URI.create("/passengers/" + uuid.toString())).body(response);
     }
 
-
-    @GetMapping("/passengers")
-    public ResponseEntity<?> getAllPassengers() {
-        List<Passenger> passengers = passengerService.getAllPassengers();
-        return ResponseEntity.ok(passengers);
-    }
-
-    @GetMapping("/passengers/{id}")
-    public ResponseEntity<?> getPassengerById(@PathVariable UUID id) {
-        Passenger passenger = passengerService.getPassengerById(id);
-        return ResponseEntity.ok(passenger);
+    @GetMapping(value = {"/passengers", "/passengers/{id}"})
+    public ResponseEntity<?> getPassengers(@PathVariable(required = false) UUID id) {
+        Object result = passengerService.getPassengers(id);
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/passengers/{id}")

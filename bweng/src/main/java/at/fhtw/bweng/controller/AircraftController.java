@@ -38,24 +38,13 @@ public class AircraftController {
     }
 
     @GetMapping(value = {"/aircrafts", "/aircrafts/{id}"})
-    public ResponseEntity<?> getFlights(
+    public ResponseEntity<?> getAircrafts(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String serialNumber) {
-
-        if (serialNumber != null) {
-            // Fetch aircraft by serialNumber if query parameter is provided
-            Aircraft aircraft = aircraftService.getAircraftBySerialNumber(serialNumber);
-            return ResponseEntity.ok(aircraft);
-        } else if (id != null) {
-            // Fetch aircraft by ID if path variable is provided
-            Aircraft aircraft = aircraftService.getAircraftById(id);
-            return ResponseEntity.ok(aircraft);
-        } else {
-            // Fetch all aircrafts if no ID is provided
-            List<Aircraft> aircrafts = aircraftService.getAllAircrafts();
-            return ResponseEntity.ok(aircrafts);
-        }
+        Object response = aircraftService.getAircrafts(id, serialNumber);
+        return ResponseEntity.ok(response);
     }
+
 
     @PutMapping("/aircrafts/{id}")
     public ResponseEntity<Map<String, String>> updateAircraft(
@@ -81,7 +70,5 @@ public class AircraftController {
         response.put("id", id.toString());
         return ResponseEntity.ok(response);
 
-
     }
-
 }

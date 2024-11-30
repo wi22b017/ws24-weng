@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -24,5 +27,21 @@ public class Aircraft {
     private int capacity;
     @ManyToOne
     private Airline airline;
+
+    @CreationTimestamp
+    private Instant createdOn;
+
+    @UpdateTimestamp
+    private Instant lastUpdatedOn;
+
+    // Custom Constructor (Excludes Timestamps)
+    public Aircraft(UUID id, String serialNumber, String manufacturer, String model, int capacity, Airline airline) {
+        this.id = id;
+        this.serialNumber = serialNumber;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.capacity = capacity;
+        this.airline = airline;
+    }
 
 }

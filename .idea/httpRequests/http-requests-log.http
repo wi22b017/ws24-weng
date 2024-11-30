@@ -1,3 +1,111 @@
+GET http://localhost:3000/pictures/07ad7254-d771-4d00-a9c2-6a30f99cf31d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T181144.200.jpeg
+
+###
+
+POST http://localhost:3000/pictures
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+Content-Type: multipart/form-data; boundary=boundary
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 117563
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit.jpg"
+
+< /Users/philhub/Downloads/the_hobbit.jpg
+--boundary--
+
+<> 2024-11-30T181135.201.json
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T154019.200.jpeg
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T153933.200.jpeg
+
+###
+
+POST http://localhost:3000/covers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+Content-Type: multipart/form-data; boundary=boundary
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 117569
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit_cover.jpg"
+
+< /Users/philhub/Downloads/the_hobbit_cover.jpg
+--boundary--
+
+<> 2024-11-30T153856.201.json
+
+###
+
+PATCH http://localhost:3000/users/b05c98de-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-30T150451.403.json
+
+###
+
+PATCH http://localhost:3000/users/b05c9afb-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-30T150355.500.json
+
+###
+
 PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlNi1hYzg4LTExZWYtODM3YS0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzI5ODQ5MDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.tDv3Vtwo3dFOItA3hcMmZ2mdbKBGfss28zd2oTGV6IM
@@ -848,127 +956,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2024-11-18T200515.200.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
-  }
-}
-
-<> 2024-11-18T200506.409.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
-  }
-}
-
-<> 2024-11-18T200348.409.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
-  }
-}
-
-<> 2024-11-18T200332.409.json
-
-###
-
-GET http://localhost:3000/baggageTypes
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200323.200.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
-  }
-}
-
-<> 2024-11-18T200311.404.json
-
-###
-
-DELETE http://localhost:3000/bookings/5b2a00d4-d8a3-48f7-a9f7-e5bd8fd52bf9
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-content-length: 0
-
-<> 2024-11-18T200240.200.json
-
-###
-
-GET http://localhost:3000/bookings/5b2a00d4-d8a3-48f7-a9f7-e5bd8fd52bf9
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200227.200.json
-
-###
-
-GET http://localhost:3000/bookings
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200206.200.json
 
 ###
 

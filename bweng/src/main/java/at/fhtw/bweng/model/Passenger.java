@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -32,6 +35,12 @@ public class Passenger {
     @ManyToOne
     @JoinColumn(name = "booking_id", nullable = false)
     private Booking booking;
+
+    @CreationTimestamp
+    private Instant createdOn;
+
+    @UpdateTimestamp
+    private Instant lastUpdatedOn;
 
     public Passenger(UUID id, String firstName, String lastName, LocalDate birthday, String seatNumber, Baggage baggage) {
         this.id = id;

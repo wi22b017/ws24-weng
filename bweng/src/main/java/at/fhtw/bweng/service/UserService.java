@@ -1,22 +1,33 @@
 package at.fhtw.bweng.service;
 
+import at.fhtw.bweng.dto.PictureDto;
 import at.fhtw.bweng.dto.UserDto;
+import at.fhtw.bweng.dto.UserResponseDto;
+import at.fhtw.bweng.mapper.UserMapper;
 import at.fhtw.bweng.model.Address;
 import at.fhtw.bweng.model.PaymentMethod;
+import at.fhtw.bweng.model.Picture;
 import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.repository.AddressRepository;
 import at.fhtw.bweng.repository.PaymentMethodRepository;
 import at.fhtw.bweng.repository.UserRepository;
 import at.fhtw.bweng.util.IsoUtil;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class UserService {
@@ -25,23 +36,22 @@ public class UserService {
     private final AddressRepository addressRepository;
     private  final PaymentMethodRepository paymentMethodRepository;
     private final PasswordEncoder passwordEncoder;
+    private final PictureService pictureService;
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, AddressRepository addressRepository, PaymentMethodRepository paymentMethodRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AddressRepository addressRepository, PaymentMethodRepository paymentMethodRepository, PasswordEncoder passwordEncoder, PictureService pictureService, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.addressRepository = addressRepository;
         this.paymentMethodRepository = paymentMethodRepository;
         this.passwordEncoder = passwordEncoder;
+        this.pictureService = pictureService;
+        this.userMapper = userMapper;
     }
 
     public UUID addUser(UserDto userDto) {
 
         // if country code ist not a valid ISOCountry, throw IllegalArgumentException
         if (!IsoUtil.isValidISOCountry(userDto.address().country())) {
-            throw new IllegalArgumentException("Invalid country code: " + userDto.address().country());
-        }
-
-        // if country code ist not a valid ISOCountry, throw IllegalArgumentException
-        if (!IsoUtil.isValidISOLanguage(userDto.address().country())) {
             throw new IllegalArgumentException("Invalid country code: " + userDto.address().country());
         }
 
@@ -87,25 +97,40 @@ public class UserService {
         }
     }
 
-
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public Object getUsers(UUID id) {
+        if (id != null) {
+            return getUserResponseDtoById(id);
+        } else {
+            return getAllUsers();
+        }
     }
 
+    public List<UserResponseDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(this::mapWithProfilePicture)
+                .collect(Collectors.toList());
+    }
+
+    public UserResponseDto getUserResponseDtoById(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("User with ID " + id + " not found"));
+
+        return mapWithProfilePicture(user);
+    }
 
     public User getUserById(UUID id) {
-        return userRepository.findById(id).
-                orElseThrow(() -> new NoSuchElementException("User with id " + id + " not found"));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("User with ID " + id + " not found"));
     }
 
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username).
-                orElseThrow(() -> new NoSuchElementException("User with username " + username + " not found"));
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("User with username " + username + " not found"));
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email).
-                orElseThrow(() -> new NoSuchElementException("User with email " + email + " not found"));
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new NoSuchElementException("User with email " + email + " not found"));
     }
 
     public void updateUser(UUID id, UserDto userDto) {
@@ -229,6 +254,10 @@ public class UserService {
                             ;
                     user.setPaymentMethod(paymentMethod);
                     break;
+                case "status":
+                    ensureAdminRole(); // Check if the current user has the ADMIN role
+                    user.setStatus((String) value);
+                    break;
                 default:
                     throw new IllegalArgumentException("Invalid field: " + key);
             }
@@ -241,21 +270,72 @@ public class UserService {
         }
     }
 
+    // Helper method to ensure the current user has the ADMIN role
+    private void ensureAdminRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-    public void updateUserStatus(UUID id, String status) {
-        User user = getUserById(id); // Reuse the existing method to fetch the user
-        user.setStatus(status); // Update the status
-        userRepository.save(user); // Save the updated user
+        if (authentication == null || !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
+            throw new SecurityException("Only administrators are allowed to change the status field.");
+        }
     }
 
-    public void updateUserPassword(UUID id, String currentPassword,String newPassword) {
+    public void updateUserPassword(UUID id, Map<String, Object> passwords) {
+        // Validate input
+        String currentPassword = (String) passwords.get("currentPassword");
+        String newPassword = (String) passwords.get("newPassword");
+
+        if (currentPassword == null || newPassword == null) {
+            throw new IllegalArgumentException("Missing required fields: currentPassword and/or newPassword");
+        }
+
         User user = getUserById(id);
-        if(!passwordEncoder.matches(currentPassword, user.getPassword())) {
+
+        // Verify current password
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
             throw new IllegalArgumentException("Current password is incorrect");
         }
+
+        // Encode and update the new password
         String hashedNewPassword = passwordEncoder.encode(newPassword);
         user.setPassword(hashedNewPassword);
+
         userRepository.save(user);
+    }
+
+    public void updateUserProfilePicture(UUID userId, MultipartFile file) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("User with ID " + userId + " not found"));
+
+        PictureDto pictureDto = pictureService.upload(file);
+        Picture picture = pictureService.findById(pictureDto.id());
+
+        user.setProfilePicture(picture);
+        userRepository.save(user);
+    }
+
+    private UserResponseDto mapWithProfilePicture(User user) {
+        // Use MapStruct to map fields
+        UserResponseDto userResponseDto = userMapper.toDto(user);
+
+        // Add profile picture URL manually
+        if (user.getProfilePicture() != null) {
+            String profilePictureUrl = pictureService.generatePresignedUrl(user.getProfilePicture().getExternalId());
+            userResponseDto = new UserResponseDto(
+                    userResponseDto.id(),
+                    userResponseDto.gender(),
+                    userResponseDto.firstName(),
+                    userResponseDto.lastName(),
+                    userResponseDto.username(),
+                    userResponseDto.email(),
+                    userResponseDto.dateOfBirth(),
+                    userResponseDto.role(),
+                    userResponseDto.status(),
+                    userResponseDto.address(),
+                    userResponseDto.paymentMethod(),
+                    profilePictureUrl
+            );
+        }
+        return userResponseDto;
     }
 
 }

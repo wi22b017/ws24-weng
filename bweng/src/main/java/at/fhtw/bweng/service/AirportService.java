@@ -28,6 +28,14 @@ public class AirportService {
         }
     }
 
+    public Object getAirports(UUID id) {
+        if (id != null) {
+            return getAirportById(id);
+        } else {
+            return getAllAirports();
+        }
+    }
+
     public List<Airport> getAllAirports(){
         return airportRepository.findAll();
     }

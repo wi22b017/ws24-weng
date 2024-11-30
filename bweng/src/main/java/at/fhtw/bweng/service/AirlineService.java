@@ -32,8 +32,15 @@ public class AirlineService {
         }
     }
 
-    public List<Airline> getAllAirlines(){
+    public Object getAirlines(UUID id) {
+        if (id != null) {
+            return getAirlineById(id);
+        } else {
+            return getAllAirlines();
+        }
+    }
 
+    public List<Airline> getAllAirlines(){
         return airlineRepository.findAll();
     }
 
@@ -45,7 +52,6 @@ public class AirlineService {
     public Airline getAirlineByName(String name) {
         return airlineRepository.findByName(name)
                 .orElseThrow(() -> new NoSuchElementException("Airline with name " + name + " not found"));
-
     }
 
     public void updateAirline(UUID id, @Valid AirlineDto airlineDto) {

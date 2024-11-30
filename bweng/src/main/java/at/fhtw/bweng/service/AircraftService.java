@@ -43,6 +43,19 @@ public class AircraftService {
         }
     }
 
+    public Object getAircrafts(UUID id, String serialNumber) {
+        if (serialNumber != null) {
+            // Fetch aircraft by serialNumber
+            return getAircraftBySerialNumber(serialNumber);
+        } else if (id != null) {
+            // Fetch aircraft by ID
+            return getAircraftById(id);
+        } else {
+            // Fetch all aircrafts
+            return getAllAircrafts();
+        }
+    }
+
     public List<Aircraft> getAllAircrafts(){
         return aircraftRepository.findAll();
     }

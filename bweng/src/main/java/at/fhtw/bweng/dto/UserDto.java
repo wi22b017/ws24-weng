@@ -1,10 +1,7 @@
 package at.fhtw.bweng.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Email;
 
 public record UserDto(
         @NotBlank(message = "Gender cannot be blank")
@@ -18,6 +15,10 @@ public record UserDto(
         String username,
         @NotBlank(message = "Password name cannot be blank")
         @Size(min = 8, message = "Password must be at least 8 characters long")
+        @Pattern(
+                regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$",
+                message = "Password must contain at least one digit, one lowercase character, one uppercase character, and be at least 8 characters long"
+        )
         String password,
         @NotBlank(message = "Email name cannot be blank")
         @Email(message = "Email must be a valid email address")

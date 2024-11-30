@@ -82,6 +82,16 @@ public class FlightService {
         }
     }
 
+    public Object getFlights(UUID id, String flightNumber) {
+        if (flightNumber != null) {
+            return getFlightByFlightNumber(flightNumber);
+        } else if (id != null) {
+            return getFlightById(id);
+        } else {
+            return getAllFlights();
+        }
+    }
+
     public List<Flight> getAllFlights(){
         List<Flight> flights = flightRepository.findAll();
 
@@ -185,9 +195,4 @@ public class FlightService {
 
         flightRepository.deleteById(id);
     }
-
-
-
-
-
 }

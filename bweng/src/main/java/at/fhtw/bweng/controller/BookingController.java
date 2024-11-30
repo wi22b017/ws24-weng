@@ -35,13 +35,8 @@ public class BookingController {
 
     @GetMapping(value = {"/bookings", "/bookings/{id}"})
     public ResponseEntity<?> getBookings(@PathVariable(required = false) UUID id) {
-        if (id != null) {
-            Booking booking = bookingService.getBookingById(id);
-            return ResponseEntity.ok(booking);
-        } else {
-            List<Booking> bookings = bookingService.getAllBookings();
-            return ResponseEntity.ok(bookings);
-        }
+        Object result = bookingService.getBookings(id);
+        return ResponseEntity.ok(result);
     }
 
     //get bookings made by a specific user

@@ -12,4 +12,11 @@ spring:
 server:
   port: 3000
 
+minio:
+  url: http://localhost
+  port: 9000
+  user: minioadmin
+  password: minioadminpw
+  bucket: files
+
 security.jwt.secret: averygoodsecretnoonewilleverguessinamillionyears

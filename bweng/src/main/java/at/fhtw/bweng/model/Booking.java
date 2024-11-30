@@ -7,8 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -41,5 +44,25 @@ public class Booking {
     @JsonManagedReference
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
     private List<Passenger> passengers;
+
+    @CreationTimestamp
+    private Instant createdOn;
+
+    @UpdateTimestamp
+    private Instant lastUpdatedOn;
+
+    // Custom Constructor (Passengers and Timestamps)
+    public Booking(UUID id, String status, BigDecimal price, OffsetDateTime bookingDate, User user,
+                   PaymentMethod paymentMethod, Flight flight) {
+        this.id = id;
+        this.status = status;
+        this.price = price;
+        this.bookingDate = bookingDate;
+        this.user = user;
+        this.paymentMethod = paymentMethod;
+        this.flight = flight;
+    }
+
+
 
 }

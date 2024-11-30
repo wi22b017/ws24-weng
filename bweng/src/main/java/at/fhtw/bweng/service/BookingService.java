@@ -40,6 +40,15 @@ public class BookingService {
         this.userRepository = userRepository;
         this.passengerService = passengerService;
     }
+
+    public Object getBookings(UUID id) {
+        if (id != null) {
+            return getBookingById(id);
+        } else {
+            return getAllBookings();
+        }
+    }
+
     //get all bookings
     public List<Booking> getAllBookings() {
         List<Booking> bookings = bookingRepository.findAll();

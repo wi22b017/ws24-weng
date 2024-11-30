@@ -80,7 +80,13 @@ public class PassengerService {
         }
     }
 
-
+    public Object getPassengers(UUID id) {
+        if (id != null) {
+            return getPassengerById(id);
+        } else {
+            return getAllPassengers();
+        }
+    }
 
     public List<Passenger> getAllPassengers() {
         return passengerRepository.findAll();
@@ -125,12 +131,10 @@ public class PassengerService {
 
     public void deletePassenger(UUID id) {
 
-
         if(!passengerRepository.existsById(id)) {
             throw new NoSuchElementException("Passenger with ID " + id + " not found");
         }
         passengerRepository.deleteById(id);
-
 
     }
 

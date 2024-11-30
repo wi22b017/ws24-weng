@@ -18,6 +18,16 @@ public class BaggageTypeService {
         this.baggageTypeRepository = baggageTypeRepository;
     }
 
+    public Object getBaggageTypes(UUID id, String name) {
+        if (name != null) {
+            return getBaggageTypeByName(name);
+        } else if (id != null) {
+            return getBaggageTypeById(id);
+        } else {
+            return getAllBaggageTypes();
+        }
+    }
+
     //get all baggage types
     public List<BaggageType> getAllBaggageTypes(){
         return baggageTypeRepository.findAll();
