@@ -1,3 +1,49 @@
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmYzZC1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDg1NDksInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.G4Thc51K0GwMQTrS3eCThsB9SR3A33yCw2_WYXLlWK0
+Content-Length: 25
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John"
+}
+
+<> 2024-12-10T101607.200.json
+
+###
+
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmJlMi1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDU1NDUsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Jvz8rxT9N9Du0x3T6jmB-7GBIRjGQ1smsmtYJaaZCuU
+Content-Length: 29
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Johnnnnn"
+}
+
+<> 2024-12-10T101534.200.json
+
+###
+
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThiZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 29
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Johnnnnn"
+}
+
+###
+
 GET http://localhost:3000/pictures/07ad7254-d771-4d00-a9c2-6a30f99cf31d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
@@ -917,45 +963,6 @@ Accept: */*
 }
 
 <> 2024-11-18T200717.409.json
-
-###
-
-GET http://localhost:3000/passengers
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200640.200.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
-  }
-}
-
-<> 2024-11-18T200626.409.json
-
-###
-
-GET http://localhost:3000/passengers
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200515.200.json
 
 ###
 

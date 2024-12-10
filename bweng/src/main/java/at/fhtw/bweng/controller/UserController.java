@@ -1,7 +1,6 @@
 package at.fhtw.bweng.controller;
 
 import at.fhtw.bweng.dto.UserDto;
-import at.fhtw.bweng.model.User;
 import at.fhtw.bweng.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +56,7 @@ public class UserController {
     }
 
     @PatchMapping("/users/{id}")
-    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
     public ResponseEntity<?> updateUserProfile(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
         userService.updateUserProfile(id, updates);
         Map<String, String> response = new HashMap<>();
@@ -67,7 +66,7 @@ public class UserController {
     }
 
     @PatchMapping("/users/{id}/password")
-    @PreAuthorize("hasRole('ADMIN') or @userPermissionEvaluator.canModify(authentication, #id)")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
     public ResponseEntity<?> updateUserPassword(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
         userService.updateUserPassword(id, updates);
         Map<String, String> response = new HashMap<>();
@@ -77,7 +76,7 @@ public class UserController {
     }
 
     @PostMapping("users/{id}/picture")
-    @PreAuthorize("@userPermissionEvaluator.canModify(authentication, #id)")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
     public ResponseEntity<?> uploadProfilePicture(@PathVariable UUID id, @RequestParam("file") MultipartFile file) {
         userService.updateUserProfilePicture(id, file);
         Map<String, String> response = new HashMap<>();
