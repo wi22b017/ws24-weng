@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/users").permitAll() // Registration
                                 .requestMatchers(HttpMethod.GET, "/airports").permitAll() // Airports
                                 .requestMatchers(HttpMethod.GET, "/paymentMethods").permitAll() // Payment methods
-                                //.requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // Implemented with UserPermissionEvaluator and @PreAuthorize in UserController
+                                //.requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // Implemented with UserPermission and @PreAuthorize in UserController
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
                                 .requestMatchers(HttpMethod.POST, "/flights").hasAuthority("ADMIN") // Restrict flight creation to ADMIN
                                 .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN") // Match exact role name
