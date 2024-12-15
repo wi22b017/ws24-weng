@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -38,9 +39,11 @@ public class Flight {
     @UpdateTimestamp
     private Instant lastUpdatedOn;
 
+    private BigDecimal price;
+
     // Custom Constructor (Excluding Timestamps)
     public Flight(UUID id, String flightNumber, OffsetDateTime departureTime, OffsetDateTime arrivalTime,
-                  Airport flightOrigin, Airport flightDestination, Aircraft aircraft) {
+                  Airport flightOrigin, Airport flightDestination, Aircraft aircraft, BigDecimal price) {
         this.id = id;
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
@@ -48,5 +51,6 @@ public class Flight {
         this.flightOrigin = flightOrigin;
         this.flightDestination = flightDestination;
         this.aircraft = aircraft;
+        this.price = price;
     }
 }

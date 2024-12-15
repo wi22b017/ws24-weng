@@ -19,36 +19,42 @@ INSERT INTO airport (id, code, name, created_on, last_updated_on) VALUES
 (UNHEX(REPLACE(UUID(),'-','')),'VIE', 'Vienna International Airport', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')),'ZHR', 'Zurich Airport', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO flight (id, flight_number, departure_time, arrival_time, flight_origin_id, flight_destination_id, aircraft_id, created_on, last_updated_on) VALUES
+INSERT INTO flight (id, flight_number, departure_time, arrival_time, flight_origin_id, flight_destination_id, aircraft_id, price, created_on, last_updated_on) VALUES
 (UNHEX(REPLACE(UUID(),'-','')), 'LH1001', '2024-11-25 08:00:00', '2024-11-25 10:00:00',
  (SELECT id FROM airport WHERE code='FRA'),
  (SELECT id FROM airport WHERE code='VIE'),
  (SELECT id FROM aircraft WHERE serial_number='LH12345'),
+ 75.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')), 'LH2002', '2024-11-25 12:00:00', '2024-11-25 14:00:00',
  (SELECT id FROM airport WHERE code='VIE'),
  (SELECT id FROM airport WHERE code='FRA'),
  (SELECT id FROM aircraft WHERE serial_number='LH54321'),
+ 90.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')), 'AF3003', '2024-11-26 09:00:00', '2024-11-26 11:30:00',
  (SELECT id FROM airport WHERE code='CDG'),
  (SELECT id FROM airport WHERE code='ZHR'),
  (SELECT id FROM aircraft WHERE serial_number='AF12345'),
+ 120.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')), 'AF4004', '2024-11-26 15:00:00', '2024-11-26 17:00:00',
  (SELECT id FROM airport WHERE code='ZHR'),
  (SELECT id FROM airport WHERE code='CDG'),
  (SELECT id FROM aircraft WHERE serial_number='AF54321'),
+ 70.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')), 'BA5005', '2024-11-27 07:00:00', '2024-11-27 09:00:00',
  (SELECT id FROM airport WHERE code='LHR'),
  (SELECT id FROM airport WHERE code='AMS'),
  (SELECT id FROM aircraft WHERE serial_number='BA12345'),
+ 95.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (UNHEX(REPLACE(UUID(),'-','')), 'BA6006', '2024-11-27 13:00:00', '2024-11-27 15:30:00',
  (SELECT id FROM airport WHERE code='AMS'),
  (SELECT id FROM airport WHERE code='LHR'),
  (SELECT id FROM aircraft WHERE serial_number='BA54321'),
+ 80.00,
  CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO baggage_type (id, name, fee, created_on, last_updated_on) VALUES

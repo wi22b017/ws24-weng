@@ -1,8 +1,11 @@
 package at.fhtw.bweng.dto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.Valid;
+
+import java.math.BigDecimal;
 
 public record FlightDto(
         @NotBlank(message = "Flight number code cannot be blank")
@@ -19,6 +22,8 @@ public record FlightDto(
         AirportDto flightDestination,
         @Valid
         @NotNull
-        AircraftDto aircraft
+        AircraftDto aircraft,
+        @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than 0")
+        BigDecimal price
 ) {
 }

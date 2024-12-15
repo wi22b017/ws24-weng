@@ -15,6 +15,9 @@
           <font-awesome-icon icon="clock" class="duration-icon" />
           <p class="duration-text">Duration: {{ formatDuration(flightDuration) }}</p>
         </div>
+        <div>
+          <p class="price-text">Price: {{ flightPrice }} €</p>
+        </div>
       </div>
 
       <!-- Arrival Information -->
@@ -35,7 +38,7 @@
         </p>
       </div>
     </div>
-    <div class="row mt-3 justify-content-center">
+    <div v-if="!bookNowButtonInvisible" class="row mt-3 justify-content-center">
       <div class="col-auto">
         <AtomButton
             label="Book Now"
@@ -88,7 +91,20 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  flightPrice: {
+    type: Number,
+    required: true,
+  },
+  bookNowButtonInvisible: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
+
+console.log("Prop value received:", props.bookNowButtonInvisible);
+const isButtonInvisible = Boolean(props.bookNowButtonInvisible);
+console.log("Boolean value:", isButtonInvisible);
 
 // Format the flight duration
 const formatDuration = (minutes) => {
@@ -101,8 +117,6 @@ const formatDuration = (minutes) => {
 const formatTime = (isoString) => {
   const date = new Date(isoString);
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-
   };
 
 // Placeholder function for the Book Now button
@@ -179,6 +193,13 @@ const handleBookNow = () => {
 .duration-text {
   font-size: 1rem;
   font-weight: 500;
+  color: #555;
+  margin-top: 5px;
+}
+
+.price-text {
+  font-size: 1.5rem;
+  font-weight: 800;
   color: #555;
   margin-top: 5px;
 }

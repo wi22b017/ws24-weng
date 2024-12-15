@@ -11,6 +11,7 @@
             :airline="flight.aircraft.airline.name"
             :flight-id="flight.id"
             :flight-price="flight.price"
+            :book-now-button-invisible="true"
         />
       </div>
     </div>
@@ -26,12 +27,12 @@ const calculateDurationInMinutes = (departureTime, arrivalTime) => {
   const arrival = new Date(arrivalTime);
   return Math.floor((arrival - departure) / (1000 * 60)); // Duration in minutes
 };
+
 defineProps({
   flights: {
     type: Array,
     required: true,
   },
 });
-
 
 </script>

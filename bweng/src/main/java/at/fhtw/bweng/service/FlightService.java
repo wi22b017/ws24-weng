@@ -72,7 +72,7 @@ public class FlightService {
                     return aircraftRepository.save(newAircraft);
                 });
 
-        Flight flight = new Flight(null, flightDto.flightNumber(), departureTime, arrivalTime, flightOrigin, flightDestination, aircraft);
+        Flight flight = new Flight(null, flightDto.flightNumber(), departureTime, arrivalTime, flightOrigin, flightDestination, aircraft, flightDto.price());
 
         try {
             flightRepository.save(flight);
@@ -179,6 +179,8 @@ public class FlightService {
                 });
 
         flight.setAircraft(aircraft);
+
+        flight.setPrice(flightDto.price());
 
         try {
             flightRepository.save(flight);
