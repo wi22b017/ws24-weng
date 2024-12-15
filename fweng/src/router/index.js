@@ -67,6 +67,14 @@ const routes = [
         import(/* webpackChunkName: "manageFlights" */ "../views/ManageFlightsView.vue"),
     meta: { requiresAdmin: true },
   },
+  {
+    path: "/flightDetail/:flightId",
+    name: "flightDetail",
+    component: () =>
+        import(/* webpackChunkName: "flightDetail" */ "../views/FlightDetailView.vue"),
+    meta: { requiresAuth: true },
+    props: true,
+  },
 ];
 
 const router = createRouter({

@@ -52,13 +52,14 @@
 import {defineProps, inject} from 'vue';
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import { useUserStore } from '@/store/user';
+import router from "@/router";
 
 const userStore = useUserStore();
 // Inject the method to control modals from parent
 const showLoginModal = inject('showLoginModal');
 
 // Props for flight information
-defineProps({
+const props = defineProps({
   flightDepartureInfo: {
     type: Object,
     required: true,
@@ -83,6 +84,10 @@ defineProps({
     type: String,
     required: true,
   },
+  flightId: {
+    type: String,
+    required: true,
+  },
 });
 
 // Format the flight duration
@@ -102,9 +107,12 @@ const formatTime = (isoString) => {
 
 // Placeholder function for the Book Now button
 const handleBookNow = () => {
-  console.log("Book Now button clicked");
   if(!userStore.isLoggedIn){
     showLoginModal(true);
+  }else{
+    //router.push({name: 'flightDetail'});
+    // eslint-disable-next-line
+    router.push({ name: 'flightDetail', params: { flightId: props.flightId } });
   }
 };
 

@@ -21,11 +21,13 @@ import axios from "axios";
 import ErrorModal from "@/components/organisms/OrganismErrorModal.vue";
 import OrganismFlightSearchBar from "@/components/organisms/OrganismFlightSearchBar.vue";
 import FlightListTemplate from "@/components/template/FlightListTemplate.vue";
+import { useFlightStore } from '@/store/flight';
 
 // References and state
 const errorModal = ref(null);
 const flights = ref([]); // List of flights
 const isLoading = ref(false);
+const flightStore = useFlightStore();
 
 // On form submission
 const onSubmit = async (formData) => {
@@ -46,6 +48,7 @@ const onSubmit = async (formData) => {
 
     // Fetch flights
     const response = await axios.get("http://localhost:3000/flights");
+    await flightStore.fetchFlights();
     const userDate = new Date(formData.departureDate).toISOString().split("T")[0];
 
     flights.value = response.data.filter((flight) => {

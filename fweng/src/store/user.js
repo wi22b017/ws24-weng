@@ -59,6 +59,7 @@ export const useUserStore = defineStore('user', {
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('user'); // delete stored userObject from pinia
                 localStorage.removeItem('adminUserStore'); // delete stored userObject from pinia
+                localStorage.removeItem('flight'); // delete stored flights from pinia
 
                 // Reset all state fields to their default values
                 this.$reset();

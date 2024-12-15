@@ -9,6 +9,7 @@
             :flight-arrival-time="flight.arrivalTime"
             :flight-duration="calculateDurationInMinutes(flight.departureTime, flight.arrivalTime)"
             :airline="flight.aircraft.airline.name"
+            :flight-id="flight.id"
         />
       </div>
     </div>

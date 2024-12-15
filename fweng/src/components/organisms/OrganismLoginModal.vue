@@ -38,7 +38,7 @@ const showModal = () => {
 const hideModal = () => {
   isVisible.value = false;
   if(props.shouldForwardToFlightDetail===true){
-    router.push({name: 'myBookings'});
+    router.push({name: 'flightDetail'});
   }
 };
 

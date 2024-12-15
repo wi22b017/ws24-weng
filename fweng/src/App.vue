@@ -21,7 +21,9 @@ const shouldForwardToFlightDetail = ref(false);
 
 
 const showLoginModal = (forward = false) => {
-  shouldForwardToFlightDetail.value = forward; // if the loginModal get's called from a Flight Booking card, this value is set to true
+  // if the loginModal get's called from a Flight Booking card, this value is set to true
+  // after the login or registration process the user gets redirected to the flights detail page
+  shouldForwardToFlightDetail.value = forward;
   loginModalRef.value.showModal();
 };
 
