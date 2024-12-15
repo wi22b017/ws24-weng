@@ -108,7 +108,7 @@ const formatTime = (isoString) => {
 // Placeholder function for the Book Now button
 const handleBookNow = () => {
   if(!userStore.isLoggedIn){
-    showLoginModal(true);
+    showLoginModal(true, props.flightId);
   }else{
     //router.push({name: 'flightDetail'});
     // eslint-disable-next-line

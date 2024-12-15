@@ -8,7 +8,7 @@
     </template>
     <template #body>
       <div class="modal-body">
-        <MoleculeLoginForm :shouldForwardToFlightDetail="shouldForwardToFlightDetail"/>
+        <MoleculeLoginForm/>
       </div>
     </template>
   </AtomModal>
@@ -20,9 +20,14 @@ import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeLoginForm from '@/components/molecules/MoleculeLoginForm.vue';
 import router from "@/router";
 
+
 const props = defineProps({
   shouldForwardToFlightDetail: {
     type: Boolean,
+    required: false,
+  },
+  shouldForwardToFlightId: {
+    type: String,
     required: false,
   },
 });
@@ -38,7 +43,7 @@ const showModal = () => {
 const hideModal = () => {
   isVisible.value = false;
   if(props.shouldForwardToFlightDetail===true){
-    router.push({name: 'flightDetail'});
+    router.push({name: 'flightDetail', params: { flightId: props.shouldForwardToFlightId } });
   }
 };
 

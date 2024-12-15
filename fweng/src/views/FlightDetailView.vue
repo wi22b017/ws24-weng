@@ -1,5 +1,5 @@
 <template>
-<h1>Flight Overview</h1>
+<h1>New Booking</h1>
   <div class="flight-list-container">
     <FlightListTemplate :flights="flightStore.flightToBook" />
   </div>

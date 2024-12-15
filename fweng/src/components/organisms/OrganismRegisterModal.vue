@@ -25,6 +25,10 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
+  shouldForwardToFlightId: {
+    type: String,
+    required: false,
+  },
 });
 
 const isVisible = ref(false);
@@ -37,8 +41,8 @@ const showModal = () => {
 // Hide modal method
 const hideModal = () => {
   isVisible.value = false;
-  if (props.shouldForwardToFlightDetail) {
-    router.push({ name: 'flightDetail' });
+  if (props.shouldForwardToFlightDetail===true) {
+    router.push({ name: 'flightDetail', params: { flightId: props.shouldForwardToFlightId } });
   }
 };
 

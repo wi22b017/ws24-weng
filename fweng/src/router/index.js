@@ -68,7 +68,7 @@ const routes = [
     meta: { requiresAdmin: true },
   },
   {
-    path: "/flightDetail/:flightId",
+    path: "/flightDetail/:flightId?",
     name: "flightDetail",
     component: () =>
         import(/* webpackChunkName: "flightDetail" */ "../views/FlightDetailView.vue"),
