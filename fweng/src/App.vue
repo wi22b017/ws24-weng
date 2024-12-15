@@ -1,7 +1,7 @@
 <template>
   <AppNavbar @show-login="showLoginModal" @show-register="showRegisterModal" />
   <router-view />
-  <OrganismLoginModal ref="loginModalRef" />
+  <OrganismLoginModal ref="loginModalRef" :shouldForwardToFlightDetail="shouldForwardToFlightDetail" />
   <OrganismRegisterModal ref="registerModalRef" />
   <OrganismChangePasswordModal ref="changePasswordModalRef"/>
 </template>
@@ -17,14 +17,14 @@ import OrganismChangePasswordModal from "@/components/organisms/OrganismChangePa
 const loginModalRef = ref(null);
 const registerModalRef = ref(null);
 const changePasswordModalRef = ref(null);
+const shouldForwardToFlightDetail = ref(false);
 
-// Methods to show modals
-const showLoginModal = () => {
+
+const showLoginModal = (forward = false) => {
+  shouldForwardToFlightDetail.value = forward;
   loginModalRef.value.showModal();
 };
 
-// Methods to hide modals
-// eslint-disable-next-line no-unused-vars
 const hideLoginModal = () => {
   loginModalRef.value.hideModal();
 };
@@ -45,8 +45,6 @@ const hideChangePasswordModal = () => {
 const showChangePasswordModal = () => {
   changePasswordModalRef.value.showModal();
 };
-
-
 
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);

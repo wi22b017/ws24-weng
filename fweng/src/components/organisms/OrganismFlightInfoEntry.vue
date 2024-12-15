@@ -104,10 +104,9 @@ const formatTime = (isoString) => {
 const handleBookNow = () => {
   console.log("Book Now button clicked");
   if(!userStore.isLoggedIn){
-    showLoginModal();
+    showLoginModal(true);
   }
 };
-
 
 </script>
 

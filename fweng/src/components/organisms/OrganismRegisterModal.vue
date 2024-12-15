@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue';
+import {ref, defineExpose} from 'vue';
 import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeRegisterForm from '@/components/molecules/MoleculeRegisterForm.vue';
 

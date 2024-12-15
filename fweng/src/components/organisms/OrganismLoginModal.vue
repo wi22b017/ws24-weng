@@ -8,16 +8,24 @@
     </template>
     <template #body>
       <div class="modal-body">
-        <MoleculeLoginForm />
+        <MoleculeLoginForm/>
       </div>
     </template>
   </AtomModal>
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue';
+import { ref, defineExpose, defineProps } from 'vue';
 import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeLoginForm from '@/components/molecules/MoleculeLoginForm.vue';
+import router from "@/router";
+
+const props = defineProps({
+  shouldForwardToFlightDetail: {
+    type: Boolean,
+    required: false,
+  },
+});
 
 const isVisible = ref(false);
 
@@ -29,6 +37,9 @@ const showModal = () => {
 // Hide modal method
 const hideModal = () => {
   isVisible.value = false;
+  if(props.shouldForwardToFlightDetail===true){
+    router.push({name: 'myBookings'});
+  }
 };
 
 // Expose the showModal method

@@ -87,7 +87,6 @@ router.beforeEach(async (to, from, next) => {
   if (requiresAdmin && userRole !== "ADMIN" || requiresAuth && !isLoggedIn) {
     return router.replace({ name: "home" }); // Redirect to the home page
   }
-
   next(); // Allow navigation otherwise
 });
 
