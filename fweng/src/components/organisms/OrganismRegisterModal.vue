@@ -15,14 +15,25 @@
 </template>
 
 <script setup>
-import {ref, defineExpose} from 'vue';
+import {ref, defineExpose, defineProps} from 'vue';
 import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeRegisterForm from '@/components/molecules/MoleculeRegisterForm.vue';
+import router from "@/router";
+
+const props = defineProps({
+  shouldForwardToFlightDetail: {
+    type: Boolean,
+    required: false,
+  },
+});
 
 const isVisible = ref(false);
 
 const handleRegistrationSuccess = () => {
   hideModal();
+  if (props.shouldForwardToFlightDetail) {
+    router.push({ name: 'myBookings' });
+  }
 };
 
 // Define a method to show the modal and expose it to parent components

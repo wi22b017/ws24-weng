@@ -8,7 +8,7 @@
     </template>
     <template #body>
       <div class="modal-body">
-        <MoleculeLoginForm/>
+        <MoleculeLoginForm :shouldForwardToFlightDetail="shouldForwardToFlightDetail"/>
       </div>
     </template>
   </AtomModal>
@@ -42,9 +42,15 @@ const hideModal = () => {
   }
 };
 
+// Hide modal method without possible redirection
+const hideModalWithoutRedirection = () => {
+  isVisible.value = false;
+};
+
 // Expose the showModal method
 defineExpose({
   showModal,
   hideModal,
+  hideModalWithoutRedirection,
 });
 </script>

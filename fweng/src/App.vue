@@ -2,7 +2,7 @@
   <AppNavbar @show-login="showLoginModal" @show-register="showRegisterModal" />
   <router-view />
   <OrganismLoginModal ref="loginModalRef" :shouldForwardToFlightDetail="shouldForwardToFlightDetail" />
-  <OrganismRegisterModal ref="registerModalRef" />
+  <OrganismRegisterModal ref="registerModalRef" :shouldForwardToFlightDetail="shouldForwardToFlightDetail" />
   <OrganismChangePasswordModal ref="changePasswordModalRef"/>
 </template>
 
@@ -21,7 +21,7 @@ const shouldForwardToFlightDetail = ref(false);
 
 
 const showLoginModal = (forward = false) => {
-  shouldForwardToFlightDetail.value = forward;
+  shouldForwardToFlightDetail.value = forward; // if the loginModal get's called from a Flight Booking card, this value is set to true
   loginModalRef.value.showModal();
 };
 
@@ -34,8 +34,8 @@ const showRegisterModal = () => {
 };
 
 const switchToRegisterModal = () => {
-  loginModalRef.value.hideModal();
-  registerModalRef.value.showModal();
+    loginModalRef.value.hideModalWithoutRedirection();
+    registerModalRef.value.showModal();
 };
 
 const hideChangePasswordModal = () => {
