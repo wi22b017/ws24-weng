@@ -60,6 +60,13 @@
           v-model="formData.address.number"
       />
       <AtomInput
+          type="number"
+          label="Zip Code"
+          name="address.zip"
+          id="zip"
+          v-model="formData.address.zip"
+      />
+      <AtomInput
           label="City"
           name="address.city"
           id="city"
@@ -85,13 +92,6 @@
             options: otherCountriesOptions,
           },
         ]"
-      />
-      <AtomInput
-          type="number"
-          label="Zip Code"
-          name="address.zip"
-          id="zip"
-          v-model="formData.address.zip"
       />
       <AtomInput
         label="Email"
