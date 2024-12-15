@@ -52,6 +52,7 @@ const showChangePasswordModal = () => {
 provide('switchToRegisterModal', switchToRegisterModal);
 provide('showChangePasswordModal', showChangePasswordModal);
 provide('hideChangePasswordModal', hideChangePasswordModal);
+provide('showLoginModal', showLoginModal);
 provide('hideLoginModal', hideLoginModal);
 
 </script>

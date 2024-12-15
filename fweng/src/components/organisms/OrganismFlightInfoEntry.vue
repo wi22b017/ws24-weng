@@ -49,8 +49,13 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import {defineProps, inject} from 'vue';
 import AtomButton from "@/components/atoms/AtomButton.vue";
+import { useUserStore } from '@/store/user';
+
+const userStore = useUserStore();
+// Inject the method to control modals from parent
+const showLoginModal = inject('showLoginModal');
 
 // Props for flight information
 defineProps({
@@ -98,6 +103,9 @@ const formatTime = (isoString) => {
 // Placeholder function for the Book Now button
 const handleBookNow = () => {
   console.log("Book Now button clicked");
+  if(!userStore.isLoggedIn){
+    showLoginModal();
+  }
 };
 
 
