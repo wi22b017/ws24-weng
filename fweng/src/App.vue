@@ -33,6 +33,10 @@ const showRegisterModal = () => {
   registerModalRef.value.showModal();
 };
 
+const hideRegisterModal = () => {
+  registerModalRef.value.hideModal();
+};
+
 const switchToRegisterModal = () => {
     loginModalRef.value.hideModalWithoutRedirection();
     registerModalRef.value.showModal();
@@ -52,6 +56,8 @@ provide('showChangePasswordModal', showChangePasswordModal);
 provide('hideChangePasswordModal', hideChangePasswordModal);
 provide('showLoginModal', showLoginModal);
 provide('hideLoginModal', hideLoginModal);
+provide('showRegisterModal', showRegisterModal);
+provide('hideRegisterModal', hideRegisterModal);
 
 </script>
 

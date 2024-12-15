@@ -8,7 +8,7 @@
     </template>
     <template #body>
     <div class="modal-body">
-      <MoleculeRegisterForm @registration-success="handleRegistrationSuccess" />
+      <MoleculeRegisterForm />
     </div>
     </template>
   </AtomModal>
@@ -29,13 +29,6 @@ const props = defineProps({
 
 const isVisible = ref(false);
 
-const handleRegistrationSuccess = () => {
-  hideModal();
-  if (props.shouldForwardToFlightDetail) {
-    router.push({ name: 'myBookings' });
-  }
-};
-
 // Define a method to show the modal and expose it to parent components
 const showModal = () => {
   isVisible.value = true;
@@ -44,6 +37,9 @@ const showModal = () => {
 // Hide modal method
 const hideModal = () => {
   isVisible.value = false;
+  if (props.shouldForwardToFlightDetail) {
+    router.push({ name: 'myBookings' });
+  }
 };
 
 // Expose the showModal method
