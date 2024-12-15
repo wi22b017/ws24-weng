@@ -11,7 +11,10 @@
 
   <!-- Flight List Template -->
   <div class="flight-list-container">
-    <FlightListTemplate :flights="flights" />
+    <FlightListTemplate
+        :flights="flights"
+        :show-booking-button="true"
+    />
   </div>
 </template>
 

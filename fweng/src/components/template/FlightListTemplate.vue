@@ -11,6 +11,7 @@
             :airline="flight.aircraft.airline.name"
             :flight-id="flight.id"
             :flight-price="flight.price"
+            :show-booking-button="showBookingButton"
         />
       </div>
     </div>
@@ -31,7 +32,10 @@ defineProps({
     type: Array,
     required: true,
   },
+  showBookingButton: {
+    type: Boolean,
+    required: true,
+  },
 });
-
 
 </script>

@@ -2,7 +2,10 @@
 <h1>New Booking</h1>
   <h2>Flight Details</h2>
   <div class="flight-list-container">
-    <FlightListTemplate :flights="flightStore.flightToBook" />
+    <FlightListTemplate
+        :flights="flightStore.flightToBook"
+        :show-booking-button="false"
+    />
   </div>
   <h2>Passengers</h2>
 </template>

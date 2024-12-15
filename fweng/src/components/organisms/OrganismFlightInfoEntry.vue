@@ -38,7 +38,7 @@
         </p>
       </div>
     </div>
-    <div v-if="!bookNowButtonInvisible" class="row mt-3 justify-content-center">
+    <div v-if="showBookingButton" class="row mt-3 justify-content-center">
       <div class="col-auto">
         <AtomButton
             label="Book Now"
@@ -95,16 +95,11 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  bookNowButtonInvisible: {
+  showBookingButton: {
     type: Boolean,
-    required: false,
-    default: false,
+    required: true,
   },
 });
-
-console.log("Prop value received:", props.bookNowButtonInvisible);
-const isButtonInvisible = Boolean(props.bookNowButtonInvisible);
-console.log("Boolean value:", isButtonInvisible);
 
 // Format the flight duration
 const formatDuration = (minutes) => {
