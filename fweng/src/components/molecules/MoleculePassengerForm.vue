@@ -30,7 +30,6 @@
 
 <script setup>
 import { reactive, watch, defineProps, defineEmits } from "vue";
-import AtomInput from "@/components/atoms/AtomInput.vue";
 
 const props = defineProps({
   passenger: {
