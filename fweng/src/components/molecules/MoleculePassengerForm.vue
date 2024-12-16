@@ -1,46 +1,44 @@
 <template>
-  <div class="container">
-    <h3>Passenger {{ index + 1 }}</h3>
-    <Form
-        :validation-schema="passengerFormSchema"
-        v-model="formData"
-        :initial-values="formData"
-    >
-      <AtomInput
-          label="First Name"
-          name="firstName"
-          id="firstName"
-          v-model="formData.firstName"
-      />
-      <AtomInput
-          label="Last Name"
-          name="lastName"
-          id="lastName"
-          v-model="formData.lastName"
-      />
-      <AtomInput
-          type="date"
-          label="Date of Birth"
-          name="dateOfBirth"
-          id="dateOfBirth"
-          v-model="formData.dateOfBirth"
-      />
-      <AtomFormSelect
-          label="Baggage Type"
-          name="baggageType"
-          id="baggageType"
-          placeholder="Select a baggage type"
-          v-model="formData.baggage.baggageTypeId"
-          :options="baggageTypesOptions"
-      />
-      <AtomInput
-          label="Preferred Seat Number"
-          name="seatNumber"
-          id="seatNumber"
-          v-model="formData.seatNumber"
-      />
-    </Form>
-  </div>
+  <h3 class="text-center">Passenger {{ index + 1 }}</h3>
+  <Form
+      :validation-schema="passengerFormSchema"
+      v-model="formData"
+      :initial-values="formData"
+  >
+    <AtomInput
+        label="First Name"
+        name="firstName"
+        id="firstName"
+        v-model="formData.firstName"
+    />
+    <AtomInput
+        label="Last Name"
+        name="lastName"
+        id="lastName"
+        v-model="formData.lastName"
+    />
+    <AtomInput
+        type="date"
+        label="Date of Birth"
+        name="dateOfBirth"
+        id="dateOfBirth"
+        v-model="formData.dateOfBirth"
+    />
+    <AtomFormSelect
+        label="Baggage Type"
+        name="baggageType"
+        id="baggageType"
+        placeholder="Select a baggage type"
+        v-model="formData.baggage.baggageTypeId"
+        :options="baggageTypesOptions"
+    />
+    <AtomInput
+        label="Preferred Seat Number"
+        name="seatNumber"
+        id="seatNumber"
+        v-model="formData.seatNumber"
+    />
+  </Form>
 </template>
 
 <script setup>
@@ -111,4 +109,8 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.text-center{
+  text-align: center;
+}
+</style>

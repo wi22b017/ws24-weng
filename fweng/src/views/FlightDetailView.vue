@@ -1,43 +1,50 @@
 <template>
   <h1>New Booking</h1>
   <h2>Flight Details</h2>
-  <div class="flight-list-container">
-    <FlightListTemplate
-        :flights="flightStore.flightToBook"
-        :show-booking-button="false"
-    />
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8 text-start">
+        <FlightListTemplate
+            :flights="flightStore.flightToBook"
+            :show-booking-button="false"
+        />
+        <MoleculePassengerForm
+            v-for="(passenger, index) in passengers"
+            :key="index"
+            :passenger="passenger"
+            :index="index"
+            @updatePassenger="(updatedPassenger) => updatePassenger(index, updatedPassenger)"
+        />
+        <div class="text-center mb-3">
+          <AtomButton
+              type="button"
+              @click="addPassenger"
+              label="Add Passenger"
+              :full-width="false"
+          />
+        </div>
+
+        <h2 class="text-center">Total Price: {{ totalPrice }}</h2>
+        <h2 class="text-center">Payment</h2>
+        <AtomFormSelect
+            label="Payment Method"
+            name="paymentMethod"
+            id="paymentMethod"
+            placeholder="Select a payment method"
+            v-model="selectedPaymentMethod"
+            :options="paymentMethodOptions"
+        />
+        <div class="text-center mb-3">
+          <AtomButton
+              type="button"
+              @click="confirmBooking"
+              label="Confirm Booking"
+              :full-width="false"
+          />
+        </div>
+      </div>
+    </div>
   </div>
-  <MoleculePassengerForm
-      v-for="(passenger, index) in passengers"
-      :key="index"
-      :passenger="passenger"
-      :index="index"
-      @updatePassenger="(updatedPassenger) => updatePassenger(index, updatedPassenger)"
-  />
-  <AtomButton
-      type="button"
-      @click="addPassenger"
-      label="Add Passenger"
-      :full-width="false"
-  />
-
-  <h2>Total Price: {{ totalPrice }}</h2>
-  <h2>Payment</h2>
-  <AtomFormSelect
-      label="Payment Method"
-      name="paymentMethod"
-      id="paymentMethod"
-      placeholder="Select a payment method"
-      v-model="selectedPaymentMethod"
-      :options="paymentMethodOptions"
-  />
-
-  <AtomButton
-      type="button"
-      @click="confirmBooking"
-      label="Confirm Booking"
-      :full-width="false"
-  />
 </template>
 
 <script setup>
@@ -161,4 +168,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.container {
+  text-align: center;
+}
+.text-center {
+  text-align: center;
+}
 </style>
