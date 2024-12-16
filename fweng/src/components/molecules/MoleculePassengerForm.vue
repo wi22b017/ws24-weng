@@ -81,31 +81,8 @@ const props = defineProps({
   },
 });
 
-
-
-/*const localPassenger = reactive({ ...props.passenger });
-
-const formData = vueRef({
-  firstName: localPassenger.firstName,
-  lastName: localPassenger.lastName,
-  dateOfBirth: localPassenger.dateOfBirth,
-  baggageType:"",
-  seatNumber: "",
-});*/
-
-// CHANGE: Create a local formData reactive object based on the passenger prop
-//const formData = reactive({ ...props.passenger });
-
-const formData = reactive({
-  firstName: props.passenger.firstName || "",
-  lastName: props.passenger.lastName || "",
-  dateOfBirth: props.passenger.dateOfBirth || "",
-  baggage: {
-    baggageTypeId: props.passenger.baggage?.baggageTypeId || "",
-  },
-  seatNumber: props.passenger.seatNumber || "",
-});
-
+// Create a local formData reactive object based on the passenger prop
+const formData = reactive({ ...props.passenger });
 
 const emit = defineEmits(["updatePassenger"]);
 
