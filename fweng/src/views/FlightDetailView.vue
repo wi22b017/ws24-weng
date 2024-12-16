@@ -85,6 +85,7 @@ const flightStore = useFlightStore();
 const paymentMethodOptions = vueRef([]);
 const selectedPaymentMethod = vueRef();
 
+
 const passengers = reactive([
   {
     firstName: userStore.firstName,
@@ -156,6 +157,18 @@ async function getPaymentMethods() {
       value: method.name,
       text: method.name,
     }));
+
+    // After fetching the payment methods, preselect based on userStore if available
+    if (userStore.paymentMethodName) {
+      // Check if the fetched payment methods contain this payment method
+      const availableMethod = paymentMethodOptions.value.find(
+          (option) => option.value === userStore.paymentMethodName
+      );
+
+      if (availableMethod) {
+        selectedPaymentMethod.value = userStore.paymentMethodName;
+      }
+    }
   } catch (error) {
     console.error("Failed to fetch payment methods:", error);
   }

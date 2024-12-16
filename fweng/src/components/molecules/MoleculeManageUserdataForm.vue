@@ -95,6 +95,13 @@
           v-model="formData.number"
       />
       <AtomInput
+          type="number"
+          label="Zip Code"
+          name="zip"
+          id="zip"
+          v-model="formData.zip"
+      />
+      <AtomInput
           label="City"
           name="city"
           id="city"
@@ -121,15 +128,6 @@
           },
         ]"
       />
-
-      <AtomInput
-          type="number"
-          label="Zip Code"
-          name="zip"
-          id="zip"
-          v-model="formData.zip"
-      />
-
 
       <AtomInput
           label="Email"
