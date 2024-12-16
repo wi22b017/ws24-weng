@@ -1,35 +1,73 @@
 <template>
-  <div class="passenger-form">
+  <div class="container">
     <h3>Passenger {{ index + 1 }}</h3>
-    <div>
-      <label for="firstName">First Name</label>
-      <input type="text" v-model="localPassenger.firstName" id="firstName" />
-    </div>
-    <div>
-      <label for="lastName">Last Name</label>
-      <input type="text" v-model="localPassenger.lastName" id="lastName" />
-    </div>
-    <div>
-      <label for="birthday">Birthday</label>
-      <input type="date" v-model="localPassenger.birthday" id="birthday" />
-    </div>
-    <div>
-      <label for="baggage">Baggage</label>
-      <select v-model="localPassenger.baggage.baggageTypeId" id="baggage">
-        <option v-for="baggage in baggageTypes" :key="baggage.id" :value="baggage.id">
-          {{ baggage.label }}
-        </option>
-      </select>
-    </div>
-    <div>
-      <label for="seatNumber">Seat Number</label>
-      <input type="text" v-model="localPassenger.seatNumber" id="seatNumber" />
-    </div>
+    <Form
+        :validation-schema="passengerFormSchema"
+        v-model="formData"
+        :initial-values="formData"
+    >
+      <AtomInput
+          label="First Name"
+          name="firstName"
+          id="firstName"
+          v-model="formData.firstName"
+      />
+      <AtomInput
+          label="Last Name"
+          name="lastName"
+          id="lastName"
+          v-model="formData.lastName"
+      />
+      <AtomInput
+          type="date"
+          label="Date of Birth"
+          name="dateOfBirth"
+          id="dateOfBirth"
+          v-model="formData.dateOfBirth"
+      />
+      <AtomFormSelect
+          label="Baggage Type"
+          name="baggageType"
+          id="baggageType"
+          placeholder="Select a baggage type"
+          v-model="formData.baggageType"
+          :options="baggageTypesOptions"
+      />
+      <AtomInput
+          label="Seat Number"
+          name="seatNumber"
+          id="seatNumber"
+          v-model="formData.seatNumber"
+      />
+    </Form>
   </div>
 </template>
 
 <script setup>
-import { reactive, watch, defineProps, defineEmits } from "vue";
+import {watch, defineProps, defineEmits, ref as vueRef, onMounted, reactive} from "vue";
+import {Form} from "vee-validate";
+import AtomInput from "@/components/atoms/AtomInput.vue";
+
+import apiClient from "@/utils/axiosClient";
+import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
+import {object, string} from "yup";
+
+const passengerFormSchema = object({
+  firstName: string()
+      .required("First name is required")
+      .matches(/^[a-zA-Z'\-\s]*$/, "Invalid name"),
+  lastName: string()
+      .required("Last name is required")
+      .matches(/^[a-zA-Z'\-\s]*$/, "Invalid name"),
+  dateOfBirth: string()
+      .required("Date of birth is required")
+      .matches(
+          /^\d{4}-\d{2}-\d{2}$/,
+          "Date of birth must be in the format YYYY-MM-DD"
+      ),
+});
+
+const baggageTypesOptions = vueRef([]);
 
 const props = defineProps({
   passenger: {
@@ -40,23 +78,42 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  baggageTypes: {
-    type: Array,
-    required: true,
-  },
+});
+
+const localPassenger = reactive({ ...props.passenger });
+
+const formData = vueRef({
+  firstName: localPassenger.firstName,
+  lastName: localPassenger.lastName,
+  dateOfBirth: localPassenger.dateOfBirth,
+  baggageType:"",
+  seatNumber: "",
 });
 
 const emit = defineEmits(["updatePassenger"]);
 
-const localPassenger = reactive({...props.passenger});
-
-watch(localPassenger, (newValue) => {
+watch(formData, (newValue) => {
   emit("updatePassenger", newValue);
 }, {deep: true});
+
+async function getBaggageTypes(){
+  try {
+    const baggageTypesOptionsResponse = await apiClient.get(`/baggageTypes`);
+    // Map API response to the structure required by AtomFormSelect
+    baggageTypesOptions.value = baggageTypesOptionsResponse.data.map((baggageType) => ({
+      value: baggageType.id,
+      text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch baggage types:", error);
+  }
+}
+
+onMounted(async () => {
+  await getBaggageTypes();
+});
+
 </script>
 
 <style scoped>
-.passenger-form {
-  margin-bottom: 1rem;
-}
 </style>
