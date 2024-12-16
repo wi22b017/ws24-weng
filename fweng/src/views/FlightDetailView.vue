@@ -26,14 +26,16 @@
 
         <h2 class="text-center">Total Price: {{ totalPrice }}</h2>
         <h2 class="text-center">Payment</h2>
-        <AtomFormSelect
-            label="Payment Method"
-            name="paymentMethod"
-            id="paymentMethod"
-            placeholder="Select a payment method"
-            v-model="selectedPaymentMethod"
-            :options="paymentMethodOptions"
-        />
+        <Form :initial-values="{ paymentMethod: userStore.paymentMethodName }">
+          <AtomFormSelect
+              label="Payment Method"
+              name="paymentMethod"
+              id="paymentMethod"
+              placeholder="Select a payment method"
+              v-model="selectedPaymentMethod"
+              :options="paymentMethodOptions"
+          />
+        </Form>
         <div class="text-center mb-3">
           <AtomButton
               type="button"
@@ -57,6 +59,7 @@ import AtomButton from "@/components/atoms/AtomButton.vue";
 import apiClient from "@/utils/axiosClient";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import { useUserStore } from "@/store/user";
+import { Form } from "vee-validate";
 
 import { object, string } from "yup";
 
@@ -84,7 +87,6 @@ const flightId = route.params.flightId;
 const flightStore = useFlightStore();
 const paymentMethodOptions = vueRef([]);
 const selectedPaymentMethod = vueRef();
-
 
 const passengers = reactive([
   {
