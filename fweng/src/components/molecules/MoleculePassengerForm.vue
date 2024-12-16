@@ -78,6 +78,8 @@ const props = defineProps({
 const emit = defineEmits(["updatePassenger"]);
 
 const formData = reactive({...props.passenger});
+//formData.baggageType= "10845302-bb1b-11ef-833a-0242ac120003";
+
 
 watch(formData, (newValue) => {
   emit("updatePassenger", newValue);
@@ -89,7 +91,7 @@ async function getBaggageTypes() {
     baggageTypesOptions.value = baggageTypesOptionsResponse.data.map((baggageType) => ({
       value: baggageType.id,
       text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
-      originalName: baggageType.name, // Keep the original name to detect hand luggage
+      originalName: baggageType.name,
     }));
 
     // Set default baggage type to "Hand Luggage" if available
@@ -103,9 +105,18 @@ async function getBaggageTypes() {
     console.error("Failed to fetch baggage types:", error);
   }
 }
+function setDefaultBaggageType(){
+  const handLuggageOption = baggageTypesOptions.value.find(
+      option => option.originalName.toLowerCase().includes("hand luggage")
+  );
+  if (handLuggageOption){
+    formData.baggageType = handLuggageOption.value;
+  }
+}
 
 onMounted(async () => {
   await getBaggageTypes();
+  setDefaultBaggageType();
 });
 </script>
 
