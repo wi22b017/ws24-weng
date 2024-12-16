@@ -44,12 +44,11 @@
 </template>
 
 <script setup>
-import {watch, defineProps, defineEmits, onMounted, reactive, ref} from "vue";
-import {Form} from "vee-validate";
+import {watch, defineProps, defineEmits, reactive, ref, onMounted} from "vue";
+import { Form } from "vee-validate";
 import AtomInput from "@/components/atoms/AtomInput.vue";
-
-import apiClient from "@/utils/axiosClient";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
+import apiClient from "@/utils/axiosClient";
 import {object, string} from "yup";
 
 const passengerFormSchema = object({
@@ -61,10 +60,7 @@ const passengerFormSchema = object({
       .matches(/^[a-zA-Z'\-\s]*$/, "Invalid name"),
   dateOfBirth: string()
       .required("Date of birth is required")
-      .matches(
-          /^\d{4}-\d{2}-\d{2}$/,
-          "Date of birth must be in the format YYYY-MM-DD"
-      ),
+      .matches(/^\d{4}-\d{2}-\d{2}$/, "Date of birth must be in the format YYYY-MM-DD"),
   baggageType: string().required("Baggage type is required"),
 });
 
@@ -81,23 +77,30 @@ const props = defineProps({
   },
 });
 
-// Create a local formData reactive object based on the passenger prop
-const formData = reactive({ ...props.passenger });
-
 const emit = defineEmits(["updatePassenger"]);
+
+const formData = reactive({...props.passenger});
 
 watch(formData, (newValue) => {
   emit("updatePassenger", newValue);
 }, {deep: true});
 
-async function getBaggageTypes(){
+async function getBaggageTypes() {
   try {
     const baggageTypesOptionsResponse = await apiClient.get(`/baggageTypes`);
-    // Map API response to the structure required by AtomFormSelect
     baggageTypesOptions.value = baggageTypesOptionsResponse.data.map((baggageType) => ({
       value: baggageType.id,
       text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
+      originalName: baggageType.name, // Keep the original name to detect hand luggage
     }));
+
+    // Set default baggage type to "Hand Luggage" if available
+    const handLuggageOption = baggageTypesOptions.value.find(
+        option => option.originalName.toLowerCase().includes("hand luggage")
+    );
+    if (handLuggageOption && !formData.baggage.baggageTypeId) {
+      formData.baggage.baggageTypeId = handLuggageOption.value;
+    }
   } catch (error) {
     console.error("Failed to fetch baggage types:", error);
   }
@@ -106,8 +109,6 @@ async function getBaggageTypes(){
 onMounted(async () => {
   await getBaggageTypes();
 });
-
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
