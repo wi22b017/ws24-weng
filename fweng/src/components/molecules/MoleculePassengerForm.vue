@@ -30,11 +30,11 @@
           name="baggageType"
           id="baggageType"
           placeholder="Select a baggage type"
-          v-model="formData.baggageType"
+          v-model="formData.baggage.baggageTypeId"
           :options="baggageTypesOptions"
       />
       <AtomInput
-          label="Seat Number"
+          label="Preferred Seat Number"
           name="seatNumber"
           id="seatNumber"
           v-model="formData.seatNumber"
@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import {watch, defineProps, defineEmits, ref as vueRef, onMounted, reactive} from "vue";
+import {watch, defineProps, defineEmits, onMounted, reactive, ref} from "vue";
 import {Form} from "vee-validate";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 
@@ -65,9 +65,10 @@ const passengerFormSchema = object({
           /^\d{4}-\d{2}-\d{2}$/,
           "Date of birth must be in the format YYYY-MM-DD"
       ),
+  baggageType: string().required("Baggage type is required"),
 });
 
-const baggageTypesOptions = vueRef([]);
+const baggageTypesOptions = ref([]);
 
 const props = defineProps({
   passenger: {
@@ -80,7 +81,9 @@ const props = defineProps({
   },
 });
 
-const localPassenger = reactive({ ...props.passenger });
+
+
+/*const localPassenger = reactive({ ...props.passenger });
 
 const formData = vueRef({
   firstName: localPassenger.firstName,
@@ -88,7 +91,21 @@ const formData = vueRef({
   dateOfBirth: localPassenger.dateOfBirth,
   baggageType:"",
   seatNumber: "",
+});*/
+
+// CHANGE: Create a local formData reactive object based on the passenger prop
+//const formData = reactive({ ...props.passenger });
+
+const formData = reactive({
+  firstName: props.passenger.firstName || "",
+  lastName: props.passenger.lastName || "",
+  dateOfBirth: props.passenger.dateOfBirth || "",
+  baggage: {
+    baggageTypeId: props.passenger.baggage?.baggageTypeId || "",
+  },
+  seatNumber: props.passenger.seatNumber || "",
 });
+
 
 const emit = defineEmits(["updatePassenger"]);
 

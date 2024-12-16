@@ -12,6 +12,7 @@
       :key="index"
       :passenger="passenger"
       :index="index"
+      @updatePassenger="(updatedPassenger) => updatePassenger(index, updatedPassenger)"
   />
   <AtomButton
       type="button"
@@ -86,12 +87,16 @@ const addPassenger = () => {
   passengers.push({
     firstName: "",
     lastName: "",
-    birthday: "",
+    dateOfBirth: "",
     seatNumber: "",
     baggage: {
       baggageTypeId: "",
     },
   });
+};
+
+const updatePassenger = (index, updatedPassenger) => {
+  passengers[index] = { ...updatedPassenger }; // Replace passenger at index with updated data
 };
 
 const confirmBooking = async () => {
