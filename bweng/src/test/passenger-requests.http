@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "firstName": "John",
   "lastName": "Doe",
-  "birthday": "1980-01-01",
+  "dateOfBirth": "1980-01-01",
   "seatNumber": "12A",
   "baggage": {
     "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
@@ -25,7 +25,7 @@ Content-Type: application/json
 {
   "firstName": "Jane",
   "lastName": "Doe",
-  "birthday": "1985-05-15",
+  "dateOfBirth": "1985-05-15",
   "seatNumber": "14B",
   "baggage": {
     "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"

@@ -185,7 +185,7 @@ async function getPaymentMethods() {
   try {
     const paymentMethodOptionsResponse = await apiClient.get(`/paymentMethods`);
     paymentMethodOptions.value = paymentMethodOptionsResponse.data.map((method) => ({
-      value: method.value,
+      value: method.id,
       text: method.name,
     }));
 

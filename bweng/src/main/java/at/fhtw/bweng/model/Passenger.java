@@ -24,7 +24,7 @@ public class Passenger {
     private UUID id;
     private String firstName;
     private String lastName;
-    private LocalDate birthday;
+    private LocalDate dateOfBirth;
     private String seatNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -42,11 +42,11 @@ public class Passenger {
     @UpdateTimestamp
     private Instant lastUpdatedOn;
 
-    public Passenger(UUID id, String firstName, String lastName, LocalDate birthday, String seatNumber, Baggage baggage) {
+    public Passenger(UUID id, String firstName, String lastName, LocalDate dateOfBirth, String seatNumber, Baggage baggage) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthday = birthday;
+        this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
         this.baggage = baggage;
     }

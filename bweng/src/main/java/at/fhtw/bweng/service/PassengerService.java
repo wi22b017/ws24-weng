@@ -5,7 +5,6 @@ import at.fhtw.bweng.model.*;
 import at.fhtw.bweng.repository.BaggageRepository;
 import at.fhtw.bweng.repository.BaggageTypeRepository;
 import at.fhtw.bweng.repository.PassengerRepository;
-import at.fhtw.bweng.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +39,7 @@ public class PassengerService {
                 null,
                 passengerDto.firstName(),
                 passengerDto.lastName(),
-                passengerDto.birthday(),
+                passengerDto.dateOfBirth(),
                 passengerDto.seatNumber(),
                 baggage
         );
@@ -66,7 +65,7 @@ public class PassengerService {
                 null,
                 passengerDto.firstName(),
                 passengerDto.lastName(),
-                passengerDto.birthday(),
+                passengerDto.dateOfBirth(),
                 passengerDto.seatNumber(),
                 baggage
         );
@@ -109,7 +108,7 @@ public class PassengerService {
         // Update the passenger details
         passenger.setFirstName(passengerDto.firstName());
         passenger.setLastName(passengerDto.lastName());
-        passenger.setBirthday(passengerDto.birthday());
+        passenger.setDateOfBirth(passengerDto.dateOfBirth());
         passenger.setSeatNumber(passengerDto.seatNumber());
 
         // Update or create the baggage if necessary

@@ -12,8 +12,8 @@ public record PassengerDto(
         String firstName,
         @NotBlank(message = "Last name cannot be blank")
         String lastName,
-        @NotNull(message = "Birthday cannot be null")
-        LocalDate birthday,
+        @NotNull(message = "Date of birth cannot be null")
+        LocalDate dateOfBirth,
         String seatNumber,
         @NotNull(message = "Baggage information cannot be null")
         @Valid

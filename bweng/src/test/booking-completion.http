@@ -80,7 +80,7 @@ Content-Type: application/json
     {
       "firstName": "Alice",
       "lastName": "Smith",
-      "birthday": "1990-05-15",
+      "dateOfBirth": "1990-05-15",
       "seatNumber": "",
       "baggage": {
         "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
@@ -89,7 +89,7 @@ Content-Type: application/json
     {
       "firstName": "Bob",
       "lastName": "Johnson",
-      "birthday": "1985-08-22",
+      "dateOfBirth": "1985-08-22",
       "seatNumber": "",
       "baggage": {
         "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
@@ -98,7 +98,7 @@ Content-Type: application/json
     {
       "firstName": "Charlie",
       "lastName": "Brown",
-      "birthday": "1992-02-10",
+      "dateOfBirth": "1992-02-10",
       "seatNumber": "",
       "baggage": {
         "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
