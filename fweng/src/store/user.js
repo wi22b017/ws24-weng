@@ -102,6 +102,24 @@ export const useUserStore = defineStore('user', {
             } catch (error) {
                 console.error('Invalid token', error);
             }
+        },
+        async createBooking(bookingData) {
+            try {
+                const response = await apiClient.post('/bookings', bookingData);
+
+                return {
+                    success: true,
+                    message: 'Booking created successfully',
+                    data: response.data,
+                };
+            } catch (error) {
+                console.error('Error creating booking:', error);
+
+                return {
+                    success: false,
+                    message: error.response?.data?.error || 'An error occurred while creating the booking',
+                };
+            }
         }
     },
     persist: {

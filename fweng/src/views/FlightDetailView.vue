@@ -25,7 +25,7 @@
           />
         </div>
 
-        <h2 class="text-center">Total Price: {{ totalPrice }}</h2>
+        <h2 class="text-center">Total Price: {{ totalPrice }} €</h2>
         <h2 class="text-center">Payment</h2>
         <Form :initial-values="{ paymentMethod: userStore.paymentMethodName }">
           <AtomFormSelect
@@ -45,6 +45,12 @@
               :full-width="false"
           />
         </div>
+        <div v-if="successMessage" class="alert alert-danger mt-3" role="alert">
+          {{ successMessage }}
+        </div>
+        <div v-if="errorMessage" class="alert alert-info mt-3" role="alert">
+          {{ errorMessage }}
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +67,7 @@ import apiClient from "@/utils/axiosClient";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import { useUserStore } from "@/store/user";
 import { Form } from "vee-validate";
-
+import { formatISO } from "date-fns";
 import { object, string } from "yup";
 import ErrorModal from "@/components/organisms/OrganismErrorModal.vue";
 
@@ -90,6 +96,8 @@ const flightStore = useFlightStore();
 const paymentMethodOptions = vueRef([]);
 const selectedPaymentMethod = vueRef();
 const errorModal = ref(null);
+const successMessage = ref('');
+const errorMessage = ref('');
 
 const passengers = reactive([
   {
@@ -150,7 +158,6 @@ const confirmBooking = async () => {
   }
 
   if (!selectedPaymentMethod.value) {
-    alert("Please select a payment method.");
     errorModal.value.showModal("Please select a payment method.");
     return;
   }
@@ -158,21 +165,27 @@ const confirmBooking = async () => {
   const bookingData = {
     status: "Confirmed",
     price: totalPrice.value,
-    bookingDate: new Date().toISOString(),
+    bookingDate: formatISO(new Date().toISOString(), {representation: "complete"}),
     userId: userStore.id,
     paymentMethodId: selectedPaymentMethod.value,
     flightId: flightId,
     passengers: passengers,
   };
 
-  console.log("Booking Data Sent to Backend:", bookingData);
+  const result = await userStore.createBooking(bookingData);
+
+  if(result.success===true){
+    successMessage.value = result.message;
+  }else{
+    errorMessage.value = result.message;
+  }
 };
 
 async function getPaymentMethods() {
   try {
     const paymentMethodOptionsResponse = await apiClient.get(`/paymentMethods`);
     paymentMethodOptions.value = paymentMethodOptionsResponse.data.map((method) => ({
-      value: method.name,
+      value: method.value,
       text: method.name,
     }));
 
