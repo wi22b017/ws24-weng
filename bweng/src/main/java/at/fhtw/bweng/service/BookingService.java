@@ -112,32 +112,20 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
-    //add a booking
+
     @Transactional
     public UUID addBooking(BookingDto bookingDto) {
 
         Booking booking = new Booking();
         mapBookingDtoToBookingEntity(bookingDto, booking);
 
-        bookingRepository.save(booking);
+        bookingRepository.save(booking); // Persist booking first
 
-        // Process passengers in bookingDto and attach to the booking
-        List<Passenger> passengers = bookingDto.passengers().stream()
-                .map(passengerDto -> {
-                    UUID passengerId = passengerService.addPassenger(passengerDto, booking);
-                    Passenger passenger = passengerService.getPassengerById(passengerId);
-                    passenger.setBooking(booking);
-                    return passenger;
-                })
-                .collect(Collectors.toList());
-
-        booking.setPassengers(passengers);
-
-        // Save the booking (cascades to passengers)
-        bookingRepository.save(booking);
+        bookingDto.passengers().forEach(passengerDto -> passengerService.addPassenger(passengerDto, booking));
 
         return booking.getId();
     }
+
 
     //update a booking
     @Transactional
