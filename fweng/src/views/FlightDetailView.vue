@@ -195,7 +195,6 @@ async function getPaymentMethods() {
 
 onMounted(async () => {
   await flightStore.fetchFlight(flightId);
-  await flightStore.fetchBaggageTypes();
   await getPaymentMethods();
 });
 </script>

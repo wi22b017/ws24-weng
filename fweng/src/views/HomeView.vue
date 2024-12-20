@@ -52,6 +52,7 @@ const onSubmit = async (formData) => {
     // Fetch flights
     const response = await axios.get("http://localhost:3000/flights");
     await flightStore.fetchFlights();
+    await flightStore.fetchBaggageTypes();
     const userDate = new Date(formData.departureDate).toISOString().split("T")[0];
 
     flights.value = response.data.filter((flight) => {
@@ -75,6 +76,7 @@ const onSubmit = async (formData) => {
   } finally {
     isLoading.value = false;
   }
+
 };
 </script>
 
