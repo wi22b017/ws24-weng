@@ -42,6 +42,7 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import {watch, defineProps, defineEmits, reactive, ref, onMounted} from "vue";
 import { Form } from "vee-validate";
 import AtomInput from "@/components/atoms/AtomInput.vue";
@@ -77,13 +78,47 @@ const props = defineProps({
 
 const emit = defineEmits(["updatePassenger"]);
 
-const formData = reactive({...props.passenger});
-//formData.baggageType= "10845302-bb1b-11ef-833a-0242ac120003";
+const formData = reactive({
+  firstName: props.passenger.firstName || "",
+  lastName: props.passenger.lastName || "",
+  dateOfBirth: props.passenger.dateOfBirth || "",
+  baggage: {
+    baggageTypeId: props.passenger.baggage.baggageTypeId || "",
+  },
+  seatNumber: props.passenger.seatNumber || "",
+});
 
+const errors = ref({
+  firstName: "",
+  lastName: "",
+  dateOfBirth: "",
+  baggageType: "",
+  seatNumber: "",
+});
 
-watch(formData, (newValue) => {
-  emit("updatePassenger", newValue);
-}, {deep: true});
+watch(
+    () => formData,
+    async (newValues) => {
+      try {
+        // Validate the entire form
+        await passengerFormSchema.validate(newValues, { abortEarly: false });
+
+        // Clear all errors if validation succeeds
+        Object.keys(errors.value).forEach((field) => {
+          errors.value[field] = "";
+        });
+
+        // Emit the updated passenger data to the parent
+        emit("updatePassenger", { ...formData });
+      } catch (validationError) {
+        // Populate errors for all invalid fields
+        validationError.inner.forEach((err) => {
+          errors.value[err.path] = err.message;
+        });
+      }
+    },
+    { deep: true }
+);
 
 async function getBaggageTypes() {
   try {

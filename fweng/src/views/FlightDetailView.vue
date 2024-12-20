@@ -1,6 +1,7 @@
 <template>
   <h1>New Booking</h1>
   <h2>Flight Details</h2>
+  <ErrorModal ref="errorModal" />
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8 text-start">
@@ -53,7 +54,7 @@
 import FlightListTemplate from "@/components/template/FlightListTemplate.vue";
 import MoleculePassengerForm from "@/components/molecules/MoleculePassengerForm.vue";
 import { useFlightStore } from '@/store/flight';
-import { onMounted, defineProps, reactive, computed, ref as vueRef } from "vue";
+import {onMounted, defineProps, reactive, computed, ref as vueRef, ref} from "vue";
 import { useRoute } from "vue-router";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import apiClient from "@/utils/axiosClient";
@@ -62,6 +63,7 @@ import { useUserStore } from "@/store/user";
 import { Form } from "vee-validate";
 
 import { object, string } from "yup";
+import ErrorModal from "@/components/organisms/OrganismErrorModal.vue";
 
 // Define the same validation schema here for final check before send
 const passengerFinalSchema = object({
@@ -87,6 +89,7 @@ const flightId = route.params.flightId;
 const flightStore = useFlightStore();
 const paymentMethodOptions = vueRef([]);
 const selectedPaymentMethod = vueRef();
+const errorModal = ref(null);
 
 const passengers = reactive([
   {
@@ -119,6 +122,7 @@ const addPassenger = () => {
 
 const updatePassenger = (index, updatedPassenger) => {
   passengers[index] = {...updatedPassenger};
+  console.log(passengers);
 };
 
 const confirmBooking = async () => {
@@ -128,14 +132,14 @@ const confirmBooking = async () => {
       await passengerFinalSchema.validate(passenger, {abortEarly: false});
     } catch (err) {
       // If validation fails, show error and return early
-      alert("Validation failed for one or more passengers. Please check the details again.");
-      console.error("Validation errors:", err.errors);
+      errorModal.value.showModal("Please make sure that every passenger has a firstname, lastname, date of birth and a baggage type selected");
       return;
     }
   }
 
   if (!selectedPaymentMethod.value) {
     alert("Please select a payment method.");
+    errorModal.value.showModal("Please select a payment method.");
     return;
   }
 
