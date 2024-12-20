@@ -46,6 +46,7 @@ export const useFlightStore = defineStore('flight', {
                     value: baggageType.id,
                     text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
                     originalName: baggageType.name,
+                    fee: baggageType.fee,
                 }));
 
                 // Set default baggage type to "Hand Luggage" if available

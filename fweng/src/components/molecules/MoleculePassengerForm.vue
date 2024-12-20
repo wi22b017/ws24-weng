@@ -42,7 +42,6 @@
 </template>
 
 <script setup>
-/* eslint-disable */
 import {watch, defineProps, defineEmits, reactive, ref, onMounted} from "vue";
 import { Form } from "vee-validate";
 import AtomInput from "@/components/atoms/AtomInput.vue";

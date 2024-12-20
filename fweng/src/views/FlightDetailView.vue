@@ -108,6 +108,8 @@ const totalPrice = computed(() => {
   return passengers.length * 100;
 });
 
+
+
 const addPassenger = () => {
   passengers.push({
     firstName: "",
