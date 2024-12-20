@@ -1,6 +1,5 @@
 <template>
-  <h1>New Booking</h1>
-  <h2>Flight Details</h2>
+  <h1 class="mt-5">New Booking</h1>
   <ErrorModal ref="errorModal" />
   <div class="container">
     <div class="row justify-content-center">

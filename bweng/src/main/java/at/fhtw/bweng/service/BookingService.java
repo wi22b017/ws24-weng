@@ -179,7 +179,6 @@ public class BookingService {
         Flight flight = flightRepository.findById(bookingDto.flightId())
                 .orElseThrow(() -> new NoSuchElementException("Flight with ID " + bookingDto.flightId() + " not found."));
         booking.setFlight(flight);
-
     }
 
 }
