@@ -23,14 +23,11 @@ public class PaymentMethodController {
 
     @PostMapping("/paymentMethods")
     public ResponseEntity<?> addPaymentMethod(@RequestBody @Valid PaymentMethodDto paymentMethodDto) {
-
         UUID uuid = paymentMethodService.addPaymentMethod(paymentMethodDto);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method added successfully");
             response.put("id", uuid.toString());
             return ResponseEntity.created(URI.create("/paymentMethods/" + uuid.toString())).body(response);
-
-
     }
 
     @GetMapping(value = {"/paymentMethods", "/paymentMethods/{id}"})

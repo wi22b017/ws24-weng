@@ -27,7 +27,7 @@
 
         <h2 class="text-center">Total Price: {{ totalPrice }} €</h2>
         <h2 class="text-center">Payment</h2>
-        <Form :initial-values="{ paymentMethod: userStore.paymentMethodName }">
+        <Form :initial-values="{ paymentMethod: userStore.paymentMethodId }" >
           <AtomFormSelect
               label="Payment Method"
               name="paymentMethod"
@@ -188,31 +188,7 @@ async function getPaymentMethods() {
       value: method.id,
       text: method.name,
     }));
-
-    // After fetching the payment methods, preselect based on userStore if available
-/*    if (userStore.paymentMethodName) {
-      // Check if the fetched payment methods contain this payment method
-      const availableMethodId = paymentMethodOptions.value.find((option) => {
-            if(option.text === userStore.paymentMethodName){
-              return option.id;
-            }
-          }
-      );
-
-      if (availableMethodId) {
-        selectedPaymentMethod.value = availableMethodId;
-      }
-    }*/
-    // Preselect the payment method based on `userStore.paymentMethodName`
-    if (userStore.paymentMethodName) {
-      const availableMethod = paymentMethodOptions.value.find(
-          (option) => option.text === userStore.paymentMethodName
-      );
-      if (availableMethod) {
-        selectedPaymentMethod.value = availableMethod.value;
-      }
-    }
-    console.log(selectedPaymentMethod.value);
+    selectedPaymentMethod.value = userStore.paymentMethodId;
   } catch (error) {
     console.error("Failed to fetch payment methods:", error);
   }
