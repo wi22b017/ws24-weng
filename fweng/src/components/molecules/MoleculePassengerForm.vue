@@ -30,7 +30,7 @@
         id="baggageType"
         placeholder="Select a baggage type"
         v-model="formData.baggage.baggageTypeId"
-        :options="baggageTypesOptions"
+        :options="flightStore.baggageTypesOptions"
     />
     <AtomInput
         label="Preferred Seat Number"
@@ -47,8 +47,8 @@ import {watch, defineProps, defineEmits, reactive, ref, onMounted} from "vue";
 import { Form } from "vee-validate";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
-import apiClient from "@/utils/axiosClient";
 import {object, string} from "yup";
+import { useFlightStore } from '@/store/flight';
 
 const passengerFormSchema = object({
   firstName: string()
@@ -63,8 +63,6 @@ const passengerFormSchema = object({
   baggageType: string().required("Baggage type is required"),
 });
 
-const baggageTypesOptions = ref([]);
-
 const props = defineProps({
   passenger: {
     type: Object,
@@ -77,6 +75,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["updatePassenger"]);
+const flightStore = useFlightStore();
 
 const formData = reactive({
   firstName: props.passenger.firstName || "",
@@ -87,6 +86,8 @@ const formData = reactive({
   },
   seatNumber: props.passenger.seatNumber || "",
 });
+
+formData.baggageType = flightStore.defaultBaggageType;
 
 const errors = ref({
   firstName: "",
@@ -120,38 +121,9 @@ watch(
     { deep: true }
 );
 
-async function getBaggageTypes() {
-  try {
-    const baggageTypesOptionsResponse = await apiClient.get(`/baggageTypes`);
-    baggageTypesOptions.value = baggageTypesOptionsResponse.data.map((baggageType) => ({
-      value: baggageType.id,
-      text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
-      originalName: baggageType.name,
-    }));
-
-    // Set default baggage type to "Hand Luggage" if available
-    const handLuggageOption = baggageTypesOptions.value.find(
-        option => option.originalName.toLowerCase().includes("hand luggage")
-    );
-    if (handLuggageOption && !formData.baggage.baggageTypeId) {
-      formData.baggage.baggageTypeId = handLuggageOption.value;
-    }
-  } catch (error) {
-    console.error("Failed to fetch baggage types:", error);
-  }
-}
-function setDefaultBaggageType(){
-  const handLuggageOption = baggageTypesOptions.value.find(
-      option => option.originalName.toLowerCase().includes("hand luggage")
-  );
-  if (handLuggageOption){
-    formData.baggageType = handLuggageOption.value;
-  }
-}
 
 onMounted(async () => {
-  await getBaggageTypes();
-  setDefaultBaggageType();
+  await flightStore.fetchBaggageTypes();
 });
 </script>
 

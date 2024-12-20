@@ -4,7 +4,9 @@ import apiClient from '../utils/axiosClient';
 export const useFlightStore = defineStore('flight', {
     state: () => ({
         flights: [],
-        flightToBook: []
+        flightToBook: [],
+        baggageTypesOptions: [],
+        defaultBaggageType: String
     }),
     actions: {
         async fetchFlights() {
@@ -37,6 +39,26 @@ export const useFlightStore = defineStore('flight', {
                 };
             }
         },
+        async fetchBaggageTypes() {
+            try {
+                const baggageTypesOptionsResponse = await apiClient.get(`/baggageTypes`);
+                this.baggageTypesOptions = baggageTypesOptionsResponse.data.map((baggageType) => ({
+                    value: baggageType.id,
+                    text: `${baggageType.name} (${baggageType.fee.toFixed(2)} €)`,
+                    originalName: baggageType.name,
+                }));
+
+                // Set default baggage type to "Hand Luggage" if available
+                const handLuggageOption = this.baggageTypesOptions.find(
+                    option => option.originalName.toLowerCase().includes("hand luggage")
+                );
+                if (handLuggageOption) {
+                   this.defaultBaggageType = handLuggageOption.value;
+                }
+            } catch (error) {
+                console.error("Failed to fetch baggage types:", error);
+            }
+        }
     },
     persist: {
         enabled: true,

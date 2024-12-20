@@ -98,7 +98,7 @@ const passengers = reactive([
     dateOfBirth: userStore.dateOfBirth,
     seatNumber: "",
     baggage: {
-      baggageTypeId: "",
+      baggageTypeId: flightStore.defaultBaggageType,
     },
   },
 ]);
@@ -115,7 +115,7 @@ const addPassenger = () => {
     dateOfBirth: "",
     seatNumber: "",
     baggage: {
-      baggageTypeId: "",
+      baggageTypeId: flightStore.defaultBaggageType,
     },
   });
 };
@@ -132,6 +132,7 @@ const confirmBooking = async () => {
       await passengerFinalSchema.validate(passenger, {abortEarly: false});
     } catch (err) {
       // If validation fails, show error and return early
+      console.log(passengers);
       errorModal.value.showModal("Please make sure that every passenger has a firstname, lastname, date of birth and a baggage type selected");
       return;
     }
@@ -182,6 +183,7 @@ async function getPaymentMethods() {
 
 onMounted(async () => {
   await flightStore.fetchFlight(flightId);
+  await flightStore.fetchBaggageTypes();
   await getPaymentMethods();
 });
 </script>
