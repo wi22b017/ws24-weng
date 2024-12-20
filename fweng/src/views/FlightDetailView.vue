@@ -45,11 +45,11 @@
               :full-width="false"
           />
         </div>
-        <div v-if="successMessage" class="alert alert-danger mt-3" role="alert">
-          {{ successMessage }}
-        </div>
-        <div v-if="errorMessage" class="alert alert-info mt-3" role="alert">
+        <div v-if="errorMessage" class="alert alert-danger mt-3" role="alert">
           {{ errorMessage }}
+        </div>
+        <div v-if="successMessage" class="alert alert-info mt-3" role="alert">
+          {{ successMessage }}
         </div>
       </div>
     </div>
@@ -190,16 +190,29 @@ async function getPaymentMethods() {
     }));
 
     // After fetching the payment methods, preselect based on userStore if available
-    if (userStore.paymentMethodName) {
+/*    if (userStore.paymentMethodName) {
       // Check if the fetched payment methods contain this payment method
-      const availableMethod = paymentMethodOptions.value.find(
-          (option) => option.value === userStore.paymentMethodName
+      const availableMethodId = paymentMethodOptions.value.find((option) => {
+            if(option.text === userStore.paymentMethodName){
+              return option.id;
+            }
+          }
       );
 
+      if (availableMethodId) {
+        selectedPaymentMethod.value = availableMethodId;
+      }
+    }*/
+    // Preselect the payment method based on `userStore.paymentMethodName`
+    if (userStore.paymentMethodName) {
+      const availableMethod = paymentMethodOptions.value.find(
+          (option) => option.text === userStore.paymentMethodName
+      );
       if (availableMethod) {
-        selectedPaymentMethod.value = userStore.paymentMethodName;
+        selectedPaymentMethod.value = availableMethod.value;
       }
     }
+    console.log(selectedPaymentMethod.value);
   } catch (error) {
     console.error("Failed to fetch payment methods:", error);
   }
