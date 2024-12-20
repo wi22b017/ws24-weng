@@ -104,11 +104,20 @@ const passengers = reactive([
 ]);
 
 const totalPrice = computed(() => {
-  // Example price calculation
-  return passengers.length * 100;
+  if (!flightStore.flightToBook.length) return 0;
+
+  const basePricePerPerson = flightStore.flightToBook[0].price || 0;
+
+  return passengers.reduce((total, passenger) => {
+    const baggageType = flightStore.baggageTypesOptions.find(
+        (option) => option.value === passenger.baggage.baggageTypeId
+    );
+
+    const baggageFee = baggageType ? baggageType.fee : 0;
+
+    return total + basePricePerPerson + baggageFee;
+  }, 0);
 });
-
-
 
 const addPassenger = () => {
   passengers.push({
