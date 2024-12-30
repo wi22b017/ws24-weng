@@ -1,19 +1,17 @@
 <template>
   <div
     class="flight-time-airport"
-    :class="[
-      flightInfoType,
-      type == 'departure' ? 'flight-departure' : 'flight-arrival',
+    :class="[flightInfo.type === 'departure' ? 'flight-departure' : 'flight-arrival',
     ]"
   >
     <div class="flight-time">
-      <time>{{ time }}</time>
+      <time>{{ flightInfo.time }}</time>
     </div>
     <div class="flight-airport-code">
-      <span>{{ airportCode }}</span>
+      <span>{{ flightInfo.airportCode }}</span>
     </div>
-    <div v-if="terminal" class="flight-terminal">
-      <span>Terminal {{ terminal }}</span>
+    <div v-if="flightInfo.terminal" class="flight-terminal">
+      <span>Terminal {{ flightInfo.terminal }}</span>
     </div>
   </div>
 </template>
@@ -22,23 +20,10 @@
 import { defineProps } from "vue";
 
 defineProps({
-  time: {
-    type: String,
+  flightInfo: {
+    type: Object,
     required: true,
-  },
-  airportCode: {
-    type: String,
-    required: true,
-  },
-  terminal: {
-    type: String,
-    required: false,
-  },
-  type: {
-    type: String,
-    required: true,
-    validator: (value) => ["departure", "arrival"].includes(value), // Validate type
-  },
+  }
 });
 </script>
 

@@ -1,0 +1,67 @@
+###
+POST http://localhost:3000/auth/token
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "johndoe",
+  "password": "password1"
+}
+
+###
+GET http://localhost:8080/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwY2RjZGE1ZS1hMWVjLTExZWYtYjQ4ZC0wMjQyYWMxMzAwMDIiLCJleHAiOjE3MzIyMTQ4OTQsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJST0xFX1VTRVIifQ.Dki8IhXxoy-eJi8-C4flDD60XOMoOnBxNbKDW3NgOvI
+
+
+###
+PATCH http://localhost:3000/users/2d427e4b-c610-443b-b581-3b02c3bd6e53
+Content-Type: application/json
+
+{
+  "status": "INACTIVE"
+}
+
+###
+PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlNi1hYzg4LTExZWYtODM3YS0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzI5ODQ5MDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.tDv3Vtwo3dFOItA3hcMmZ2mdbKBGfss28zd2oTGV6IM
+
+{
+  "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AT"}
+}
+
+###
+PATCH http://localhost:3000/users/b05c98de-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+
+{
+  "status": "INACTIVE"
+}
+
+
+###
+POST http://localhost:3000/pictures
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit.jpg"
+
+< /Users/philhub/Downloads/the_hobbit.jpg
+
+###
+GET http://localhost:3000/pictures/07ad7254-d771-4d00-a9c2-6a30f99cf31d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+
+
+###
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmYzZC1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDg1NDksInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.G4Thc51K0GwMQTrS3eCThsB9SR3A33yCw2_WYXLlWK0
+
+{
+  "firstName": "John"
+}
+
+

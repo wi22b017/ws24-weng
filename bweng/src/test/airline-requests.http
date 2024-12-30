@@ -1,0 +1,44 @@
+### Create an airline
+POST http://localhost:3000/airlines
+Content-Type: application/json
+
+{
+  "name": "Austrian Airlines",
+  "code": "OS",
+  "country": "Austria"
+}
+
+### Create a second airline
+POST http://localhost:3000/airlines
+Content-Type: application/json
+
+{
+  "name": "Air France",
+  "code": "AF",
+  "country": "France"
+}
+
+### Retrieve all airlines
+GET http://localhost:3000/airlines
+
+### Retrieve an airline by id
+GET http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
+
+
+
+### Update an existing airline
+PUT http://localhost:3000/airlines/ff88237f-518c-416d-b170-eb2fac950345
+Content-Type: application/json
+
+{
+  "name": "Air France Updated",
+  "code": "AF"
+}
+
+
+### Delete an existing airline
+DELETE http://localhost:3000/airlines/02b8168f-b9d2-4717-b073-b387637f26e8
+
+
+### Delete an airline with a non-existing id
+DELETE http://localhost:3000/airlines/57c32325-fb48-4434-8028-f90712e9d5f9

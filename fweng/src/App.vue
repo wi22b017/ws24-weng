@@ -1,8 +1,17 @@
 <template>
   <AppNavbar @show-login="showLoginModal" @show-register="showRegisterModal" />
   <router-view />
-  <OrganismLoginModal ref="loginModalRef" />
-  <OrganismRegisterModal ref="registerModalRef" />
+  <OrganismLoginModal
+      ref="loginModalRef"
+      :shouldForwardToFlightDetail="shouldForwardToFlightDetail"
+      :shouldForwardToFlightId="shouldForwardToFlightId"
+  />
+  <OrganismRegisterModal
+      ref="registerModalRef"
+      :shouldForwardToFlightDetail="shouldForwardToFlightDetail"
+      :shouldForwardToFlightId="shouldForwardToFlightId"
+  />
+  <OrganismChangePasswordModal ref="changePasswordModalRef"/>
 </template>
 
 <script setup>
@@ -10,27 +19,56 @@ import {provide, ref} from "vue";
 import AppNavbar from "@/components/organisms/OrganismNavbar.vue";
 import OrganismLoginModal from "@/components/organisms/OrganismLoginModal.vue";
 import OrganismRegisterModal from "@/components/organisms/OrganismRegisterModal.vue";
+import OrganismChangePasswordModal from "@/components/organisms/OrganismChangePasswordModal.vue";
 
 // Create refs to control the modals
 const loginModalRef = ref(null);
 const registerModalRef = ref(null);
+const changePasswordModalRef = ref(null);
+const shouldForwardToFlightDetail = ref(false);
+const shouldForwardToFlightId = ref(null);
 
-// Methods to show modals
-const showLoginModal = () => {
+const showLoginModal = (forward = false, flightId  = null) => {
+  // if the loginModal get's called from a Flight Booking card, this value is set to true
+  // after the login or registration process the user gets redirected to the flights detail page
+  shouldForwardToFlightDetail.value = forward;
+  shouldForwardToFlightId.value = flightId;
   loginModalRef.value.showModal();
+};
+
+const hideLoginModal = () => {
+  loginModalRef.value.hideModal();
 };
 
 const showRegisterModal = () => {
   registerModalRef.value.showModal();
 };
 
+const hideRegisterModal = () => {
+  registerModalRef.value.hideModal();
+};
+
 const switchToRegisterModal = () => {
-  loginModalRef.value.hideModal();
-  registerModalRef.value.showModal();
+    loginModalRef.value.hideModalWithoutRedirection();
+    registerModalRef.value.showModal();
+};
+
+const hideChangePasswordModal = () => {
+  changePasswordModalRef.value.hideModal();
+};
+
+const showChangePasswordModal = () => {
+  changePasswordModalRef.value.showModal();
 };
 
 // Provide this method to children components
 provide('switchToRegisterModal', switchToRegisterModal);
+provide('showChangePasswordModal', showChangePasswordModal);
+provide('hideChangePasswordModal', hideChangePasswordModal);
+provide('showLoginModal', showLoginModal);
+provide('hideLoginModal', hideLoginModal);
+provide('showRegisterModal', showRegisterModal);
+provide('hideRegisterModal', hideRegisterModal);
 
 </script>
 

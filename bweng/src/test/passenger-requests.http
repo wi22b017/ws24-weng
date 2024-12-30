@@ -1,0 +1,36 @@
+### Create a new passenger --> Not working, because bookingId cannot be null
+POST http://localhost:3000/passengers
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1980-01-01",
+  "seatNumber": "12A",
+  "baggage": {
+    "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+  }
+}
+
+### Retrieve all passengers
+GET http://localhost:3000/passengers
+
+### Retrieve a passenger by ID
+GET http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
+
+### Update an existing passenger
+PUT http://localhost:3000/passengers/b977fcb9-8617-4a3a-aebb-5926472799ee
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "dateOfBirth": "1985-05-15",
+  "seatNumber": "14B",
+  "baggage": {
+    "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+  }
+}
+
+### Delete a passenger by ID
+DELETE http://localhost:3000/passengers/b977fcb9-8617-4a3a-aebb-5926472799ee

@@ -1,0 +1,4 @@
+# my.cnf
+
+[mysqld]
+default_time_zone = '+00:00'

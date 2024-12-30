@@ -1,0 +1,99 @@
+### Create a new Booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00+02:00",
+  "userId": "57404b01-b8ba-436b-b8c9-d4b452ae8ead",
+  "paymentMethodId": "6c8f082e-1914-4945-8883-cd6a48e4f79e",
+  "flightId": "cfdd58ba-5ce4-4720-a975-c4d9ab0e8286",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "dateOfBirth": "1990-05-15",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "dateOfBirth": "1985-08-22",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "d5d45372-bbb1-44ee-9a00-1ba206a6fcb7"
+      }
+    }
+  ]
+}
+
+### get all bookings
+GET http://localhost:3000/bookings
+
+### get a booking by an existing id
+GET http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+
+### get a booking by a non-existing id
+GET http://localhost:3000/bookings/9b25b83a-a5d0-55e2-8b4d-9268a24edea8
+
+### get bookings by an existing user id
+GET http://localhost:3000/bookings/user/7a998171-84c1-4539-bf1a-cd666cebff64
+
+### get bookings by a non-existing user id
+GET http://localhost:3000/bookings/user/c345a6cb-94c5-4be9-b0bc-4666a4de1fcf
+
+
+### update a booking by id
+PUT http://localhost:3000/bookings/42993d4c-3462-4690-b4cf-c7f3f58283a2
+Content-Type: application/json
+
+{
+  "status": "Updated",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00+02:00",
+  "userId": "e921af07-73a7-4589-96c4-f4208b356d18",
+  "paymentMethodId": "cffd31dd-29be-4af9-82a7-b645fbf73e10",
+  "flightId": "2e100572-cc47-44b3-8510-7dad3e25a169",
+  "passengers": [
+    {
+      "id": "216a8b6c-2373-4c16-913f-9258774dc174",
+      "firstName": "Alice2",
+      "lastName": "Smith",
+      "dateOfBirth": "1990-05-15",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
+      }
+    },
+    {
+      "id": "7264ab1e-c24c-4fde-8d6f-8fde038c2331",
+      "firstName": "Bo2b",
+      "lastName": "Johnson",
+      "dateOfBirth": "1985-08-22",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
+      }
+    },
+    {
+      "id": "f4ee4cd2-c392-4676-b894-656d3147544e",
+      "firstName": "Charlie2",
+      "lastName": "Brown",
+      "dateOfBirth": "1992-02-10",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2c2fda73-6442-4901-9c66-dd53ddfb1683"
+      }
+    }
+  ]
+}
+
+### delete a booking by id
+DELETE http://localhost:3000/bookings/a4c18ba0-acdb-4445-80f6-3b6025abb55f
+
+
+

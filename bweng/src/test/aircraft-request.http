@@ -1,0 +1,51 @@
+### Create a aircraft
+POST http://localhost:3000/aircrafts
+Content-Type: application/json
+
+{
+  "serialNumber": "A12345",
+  "manufacturer": "Embraer",
+  "model": "195",
+  "capacity": 120,
+  "airline": { "name": "Austrian Airlines" }
+}
+
+### Create a second aircraft
+POST http://localhost:3000/aircrafts
+Content-Type: application/json
+
+{
+  "serialNumber": "C123456789",
+  "manufacturer": "Airbus",
+  "model": "A321-211",
+  "capacity": 200,
+  "airline": {"name": "Air France"}
+}
+
+### Retrieve all aircrafts
+GET http://localhost:3000/aircrafts
+
+### Retrieve an aircraft by id
+GET http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
+
+### Retrieve an aircraft by serial number
+GET http://localhost:3000/aircrafts?serialNumber=A12345
+
+### Update an existing aircraft
+PUT http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
+Content-Type: application/json
+
+{
+  "serialNumber": "A123456",
+  "manufacturer": "Airbus",
+  "model": "A320neo-12",
+  "capacity": 190,
+  "airline": { "name": "Sky Airlines" }
+}
+
+### Delete an aircraft with an exisiting id
+DELETE http://localhost:3000/aircrafts/e4155d16-4019-4485-b48b-281326b25bf1
+
+### Delete an aircraft with a non-exisiting id
+DELETE http://localhost:3000/aircrafts/57c32325-fb48-4434-8028-f90712e9d5f9
+

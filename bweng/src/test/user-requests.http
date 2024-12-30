@@ -1,0 +1,108 @@
+### Create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "dateOfBirth": "1999-08-09",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+### Create another user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "janesmith",
+  "password": "securePass456",
+  "email": "jane.smith@example.com",
+  "dateOfBirth": "1995-05-15",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Elm Street",
+    "number": 45,
+    "zip": 2020,
+    "city": "Salzburg",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
+}
+
+
+### Retrieve all users
+GET http://localhost:3000/users
+
+### Retrieve a user by ID
+GET http://localhost:3000/users/3fe44c18-61b1-4e04-95b3-81dee2fdbd18
+
+### Update an existing user
+PUT http://localhost:3000/users/27b4d55f-e391-4c23-845b-4cba7967fe33
+Content-Type: application/json
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "janesmith",
+  "password": "securePass456",
+  "email": "jane.smith@example.com",
+  "dateOfBirth": "2005-05-15",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Elm Street",
+    "number": 45,
+    "zip": 2020,
+    "city": "Salzburg",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+### Delete a user by ID
+DELETE http://localhost:3000/users/c259a6cb-94c5-4be9-b0bc-4666a4de1fcf
+
+### Patch a user by ID
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+
+{
+  "status": "INACTIVE"
+}
+
+###Patch test
+PATCH localhost:3000/users/test-patch
+
+
+### Patch: update the password
+PATCH http://localhost:3000/users/06244794-f2b3-4c86-ba83-5688cd5d48f6/password
+Content-Type: application/json
+
+{
+  "currentPassword": "1234567",
+  "newPassword": "7654321!"
+}

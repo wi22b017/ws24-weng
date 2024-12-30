@@ -1,0 +1,968 @@
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmYzZC1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDg1NDksInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.G4Thc51K0GwMQTrS3eCThsB9SR3A33yCw2_WYXLlWK0
+Content-Length: 25
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John"
+}
+
+<> 2024-12-10T101607.200.json
+
+###
+
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmJlMi1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDU1NDUsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Jvz8rxT9N9Du0x3T6jmB-7GBIRjGQ1smsmtYJaaZCuU
+Content-Length: 29
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Johnnnnn"
+}
+
+<> 2024-12-10T101534.200.json
+
+###
+
+PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThiZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 29
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Johnnnnn"
+}
+
+###
+
+GET http://localhost:3000/pictures/07ad7254-d771-4d00-a9c2-6a30f99cf31d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T181144.200.jpeg
+
+###
+
+POST http://localhost:3000/pictures
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzM4ZmU2MS1hZjNlLTExZWYtODBjNy0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNzMwNDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.Fp3Md7K66dOYOX2Etspx_Eqcmh-YanD18eVPGxjg3DQ
+Content-Type: multipart/form-data; boundary=boundary
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 117563
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit.jpg"
+
+< /Users/philhub/Downloads/the_hobbit.jpg
+--boundary--
+
+<> 2024-11-30T181135.201.json
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T154019.200.jpeg
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:3000/covers/6bcd96a8-23f8-4cd2-a293-13c7c86f5669
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-30T153933.200.jpeg
+
+###
+
+POST http://localhost:3000/covers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjlmN2QwYi1hZjI4LTExZWYtOWFhZC0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjM4OTMsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.FUhNCK0A4Q1PpdB7nwXoJRbjKyvMNIel_H5CzeX3ocs
+Content-Type: multipart/form-data; boundary=boundary
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 117569
+
+--boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="file"; filename="the_hobbit_cover.jpg"
+
+< /Users/philhub/Downloads/the_hobbit_cover.jpg
+--boundary--
+
+<> 2024-11-30T153856.201.json
+
+###
+
+PATCH http://localhost:3000/users/b05c98de-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-30T150451.403.json
+
+###
+
+PATCH http://localhost:3000/users/b05c9afb-af0f-11ef-82df-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMDVjOThkZS1hZjBmLTExZWYtODJkZi0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzMwNjE3NDcsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.q5xq8Gg2NmjADlmei7HFyCQNICbIpDpCID4aJzNIVuU
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-30T150355.500.json
+
+###
+
+PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlNi1hYzg4LTExZWYtODM3YS0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzI5ODQ5MDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.tDv3Vtwo3dFOItA3hcMmZ2mdbKBGfss28zd2oTGV6IM
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AT"}
+}
+
+<> 2024-11-29T180530.200.json
+
+###
+
+PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYTBiNzNlNi1hYzg4LTExZWYtODM3YS0wMjQyYWMxMjAwMDIiLCJleHAiOjE3MzI5ODQ5MDgsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.tDv3Vtwo3dFOItA3hcMmZ2mdbKBGfss28zd2oTGV6IM
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AV"}
+}
+
+<> 2024-11-29T180520.400.json
+
+###
+
+PATCH http://localhost:3000/users/ea0b73e6-ac88-11ef-837a-0242ac120002
+Content-Type: application/json
+Content-Length: 96
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "address":{"street":"Main Street","number":123,"zip":10115,"city":"Berlin","country":"AV"}
+}
+
+###
+
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-25T104046.200.json
+
+###
+
+GET http://localhost:3000/bookings
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 928
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00+02:00",
+  "userId": "686e877d-503d-477b-b51b-3c731ba4a12d",
+  "paymentMethodId": "c167f3d0-aa35-11ef-a7d0-0242ac120002",
+  "flightId": "c1635729-aa35-11ef-a7d0-0242ac120002",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    }
+  ]
+}
+
+<> 2024-11-25T103935.201.json
+
+###
+
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 928
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00+02:00",
+  "userId": "686e877d-503d-477b-b51b-3c731ba4a12d",
+  "paymentMethodId": "c167f3d0-aa35-11ef-a7d0-0242ac120002",
+  "flightId": "c1635729-aa35-11ef-a7d0-0242ac120002",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "c164e92b-aa35-11ef-a7d0-0242ac120002"
+      }
+    }
+  ]
+}
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-25T103711.200.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 410
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-12-25",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-25T103631.201.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 410
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-12-25",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-25T103500.409.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-25T103401.400.json
+
+###
+
+PATCH http://localhost:3000/users/2d427e4b-c610-443b-b581-3b02c3bd6e53
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-24T164758.200.json
+
+###
+
+POST http://localhost:3000/auth/token
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-24T153653.500.json
+
+###
+
+PATCH http://localhost:3000/users/test-patch
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-24T152944.200.txt
+
+###
+
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-24T152646.200.json
+
+###
+
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+###
+
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+###
+
+PATCH http://localhost:3000/users/test-patch
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-24T151819.500.json
+
+###
+
+PATCH http://localhost:3000/users/06b84059-c9c6-4f56-8db3-5a00683c6547
+Content-Type: application/json
+Content-Length: 26
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "INACTIVE"
+}
+
+<> 2024-11-24T151258.500.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 410
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "dateOfBirth": "1999-08-09",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-24T140253.409.json
+
+###
+
+PUT http://localhost:3000/users/27b4d55f-e391-4c23-845b-4cba7967fe33
+Content-Type: application/json
+Content-Length: 420
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "janesmith",
+  "password": "securePass456",
+  "email": "jane.smith@example.com",
+  "dateOfBirth": "2005-05-15",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Elm Street",
+    "number": 45,
+    "zip": 2020,
+    "city": "Salzburg",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-24T140246.404.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 410
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "dateOfBirth": "1999-08-09",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-24T140241.409.json
+
+###
+
+GET http://localhost:3000/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-23T094516.200.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-23T094513.201.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 246
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "baggage": {
+    "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+  },
+  "booking": {
+    "id": "917cf50d-fbf1-4600-955f-dfb3de457bfe"
+  }
+}
+
+<> 2024-11-18T201216.409.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 246
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "baggage": {
+    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
+  },
+  "booking": {
+    "id": "917cf50d-fbf1-4600-955f-dfb3de457bfe"
+  }
+}
+
+<> 2024-11-18T201205.404.json
+
+###
+
+DELETE http://localhost:3000/passengers/b977fcb9-8617-4a3a-aebb-5926472799ee
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-11-18T201124.200.json
+
+###
+
+PUT http://localhost:3000/passengers/b977fcb9-8617-4a3a-aebb-5926472799ee
+Content-Type: application/json
+Content-Length: 177
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "birthday": "1985-05-15",
+  "seatNumber": "14B",
+  "baggage": {
+    "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+  }
+}
+
+<> 2024-11-18T201053.200.json
+
+###
+
+PUT http://localhost:3000/passengers/b977fcb9-8617-4a3a-aebb-5926472799ee
+Content-Type: application/json
+Content-Length: 177
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "birthday": "1985-05-15",
+  "seatNumber": "14B",
+  "baggage": {
+    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
+  }
+}
+
+<> 2024-11-18T201031.404.json
+
+###
+
+GET http://localhost:3000/passengers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-18T201007.200.json
+
+###
+
+POST http://localhost:3000/bookings
+Content-Type: application/json
+Content-Length: 922
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Confirmed",
+  "price": 250.00,
+  "bookingDate": "2024-11-11T14:30:00",
+  "userId": "09b4690a-4d96-4bd7-84e0-df1dc48af571",
+  "paymentMethodId": "84d540b9-7931-4399-9f66-e732be79d5d3",
+  "flightId": "8da985b9-c84f-4e0d-98da-1ff2d953724f",
+  "passengers": [
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "birthday": "1990-05-15",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+      }
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "birthday": "1985-08-22",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+      }
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "birthday": "1992-02-10",
+      "seatNumber": "",
+      "baggage": {
+        "baggageTypeId": "2dc4d9cf-9201-420e-a0e1-4869017e6a77"
+      }
+    }
+  ]
+}
+
+<> 2024-11-18T201001.201.json
+
+###
+
+POST http://localhost:3000/baggageTypes
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "carry-on luggage",
+  "fee": 15.00
+}
+
+<> 2024-11-18T200941.201.json
+
+###
+
+POST http://localhost:3000/flights
+Content-Type: application/json
+Content-Length: 534
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+<> 2024-11-18T200931.201.json
+
+###
+
+GET http://localhost:3000/paymentMethods
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-18T200919.200.json
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+Content-Length: 379
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main Street",
+    "number": 123,
+    "zip": 1010,
+    "city": "Vienna",
+    "country": "Austria"
+  },
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
+}
+
+<> 2024-11-18T200908.201.json
+
+###
+
+PUT http://localhost:3000/passengers/83ae6d2f-cda9-4bab-8b82-324777f492f1
+Content-Type: application/json
+Content-Length: 177
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "birthday": "1985-05-15",
+  "seatNumber": "14B",
+  "baggage": {
+    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
+  }
+}
+
+<> 2024-11-18T200816.404.json
+
+###
+
+GET http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-18T200807.404.json
+
+###
+
+GET http://localhost:3000/passengers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2024-11-18T200803.200.json
+
+###
+
+POST http://localhost:3000/passengers
+Content-Type: application/json
+Content-Length: 177
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthday": "1980-01-01",
+  "seatNumber": "12A",
+  "baggage": {
+    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
+  }
+}
+
+<> 2024-11-18T200717.409.json
+
+###
+

@@ -1,0 +1,127 @@
+### Create a flight
+POST http://localhost:3000/flights
+Content-Type: application/json
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+### Create a second flight
+POST http://localhost:3000/flights
+Content-Type: application/json
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-10T10:00:00+01:00",
+  "arrivalTime": "2024-11-11T13:00:00+01:00",
+  "flightOrigin": {
+    "airportCode": "LHR",
+    "airportText": "London Heathrow"
+  },
+  "flightDestination": {
+    "airportCode": "CPH",
+    "airportText": "Copenhagen Kastrup"
+  },
+  "aircraft": {
+    "serialNumber": "B123456789",
+    "manufacturer": "Airbus",
+    "model": "A321-211",
+    "capacity": 200,
+    "airline": {
+      "name": "Scandinavian Airlines"
+    }
+  }
+}
+
+### Retrieve all flights
+GET http://localhost:3000/flights
+
+### Retrieve a flight by an existing id
+GET http://localhost:3000/flights/891f61f1-bc19-495b-920a-85c5dfcc43eb
+
+### Retrieve a flight by a non-existing id
+GET http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
+
+### Retrieve a flight by an existing flightnumber
+GET http://localhost:3000/flights?flightNumber=LH1234
+
+### Update a flight with an existing id
+PUT http://localhost:3000/flights/ed033778-d1e5-4dd5-a8f6-54c99e3dad5f
+Content-Type: application/json
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-05T15:40:00",
+  "arrivalTime": "2024-11-05T19:45:00",
+  "flightOrigin": {
+    "airportCode": "LHR",
+    "airportText": "London Heathrow"
+  },
+  "flightDestination": {
+    "airportCode": "CPH",
+    "airportText": "Copenhagen Kastrup"
+  },
+  "aircraft": {
+    "serialNumber": "C123456789",
+    "manufacturer": "Airbus",
+    "model": "A321-211",
+    "capacity": 200,
+    "airline": {
+      "name": "Air France"
+    }
+  }
+}
+
+### Update a flight with a non-existing id
+PUT http://localhost:3000/flights/4bff276f-891f-43bf-b065-678a183c44e8
+Content-Type: application/json
+
+{
+  "flightNumber": "LH12348",
+  "departureTime": "2024-11-05T15:40:00",
+  "arrivalTime": "2024-11-05T19:35:00",
+  "flightOrigin": {
+    "airportCode": "LHR",
+    "airportText": "London Heathrow"
+  },
+  "flightDestination": {
+    "airportCode": "CPH",
+    "airportText": "Copenhagen Kastrup"
+  },
+  "aircraft": {
+    "serialNumber": "C123456789",
+    "manufacturer": "Airbus",
+    "model": "A321-211",
+    "capacity": 200,
+    "airline": {
+      "name": "Air France"
+    }
+  }
+}
+
+### Delete a flight with an existing id
+DELETE http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
+
+### Delete a flight with a non-existing id
+DELETE http://localhost:3000/flights/57c32325-fb48-4434-8028-f90712e9d5f9
+
+

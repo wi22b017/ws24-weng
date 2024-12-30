@@ -1,0 +1,54 @@
+### Create an airport
+POST http://localhost:3000/airports
+Content-Type: application/json
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles International Airport"
+}
+
+### Create a second airport
+POST http://localhost:3000/airports
+Content-Type: application/json
+
+{
+  "airportCode": "JFK",
+  "airportText": "John F. Kennedy International Airport"
+}
+
+### Retrieve all airports
+GET http://localhost:3000/airports
+
+### Retrieve an airport with an exisiting id
+GET http://localhost:3000/airports/cac8a834-bfd5-428d-80bc-4f66ae10dcf3
+
+### Retrieve an airport with a non-exisiting id
+GET http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+
+### Update an existing airport with an existing id
+PUT http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+Content-Type: application/json
+
+{
+  "airportCode": "LAX",
+  "airportText": "Los Angeles Intl Airport Updated"
+}
+
+### Update an existing airport with a non-existing id
+PUT http://localhost:3000/airports/cac8a834-bfd5-428d-80bc-4f66ae10dcf3
+Content-Type: application/json
+
+{
+  "airportCode": "LAX-01",
+  "airportText": "Los Angeles Intl Airport Updated"
+}
+
+### Delete an airport with an exisiting id
+DELETE http://localhost:3000/airports/5d0194f2-8167-409b-9e9e-02c70e07852c
+
+### Delete an airport with a non-exisiting id
+DELETE http://localhost:3000/airports/87779864-ef3e-4f64-90af-c16e899018da
+
+
+
+

@@ -1,0 +1,41 @@
+### add a new baggage
+POST http://localhost:3000/baggages
+Content-Type: application/json
+
+{
+  "baggageTypeId": "5f0585cb-7fda-4d64-9950-d9a1b7c18d38"
+}
+
+### add another baggage
+POST http://localhost:3000/baggages
+Content-Type: application/json
+
+{
+  "baggageTypeId": "cd0604ad-b113-43a3-b948-4b5c5e89fbb2"
+}
+
+### get all baggages
+GET http://localhost:3000/baggages
+
+### get baggage by an existing id
+GET http://localhost:3000/baggages/87ac5fca-f466-40d0-8068-93ed81608cb4
+
+### get baggage by a non-existing id
+GET http://localhost:3000/baggages/87ac5fca-f477-40d0-8068-93ed81608cb4
+
+### get baggages by an existing bagage type id
+GET http://localhost:3000/baggages?baggageTypeId=3ebbf993-371f-4fe6-a5ed-57bedc6ea67a
+
+### get baggages by a non-existing bagage type id
+GET http://localhost:3000/baggages?baggageTypeId=3ebbf884-371f-4fe6-a5ed-57bedc6ea67a
+
+### update baggage by id
+PUT http://localhost:3000/baggages/87ac5fca-f466-40d0-8068-93ed81608cb4
+Content-Type: application/json
+
+{
+  "baggageTypeId": "4a582c9b-c5a2-4b73-81d1-e58077c31f37"
+}
+
+### delete baggage by id
+DELETE http://localhost:3000/baggages/da0052c6-005c-433f-b537-13aa4d91a80d

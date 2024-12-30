@@ -1,66 +1,107 @@
-###
-GET http://localhost:8080/books
-
-<> 2024-10-02T205024.200.json
-<> 2024-10-02T204950.200.json
-<> 2024-10-02T204602.200.json
-<> 2024-10-02T204352.200.json
-<> 2024-10-02T203441.200.json
-<> 2024-10-02T202052.200.json
-<> 2024-10-02T200436.200.json
-<> 2024-10-02T200353.200.json
-<> 2024-10-02T194540.200.json
-<> 2024-10-02T190849.200.json
-<> 2024-10-02T190724.500.json
-
-###
-GET http://localhost:8080/books/d9217954-af02-4a04-a584-fee633e5d32a
-
-<> 2024-10-02T200425.200.json
-<> 2024-10-02T195136.200.json
-<> 2024-10-02T194735.500.json
-<> 2024-10-02T194603.200.json
-
-###
-POST http://localhost:8080/books
+### Create an airline
+POST http://localhost:3000/airlines
 Content-Type: application/json
 
 {
-  "title": "Death on the Nile",
-  "author": {
-    "firstName": "Agatha",
-    "lastName": "Christie"
+  "name": "Austrian Airlines"
+}
+
+### Create an airline
+POST http://localhost:3000/airlines
+Content-Type: application/json
+
+{
+  "name": "Air France"
+}
+
+### Retrieve all airlines
+GET http://localhost:3000/airlines
+
+### Create an aircraft
+POST http://localhost:3000/aircrafts
+Content-Type: application/json
+
+{
+  "serialNumber": "A2",
+  "manufacturer": "Boeing",
+  "model": "787-9",
+  "capacity": 294,
+  "airline": {
+    "name": "Austrian Airlines"
+  }
+}
+
+### Retrieve all aircrafts
+GET http://localhost:3000/aircrafts
+
+### Create a payment method
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "Credit Card"
+}
+
+### Create a payment method
+POST http://localhost:3000/paymentMethods
+Content-Type: application/json
+
+{
+  "name": "PayPal"
+}
+
+### Retreive all payment methods
+GET http://localhost:3000/paymentMethods
+
+### Create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "gender": "Male",
+  "firstName": "John",
+  "lastName": "Doe",
+  "username": "john_doe",
+  "password": "securepassword",
+  "email": "john.doe@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Main St",
+    "number": 123,
+    "zip": 12345,
+    "city": "Springfield",
+    "country": "USA"
   },
-  "releaseYear": 1937
+  "paymentMethod": {
+    "name": "Credit Card"
+  }
 }
 
-<> 2024-10-02T203508.400.json
-<> 2024-10-02T202019.400.json
-<> 2024-10-02T202013.400.json
-<> 2024-10-02T201933.400.json
-
-###
-PATCH http://localhost:8080/books/2dad87ad-d949-4c54-8d3c-13b3baa4cc3a
+### Create a user
+POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "author": "John R.R. Tolkien"
+  "gender": "Female",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "username": "jane_smith",
+  "password": "anotherpassword",
+  "email": "jane.smith@example.com",
+  "role": "USER",
+  "status": "ACTIVE",
+  "address": {
+    "street": "Oak St",
+    "number": 456,
+    "zip": 54321,
+    "city": "Greenfield",
+    "country": "USA"
+  },
+  "paymentMethod": {
+    "name": "PayPal"
+  }
 }
 
-<> 2024-10-02T204405.200.json
-
-###
-PUT http://localhost:8080/books/2fadbfb7-7ba4-4ece-9a27-6a781e136a38
-Content-Type: application/json
-
-{
-  "title": "The Lord of the Rings",
-  "author": "John R.R. Tolkien",
-  "releaseYear": 1954
-}
-
-<> 2024-10-02T204656.200.json
-<> 2024-10-02T204629.200.json
-
-###
-DELETE http://localhost:8080/books/104dcfd7-2cfe-49c4-8ab8-91573c99f10e
+### Retreive all users
+GET http://localhost:3000/users

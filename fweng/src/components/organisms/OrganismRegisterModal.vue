@@ -15,9 +15,21 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue';
+import {ref, defineExpose, defineProps} from 'vue';
 import AtomModal from '@/components/atoms/AtomModal.vue';
 import MoleculeRegisterForm from '@/components/molecules/MoleculeRegisterForm.vue';
+import router from "@/router";
+
+const props = defineProps({
+  shouldForwardToFlightDetail: {
+    type: Boolean,
+    required: false,
+  },
+  shouldForwardToFlightId: {
+    type: String,
+    required: false,
+  },
+});
 
 const isVisible = ref(false);
 
@@ -29,6 +41,9 @@ const showModal = () => {
 // Hide modal method
 const hideModal = () => {
   isVisible.value = false;
+  if (props.shouldForwardToFlightDetail===true) {
+    router.push({ name: 'flightDetail', params: { flightId: props.shouldForwardToFlightId } });
+  }
 };
 
 // Expose the showModal method
