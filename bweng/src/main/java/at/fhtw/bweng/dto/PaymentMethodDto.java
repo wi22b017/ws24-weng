@@ -7,4 +7,9 @@ public record PaymentMethodDto(
         String name,
         String id
 ) {
+
+        // Overloaded constructor
+        public PaymentMethodDto(String name) {
+                this(name, null); // Default id to null
+        }
 }

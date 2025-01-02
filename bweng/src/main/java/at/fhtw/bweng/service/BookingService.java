@@ -150,6 +150,13 @@ public class BookingService {
         bookingRepository.save(existingBooking);
     }
 
+    public void updateBookingStatus(UUID id, String newStatus) {
+        Booking existingBooking = bookingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+        existingBooking.setStatus(newStatus);
+        bookingRepository.save(existingBooking);
+    }
+
     //helper method to map BookingDto to Booking entity
     private void mapBookingDtoToBookingEntity(BookingDto bookingDto, Booking booking){
         booking.setStatus(bookingDto.status());
