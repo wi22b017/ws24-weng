@@ -5,9 +5,6 @@ import at.fhtw.bweng.model.Booking;
 import at.fhtw.bweng.service.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -75,31 +72,11 @@ public class BookingController {
     public ResponseEntity<Map<String, String>> updateBookingStatus(
             @PathVariable UUID id,
             @RequestBody Map<String, String> statusUpdate) {
-        // Validate the request body to ensure 'status' is provided
-        if (!statusUpdate.containsKey("status")) {
-            throw new IllegalArgumentException("Status field is required.");
-        }
-        // Extract the new status
-        String newStatus = statusUpdate.get("status");
-
-        //users can cancel their bookings, but admins can set any status
-        if (!"Cancelled".equalsIgnoreCase(newStatus)) {
-            ensureAdminRole();
-        }
-
-        bookingService.updateBookingStatus(id, newStatus);
+        bookingService.updateBookingStatus(id, statusUpdate);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Booking status updated successfully");
         response.put("id", id.toString());
-        response.put("newStatus", newStatus);
         return ResponseEntity.ok(response);
     }
 
-    private void ensureAdminRole() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null || !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
-            throw new SecurityException("Only administrators are allowed to change the status field.");
-        }
-    }
 }

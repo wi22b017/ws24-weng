@@ -3,13 +3,16 @@ package at.fhtw.bweng.service;
 import at.fhtw.bweng.dto.BookingDto;
 import at.fhtw.bweng.model.*;
 import at.fhtw.bweng.repository.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.stream.Collectors;
+import java.util.Map;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -150,11 +153,30 @@ public class BookingService {
         bookingRepository.save(existingBooking);
     }
 
-    public void updateBookingStatus(UUID id, String newStatus) {
+    public void updateBookingStatus(UUID id, Map<String, String> statusUpdate) {
         Booking existingBooking = bookingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+        // Validate the request body to ensure 'status' is provided
+        if (!statusUpdate.containsKey("status")) {
+            throw new IllegalArgumentException("Status field is required.");
+        }
+        // Extract the new status
+        String newStatus = statusUpdate.get("status");
+
+        //users can cancel their bookings, but admins can set any status
+        if (!"Cancelled".equalsIgnoreCase(newStatus)) {
+            ensureAdminRole();
+        }
         existingBooking.setStatus(newStatus);
         bookingRepository.save(existingBooking);
+    }
+
+    private void ensureAdminRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
+            throw new SecurityException("Only administrators are allowed to change the status field.");
+        }
     }
 
     //helper method to map BookingDto to Booking entity
