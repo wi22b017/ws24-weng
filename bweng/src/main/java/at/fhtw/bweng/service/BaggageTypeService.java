@@ -62,7 +62,7 @@ public class BaggageTypeService {
         try {
             return baggageTypeRepository.save(newBaggageType).getId();
         } catch (DataIntegrityViolationException ex) {
-            throw new DataIntegrityViolationException("Bagagge Type with the same name already exists.");
+            throw new DataIntegrityViolationException("Baggage Type with the same name already exists.");
         }
     }
 
