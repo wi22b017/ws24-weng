@@ -1,3 +1,67 @@
+POST http://localhost:3000/flights
+Content-Type: application/json
+Content-Length: 501
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH12345",
+  "departureTime": "2024-11-10T10:00:00+01:00",
+  "arrivalTime": "2024-11-11T13:00:00+01:00",
+  "flightOrigin": {
+    "airportCode": "LHR",
+    "airportText": "London Heathrow"
+  },
+  "flightDestination": {
+    "airportCode": "CPH",
+    "airportText": "Copenhagen Kastrup"
+  },
+  "aircraft": {
+    "serialNumber": "B123456789",
+    "manufacturer": "Airbus",
+    "model": "A321-211",
+    "capacity": 200,
+    "airline": {
+      "name": "Scandinavian Airlines"
+    }
+  }
+}
+
+###
+
+POST http://localhost:3000/flights
+Content-Type: application/json
+Content-Length: 534
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.2.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "flightNumber": "LH1234",
+  "departureTime": "2024-11-09T15:00:00+02:00",
+  "arrivalTime": "2024-11-09T19:30:00+02:00",
+  "flightOrigin": {
+    "airportCode": "JFK",
+    "airportText": "John F. Kennedy International Airport"
+  },
+  "flightDestination": {
+    "airportCode": "LAX",
+    "airportText": "Los Angeles International Airport"
+  },
+  "aircraft": {
+    "serialNumber": "A123456789",
+    "manufacturer": "Boeing",
+    "model": "767-300ER",
+    "capacity": 211,
+    "airline": {
+      "name": "Austrian Airlines"
+    }
+  }
+}
+
+###
+
 PATCH http://localhost:3000/users/509b6be2-b6d0-11ef-8351-0242ac120003
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmYzZC1iNmQwLTExZWYtODM1MS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzM5MDg1NDksInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.G4Thc51K0GwMQTrS3eCThsB9SR3A33yCw2_WYXLlWK0
@@ -933,36 +997,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2024-11-18T200807.404.json
-
-###
-
-GET http://localhost:3000/passengers
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200803.200.json
-
-###
-
-POST http://localhost:3000/passengers
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "birthday": "1980-01-01",
-  "seatNumber": "12A",
-  "baggage": {
-    "baggageTypeId": "0dbf839c-34ac-4ff8-baad-7e6faf457c62"
-  }
-}
-
-<> 2024-11-18T200717.409.json
 
 ###
 

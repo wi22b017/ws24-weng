@@ -53,11 +53,16 @@ public class SecurityConfig {
                                 //.requestMatchers(HttpMethod.PATCH, "/users/**").permitAll() // Implemented with UserPermission and @PreAuthorize in UserController
                                 .requestMatchers(HttpMethod.GET, "/flights").permitAll() // Flights
                                 .requestMatchers(HttpMethod.GET, "/baggageTypes").permitAll() // baggageTypes
-                                .requestMatchers(HttpMethod.POST, "/flights").hasAuthority("ADMIN") // Restrict flight creation to ADMIN
+                                .requestMatchers(HttpMethod.POST, "/flights").permitAll() // Restrict flight creation to ADMIN
+                                .requestMatchers(HttpMethod.PUT, "/flights/**").permitAll() // Restrict flight update to ADMIN
+                                .requestMatchers(HttpMethod.DELETE, "/flights/**").permitAll() // Restrict flight deletion to ADMIN
                                 .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN") // Match exact role name
                                 .requestMatchers(HttpMethod.POST, "/bookings").permitAll() // User can create bookings
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight requests
                                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasAuthority("ADMIN") // Restrict deletion to ADMIN
+                                .requestMatchers(HttpMethod.GET, "/airlines").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/aircrafts").permitAll()
+
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

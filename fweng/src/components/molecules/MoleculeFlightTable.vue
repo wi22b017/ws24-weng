@@ -3,7 +3,7 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Flight number</th>
+      <th>Flight Number</th>
       <th>Airline</th>
       <th>Origin</th>
       <th>Destination</th>
@@ -23,12 +23,12 @@
         <div class="button-group">
           <AtomButton
               label="Edit"
-              :onClick="() => onEdit(flight)"
+              @click="$emit('edit', flight)"
               class="btn-primary"
           />
           <AtomButton
               label="Delete"
-              :onClick="() => onDelete(flight)"
+              @click="$emit('delete', flight.id)"
               class="btn-danger"
           />
         </div>
@@ -46,36 +46,25 @@ defineProps({
   flights: {
     type: Array,
     required: true,
-  }
+  },
 });
-
-function onEdit(flight){
-  console.log("Flight to edit: "+flight.flightNumber);
-}
-
-function onDelete(flight){
-  console.log("Flight to delete: "+flight.flightNumber);
-}
 
 function formatDepartureTime(dateTimeString) {
   const date = new Date(dateTimeString);
 
   // Extract components
-  const day = String(date.getDate()).padStart(2, "0"); // Ensure 2-digit day
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Ensure 2-digit month (months are 0-indexed)
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
-  const hours = String(date.getHours()).padStart(2, "0"); // Ensure 2-digit hours
-  const minutes = String(date.getMinutes()).padStart(2, "0"); // Ensure 2-digit minutes
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
 
   // Combine into desired format
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 }
-
-
-
 </script>
 
-<style>
+<style scoped>
 .actions-cell {
   vertical-align: middle;
 }

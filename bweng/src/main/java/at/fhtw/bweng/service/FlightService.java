@@ -64,6 +64,8 @@ public class FlightService {
                     return airlineRepository.save(newAirline);
                 });
 
+
+
         // Find or create the aircraft
         Aircraft aircraft = aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber())
                 .orElseGet(() -> {
