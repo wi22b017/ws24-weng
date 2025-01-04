@@ -135,7 +135,7 @@ public class BookingService {
     public void updateBooking(UUID id, BookingDto bookingDto) {
         // Retrieve existing booking
         Booking existingBooking = bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("Booking with ID " + id + " not found."));
 
         // Update booking fields
         mapBookingDtoToBookingEntity(bookingDto, existingBooking);
@@ -155,7 +155,7 @@ public class BookingService {
 
     public void updateBookingStatus(UUID id, Map<String, String> statusUpdate) {
         Booking existingBooking = bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking with ID " + id + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("Booking with ID " + id + " not found."));
         // Validate the request body to ensure 'status' is provided
         if (!statusUpdate.containsKey("status")) {
             throw new IllegalArgumentException("Status field is required.");
