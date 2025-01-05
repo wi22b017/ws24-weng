@@ -14,7 +14,6 @@
     <!-- Flight List Table -->
     <MoleculeFlightTable
         v-if="adminUserStore.flights.length > 0"
-        :key="tableKey"
         :flights="adminUserStore.flights"
         @edit="onEditFlight"
         @delete="onDeleteFlight"
@@ -26,15 +25,15 @@
     </div>
 
     <!-- Add Flight Modal -->
-    <OrganismAddFlightModal ref="addFlightModal" @flightAdded="refreshFlights" />
+    <OrganismAddFlightModal ref="addFlightModal" />
 
     <!-- Edit Flight Modal -->
-    <OrganismEditFlightModal ref="editFlightModal" :flight="currentFlight" @flightUpdated="refreshFlights" />
+    <OrganismEditFlightModal ref="editFlightModal" :flight="currentFlight" />
   </div>
 </template>
 
 <script setup>
-import {ref, onMounted, provide} from "vue";
+import {ref, provide} from "vue";
 import {useAdminUserStore} from "@/store/adminUserStore";
 import MoleculeFlightTable from "@/components/molecules/MoleculeFlightTable.vue";
 import AtomHeading from "@/components/atoms/AtomHeading.vue";
@@ -44,7 +43,6 @@ import OrganismEditFlightModal from "@/components/organisms/OrganismEditFlightMo
 
 const adminUserStore = useAdminUserStore();
 const fetchFlightError = ref(""); // State for flight fetch errors
-const tableKey = ref(0); // Key to force re-render of the table
 
 // Add and edit flight modal references
 const addFlightModal = ref(null);
@@ -66,30 +64,10 @@ const onDeleteFlight = async (flightId) => {
   const result = await adminUserStore.deleteFlight(flightId);
   if (!result.success) {
     fetchFlightError.value = result.message;
-  } else {
-    refreshFlights();
   }
 };
 
-// Refresh flights and handle errors
-const refreshFlights = async () => {
-  try {
-    const result = await adminUserStore.fetchFlights();
-    if (!result.success) {
-      fetchFlightError.value = result.message || "Error fetching flights.";
-    } else {
-      tableKey.value++; // Increment key to force table re-render
-      fetchFlightError.value = ""; // Clear previous errors
-    }
-  } catch (error) {
-    fetchFlightError.value = error.message || "An unexpected error occurred while fetching flights.";
-  }
-};
-
-// Fetch flights when the component is mounted
-onMounted(() => {
-  refreshFlights();
-});
+//await adminUserStore.fetchFlights();
 
 // Show the Add Flight Modal
 const showAddFlightModal = () => {

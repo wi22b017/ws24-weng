@@ -8,6 +8,7 @@
       <th>Origin</th>
       <th>Destination</th>
       <th>Departure Time</th>
+      <th>Arrival Time</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -19,6 +20,7 @@
       <td>{{ flight.flightOrigin.code }}</td>
       <td>{{ flight.flightDestination.code }}</td>
       <td>{{ formatDepartureTime(flight.departureTime) }}</td>
+      <td>{{ formatDepartureTime(flight.arrivalTime) }}</td>
       <td class="actions-cell">
         <div class="button-group">
           <AtomButton
