@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Form :validation-schema="editFlightFormSchema" @submit="onSubmit" v-model="formData">
+    <Form
+        :validation-schema="editFlightFormSchema"
+        @submit="onSubmit"
+        v-model="formData"
+        :initial-values="formData"
+      >
       <!-- Flight Number Input -->
       <AtomInput label="Flight Number" name="flightNumber" id="flightNumber" v-model="formData.flightNumber" />
 
@@ -17,47 +22,31 @@
       <!-- Origin Airport Dropdown -->
       <AtomFormSelect
           label="Origin Airport Code"
-          name="origin.code"
-          id="originCode"
+          name="origin"
+          id="origin"
           placeholder="Select an origin airport"
           :options="cityOptions"
-          v-model="formData.origin.code"
-      />
-
-      <AtomInput
-          label="Origin Airport Name"
-          name="origin.text"
-          id="originText"
-          placeholder="Enter origin airport name"
-          v-model="formData.origin.text"
+          v-model="formData.origin"
       />
 
       <!-- Destination Airport Dropdown -->
       <AtomFormSelect
           label="Destination Airport Code"
-          name="destination.code"
-          id="destinationCode"
+          name="destination"
+          id="destination"
           placeholder="Select a destination airport"
           :options="cityOptions"
-          v-model="formData.destination.code"
-      />
-
-      <AtomInput
-          label="Destination Airport Name"
-          name="destination.text"
-          id="destinationText"
-          placeholder="Enter destination airport name"
-          v-model="formData.destination.text"
+          v-model="formData.destination"
       />
 
       <!-- Aircraft Dropdown -->
       <AtomFormSelect
           label="Aircraft Serial Number"
-          name="aircraftSerialNumber"
-          id="aircraftSerialNumber"
+          name="aircraft"
+          id="aircraft"
           placeholder="Select an aircraft serial number"
           :options="aircraftOptions"
-          v-model="formData.aircraftSerialNumber"
+          v-model="formData.aircraft"
       />
 
       <!-- Departure Time -->
@@ -96,7 +85,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, defineProps} from "vue";
+import { ref, onMounted, defineProps} from "vue";
 import { Form } from "vee-validate";
 import { object, string, number } from "yup";
 import AtomInput from "@/components/atoms/AtomInput.vue";
@@ -124,18 +113,6 @@ const editFlightFormSchema = object({
   price: number().required("Price is required").min(1, "Price must be at least 1"),
 });
 
-// Reactive state
-const formData = ref({
-  flightNumber: "",
-  airlineId: "",
-  origin: { code: "", text: "" },
-  destination: { code: "", text: "" },
-  aircraftSerialNumber: "",
-  departureTime: "",
-  arrivalTime: "",
-  price: null,
-});
-
 const airlineOptions = ref([]);
 const cityOptions = ref([]);
 const aircraftOptions = ref([]);
@@ -153,8 +130,22 @@ const props = defineProps({
   },
 });
 
+// Reactive state
+const formData = ref({
+  flightNumber: props.initialValues.flightNumber,
+  airlineId: props.initialValues.aircraft.airline.id,
+  origin: props.initialValues.flightOrigin.code,
+  destination: props.initialValues.flightDestination.code,
+  aircraft: props.initialValues.aircraft.serialNumber,
+  departureTime: props.initialValues.departureTime.substring(0, 16),
+  arrivalTime: props.initialValues.arrivalTime.substring(0, 16),
+  price: props.initialValues.price,
+});
+
+console.log("HEEEEEEEEELLLLLLOOOOOO", formData);
+
 // Watch for changes in initialValues and update formData
-watch(
+/*watch(
     () => props.initialValues, // Watch for changes in initialValues
     (newValues) => {
       console.log("Initial values updated in form:", newValues); // Log initialValues
@@ -183,7 +174,7 @@ watch(
       console.log("Updated formData in form:", formData.value); // Log updated formData
     },
     { immediate: true }
-);
+);*/
 
 
 // Fetch dropdown options
