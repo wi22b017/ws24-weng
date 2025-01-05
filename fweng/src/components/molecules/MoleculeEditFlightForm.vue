@@ -73,6 +73,10 @@
       <!-- Submit Button -->
       <AtomButton type="submit" label="Save Changes" :disabled="isSubmitting" />
 
+      <!-- Success Messages -->
+      <div v-if="editFlightSuccess" class="alert alert-info mt-3" role="alert">
+        {{ editFlightSuccess }}
+      </div>
       <!-- Error Messages -->
       <div v-if="editFlightError" class="alert alert-danger mt-3" role="alert">
         {{ editFlightError }}
@@ -85,33 +89,40 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps} from "vue";
+import {ref, onMounted, defineProps, inject} from "vue";
 import { Form } from "vee-validate";
 import { object, string, number } from "yup";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
 import axios from "axios";
-import apiClient from "@/utils/axiosClient";
 import { formatISO } from "date-fns";
+import apiClient from "@/utils/axiosClient";
 
 // Validation schema
 const editFlightFormSchema = object({
   flightNumber: string().required("Flight number is required"),
   airlineId: string().required("Please select an airline"),
-  origin: object({
-    code: string().required("Origin airport code is required"),
-    text: string().required("Origin airport name is required"),
-  }).default(() => ({ code: "", text: "" })),
-  destination: object({
-    code: string().required("Destination airport code is required"),
-    text: string().required("Destination airport name is required"),
-  }).default(() => ({ code: "", text: "" })),
-  aircraftSerialNumber: string().required("Please select an aircraft serial number"),
-  departureTime: string().required("Departure time is required"),
-  arrivalTime: string().required("Arrival time is required"),
-  price: number().required("Price is required").min(1, "Price must be at least 1"),
+  origin: string().required("Origin airport code is required"),
+  destination: string().required("Destination airport code is required"),
+  aircraft: string().required("Please select an aircraft serial number"),
+  departureTime: string()
+      .required("Departure time is required")
+      .matches(
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
+          "Departure time must be in the format YYYY-MM-DDTHH:mm"
+      ),
+  arrivalTime: string()
+      .required("Arrival time is required")
+      .matches(
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
+          "Arrival time must be in the format YYYY-MM-DDTHH:mm"
+      ),
+  price: number()
+      .required("Price is required")
+      .min(1, "Price must be at least 1"),
 });
+
 
 const airlineOptions = ref([]);
 const cityOptions = ref([]);
@@ -121,6 +132,8 @@ const editFlightError = ref("");
 const fetchCityError = ref("");
 const fetchAirlineError = ref("");
 const fetchAircraftError = ref("");
+const editFlightSuccess = ref("");
+const hideEditFlightModal = inject('hideEditFlightModal');
 
 // Props to receive initial data
 const props = defineProps({
@@ -142,39 +155,6 @@ const formData = ref({
   price: props.initialValues.price,
 });
 
-console.log("HEEEEEEEEELLLLLLOOOOOO", formData);
-
-// Watch for changes in initialValues and update formData
-/*watch(
-    () => props.initialValues, // Watch for changes in initialValues
-    (newValues) => {
-      console.log("Initial values updated in form:", newValues); // Log initialValues
-      if (!newValues || Object.keys(newValues).length === 0) {
-        console.warn("No initial values provided to form.");
-        return;
-      }
-
-      // Safely update formData
-      formData.value = {
-        flightNumber: newValues.flightNumber || "",
-        airlineId: newValues.aircraft?.airline?.name || "",
-        origin: {
-          code: newValues.flightOrigin?.airportCode || "",
-          text: newValues.flightOrigin?.airportText || "",
-        },
-        destination: {
-          code: newValues.flightDestination?.airportCode || "",
-          text: newValues.flightDestination?.airportText || "",
-        },
-        aircraftSerialNumber: newValues.aircraft?.serialNumber || "",
-        departureTime: newValues.departureTime || "",
-        arrivalTime: newValues.arrivalTime || "",
-        price: newValues.price || null,
-      };
-      console.log("Updated formData in form:", formData.value); // Log updated formData
-    },
-    { immediate: true }
-);*/
 
 
 // Fetch dropdown options
@@ -184,6 +164,7 @@ const fetchCityOptions = async () => {
     cityOptions.value = response.data.map((airport) => ({
       value: airport.code,
       text: airport.name,
+      fullData: airport,
     }));
   } catch (error) {
     fetchCityError.value = "Error fetching city options.";
@@ -231,21 +212,25 @@ const onSubmit = async (values) => {
   try {
 
     const selectedAircraft = aircraftOptions.value.find(
-        (aircraft) => aircraft.value === values.aircraftSerialNumber
+        (aircraft) => aircraft.value === values.aircraft
     )?.fullData;
 
-    if (!selectedAircraft) {
-      throw new Error("Invalid aircraft selection.");
-    }
+    const selectedOrigin = cityOptions.value.find(
+        (cityOption) => cityOption.value === values.origin
+    )?.fullData;
+
+    const selectedDestination = cityOptions.value.find(
+        (cityOption) => cityOption.value === values.destination
+    )?.fullData;
 
     const payload = {
       flightNumber: values.flightNumber,
       airlineId: values.airlineId,
-      flightOrigin: { airportCode: values.origin.code, airportText: values.origin.text },
-      flightDestination: { airportCode: values.destination.code, airportText: values.destination.text },
+      flightOrigin: { airportCode: selectedOrigin.code, airportText: selectedOrigin.name },
+      flightDestination: { airportCode: selectedDestination.code, airportText: selectedDestination.name },
       aircraft: {
-        serialNumber: values.aircraftSerialNumber,
-        manufacturer: selectedAircraft.manufacturer, // Add missing fields
+        serialNumber: values.aircraft,
+        manufacturer: selectedAircraft.manufacturer,
         model: selectedAircraft.model,
         capacity: selectedAircraft.capacity,
         airline: { name: selectedAircraft.airline.name }
@@ -255,15 +240,17 @@ const onSubmit = async (values) => {
       price: values.price
     };
 
-
-    console.log("Submitting payload to API:", payload); // Log payload
-
     const response = await apiClient.put(`/flights/${props.initialValues.id}`, payload);
-    console.log("API response:", response.data); // Log success response
+
+    editFlightSuccess.value = response.data.message;
+
+    setTimeout(() => {
+      hideEditFlightModal();
+    }, 1000);
+
   } catch (error) {
-    console.error("Error during API request:", error); // Log full error
-    console.error("API Error Response:", error.response?.data || error.message); // Log API response details
-    throw error; // Re-throw error if needed
+    editFlightError.value = error.response?.data?.error || "An error occurred.";
+    console.error("API Error Response:", error.response?.data?.error || "An error occurred.");
   }
 };
 

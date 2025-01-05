@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted} from "vue";
+import {ref, onMounted, provide} from "vue";
 import {useAdminUserStore} from "@/store/adminUserStore";
 import MoleculeFlightTable from "@/components/molecules/MoleculeFlightTable.vue";
 import AtomHeading from "@/components/atoms/AtomHeading.vue";
@@ -51,14 +51,18 @@ const addFlightModal = ref(null);
 const editFlightModal = ref(null);
 const currentFlight = ref({}); // Holds the flight being edited
 
+const hideEditFlightModal = () => {
+  editFlightModal.value.hideModal();
+};
+// Provide this method to children components
+provide('hideEditFlightModal', hideEditFlightModal);
+
 const onEditFlight = (flight) => {
   console.log("Editing Flight:", flight); // Log the selected flight
   currentFlight.value = flight; // Set the current flight data
   console.log("Current Flight Set to:", currentFlight.value); // Log the updated currentFlight
   editFlightModal.value.showModal(); // Open the modal
 };
-
-
 
 const onDeleteFlight = async (flightId) => {
   const result = await adminUserStore.deleteFlight(flightId);
