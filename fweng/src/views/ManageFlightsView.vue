@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import {ref, provide} from "vue";
+import {ref, provide, onMounted} from "vue";
 import {useAdminUserStore} from "@/store/adminUserStore";
 import MoleculeFlightTable from "@/components/molecules/MoleculeFlightTable.vue";
 import AtomHeading from "@/components/atoms/AtomHeading.vue";
@@ -71,7 +71,14 @@ const onDeleteFlight = async (flightId) => {
   }
 };
 
-//await adminUserStore.fetchFlights();
+onMounted(async () => {
+  try {
+    await adminUserStore.fetchFlights();
+    console.log("Flights fetched successfully.");
+  } catch (error) {
+    console.error("Error fetching flights:", error);
+  }
+});
 
 // Show the Add Flight Modal
 const showAddFlightModal = () => {
