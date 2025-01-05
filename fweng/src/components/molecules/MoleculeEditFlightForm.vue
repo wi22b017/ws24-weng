@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <Form
         :validation-schema="editFlightFormSchema"
         @submit="onSubmit"
@@ -218,7 +218,7 @@ async function onSubmit(values) {
     editFlightError.value = error.response?.data?.error || "An error occurred.";
     console.error("API Error Response:", error.response?.data?.error || "An error occurred.");
   }
-};
+}
 
 
 // Fetch dropdown options
@@ -269,3 +269,9 @@ onMounted(() => {
   fetchAircraftOptions();
 });
 </script>
+
+<style scoped>
+.container {
+  text-align: start;
+}
+</style>

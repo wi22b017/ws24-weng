@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <Form
         :validation-schema="addFlightFormSchema"
         @submit="onSubmit"
         v-model="formData">
-
 
       <!-- Flight Number Input -->
       <AtomInput label="Flight Number" name="flightNumber" id="flightNumber" v-model="formData.flightNumber" />
@@ -270,12 +269,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.alert {
-  margin-top: 1rem;
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  padding: 0.75rem;
-  border-radius: 4px;
+.container {
+  text-align: start;
 }
 </style>
