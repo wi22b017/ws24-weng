@@ -12,12 +12,7 @@
       </div>
     </template>
     <template #body>
-      <MoleculeEditFlightForm
-          :initial-values="props.flight"
-      />
-      <div v-if="errorMessage" class="alert alert-danger mt-3" role="alert">
-        {{ errorMessage }}
-      </div>
+      <MoleculeEditFlightForm :initial-values="props.flight"/>
     </template>
   </AtomModal>
 </template>
@@ -38,7 +33,6 @@ const props = defineProps({
 
 // Modal state and error handling
 const isVisible = ref(false);
-const errorMessage = ref("");
 
 // Show modal
 const showModal = () => {

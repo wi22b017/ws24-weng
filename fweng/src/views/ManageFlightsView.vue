@@ -52,8 +52,12 @@ const currentFlight = ref({}); // Holds the flight being edited
 const hideEditFlightModal = () => {
   editFlightModal.value.hideModal();
 };
+const hideAddFlightModal = () => {
+  addFlightModal.value.hideModal();
+};
 // Provide this method to children components
 provide('hideEditFlightModal', hideEditFlightModal);
+provide('hideAddFlightModal', hideAddFlightModal);
 
 const onEditFlight = (flight) => {
   currentFlight.value = flight; // Set the current flight data

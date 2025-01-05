@@ -172,7 +172,7 @@ const filteredAircraftOptions = computed(() => {
 });
 
 // Handle form submission
-const onSubmit = async (values) => {
+async function onSubmit(values) {
   try {
 
     const selectedAircraft = aircraftOptions.value.find(
@@ -203,8 +203,6 @@ const onSubmit = async (values) => {
       arrivalTime: formatISO(new Date(values.arrivalTime)),
       price: values.price
     };
-
-    console.log(payload);
 
     const response = await apiClient.put(`/flights/${props.initialValues.id}`, payload);
 
