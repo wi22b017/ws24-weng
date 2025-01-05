@@ -17,10 +17,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.UUID;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class FlightService {
@@ -108,10 +105,12 @@ public class FlightService {
             flight.setArrivalTime(flight.getArrivalTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
         });
 
-        flights.sort(Comparator.comparing(Flight::getDepartureTime));
+        //flights.sort(Comparator.comparing(Flight::getDepartureTime));
+        // Convert to mutable list before sorting
+        List<Flight> mutableFlights = new ArrayList<>(flights);
+        mutableFlights.sort(Comparator.comparing(Flight::getDepartureTime));
 
-        return flights;
-
+        return mutableFlights;
     }
 
     public Flight getFlightById(UUID id) {
