@@ -98,6 +98,7 @@ import AtomButton from "@/components/atoms/AtomButton.vue";
 import axios from "axios";
 import { formatISO } from "date-fns";
 import apiClient from "@/utils/axiosClient";
+import {useAdminUserStore} from "@/store/adminUserStore";
 
 // Validation schema
 const editFlightFormSchema = object({
@@ -134,6 +135,7 @@ const fetchAirlineError = ref("");
 const fetchAircraftError = ref("");
 const editFlightSuccess = ref("");
 const hideEditFlightModal = inject('hideEditFlightModal');
+const adminUserStore = useAdminUserStore();
 
 // Props to receive initial data
 const props = defineProps({
@@ -199,7 +201,6 @@ const fetchAircraftOptions = async () => {
   }
 };
 
-
 onMounted(() => {
   fetchCityOptions();
   fetchAirlineOptions();
@@ -243,6 +244,8 @@ const onSubmit = async (values) => {
     const response = await apiClient.put(`/flights/${props.initialValues.id}`, payload);
 
     editFlightSuccess.value = response.data.message;
+
+    await adminUserStore.fetchFlights();
 
     setTimeout(() => {
       hideEditFlightModal();

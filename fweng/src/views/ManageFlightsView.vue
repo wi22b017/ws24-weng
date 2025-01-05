@@ -58,9 +58,7 @@ const hideEditFlightModal = () => {
 provide('hideEditFlightModal', hideEditFlightModal);
 
 const onEditFlight = (flight) => {
-  console.log("Editing Flight:", flight); // Log the selected flight
   currentFlight.value = flight; // Set the current flight data
-  console.log("Current Flight Set to:", currentFlight.value); // Log the updated currentFlight
   editFlightModal.value.showModal(); // Open the modal
 };
 
