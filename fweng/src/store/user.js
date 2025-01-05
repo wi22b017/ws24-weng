@@ -21,7 +21,8 @@ export const useUserStore = defineStore('user', {
         paymentMethodName: '',
         paymentMethodId: '',
         profilePictureUrl: null,
-        isLoggedIn: false
+        isLoggedIn: false,
+        bookings: []
     }),
     getters: {
         fullName() {
@@ -41,6 +42,7 @@ export const useUserStore = defineStore('user', {
                 localStorage.setItem('access_token', response.data.token);
                 const userId = this.getUserIdFromToken(response.data.token);
                 await this.fetchUserData(userId);
+                await this.fetchUserBookings(userId);
             }
 
               return {
@@ -108,6 +110,12 @@ export const useUserStore = defineStore('user', {
         async createBooking(bookingData) {
             try {
                 const response = await apiClient.post('/bookings', bookingData);
+                const token = localStorage.getItem('access_token');
+                const userId = this.getUserIdFromToken(token);
+                if (userId) {
+                    await this.fetchUserBookings(userId); // Ensure this is called only if userId is valid
+                }
+
 
                 return {
                     success: true,
@@ -122,6 +130,38 @@ export const useUserStore = defineStore('user', {
                     message: error.response?.data?.error || 'An error occurred while creating the booking',
                 };
             }
+        },
+        async fetchUserBookings(userId) {
+            try {
+                const response = await apiClient.get(`/bookings/user/${userId}`);
+                this.bookings = response.data;
+                console.log("bookings", response.data)
+            } catch (error) {
+                return error.response.data.message;
+            }
+        },
+        async cancelBooking(bookingId) {
+            try {
+                const response = await apiClient.patch(`/bookings/${bookingId}/status`, {status: "Cancelled"});
+                const booking = this.bookings.find((b) => b.id === bookingId);
+                if(booking) {
+                    booking.status = "Cancelled";
+                }
+                return {
+                    success: true,
+                    message: 'Booking cancelled successfully',
+                    data: response.data,
+                };
+
+            } catch (error) {
+                console.error('Error cancelling booking:', error);
+
+                return {
+                    success: false,
+                    message: error.response?.data?.error || 'An error occurred while cancelling the booking',
+                };
+            }
+
         }
     },
     persist: {

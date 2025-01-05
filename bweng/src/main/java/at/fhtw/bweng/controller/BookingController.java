@@ -67,4 +67,16 @@ public class BookingController {
         response.put("id", id.toString());
         return ResponseEntity.ok(response);
     }
+
+    @PatchMapping("/bookings/{id}/status")
+    public ResponseEntity<Map<String, String>> updateBookingStatus(
+            @PathVariable UUID id,
+            @RequestBody Map<String, String> statusUpdate) {
+        bookingService.updateBookingStatus(id, statusUpdate);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Booking status updated successfully");
+        response.put("id", id.toString());
+        return ResponseEntity.ok(response);
+    }
+
 }

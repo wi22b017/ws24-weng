@@ -62,11 +62,6 @@ public class PaymentMethodService {
 
     public void deletePaymentMethod(UUID id) {
         PaymentMethod paymentMethod = getPaymentMethodById(id);
-
-        try {
-            paymentMethodRepository.delete(paymentMethod);
-        } catch (DataIntegrityViolationException ex) {
-            throw new NoSuchElementException("Payment method with id " + id + " not found.");
-        }
+        paymentMethodRepository.delete(paymentMethod);
     }
 }
