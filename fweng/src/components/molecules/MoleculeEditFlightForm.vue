@@ -45,7 +45,7 @@
           name="aircraft"
           id="aircraft"
           placeholder="Select an aircraft serial number"
-          :options="aircraftOptions"
+          :options="filteredAircraftOptions"
           v-model="formData.aircraft"
       />
 
@@ -99,6 +99,39 @@ import axios from "axios";
 import { formatISO } from "date-fns";
 import apiClient from "@/utils/axiosClient";
 import {useAdminUserStore} from "@/store/adminUserStore";
+import { computed } from "vue";
+
+// Props to receive initial data
+const props = defineProps({
+  initialValues: {
+    type: Object,
+    default: () => ({}),
+  },
+});
+
+// Reactive state
+const formData = ref({
+  flightNumber: props.initialValues.flightNumber,
+  airlineId: props.initialValues.aircraft.airline.id,
+  origin: props.initialValues.flightOrigin.code,
+  destination: props.initialValues.flightDestination.code,
+  aircraft: props.initialValues.aircraft.serialNumber,
+  departureTime: props.initialValues.departureTime.substring(0, 16),
+  arrivalTime: props.initialValues.arrivalTime.substring(0, 16),
+  price: props.initialValues.price,
+});
+
+const airlineOptions = ref([]);
+const cityOptions = ref([]);
+const aircraftOptions = ref([]);
+const isSubmitting = ref(false);
+const editFlightError = ref("");
+const fetchCityError = ref("");
+const fetchAirlineError = ref("");
+const fetchAircraftError = ref("");
+const editFlightSuccess = ref("");
+const hideEditFlightModal = inject('hideEditFlightModal');
+const adminUserStore = useAdminUserStore();
 
 // Validation schema
 const editFlightFormSchema = object({
@@ -124,39 +157,70 @@ const editFlightFormSchema = object({
       .min(1, "Price must be at least 1"),
 });
 
-
-const airlineOptions = ref([]);
-const cityOptions = ref([]);
-const aircraftOptions = ref([]);
-const isSubmitting = ref(false);
-const editFlightError = ref("");
-const fetchCityError = ref("");
-const fetchAirlineError = ref("");
-const fetchAircraftError = ref("");
-const editFlightSuccess = ref("");
-const hideEditFlightModal = inject('hideEditFlightModal');
-const adminUserStore = useAdminUserStore();
-
-// Props to receive initial data
-const props = defineProps({
-  initialValues: {
-    type: Object,
-    default: () => ({}),
-  },
+// Filter the available aircrafts for the dropdown according to the selected airline
+const filteredAircraftOptions = computed(() => {
+  if (!formData.value.airlineId) {
+    return [];
+  }
+  return aircraftOptions.value.filter(
+      (aircraft) => aircraft.fullData.airline.id === formData.value.airlineId
+  ).map((aircraft) => ({
+    value: aircraft.value,
+    text: aircraft.text,
+    fullData: aircraft.fullData
+  }));
 });
 
-// Reactive state
-const formData = ref({
-  flightNumber: props.initialValues.flightNumber,
-  airlineId: props.initialValues.aircraft.airline.id,
-  origin: props.initialValues.flightOrigin.code,
-  destination: props.initialValues.flightDestination.code,
-  aircraft: props.initialValues.aircraft.serialNumber,
-  departureTime: props.initialValues.departureTime.substring(0, 16),
-  arrivalTime: props.initialValues.arrivalTime.substring(0, 16),
-  price: props.initialValues.price,
-});
+// Handle form submission
+const onSubmit = async (values) => {
+  try {
 
+    const selectedAircraft = aircraftOptions.value.find(
+        (aircraft) => aircraft.value === values.aircraft
+    )?.fullData;
+
+    const selectedOrigin = cityOptions.value.find(
+        (cityOption) => cityOption.value === values.origin
+    )?.fullData;
+
+    const selectedDestination = cityOptions.value.find(
+        (cityOption) => cityOption.value === values.destination
+    )?.fullData;
+
+    const payload = {
+      flightNumber: values.flightNumber,
+      airlineId: values.airlineId,
+      flightOrigin: { airportCode: selectedOrigin.code, airportText: selectedOrigin.name },
+      flightDestination: { airportCode: selectedDestination.code, airportText: selectedDestination.name },
+      aircraft: {
+        serialNumber: values.aircraft,
+        manufacturer: selectedAircraft.manufacturer,
+        model: selectedAircraft.model,
+        capacity: selectedAircraft.capacity,
+        airline: { name: selectedAircraft.airline.name }
+      },
+      departureTime: formatISO(new Date(values.departureTime)),
+      arrivalTime: formatISO(new Date(values.arrivalTime)),
+      price: values.price
+    };
+
+    console.log(payload);
+
+    const response = await apiClient.put(`/flights/${props.initialValues.id}`, payload);
+
+    editFlightSuccess.value = response.data.message;
+
+    await adminUserStore.fetchFlights();
+
+    setTimeout(() => {
+      hideEditFlightModal();
+    }, 1000);
+
+  } catch (error) {
+    editFlightError.value = error.response?.data?.error || "An error occurred.";
+    console.error("API Error Response:", error.response?.data?.error || "An error occurred.");
+  }
+};
 
 
 // Fetch dropdown options
@@ -206,55 +270,4 @@ onMounted(() => {
   fetchAirlineOptions();
   fetchAircraftOptions();
 });
-
-// Handle form submission
-
-const onSubmit = async (values) => {
-  try {
-
-    const selectedAircraft = aircraftOptions.value.find(
-        (aircraft) => aircraft.value === values.aircraft
-    )?.fullData;
-
-    const selectedOrigin = cityOptions.value.find(
-        (cityOption) => cityOption.value === values.origin
-    )?.fullData;
-
-    const selectedDestination = cityOptions.value.find(
-        (cityOption) => cityOption.value === values.destination
-    )?.fullData;
-
-    const payload = {
-      flightNumber: values.flightNumber,
-      airlineId: values.airlineId,
-      flightOrigin: { airportCode: selectedOrigin.code, airportText: selectedOrigin.name },
-      flightDestination: { airportCode: selectedDestination.code, airportText: selectedDestination.name },
-      aircraft: {
-        serialNumber: values.aircraft,
-        manufacturer: selectedAircraft.manufacturer,
-        model: selectedAircraft.model,
-        capacity: selectedAircraft.capacity,
-        airline: { name: selectedAircraft.airline.name }
-      },
-      departureTime: formatISO(new Date(values.departureTime)),
-      arrivalTime: formatISO(new Date(values.arrivalTime)),
-      price: values.price
-    };
-
-    const response = await apiClient.put(`/flights/${props.initialValues.id}`, payload);
-
-    editFlightSuccess.value = response.data.message;
-
-    await adminUserStore.fetchFlights();
-
-    setTimeout(() => {
-      hideEditFlightModal();
-    }, 1000);
-
-  } catch (error) {
-    editFlightError.value = error.response?.data?.error || "An error occurred.";
-    console.error("API Error Response:", error.response?.data?.error || "An error occurred.");
-  }
-};
-
 </script>

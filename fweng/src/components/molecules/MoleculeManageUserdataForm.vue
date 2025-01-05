@@ -349,9 +349,7 @@ async function onSubmit() {
     const response = await apiClient.patch(`http://localhost:3000/users/${userStore.id}`, changedData);
     if (response.status >= 200 && response.status < 300) {
       changeSuccess.value = "User data updated successfully.";
-      // Object.assign(userStore.$state, formData.value);
       await userStore.fetchUserData(userStore.id);
-
     }
   } catch (error) {
     changeError.value = error.response?.data?.error || "Failed to update user data.";
