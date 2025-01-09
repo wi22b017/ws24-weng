@@ -134,7 +134,7 @@ class FlightServiceTest {
     }
 
     @Test
-    void getFlightById_ThrowsExceptionWhenNofFound() {
+    void getFlightById_ThrowsExceptionWhenNotFound() {
         // Arrange
         UUID flightId = UUID.randomUUID();
         when(flightRepository.findById(flightId)).thenReturn(Optional.empty());

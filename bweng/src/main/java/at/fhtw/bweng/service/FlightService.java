@@ -17,9 +17,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class FlightService {
@@ -64,6 +62,8 @@ public class FlightService {
                     return airlineRepository.save(newAirline);
                 });
 
+
+
         // Find or create the aircraft
         Aircraft aircraft = aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber())
                 .orElseGet(() -> {
@@ -105,8 +105,12 @@ public class FlightService {
             flight.setArrivalTime(flight.getArrivalTime().atZoneSameInstant(ZoneOffset.UTC).withZoneSameInstant(systemZone).toOffsetDateTime());
         });
 
-        return flights;
+        //flights.sort(Comparator.comparing(Flight::getDepartureTime));
+        // Convert to mutable list before sorting
+        List<Flight> mutableFlights = new ArrayList<>(flights);
+        mutableFlights.sort(Comparator.comparing(Flight::getDepartureTime));
 
+        return mutableFlights;
     }
 
     public Flight getFlightById(UUID id) {

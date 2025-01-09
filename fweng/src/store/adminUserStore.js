@@ -94,6 +94,22 @@ export const useAdminUserStore = defineStore("adminUserStore", {
                 };
             }
         },
+        async deleteFlight(flightId) {
+            try {
+                await apiClient.delete(`/flights/${flightId}`);
+                this.flights = this.flights.filter((flight) => flight.id !== flightId);
+                return {
+                    success: true,
+                    message: "Flight deleted successfully",
+                };
+            } catch (error) {
+                console.error("Error deleting flight:", error.response?.data || error.message);
+                return {
+                    success: false,
+                    message: error.response?.data?.error || "Failed to delete flight",
+                };
+            }
+        },
     },
     persist: {
         enabled: true,
