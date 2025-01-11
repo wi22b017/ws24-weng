@@ -69,6 +69,7 @@ import { Form } from "vee-validate";
 import { formatISO } from "date-fns";
 import { object, string } from "yup";
 import ErrorModal from "@/components/organisms/OrganismErrorModal.vue";
+import router from "@/router";
 
 // Define the same validation schema here for final check before send
 const passengerFinalSchema = object({
@@ -175,6 +176,9 @@ const confirmBooking = async () => {
 
   if(result.success===true){
     successMessage.value = result.message;
+    setTimeout(() => {
+      router.push({name: 'myBookings'});
+    }, 1000);
   }else{
     errorMessage.value = result.message;
   }
