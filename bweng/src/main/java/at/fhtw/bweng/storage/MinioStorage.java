@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,6 +25,9 @@ public class MinioStorage implements FileStorage {
 
     @Override
     public String upload(MultipartFile file) {
+
+        validateFileFormat(file); // Validate file format
+
         String uuid = UUID.randomUUID().toString();
 
         try {
@@ -39,6 +43,15 @@ public class MinioStorage implements FileStorage {
             throw new FileException("Upload failed for file with uuid=" + uuid, e);
         }
         return uuid;
+    }
+
+    private void validateFileFormat(MultipartFile file) {
+        List<String> allowedMimeTypes = List.of("image/jpeg", "image/png");
+        String contentType = file.getContentType();
+
+        if (!allowedMimeTypes.contains(contentType)) {
+            throw new FileException("File format not allowed. Allowed formats: " + allowedMimeTypes, null);
+        }
     }
 
     @Override

@@ -55,7 +55,7 @@ public class AircraftController {
         aircraftService.updateAircraft(id, aircraftDto);
 
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Aicraft updated successfully");
+        response.put("message", "Aircraft updated successfully");
         response.put("id", id.toString());
         return ResponseEntity.ok(response);
     }
@@ -66,7 +66,7 @@ public class AircraftController {
         aircraftService.deleteAircraft(id);
 
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Aicraft deleted successfully");
+        response.put("message", "Aircraft deleted successfully");
         response.put("id", id.toString());
         return ResponseEntity.ok(response);
 

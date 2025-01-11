@@ -6,6 +6,7 @@ export const useAdminUserStore = defineStore("adminUserStore", {
         users: [],
         flights: [],
         isLoading: false,
+        bookings: [],
     }),
     actions: {
         async fetchUsers() {
@@ -50,6 +51,62 @@ export const useAdminUserStore = defineStore("adminUserStore", {
                 return {
                     success: false,
                     message: error.response.data.error
+                };
+            }
+        },
+        async fetchBookings(){
+            try {
+                const response = await apiClient.get("/bookings");
+                this.bookings = response.data;
+                } catch(error) {
+                return error.response.data.message;
+                }
+        },
+        async deleteBooking(bookingId){
+            try {
+                await apiClient.delete(`/bookings/${bookingId}`);
+                this.bookings = this.bookings.filter((booking) => booking.id !== bookingId);
+                return {
+                    success: true,
+                    message: `Booking with ID ${bookingId} has been deleted successfully`,
+                }
+            }catch (error) {
+                console.error('Error deleting booking:', error);
+                return {
+                    success: false,
+                    message: error.response?.data?.error || 'An error occurred while deleting the booking',
+                };
+            }
+        },
+        async updateBookingStatus(bookingId, newStatus) {
+            try {
+                const response = await apiClient.patch(`/bookings/${bookingId}/status`, { status: newStatus });
+                return {
+                    success: true,
+                    message: "Booking status updated successfully",
+                    data: response.data,
+                };
+            } catch (error) {
+                console.error("Error updating booking status:", error);
+                return {
+                    success: false,
+                    message: error.response?.data?.error || "Error occurred while updating booking status",
+                };
+            }
+        },
+        async deleteFlight(flightId) {
+            try {
+                await apiClient.delete(`/flights/${flightId}`);
+                this.flights = this.flights.filter((flight) => flight.id !== flightId);
+                return {
+                    success: true,
+                    message: "Flight deleted successfully",
+                };
+            } catch (error) {
+                console.error("Error deleting flight:", error.response?.data || error.message);
+                return {
+                    success: false,
+                    message: error.response?.data?.error || "Failed to delete flight",
                 };
             }
         },
