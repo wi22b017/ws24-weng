@@ -10,7 +10,7 @@
           :airline="flight.aircraft.airline.name"
           :flight-id="flight.id"
           :flight-price="flight.price"
-
+          :show-booking-button="showBookingButton"
       />
     </div>
   </div>
@@ -29,6 +29,10 @@ const calculateDurationInMinutes = (departureTime, arrivalTime) => {
 defineProps({
   flights: {
     type: Array,
+    required: true,
+  },
+  showBookingButton: {
+    type: Boolean,
     required: true,
   },
 });
