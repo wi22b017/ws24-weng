@@ -84,6 +84,6 @@ INSERT INTO user (id, gender, first_name, last_name, username, password, email, 
 (UNHEX(REPLACE(UUID(),'-','')), 'male', 'Admin', 'User', 'admin', '$2y$10$QqzzRscRDbrWBsXbfWxvaufOFk4m6B.A37JhuL6RGNsXc/s5mHpMC', 'admin@example.com','1985-06-15', 'ADMIN', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='Bank Transfer'),
 (SELECT id FROM address WHERE street='Champs-Élysées'), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Emily', 'Johnson', 'emilyj', '$2y$10$69kexWDnfN/CztYPzdTp/.8bKd2nR174gOXNJUU8rIA7kpyoWvOlq', 'emily.johnson@example.com', '1989-05-15', 'USER', 'ACTIVE',
+(UNHEX(REPLACE(UUID(),'-','')), 'female', 'Emily', 'Johnson', 'emily', '$2y$10$69kexWDnfN/CztYPzdTp/.8bKd2nR174gOXNJUU8rIA7kpyoWvOlq', 'emily.johnson@example.com', '1989-05-15', 'USER', 'ACTIVE',
 (SELECT id FROM payment_method WHERE name='Apple Pay'),
 (SELECT id FROM address WHERE street='Kaerntner Straße'), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
