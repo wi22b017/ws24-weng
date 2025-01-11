@@ -94,4 +94,22 @@ You can log in using the following predefined user credentials:
 
 ---
 
+### Available Test Flights
+
+The test data includes the following 6 flights. You can use these details to test the application:
+
+| **Flight Number** | **From (Origin)**       | **To (Destination)** | **Departure Date**    | **Departure Time** | **Arrival Time** |
+|--------------------|-------------------------|-----------------------|-----------------------|--------------------|------------------|
+| LH1001             | Frankfurt (FRA)        | Vienna (VIE)          | 2025-03-01            | 08:00              | 10:00            |
+| LH2002             | Vienna (VIE)           | Frankfurt (FRA)       | 2025-03-01            | 12:00              | 14:00            |
+| AF3003             | Paris (CDG)            | Zurich (ZHR)          | 2025-03-02            | 09:00              | 11:30            |
+| AF4004             | Zurich (ZHR)           | Paris (CDG)           | 2025-03-02            | 15:00              | 17:00            |
+| BA5005             | London (LHR)           | Amsterdam (AMS)       | 2025-03-03            | 07:00              | 09:00            |
+| BA6006             | Amsterdam (AMS)        | London (LHR)          | 2025-03-03            | 13:00              | 15:30            |
+
+---
+
+Use this information to test flight search, bookings, and other related functionalities in the application.
+
+
 Enjoy using the WENG Project!
