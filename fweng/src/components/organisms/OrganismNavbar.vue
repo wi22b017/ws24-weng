@@ -72,18 +72,18 @@ const userStore = useUserStore();
 
 <style scoped>
 .navbar {
-  background-color: #e3f2fd;
+  background-color: #e0f0ff;
 }
 .nav-link {
-  color: #007bff;
+  color: #003f88;
 }
 
 .navbar-brand {
-  color: #007bff;
+  color: #003f88;
 }
 
 .router-link-exact-active {
-  color: #0056b3 !important;
+  color: #002a5c !important;
   font-weight: bold;
 }
 
