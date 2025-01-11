@@ -70,7 +70,7 @@
       <AtomInput type="number" label="Price" name="price" id="price" v-model="formData.price" />
 
       <!-- Submit Button -->
-      <AtomButton type="submit" label="Add Flight" :disabled="isSubmitting" />
+      <AtomButton type="submit" label="Add Flight" class="mb-3" :disabled="isSubmitting" />
 
       <!-- Success Messages -->
       <div v-if="addFlightSuccess" class="alert alert-info mt-3" role="alert">
