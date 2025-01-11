@@ -22,6 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
+    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.User', 'create')")
     public ResponseEntity<?> addUser(@RequestBody @Valid UserDto userDto) {
             UUID uuid = userService.addUser(userDto);
             Map<String, String> response = new HashMap<>();
@@ -31,6 +32,7 @@ public class UserController {
     }
 
     @GetMapping(value = {"/users", "/users/{id}"})
+    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.User', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.User', 'read')")
     public ResponseEntity<?> getUsers(@PathVariable(required = false) UUID id) {
         Object result = userService.getUsers(id);
         return ResponseEntity.ok(result);
@@ -38,6 +40,7 @@ public class UserController {
 
     // Not used by the frontend
     @PutMapping("/users/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
     public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody @Valid UserDto userDto) {
             userService.updateUser(id, userDto);
             Map<String, String> response = new HashMap<>();
@@ -47,6 +50,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'delete')")
     public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
             userService.deleteUser(id);
             Map<String, String> response = new HashMap<>();
