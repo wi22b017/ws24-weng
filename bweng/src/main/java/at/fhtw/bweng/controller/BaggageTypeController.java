@@ -4,6 +4,7 @@ import at.fhtw.bweng.dto.BaggageTypeDto;
 import at.fhtw.bweng.service.BaggageTypeService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -20,6 +21,7 @@ public class BaggageTypeController {
     }
 
     @PostMapping("/baggageTypes")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.BaggageType', 'create')")
     public ResponseEntity<Map<String, String>> addBaggageType(@RequestBody @Valid BaggageTypeDto baggageTypeDto) {
         UUID uuid = baggageTypeService.addBaggageType(baggageTypeDto);
         Map<String, String> response = new HashMap<>();
@@ -32,6 +34,7 @@ public class BaggageTypeController {
     }
 
     @GetMapping(value = { "/baggageTypes", "/baggageTypes/{id}" })
+    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.BaggageType', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.BaggageType', 'read')")
     public ResponseEntity<?> getBaggageTypes(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String name) {
@@ -40,6 +43,7 @@ public class BaggageTypeController {
     }
 
     @PutMapping("/baggageTypes/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.BaggageType', 'update')")
     public ResponseEntity<Map<String, String>> updateBaggageType(
             @PathVariable UUID id,
             @RequestBody @Valid BaggageTypeDto baggageTypeDto) {
@@ -51,6 +55,7 @@ public class BaggageTypeController {
     }
 
     @DeleteMapping("/baggageTypes/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.BaggageType', 'delete')")
     public ResponseEntity<Map<String, String>> deleteBaggageType(@PathVariable UUID id) {
         baggageTypeService.deleteBaggageType(id);
         Map<String, String> response = new HashMap<>();
