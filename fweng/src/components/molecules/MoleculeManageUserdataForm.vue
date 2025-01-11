@@ -20,8 +20,8 @@
       </div>
 
       <div class="profile-picture-container">
-        <div v-if="imagePreview || userStore.profilePictureUrl" class="image-preview mb-3">
-          <img :src="imagePreview || userStore.profilePictureUrl" alt="Uploaded Image" />
+        <div v-if="imagePreview || userStore.profilePictureUrl || defaultImageUrl" class="image-preview mb-3">
+          <img :src="imagePreview || userStore.profilePictureUrl || defaultImageUrl" alt="Uploaded Image" />
         </div>
       </div>
 
@@ -189,6 +189,7 @@ const changeSuccess = vueRef("");
 const profilePictureSuccess = vueRef("");
 const isSubmitting = vueRef(false);
 const formChanged = vueRef(false);
+const defaultImageUrl = 'http://localhost:8080/default-profile-picture.jpg';
 
 // Pinia store instance
 const userStore = useUserStore();
