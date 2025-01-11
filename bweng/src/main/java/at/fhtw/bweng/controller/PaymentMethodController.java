@@ -6,6 +6,7 @@ import at.fhtw.bweng.service.PaymentMethodService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -22,6 +23,7 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/paymentMethods")
+    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.PaymentMethod', 'create')")
     public ResponseEntity<?> addPaymentMethod(@RequestBody @Valid PaymentMethodDto paymentMethodDto) {
         UUID uuid = paymentMethodService.addPaymentMethod(paymentMethodDto);
             Map<String, String> response = new HashMap<>();
@@ -31,12 +33,14 @@ public class PaymentMethodController {
     }
 
     @GetMapping(value = {"/paymentMethods", "/paymentMethods/{id}"})
+    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.PaymentMethod', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'read')")
     public ResponseEntity<?> getPaymentMethods(@PathVariable(required = false) UUID id) {
         Object result = paymentMethodService.getPaymentMethods(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/paymentMethods/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'update')")
     public ResponseEntity<?> updatePaymentMethod( @PathVariable UUID id,
                                                   @RequestBody @Valid PaymentMethodDto paymentMethodDto) {
             paymentMethodService.updatePaymentMethod(id, paymentMethodDto);
@@ -47,6 +51,7 @@ public class PaymentMethodController {
     }
 
     @DeleteMapping("/paymentMethods/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'delete')")
     public ResponseEntity<?> deletePaymentMethod(@PathVariable UUID id) {
 
             paymentMethodService.deletePaymentMethod(id);

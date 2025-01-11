@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,12 +22,14 @@ public class PictureController {
     }
 
     @PostMapping("")
+    @PreAuthorize("hasPermission(nul, 'at.fhtw.bweng.model.Picture', 'create')")
     @ResponseStatus(HttpStatus.CREATED)
     public PictureDto upload(@RequestParam("file") MultipartFile file) {
         return pictureService.upload(file);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Picture', 'read')")
     public ResponseEntity<Resource> retrieve(@PathVariable("id") UUID id) {
         Picture picture = pictureService.findById(id);
         Resource resource = pictureService.asResource(picture);
