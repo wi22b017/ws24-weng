@@ -52,13 +52,13 @@
           >
         </li>
         <li class="nav-item" v-if="!userStore.isLoggedIn">
-          <button class="nav-link" @click="$emit('show-login')">Login</button>
+          <button class="nav-link btn-link" @click="$emit('show-login')">Login</button>
         </li>
         <li class="nav-item" v-if="!userStore.isLoggedIn">
-          <button class="nav-link" @click="$emit('show-register')">Registration</button>
+          <button class="nav-link btn-link" @click="$emit('show-register')">Registration</button>
         </li>
         <li class="nav-item" v-if="userStore.isLoggedIn">
-          <button class="nav-link" @click="userStore.logout()">Logout</button>
+          <button class="nav-link btn-link" @click="userStore.logout()">Logout</button>
         </li>
       </ul>
     </div>
@@ -85,5 +85,10 @@ const userStore = useUserStore();
 .router-link-exact-active {
   color: #0056b3 !important;
   font-weight: bold;
+}
+
+.btn-link.nav-link {
+  display: inline-block;
+  text-align: center;
 }
 </style>
