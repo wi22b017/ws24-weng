@@ -4,7 +4,6 @@ import at.fhtw.bweng.model.Aircraft;
 import at.fhtw.bweng.model.Flight;
 import at.fhtw.bweng.repository.AircraftRepository;
 import at.fhtw.bweng.repository.FlightRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -47,12 +48,15 @@ public class FlightControllerIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @DynamicPropertySource
+    static void configureTestProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", mariadbContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", mariadbContainer::getUsername);
+        registry.add("spring.datasource.password", mariadbContainer::getPassword);
+    }
+
     @BeforeEach
     public void setUp() {
-        System.setProperty("spring.datasource.url", mariadbContainer.getJdbcUrl());
-        System.setProperty("spring.datasource.username", mariadbContainer.getUsername());
-        System.setProperty("spring.datasource.password", mariadbContainer.getPassword());
-
         // Create and save an Aircraft entity
         Aircraft aircraft = new Aircraft(
                 UUID.randomUUID(),
@@ -75,19 +79,10 @@ public class FlightControllerIntegrationTest {
         flightRepository.save(flight); // Save the Flight to the database
     }
 
-    @AfterEach
-    public void tearDown() {
-        flightRepository.deleteAll();
-        aircraftRepository.deleteAll();
-    }
-
     @Test
     public void testGetFlights() {
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/flights", String.class);
         assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
         assertThat(response.getBody()).contains("TEST123");
     }
-
-
-
 }
