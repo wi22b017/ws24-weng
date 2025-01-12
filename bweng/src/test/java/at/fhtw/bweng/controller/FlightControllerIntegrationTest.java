@@ -56,7 +56,7 @@ public class FlightControllerIntegrationTest {
         // Create and save an Aircraft entity
         Aircraft aircraft = new Aircraft(
                 UUID.randomUUID(),
-                "SN12345",          // Serial Number
+                "SN1234567777",          // Serial Number
                 "Boeing",           // Manufacturer
                 "747",              // Model
                 300,                // Capacity
