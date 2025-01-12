@@ -1,43 +1,45 @@
 <template>
-  <table class="table table-striped text-center">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Flight Number</th>
-      <th>Airline</th>
-      <th>Origin</th>
-      <th>Destination</th>
-      <th>Departure Time</th>
-      <th>Arrival Time</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for="(flight, index) in flights" :key="flight.id">
-      <td>{{ index + 1 }}</td>
-      <td>{{ flight.flightNumber }}</td>
-      <td>{{ flight.aircraft.airline.name }}</td>
-      <td>{{ flight.flightOrigin.code }}</td>
-      <td>{{ flight.flightDestination.code }}</td>
-      <td>{{ formatDepartureTime(flight.departureTime) }}</td>
-      <td>{{ formatDepartureTime(flight.arrivalTime) }}</td>
-      <td class="actions-cell">
-        <div class="button-group">
-          <AtomButton
-              label="Edit"
-              @click="$emit('edit', flight)"
-              class="btn-primary"
-          />
-          <AtomButton
-              label="Delete"
-              @click="$emit('delete', flight.id)"
-              class="btn-danger"
-          />
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped text-center">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(flight, index) in flights" :key="flight.id">
+        <td>{{ index + 1 }}</td>
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.aircraft.airline.name }}</td>
+        <td>{{ flight.flightOrigin.code }}</td>
+        <td>{{ flight.flightDestination.code }}</td>
+        <td>{{ formatDepartureTime(flight.departureTime) }}</td>
+        <td>{{ formatDepartureTime(flight.arrivalTime) }}</td>
+        <td class="actions-cell">
+          <div class="button-group">
+            <AtomButton
+                label="Edit"
+                @click="$emit('edit', flight)"
+                class="btn-primary"
+            />
+            <AtomButton
+                label="Delete"
+                @click="$emit('delete', flight.id)"
+                class="btn-danger"
+            />
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script setup>
