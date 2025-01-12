@@ -18,6 +18,21 @@ public class UserPermission implements AccessPermission {
         UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
         // Check if the user is an ADMIN or their ID matches the resource ID
-        return principal.getRole().equals("ADMIN") || principal.getId().equals(resourceId);
+        //return principal.getRole().equals("ADMIN") || principal.getId().equals(resourceId);
+
+
+        // Admins can access any resource
+        if (principal.getRole().equals("ADMIN")) {
+            return true;
+        }
+
+        // Handle specific resource permissions
+        if (resourceId != null) {
+            return principal.getId().equals(resourceId);
+        }
+
+        // Deny access if no resourceId and not ADMIN
+        return false;
+
     }
 }

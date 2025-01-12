@@ -22,6 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
+    // protected in the Security Config
     public ResponseEntity<?> addUser(@RequestBody @Valid UserDto userDto) {
             UUID uuid = userService.addUser(userDto);
             Map<String, String> response = new HashMap<>();
@@ -31,6 +32,7 @@ public class UserController {
     }
 
     @GetMapping(value = {"/users", "/users/{id}"})
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User','read')") // Relies on custom UserPermission logic
     public ResponseEntity<?> getUsers(@PathVariable(required = false) UUID id) {
         Object result = userService.getUsers(id);
         return ResponseEntity.ok(result);
@@ -38,6 +40,7 @@ public class UserController {
 
     // Not used by the frontend
     @PutMapping("/users/{id}")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User','update')") // Relies on custom UserPermission logic
     public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody @Valid UserDto userDto) {
             userService.updateUser(id, userDto);
             Map<String, String> response = new HashMap<>();
@@ -47,6 +50,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
+    // protected in the Security Config
     public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
             userService.deleteUser(id);
             Map<String, String> response = new HashMap<>();
@@ -56,7 +60,7 @@ public class UserController {
     }
 
     @PatchMapping("/users/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User','update')") // Relies on custom UserPermission logic
     public ResponseEntity<?> updateUserProfile(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
         userService.updateUserProfile(id, updates);
         Map<String, String> response = new HashMap<>();
@@ -66,7 +70,7 @@ public class UserController {
     }
 
     @PatchMapping("/users/{id}/password")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User','update')") // Relies on custom UserPermission logic
     public ResponseEntity<?> updateUserPassword(@PathVariable UUID id, @RequestBody Map<String, Object> updates) {
         userService.updateUserPassword(id, updates);
         Map<String, String> response = new HashMap<>();
@@ -76,7 +80,7 @@ public class UserController {
     }
 
     @PostMapping("users/{id}/picture")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User', 'update')")
+    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.User','update')") // Relies on custom UserPermission logic
     public ResponseEntity<?> uploadProfilePicture(@PathVariable UUID id, @RequestParam("file") MultipartFile file) {
         userService.updateUserProfilePicture(id, file);
         Map<String, String> response = new HashMap<>();

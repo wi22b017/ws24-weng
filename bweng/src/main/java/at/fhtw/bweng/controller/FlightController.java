@@ -5,6 +5,7 @@ import at.fhtw.bweng.model.Flight;
 import at.fhtw.bweng.service.FlightService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -24,6 +25,7 @@ public class FlightController {
     }
 
     @PostMapping("/flights")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addFlight(@RequestBody @Valid FlightDto flightDto) {
         UUID uuid = flightService.addFlight(flightDto);
 
@@ -37,6 +39,7 @@ public class FlightController {
     }
 
     @GetMapping(value = {"/flights", "/flights/{id}"})
+    // protected in the Security Config
     public ResponseEntity<?> getFlights(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String flightNumber) {
@@ -45,6 +48,7 @@ public class FlightController {
     }
 
     @PutMapping("/flights/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateFlight(
             @PathVariable UUID id,
             @RequestBody @Valid FlightDto flightDto) {
@@ -59,6 +63,7 @@ public class FlightController {
     }
 
     @DeleteMapping("/flights/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteFlight(@PathVariable UUID id) {
 
         // Call service to delete, which may throw NoSuchElementException if not found

@@ -5,6 +5,7 @@ import at.fhtw.bweng.model.Booking;
 import at.fhtw.bweng.service.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -22,6 +23,7 @@ public class BookingController {
     }
 
     @PostMapping("/bookings")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addBookingNew(@RequestBody @Valid BookingDto bookingDto) {
         UUID uuid = bookingService.addBooking(bookingDto);
         Map<String, String> response = new HashMap<>();
@@ -34,6 +36,7 @@ public class BookingController {
     }
 
     @GetMapping(value = {"/bookings", "/bookings/{id}"})
+    // protected in the Security Config
     public ResponseEntity<?> getBookings(@PathVariable(required = false) UUID id) {
         Object result = bookingService.getBookings(id);
         return ResponseEntity.ok(result);
@@ -41,12 +44,14 @@ public class BookingController {
 
     //get bookings made by a specific user
     @GetMapping(value = {"/bookings/user/{userId}"})
+    @PreAuthorize("hasPermission(#userId, 'at.fhtw.bweng.model.User', 'read')") // Delegate to UserPermission
     public ResponseEntity<?> getBookingsByUserId(@PathVariable UUID userId) {
         List<Booking> bookings = bookingService.getBookingsByUserId(userId);
         return ResponseEntity.ok(bookings);
     }
 
     @PutMapping("/bookings/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateBooking(
             @PathVariable UUID id,
             @RequestBody @Valid BookingDto bookingDto) {
@@ -59,6 +64,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/bookings/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteBooking(@PathVariable UUID id) {
 
         bookingService.deleteBooking(id);
@@ -69,6 +75,7 @@ public class BookingController {
     }
 
     @PatchMapping("/bookings/{id}/status")
+    @PreAuthorize("hasRole('ADMIN') or hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'update')") // Admin or user owning the booking
     public ResponseEntity<Map<String, String>> updateBookingStatus(
             @PathVariable UUID id,
             @RequestBody Map<String, String> statusUpdate) {

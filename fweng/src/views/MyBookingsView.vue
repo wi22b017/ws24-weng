@@ -1,12 +1,11 @@
 <template>
   <div class="container mt-4">
-  <h1 class="mt-5 mb-3">My Bookings</h1>
-  <MyBookingsTemplate
-      v-if="bookings.length > 0"
-      :bookings="bookings"
-      @cancel-booking="handleCancelBooking"
-
-  />
+    <h1 class="mt-5 mb-3">My Bookings</h1>
+    <MyBookingsTemplate
+        v-if="bookings.length > 0"
+        :bookings="bookings"
+        @cancel-booking="handleCancelBooking"
+    />
     <div v-if="bookings.length === 0">No bookings have been made.</div>
   </div>
 </template>

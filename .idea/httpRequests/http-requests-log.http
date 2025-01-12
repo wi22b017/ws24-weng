@@ -1,3 +1,51 @@
+PATCH http://localhost:3000/bookings/8e1a0c58-01d1-48f9-85e3-6c0485d7003b/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGFkMjQxMy1kMGQ2LTExZWYtOTQ0OS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzY3NzIyNjYsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.hBhpl5ALy1KbxDYLP6IkqQGr4nmtlQaIGxMNebqlezU
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Cancelled"
+}
+
+<> 2025-01-12T134442.200.json
+
+###
+
+PATCH http://localhost:3000/bookings/0192b884-b515-4465-a97d-67ca27d5ddc3/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGFkMWJkYS1kMGQ2LTExZWYtOTQ0OS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzY3NzIyNDcsInVzZXJuYW1lIjoiamFuZXNtaXRoIiwicm9sZSI6IlVTRVIifQ.4Z0r5PDHTVlpaZoFcMY0wsbjd9IxApOLOKpbL-FXBZA
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Cancelled"
+}
+
+<> 2025-01-12T134439.500.json
+
+###
+
+PATCH http://localhost:3000/bookings/7255c022-76ad-4531-92b1-3f0cda8a150c/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGFkMTg5OC1kMGQ2LTExZWYtOTQ0OS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzY3NzE4NzEsInVzZXJuYW1lIjoiam9obmRvZSIsInJvbGUiOiJVU0VSIn0.IsNjDjn50zzDlZBJHHtcd0jfEwJlWnhmAZGqjfK1gzI
+Content-Length: 27
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "status": "Cancelled"
+}
+
+<> 2025-01-12T134229.200.json
+
+###
+
 POST http://localhost:3000/flights
 Content-Type: application/json
 Content-Length: 501
@@ -935,68 +983,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2024-11-18T200919.200.json
-
-###
-
-POST http://localhost:3000/users
-Content-Type: application/json
-Content-Length: 379
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "gender": "Male",
-  "firstName": "John",
-  "lastName": "Doe",
-  "username": "johndoe",
-  "password": "password123",
-  "email": "john.doe@example.com",
-  "role": "USER",
-  "status": "ACTIVE",
-  "address": {
-    "street": "Main Street",
-    "number": 123,
-    "zip": 1010,
-    "city": "Vienna",
-    "country": "Austria"
-  },
-  "paymentMethod": {
-    "name": "Credit Card"
-  }
-}
-
-<> 2024-11-18T200908.201.json
-
-###
-
-PUT http://localhost:3000/passengers/83ae6d2f-cda9-4bab-8b82-324777f492f1
-Content-Type: application/json
-Content-Length: 177
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-{
-  "firstName": "Jane",
-  "lastName": "Doe",
-  "birthday": "1985-05-15",
-  "seatNumber": "14B",
-  "baggage": {
-    "baggageTypeId": "e60eb5aa-2ca3-4a14-94f8-e09a804d69cd"
-  }
-}
-
-<> 2024-11-18T200816.404.json
-
-###
-
-GET http://localhost:3000/passengers/1dfad342-6a15-412f-a944-952dff3cdf36
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2024-11-18T200807.404.json
 
 ###
 

@@ -1,42 +1,45 @@
 <template>
-  <table class="table table-striped text-center table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th>Booking ID</th>
-      <th>Travel Details</th>
-      <th>Travel Date</th>
-      <th>Passengers</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for="booking in bookings" :key="booking.id">
-      <td>{{ booking.id}}</td>
-      <td>{{ booking.flight.flightOrigin.name}} -> {{  booking.flight.flightDestination.name }}</td>
-      <td>{{ formatDateTime(booking.flight.departureTime) }}</td>
-      <td>
-        <div v-for="passenger in booking.passengers" :key="passenger.id">
-          {{ passenger.firstName }} {{ passenger.lastName }}
-        </div>
-      </td>
-      <td class="status-cell">
+  <div class="table-responsive">
+    <table class="table table-striped text-center table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th>Booking ID</th>
+        <th>Travel Details</th>
+        <th>Travel Date</th>
+        <th>Passengers</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="booking in bookings" :key="booking.id">
+        <td>{{ booking.id}}</td>
+        <td>{{ booking.flight.flightOrigin.name}} -> {{  booking.flight.flightDestination.name }}</td>
+        <td>{{ formatDateTime(booking.flight.departureTime) }}</td>
+        <td>
+          <div v-for="passenger in booking.passengers" :key="passenger.id">
+            {{ passenger.firstName }} {{ passenger.lastName }}
+          </div>
+        </td>
+        <td class="status-cell">
         <span :class="['badge', booking.status === 'Cancelled' ? 'bg-danger' : 'bg-success']">
             {{ booking.status }}
           </span>
-      </td>
-      <td class="actions-cell">
-        <button
-            class="btn btn-danger"
-            :disabled="booking.status === 'Cancelled'"
-            @click="cancelBooking(booking.id)"
-        >
-          Cancel Booking
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+        </td>
+        <td class="actions-cell">
+          <button
+              class="btn btn-danger"
+              :disabled="booking.status === 'Cancelled'"
+              @click="cancelBooking(booking.id)"
+          >
+            Cancel Booking
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 </template>
 
 <script setup>

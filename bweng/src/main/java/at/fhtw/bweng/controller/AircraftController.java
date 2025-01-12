@@ -7,6 +7,7 @@ import at.fhtw.bweng.model.Flight;
 import at.fhtw.bweng.service.AircraftService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -25,6 +26,7 @@ public class AircraftController {
     }
 
     @PostMapping("/aircrafts")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addAircraft(@RequestBody @Valid AircraftDto aircraftDto) {
         UUID uuid = aircraftService.addAircraft(aircraftDto);
 
@@ -38,6 +40,7 @@ public class AircraftController {
     }
 
     @GetMapping(value = {"/aircrafts", "/aircrafts/{id}"})
+    // protected in the Security Config
     public ResponseEntity<?> getAircrafts(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String serialNumber) {
@@ -47,6 +50,7 @@ public class AircraftController {
 
 
     @PutMapping("/aircrafts/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateAircraft(
             @PathVariable UUID id,
             @RequestBody @Valid AircraftDto aircraftDto) {
@@ -61,6 +65,7 @@ public class AircraftController {
     }
 
     @DeleteMapping("aircrafts/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteAircraft(@PathVariable UUID id){
 
         aircraftService.deleteAircraft(id);

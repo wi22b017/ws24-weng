@@ -65,3 +65,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDliNmYzZ
 }
 
 
+###
+PATCH http://localhost:3000/bookings/0192b884-b515-4465-a97d-67ca27d5ddc3/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGFkMWJkYS1kMGQ2LTExZWYtOTQ0OS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzY3NzIyNDcsInVzZXJuYW1lIjoiamFuZXNtaXRoIiwicm9sZSI6IlVTRVIifQ.4Z0r5PDHTVlpaZoFcMY0wsbjd9IxApOLOKpbL-FXBZA
+
+{
+  "status": "Cancelled"
+}
+
+###
+PATCH http://localhost:3000/bookings/8e1a0c58-01d1-48f9-85e3-6c0485d7003b/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGFkMjQxMy1kMGQ2LTExZWYtOTQ0OS0wMjQyYWMxMjAwMDMiLCJleHAiOjE3MzY3NzIyNjYsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4ifQ.hBhpl5ALy1KbxDYLP6IkqQGr4nmtlQaIGxMNebqlezU
+
+{
+  "status": "Cancelled"
+}
+
+
+

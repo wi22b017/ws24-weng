@@ -5,6 +5,7 @@ import at.fhtw.bweng.model.Passenger;
 import at.fhtw.bweng.service.PassengerService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -23,6 +24,7 @@ public class PassengerController {
     }
 
     @PostMapping("/passengers")
+    // protected in the Security Config
     public ResponseEntity<?> addPassenger(@RequestBody @Valid PassengerDto passengerDto) {
         UUID uuid = passengerService.addPassenger(passengerDto);
         Map<String, String> response = new HashMap<>();
@@ -32,12 +34,14 @@ public class PassengerController {
     }
 
     @GetMapping(value = {"/passengers", "/passengers/{id}"})
+    // protected in the Security Config
     public ResponseEntity<?> getPassengers(@PathVariable(required = false) UUID id) {
         Object result = passengerService.getPassengers(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/passengers/{id}")
+    // protected in the Security Config
     public ResponseEntity<?> updatePassenger(@PathVariable UUID id, @RequestBody @Valid PassengerDto passengerDto) {
         passengerService.updatePassenger(id, passengerDto);
         Map<String, String> response = new HashMap<>();
@@ -47,6 +51,7 @@ public class PassengerController {
     }
 
     @DeleteMapping("/passengers/{id}")
+    // protected in the Security Config
     public ResponseEntity<?> deletePassenger(@PathVariable UUID id) {
         passengerService.deletePassenger(id);
         Map<String, String> response = new HashMap<>();

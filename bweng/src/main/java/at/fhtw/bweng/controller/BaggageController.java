@@ -5,6 +5,7 @@ import at.fhtw.bweng.model.Baggage;
 import at.fhtw.bweng.service.BaggageService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -23,6 +24,7 @@ public class BaggageController {
     }
 
     @PostMapping("/baggages")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addBaggage(@RequestBody @Valid BaggageDto baggageDto) {
         UUID uuid = baggageService.addBaggage(baggageDto);
         Map<String, String> response = new HashMap<>();
@@ -35,6 +37,7 @@ public class BaggageController {
     }
 
     @GetMapping(value = {"/baggages", "/baggages/{id}"})
+    // protected in the Security Config
     public ResponseEntity<?> getBaggages(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) UUID baggageTypeId) {
@@ -43,6 +46,7 @@ public class BaggageController {
     }
 
     @PutMapping("/baggages/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateBaggage(
             @PathVariable UUID id,
             @RequestBody @Valid BaggageDto baggageDto) {
@@ -55,6 +59,7 @@ public class BaggageController {
     }
 
     @DeleteMapping("/baggages/{id}")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteBaggage(@PathVariable UUID id) {
         baggageService.deleteBaggage(id);
         Map<String, String> response = new HashMap<>();
