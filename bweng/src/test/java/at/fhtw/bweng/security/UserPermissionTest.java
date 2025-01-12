@@ -87,4 +87,15 @@ class UserPermissionTest {
         // Assert
         assertThat(result).isFalse();
     }
+
+    @Test
+    void hasPermission_returnsFalseWhenResourceIdIsNullAndNotAdmin() {
+        userPrincipal = new UserPrincipal(UUID.randomUUID(), "regularUser", "password", "USER");
+        when(authentication.getPrincipal()).thenReturn(userPrincipal);
+
+        boolean result = userPermission.hasPermission(authentication, null);
+        assertThat(result).isFalse();
+    }
+
+
 }
