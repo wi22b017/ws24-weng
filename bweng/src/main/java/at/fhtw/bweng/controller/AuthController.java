@@ -18,7 +18,6 @@ public class AuthController {
     }
 
     @PostMapping("/token")
-    @PreAuthorize("isAnonymous()")
     public TokenResponseDto token(@RequestBody @Valid final TokenRequestDto tokenRequestDto) {
         return authService.authenticate(tokenRequestDto);
     }

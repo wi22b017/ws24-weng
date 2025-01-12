@@ -24,7 +24,7 @@ public class PassengerController {
     }
 
     @PostMapping("/passengers")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.Passenger', 'create')")
+    // protected in the Security Config
     public ResponseEntity<?> addPassenger(@RequestBody @Valid PassengerDto passengerDto) {
         UUID uuid = passengerService.addPassenger(passengerDto);
         Map<String, String> response = new HashMap<>();
@@ -34,14 +34,14 @@ public class PassengerController {
     }
 
     @GetMapping(value = {"/passengers", "/passengers/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Passenger', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Passenger', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getPassengers(@PathVariable(required = false) UUID id) {
         Object result = passengerService.getPassengers(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/passengers/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Passenger', 'update')")
+    // protected in the Security Config
     public ResponseEntity<?> updatePassenger(@PathVariable UUID id, @RequestBody @Valid PassengerDto passengerDto) {
         passengerService.updatePassenger(id, passengerDto);
         Map<String, String> response = new HashMap<>();
@@ -51,7 +51,7 @@ public class PassengerController {
     }
 
     @DeleteMapping("/passengers/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Passenger', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<?> deletePassenger(@PathVariable UUID id) {
         passengerService.deletePassenger(id);
         Map<String, String> response = new HashMap<>();

@@ -22,14 +22,14 @@ public class PictureController {
     }
 
     @PostMapping("")
-    @PreAuthorize("hasPermission(nul, 'at.fhtw.bweng.model.Picture', 'create')")
     @ResponseStatus(HttpStatus.CREATED)
+    // protected in the Security Config
     public PictureDto upload(@RequestParam("file") MultipartFile file) {
         return pictureService.upload(file);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Picture', 'read')")
+    // protected in the Security Config
     public ResponseEntity<Resource> retrieve(@PathVariable("id") UUID id) {
         Picture picture = pictureService.findById(id);
         Resource resource = pictureService.asResource(picture);

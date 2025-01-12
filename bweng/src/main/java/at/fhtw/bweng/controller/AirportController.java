@@ -24,7 +24,7 @@ public class AirportController {
     }
 
     @PostMapping("/airports")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.Airport', 'create')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addAirport(@RequestBody @Valid AirportDto airportDto) {
         UUID uuid = airportService.addAirport(airportDto);
         Map<String, String> response = new HashMap<>();
@@ -37,14 +37,14 @@ public class AirportController {
     }
 
     @GetMapping(value = {"/airports", "/airports/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Airport', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Airport', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getAirports(@PathVariable(required = false) UUID id) {
         Object result = airportService.getAirports(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/airports/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Airport', 'update')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateAirport(
             @PathVariable UUID id,
             @RequestBody @Valid AirportDto airportDto) {
@@ -59,7 +59,7 @@ public class AirportController {
     }
 
     @DeleteMapping("/airports/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Airport', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteAirport(@PathVariable UUID id) {
 
         // Call service to delete, which may throw NoSuchElementException if not found

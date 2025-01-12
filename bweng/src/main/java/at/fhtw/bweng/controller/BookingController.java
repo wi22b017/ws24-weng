@@ -23,7 +23,7 @@ public class BookingController {
     }
 
     @PostMapping("/bookings")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'create')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addBookingNew(@RequestBody @Valid BookingDto bookingDto) {
         UUID uuid = bookingService.addBooking(bookingDto);
         Map<String, String> response = new HashMap<>();
@@ -36,7 +36,7 @@ public class BookingController {
     }
 
     @GetMapping(value = {"/bookings", "/bookings/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Booking', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getBookings(@PathVariable(required = false) UUID id) {
         Object result = bookingService.getBookings(id);
         return ResponseEntity.ok(result);
@@ -44,14 +44,14 @@ public class BookingController {
 
     //get bookings made by a specific user
     @GetMapping(value = {"/bookings/user/{userId}"})
-    @PreAuthorize("hasPermission(#userId, 'at.fhtw.bweng.model.Booking', 'read')")
+    @PreAuthorize("hasPermission(#userId, 'at.fhtw.bweng.model.User', 'read')") // Delegate to UserPermission
     public ResponseEntity<?> getBookingsByUserId(@PathVariable UUID userId) {
         List<Booking> bookings = bookingService.getBookingsByUserId(userId);
         return ResponseEntity.ok(bookings);
     }
 
     @PutMapping("/bookings/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'update')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateBooking(
             @PathVariable UUID id,
             @RequestBody @Valid BookingDto bookingDto) {
@@ -64,7 +64,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/bookings/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteBooking(@PathVariable UUID id) {
 
         bookingService.deleteBooking(id);
@@ -75,7 +75,7 @@ public class BookingController {
     }
 
     @PatchMapping("/bookings/{id}/status")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'update')")
+    @PreAuthorize("hasRole('ADMIN') or hasPermission(#id, 'at.fhtw.bweng.model.Booking', 'update')") // Admin or user owning the booking
     public ResponseEntity<Map<String, String>> updateBookingStatus(
             @PathVariable UUID id,
             @RequestBody Map<String, String> statusUpdate) {

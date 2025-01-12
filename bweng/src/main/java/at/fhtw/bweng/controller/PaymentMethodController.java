@@ -23,7 +23,7 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/paymentMethods")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.PaymentMethod', 'create')")
+    // protected in the Security Config
     public ResponseEntity<?> addPaymentMethod(@RequestBody @Valid PaymentMethodDto paymentMethodDto) {
         UUID uuid = paymentMethodService.addPaymentMethod(paymentMethodDto);
             Map<String, String> response = new HashMap<>();
@@ -33,16 +33,15 @@ public class PaymentMethodController {
     }
 
     @GetMapping(value = {"/paymentMethods", "/paymentMethods/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.PaymentMethod', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getPaymentMethods(@PathVariable(required = false) UUID id) {
         Object result = paymentMethodService.getPaymentMethods(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/paymentMethods/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'update')")
-    public ResponseEntity<?> updatePaymentMethod( @PathVariable UUID id,
-                                                  @RequestBody @Valid PaymentMethodDto paymentMethodDto) {
+    // protected in the Security Config
+    public ResponseEntity<?> updatePaymentMethod( @PathVariable UUID id, @RequestBody @Valid PaymentMethodDto paymentMethodDto) {
             paymentMethodService.updatePaymentMethod(id, paymentMethodDto);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method updated successfully");
@@ -51,11 +50,9 @@ public class PaymentMethodController {
     }
 
     @DeleteMapping("/paymentMethods/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.PaymentMethod', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<?> deletePaymentMethod(@PathVariable UUID id) {
-
             paymentMethodService.deletePaymentMethod(id);
-
             Map<String, String> response = new HashMap<>();
             response.put("message", "Payment method deleted successfully");
             response.put("id", id.toString());

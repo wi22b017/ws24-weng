@@ -26,7 +26,7 @@ public class AircraftController {
     }
 
     @PostMapping("/aircrafts")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.Aircraft', 'create')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addAircraft(@RequestBody @Valid AircraftDto aircraftDto) {
         UUID uuid = aircraftService.addAircraft(aircraftDto);
 
@@ -40,7 +40,7 @@ public class AircraftController {
     }
 
     @GetMapping(value = {"/aircrafts", "/aircrafts/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Aircraft', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Aircraft', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getAircrafts(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String serialNumber) {
@@ -50,7 +50,7 @@ public class AircraftController {
 
 
     @PutMapping("/aircrafts/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Aircraft', 'update')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateAircraft(
             @PathVariable UUID id,
             @RequestBody @Valid AircraftDto aircraftDto) {
@@ -65,7 +65,7 @@ public class AircraftController {
     }
 
     @DeleteMapping("aircrafts/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Aircraft', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteAircraft(@PathVariable UUID id){
 
         aircraftService.deleteAircraft(id);

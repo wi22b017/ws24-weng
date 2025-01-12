@@ -23,7 +23,7 @@ public class AirlineController {
     }
 
     @PostMapping("/airlines")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.Airline', 'create')")
+    // protected in the Security Config
     public ResponseEntity<?> addAirline(@RequestBody @Valid AirlineDto airlineDto) {
 
             UUID uuid = airlineService.addAirline(airlineDto);
@@ -34,14 +34,14 @@ public class AirlineController {
     }
 
     @GetMapping(value = {"/airlines", "/airlines/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Airline', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Airline', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getAirlines(@PathVariable(required = false) UUID id) {
         Object result = airlineService.getAirlines(id);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping("/airlines/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Airline', 'update')")
+    // protected in the Security Config
     public ResponseEntity<?> updateAirline(@PathVariable UUID id, @RequestBody @Valid AirlineDto airlineDto) {
             airlineService.updateAirline(id, airlineDto);
 
@@ -53,7 +53,7 @@ public class AirlineController {
 
 
     @DeleteMapping("/airlines/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Airline', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<?> deleteAirline(@PathVariable UUID id) {
             airlineService.deleteAirline(id);
             Map<String, String> response = new HashMap<>();

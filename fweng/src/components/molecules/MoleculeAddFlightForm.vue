@@ -94,7 +94,6 @@ import { object, string, number } from "yup";
 import AtomInput from "@/components/atoms/AtomInput.vue";
 import AtomFormSelect from "@/components/atoms/AtomFormSelect.vue";
 import AtomButton from "@/components/atoms/AtomButton.vue";
-import axios from "axios";
 import apiClient from "@/utils/axiosClient";
 import { formatISO } from "date-fns";
 import {useAdminUserStore} from "@/store/adminUserStore";
@@ -221,7 +220,7 @@ async function onSubmit(values) {
 // Fetch dropdown options
 const fetchCityOptions = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/airports");
+    const response = await apiClient.get("http://localhost:3000/airports");
     cityOptions.value = response.data.map((airport) => ({
       value: airport.code,
       text: airport.name,
@@ -235,7 +234,7 @@ const fetchCityOptions = async () => {
 
 const fetchAirlineOptions = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/airlines");
+    const response = await apiClient.get("http://localhost:3000/airlines");
     airlineOptions.value = response.data.map((airline) => ({
       value: airline.id,
       text: airline.name,
@@ -248,7 +247,7 @@ const fetchAirlineOptions = async () => {
 
 const fetchAircraftOptions = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/aircrafts");
+    const response = await apiClient.get("http://localhost:3000/aircrafts");
     aircraftOptions.value = response.data.map((aircraft) => ({
       value: aircraft.serialNumber,
       text: aircraft.serialNumber,

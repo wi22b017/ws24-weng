@@ -24,7 +24,7 @@ public class BaggageController {
     }
 
     @PostMapping("/baggages")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Baggage', 'create')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addBaggage(@RequestBody @Valid BaggageDto baggageDto) {
         UUID uuid = baggageService.addBaggage(baggageDto);
         Map<String, String> response = new HashMap<>();
@@ -37,7 +37,7 @@ public class BaggageController {
     }
 
     @GetMapping(value = {"/baggages", "/baggages/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Baggage', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Baggage', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getBaggages(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) UUID baggageTypeId) {
@@ -46,7 +46,7 @@ public class BaggageController {
     }
 
     @PutMapping("/baggages/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Baggage', 'update')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateBaggage(
             @PathVariable UUID id,
             @RequestBody @Valid BaggageDto baggageDto) {
@@ -59,7 +59,7 @@ public class BaggageController {
     }
 
     @DeleteMapping("/baggages/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Baggage', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteBaggage(@PathVariable UUID id) {
         baggageService.deleteBaggage(id);
         Map<String, String> response = new HashMap<>();

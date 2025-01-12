@@ -25,7 +25,7 @@ public class FlightController {
     }
 
     @PostMapping("/flights")
-    @PreAuthorize("hasPermission(null, 'at.fhtw.bweng.model.Flight', 'create')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> addFlight(@RequestBody @Valid FlightDto flightDto) {
         UUID uuid = flightService.addFlight(flightDto);
 
@@ -39,7 +39,7 @@ public class FlightController {
     }
 
     @GetMapping(value = {"/flights", "/flights/{id}"})
-    @PreAuthorize("#id == null ? hasPermission(null, 'at.fhtw.bweng.model.Flight', 'read') : hasPermission(#id, 'at.fhtw.bweng.model.Flight', 'read')")
+    // protected in the Security Config
     public ResponseEntity<?> getFlights(
             @PathVariable(required = false) UUID id,
             @RequestParam(required = false) String flightNumber) {
@@ -48,7 +48,7 @@ public class FlightController {
     }
 
     @PutMapping("/flights/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Flight', 'update')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> updateFlight(
             @PathVariable UUID id,
             @RequestBody @Valid FlightDto flightDto) {
@@ -63,7 +63,7 @@ public class FlightController {
     }
 
     @DeleteMapping("/flights/{id}")
-    @PreAuthorize("hasPermission(#id, 'at.fhtw.bweng.model.Flight', 'delete')")
+    // protected in the Security Config
     public ResponseEntity<Map<String, String>> deleteFlight(@PathVariable UUID id) {
 
         // Call service to delete, which may throw NoSuchElementException if not found
