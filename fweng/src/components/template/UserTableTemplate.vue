@@ -26,6 +26,7 @@
           <MoleculeUserActionButtons
               :onToggle="() => onToggle(user)"
               :onDelete="() => onDelete(user)"
+              :onRedirectToProfile="() => onRedirectToProfile(user)"
           />
         </td>
       </tr>
@@ -52,6 +53,10 @@ defineProps({
     type: Function,
     required: true,
   },
+  onRedirectToProfile: {
+    type: Function,
+    required: true,
+  }
 });
 </script>
 

@@ -21,6 +21,17 @@ export const useAdminUserStore = defineStore("adminUserStore", {
                 this.isLoading = false;
             }
         },
+        async fetchUserById(userId) {
+            try {
+                const response = await apiClient.get(`/users/${userId}`);
+                return response.data; // Return the user data
+            } catch (error) {
+                console.error(`Error fetching user with ID ${userId}:`, error);
+                throw new Error(
+                    error.response?.data?.error || `An error occurred while fetching the user.`
+                );
+            }
+        },
         async updateUserStatus(userId, newStatus) {
             await apiClient.patch(`/users/${userId}`, { status: newStatus }); // Send PATCH request
             const user = this.users.find((u) => u.id === userId); // Find the user in the store

@@ -28,6 +28,13 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: "/userProfile/:userId",
+    name: "userProfile",
+    component: () =>
+        import(/* webpackChunkName: "ManageUserProfileView" */ "../views/UserProfileView.vue"),
+    meta: { requiresAuth: true },
+  },
+  {
     path: "/register",
     name: "register",
     component: () =>

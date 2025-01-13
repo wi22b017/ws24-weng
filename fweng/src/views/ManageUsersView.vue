@@ -18,6 +18,7 @@
         :users="filteredUsers"
         :onToggle="toggleStatus"
         :onDelete="confirmDelete"
+        :onRedirectToProfile = "redirectToProfile"
     />
 
     <!-- Loading State -->
@@ -41,6 +42,7 @@ import AtomText from "@/components/atoms/AtomText.vue";
 import UserTableTemplate from "@/components/template/UserTableTemplate.vue";
 import {useAdminUserStore} from "@/store/adminUserStore";
 import {computed, onMounted, ref, watch} from "vue";
+import {useRouter} from "vue-router";
 
 const adminUserStore = useAdminUserStore();
 const searchTerm = ref("");
@@ -103,4 +105,11 @@ const confirmDelete = async (user) => {
     alert("Failed to delete user. Please try again.");
   }
 };
+
+const router = useRouter();
+
+const redirectToProfile = (user) => {
+  router.push({ name: 'userProfile', params: { userId: user.id } });
+}
+
 </script>
