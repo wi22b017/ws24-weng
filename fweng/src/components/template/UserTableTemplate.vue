@@ -5,7 +5,9 @@
       <tr>
         <th>#</th>
         <th>Full Name</th>
+        <th>Gender</th>
         <th>Email</th>
+        <th>Role</th>
         <th>Status</th>
         <th>Actions</th>
       </tr>
@@ -14,7 +16,9 @@
       <tr v-for="(user, index) in users" :key="user.id">
         <td>{{ index + 1 }}</td>
         <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{user.gender}}</td>
         <td>{{ user.email }}</td>
+        <td>{{user.role}}</td>
         <td>
           <MoleculeUserStatusBadge :status="user.status" />
         </td>
