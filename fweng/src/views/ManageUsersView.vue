@@ -2,12 +2,23 @@
   <div class="container mt-4">
     <AtomHeading text="Manage Users" />
 
+    <!-- Search Field -->
+    <div class="mb-3">
+      <input
+          type="text"
+          v-model="searchTerm"
+          class="form-control"
+          placeholder="Search users by any field..."
+      />
+    </div>
+
     <!-- User Table -->
     <UserTableTemplate
-        v-if="!adminUserStore.isLoading && adminUserStore.users.length > 0"
-        :users="adminUserStore.users"
+        v-if="!adminUserStore.isLoading && filteredUsers.length > 0"
+        :users="filteredUsers"
         :onToggle="toggleStatus"
         :onDelete="confirmDelete"
+        :onRedirectToProfile = "redirectToProfile"
     />
 
     <!-- Loading State -->
@@ -19,7 +30,7 @@
     </div>
 
     <!-- No Users Found -->
-    <div v-if="!adminUserStore.isLoading && adminUserStore.users.length === 0" class="text-center mt-5">
+    <div v-if="!adminUserStore.isLoading && filteredUsers.length === 0" class="text-center mt-5">
       <AtomText content="No users found." />
     </div>
   </div>
@@ -30,9 +41,11 @@ import AtomHeading from "@/components/atoms/AtomHeading.vue";
 import AtomText from "@/components/atoms/AtomText.vue";
 import UserTableTemplate from "@/components/template/UserTableTemplate.vue";
 import {useAdminUserStore} from "@/store/adminUserStore";
-import {onMounted, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
+import {useRouter} from "vue-router";
 
 const adminUserStore = useAdminUserStore();
+const searchTerm = ref("");
 
 // Watch users and log updates
 watch(
@@ -45,6 +58,27 @@ watch(
 
 onMounted(async () => {
   await adminUserStore.fetchUsers();
+});
+
+// Computed property to filter users based on the search term
+const filteredUsers = computed(() => {
+  if (!searchTerm.value.trim()) {
+    return adminUserStore.users; // No search term, return all users
+  }
+
+  const searchLower = searchTerm.value.toLowerCase();
+
+  return adminUserStore.users.filter((user) => {
+    return (
+        user.firstName.toLowerCase().includes(searchLower) ||
+        user.lastName.toLowerCase().includes(searchLower) ||
+        user.username.toLowerCase().includes(searchLower) ||
+        user.email.toLowerCase().includes(searchLower) ||
+        user.role.toLowerCase().includes(searchLower) ||
+        user.status.toLowerCase().includes(searchLower) ||
+        user.gender.toLowerCase().includes(searchLower)
+    );
+  });
 });
 
 // Toggle user status
@@ -71,4 +105,11 @@ const confirmDelete = async (user) => {
     alert("Failed to delete user. Please try again.");
   }
 };
+
+const router = useRouter();
+
+const redirectToProfile = (user) => {
+  router.push({ name: 'userProfile', params: { userId: user.id } });
+}
+
 </script>

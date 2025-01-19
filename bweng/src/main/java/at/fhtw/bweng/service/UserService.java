@@ -284,15 +284,23 @@ public class UserService {
         String currentPassword = (String) passwords.get("currentPassword");
         String newPassword = (String) passwords.get("newPassword");
 
-        if (currentPassword == null || newPassword == null) {
-            throw new IllegalArgumentException("Missing required fields: currentPassword and/or newPassword");
+        if (newPassword == null) {
+            throw new IllegalArgumentException("Missing required fields: newPassword and/or confirmPassword");
         }
 
         User user = getUserById(id);
 
-        // Verify current password
-        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
-            throw new IllegalArgumentException("Current password is incorrect");
+        try {
+            // If the current user is an admin, skip current password verification
+            ensureAdminRole();
+        } catch (SecurityException e) {
+            // Non-admin users must provide and verify the current password
+            if (currentPassword == null) {
+                throw new IllegalArgumentException("Current password is required");
+            }
+            if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect");
+            }
         }
 
         // Encode and update the new password

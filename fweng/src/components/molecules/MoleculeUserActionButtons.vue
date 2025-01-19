@@ -2,6 +2,7 @@
   <div class="d-flex justify-content-center gap-2">
     <button class="btn btn-primary btn-sm" @click="onToggle">Toggle Status</button>
     <button class="btn btn-danger btn-sm" @click="onDelete">Delete</button>
+    <button class="btn btn-info btn-sm" @click="onRedirectToProfile">Edit Profile</button>
   </div>
 </template>
 
@@ -17,6 +18,10 @@ defineProps({
     type: Function,
     required: true,
   },
+  onRedirectToProfile: {
+    type: Function,
+    required: true,
+  }
 });
 </script>
 
