@@ -49,18 +49,18 @@ import {useUserStore} from "@/store/user";
 const changePasswordFormSchema = object({
   currentPassword: string()
       .required("Password is required")
-      .min(3, "Password must be at least 3 characters long"),
+      .min(12, "Password must be at least 3 characters long"),
       /*.matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
           "Password must include uppercase, lowercase letters, numbers, and symbols"
       ),*/
   newPassword: string()
       .required("Password is required")
-      .min(3, "Password must be at least 3 characters long"),
-      /*.matches(
+      .min(12, "Password must be at least 3 characters long")
+      .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
           "Password must include uppercase, lowercase letters, numbers, and symbols"
-      ),*/
+      ),
   confirmNewPassword: string()
       .required("Please repeat your password")
       .oneOf([yupRef("newPassword")], "Passwords must match"),
