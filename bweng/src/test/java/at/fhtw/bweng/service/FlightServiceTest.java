@@ -112,6 +112,160 @@ class FlightServiceTest {
     }
 
     @Test
+    void addFlight_NoOriginAirportFound_ShouldCreateAirport() {
+        // Arrange
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIG", "Origin Airport"),
+                new AirportDto("DEST", "Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("Test Airline"), "SN123"),
+                new BigDecimal(150.0));
+
+        when(airportRepository.findByCode(flightDto.flightOrigin().airportCode()))
+                .thenReturn(Optional.empty());
+        when(airportRepository.save(any(Airport.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+        when(airportRepository.findByCode(flightDto.flightDestination().airportCode()))
+                .thenReturn(Optional.of(new Airport(UUID.randomUUID(), "Destination Airport", "DEST")));
+        when(airlineRepository.findByName(flightDto.aircraft().airline().name()))
+                .thenReturn(Optional.of(new Airline(UUID.randomUUID(), "Test Airline")));
+        when(aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber()))
+                .thenReturn(Optional.of(new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 180, new Airline(UUID.randomUUID(), "Test Airline"))));
+        when(flightRepository.save(any(Flight.class)))
+                .thenAnswer(invocation -> {
+                    Flight flight = invocation.getArgument(0);
+                    flight.setId(UUID.randomUUID());
+                    return flight;
+                });
+
+        // Act
+        UUID result = flightService.addFlight(flightDto);
+
+        // Assert
+        assertNotNull(result);
+        verify(airportRepository, times(1)).save(any(Airport.class));
+    }
+
+    @Test
+    void addFlight_NoDestinationAirportFound_ShouldCreateAirport() {
+        // Arrange
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIG", "Origin Airport"),
+                new AirportDto("DEST", "Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("Test Airline"), "SN123"),
+                new BigDecimal(150.0));
+        when(airportRepository.findByCode(flightDto.flightDestination().airportCode()))
+                .thenReturn(Optional.of(new Airport(UUID.randomUUID(), "Origin Airport", "ORIG")));
+        when(airportRepository.findByCode(flightDto.flightOrigin().airportCode()))
+                .thenReturn(Optional.empty());
+        when(airportRepository.save(any(Airport.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+        when(airlineRepository.findByName(flightDto.aircraft().airline().name()))
+                .thenReturn(Optional.of(new Airline(UUID.randomUUID(), "Test Airline")));
+        when(aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber()))
+                .thenReturn(Optional.of(new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 180, new Airline(UUID.randomUUID(), "Test Airline"))));
+        when(flightRepository.save(any(Flight.class)))
+                .thenAnswer(invocation -> {
+                    Flight flight = invocation.getArgument(0);
+                    flight.setId(UUID.randomUUID());
+                    return flight;
+                });
+
+        // Act
+        UUID result = flightService.addFlight(flightDto);
+
+        // Assert
+        assertNotNull(result);
+        verify(airportRepository, times(1)).save(any(Airport.class));
+    }
+
+    @Test
+    void addFlight_NoAirlineFound_ShouldCreateAirline() {
+        // Arrange
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIG", "Origin Airport"),
+                new AirportDto("DEST", "Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("Test Airline"), "SN123"),
+                new BigDecimal(150.0));
+        UUID airlineId = UUID.randomUUID();
+        Airline newAirline = new Airline(airlineId, flightDto.aircraft().airline().name());
+
+        doReturn(Optional.of(new Airport(UUID.randomUUID(), "Origin Airport", "ORIG")))
+                .when(airportRepository).findByCode(flightDto.flightOrigin().airportCode());
+
+        doReturn(Optional.of(new Airport(UUID.randomUUID(), "Destination Airport", "DEST")))
+                .when(airportRepository).findByCode(flightDto.flightDestination().airportCode());
+
+        when(airlineRepository.findByName(flightDto.aircraft().airline().name()))
+                .thenReturn(Optional.empty());
+        when(airlineRepository.save(any(Airline.class)))
+                .thenReturn(newAirline);
+
+        when(aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber()))
+                .thenReturn(Optional.of(new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 180, newAirline)));
+        when(flightRepository.save(any(Flight.class)))
+                .thenAnswer(invocation -> {
+                    Flight flight = invocation.getArgument(0);
+                    flight.setId(UUID.randomUUID());
+                    return flight;
+                });
+
+        // Act
+        UUID result = flightService.addFlight(flightDto);
+
+        // Assert
+        assertNotNull(result);
+        verify(airlineRepository, times(1)).save(any(Airline.class));
+        verify(aircraftRepository, times(1)).findBySerialNumber(flightDto.aircraft().serialNumber());
+    }
+
+    @Test
+    void addFlight_NoAirCraftFound_ShouldCreateAircraft() {
+        // Arrange
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIG", "Origin Airport"),
+                new AirportDto("DEST", "Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("Test Airline"), "SN123"),
+                new BigDecimal(150.0));
+
+        doReturn(Optional.of(new Airport(UUID.randomUUID(), "Origin Airport", "ORIG")))
+                .when(airportRepository).findByCode(flightDto.flightOrigin().airportCode());
+
+        doReturn(Optional.of(new Airport(UUID.randomUUID(), "Destination Airport", "DEST")))
+                .when(airportRepository).findByCode(flightDto.flightDestination().airportCode());
+
+        when(airlineRepository.findByName(flightDto.aircraft().airline().name()))
+                .thenReturn(Optional.of(new Airline(UUID.randomUUID(), "Test Airline")));
+
+        when(aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber()))
+                .thenReturn(Optional.empty());
+        when(aircraftRepository.save(any(Aircraft.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        when(flightRepository.save(any(Flight.class)))
+                .thenAnswer(invocation -> {
+                    Flight flight = invocation.getArgument(0);
+                    flight.setId(UUID.randomUUID());
+                    return flight;
+                });
+
+        // Act
+        UUID result = flightService.addFlight(flightDto);
+
+        // Assert
+        assertNotNull(result);
+        verify(aircraftRepository, times(1)).save(any(Aircraft.class));
+        verify(airlineRepository, times(1)).findByName(flightDto.aircraft().airline().name());
+    }
+
+    @Test
     void getFlightById_ReturnsCorrectFlight() {
         //Arrange
         Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
@@ -363,6 +517,174 @@ class FlightServiceTest {
         verifyNoInteractions(airportRepository, airlineRepository, aircraftRepository);
     }
 
+    @Test
+    void updateFlight_NoOriginAirportFound_ShouldCreateAirport() {
+        // Arrange
+        Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
+        Airport destination = new Airport(UUID.randomUUID(), "Destination Airport", "DEST");
+        Airline airline = new Airline(UUID.randomUUID(), "Test Airline");
+        Aircraft aircraft = new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 200, airline);
+        Flight existingFlight = new Flight(UUID.randomUUID(), "FL123", OffsetDateTime.now(), OffsetDateTime.now(), origin, destination, aircraft, new BigDecimal(150.0));
+
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIGNEW", "New Origin Airport"),
+                new AirportDto("DESTNEW", "New Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("New Test Airline"), "SN1234"),
+                new BigDecimal(150.0));
+
+
+        UUID flightId = existingFlight.getId();
+
+        Airport newOriginAirport = new Airport(UUID.randomUUID(), flightDto.flightOrigin().airportText(), flightDto.flightOrigin().airportCode());
+
+        when(flightRepository.findById(flightId)).thenReturn(Optional.of(existingFlight));
+        when(airportRepository.findByCode(flightDto.flightOrigin().airportCode())).thenReturn(Optional.empty());
+        when(airportRepository.findByCode(flightDto.flightDestination().airportCode())).thenReturn(Optional.of(destination));
+        when(airportRepository.save(any(Airport.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        // Act
+        flightService.updateFlight(flightId, flightDto);
+
+        // Assert
+        verify(airportRepository, times(1)).save(any(Airport.class));
+        verify(flightRepository).save(existingFlight);
+    }
+
+    @Test
+    void updateFlight_NoDestinationAirportFound_ShouldCreateAirport() {
+        // Arrange
+        Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
+        Airport destination = new Airport(UUID.randomUUID(), "Destination Airport", "DEST");
+        Airline airline = new Airline(UUID.randomUUID(), "Test Airline");
+        Aircraft aircraft = new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 200, airline);
+        Flight existingFlight = new Flight(UUID.randomUUID(), "FL123", OffsetDateTime.now(), OffsetDateTime.now(), origin, destination, aircraft, new BigDecimal(150.0));
+
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIGNEW", "New Origin Airport"),
+                new AirportDto("DESTNEW", "New Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("New Test Airline"), "SN1234"),
+                new BigDecimal(150.0));
+
+
+        UUID flightId = existingFlight.getId();
+
+        Airport newDestinationAirport = new Airport(UUID.randomUUID(), flightDto.flightDestination().airportText(), flightDto.flightDestination().airportCode());
+
+        when(flightRepository.findById(flightId)).thenReturn(Optional.of(existingFlight));
+        when(airportRepository.findByCode(flightDto.flightOrigin().airportCode())).thenReturn(Optional.of(origin));
+        when(airportRepository.findByCode(flightDto.flightDestination().airportCode())).thenReturn(Optional.empty());
+        when(airportRepository.save(any(Airport.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        // Act
+        flightService.updateFlight(flightId, flightDto);
+
+        // Assert
+        verify(airportRepository, times(1)).save(any(Airport.class));
+        verify(flightRepository).save(existingFlight);
+    }
+
+
+    @Test
+    void updateFlight_NoAirlineFound_ShouldCreateAirline() {
+        // Arrange
+        Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
+        Airport destination = new Airport(UUID.randomUUID(), "Destination Airport", "DEST");
+        Airline airline = new Airline(UUID.randomUUID(), "Test Airline");
+        Aircraft aircraft = new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 200, airline);
+        Flight existingFlight = new Flight(UUID.randomUUID(), "FL123", OffsetDateTime.now(), OffsetDateTime.now(), origin, destination, aircraft, new BigDecimal(150.0));
+
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIGNEW", "New Origin Airport"),
+                new AirportDto("DESTNEW", "New Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("New Test Airline"), "SN1234"),
+                new BigDecimal(150.0));
+
+
+        UUID flightId = existingFlight.getId();
+
+        Airline newAirline = new Airline(UUID.randomUUID(), flightDto.aircraft().airline().name());
+
+        when(flightRepository.findById(flightId)).thenReturn(Optional.of(existingFlight));
+        when(airlineRepository.findByName(flightDto.aircraft().airline().name())).thenReturn(Optional.empty());
+        when(airlineRepository.save(any(Airline.class))).thenReturn(newAirline);
+
+        // Act
+        flightService.updateFlight(flightId, flightDto);
+
+        // Assert
+        verify(airlineRepository).save(any(Airline.class));
+        verify(flightRepository).save(existingFlight);
+    }
+
+    @Test
+    void updateFlight_NoAircraftFound_ShouldCreateAircraft() {
+        // Arrange
+        Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
+        Airport destination = new Airport(UUID.randomUUID(), "Destination Airport", "DEST");
+        Airline airline = new Airline(UUID.randomUUID(), "Test Airline");
+        Aircraft aircraft = new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 200, airline);
+        Flight existingFlight = new Flight(UUID.randomUUID(), "FL123", OffsetDateTime.now(), OffsetDateTime.now(), origin, destination, aircraft, new BigDecimal(150.0));
+
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIGNEW", "New Origin Airport"),
+                new AirportDto("DESTNEW", "New Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("New Test Airline"), "SN1234"),
+                new BigDecimal(150.0));
+        UUID flightId = existingFlight.getId();
+
+        Airline existingAirline = new Airline(UUID.randomUUID(), flightDto.aircraft().airline().name());
+        Aircraft newAircraft = new Aircraft(UUID.randomUUID(), flightDto.aircraft().serialNumber(), flightDto.aircraft().manufacturer(), flightDto.aircraft().model(), flightDto.aircraft().capacity(), existingAirline);
+
+        when(flightRepository.findById(flightId)).thenReturn(Optional.of(existingFlight));
+        when(aircraftRepository.findBySerialNumber(flightDto.aircraft().serialNumber())).thenReturn(Optional.empty());
+        when(aircraftRepository.save(any(Aircraft.class))).thenReturn(newAircraft);
+
+        // Act
+        flightService.updateFlight(flightId, flightDto);
+
+        // Assert
+        verify(aircraftRepository).save(any(Aircraft.class));
+        verify(flightRepository).save(existingFlight);
+    }
+
+    @Test
+    void updateFlight_DuplicateData_ShouldThrowDataIntegrityViolationException() {
+        // Arrange
+        Airport origin = new Airport(UUID.randomUUID(), "Origin Airport", "ORIG");
+        Airport destination = new Airport(UUID.randomUUID(), "Destination Airport", "DEST");
+        Airline airline = new Airline(UUID.randomUUID(), "Test Airline");
+        Aircraft aircraft = new Aircraft(UUID.randomUUID(), "SN123", "Boeing", "737", 200, airline);
+        Flight existingFlight = new Flight(UUID.randomUUID(), "FL123", OffsetDateTime.now(), OffsetDateTime.now(), origin, destination, aircraft, new BigDecimal(150.0));
+
+        FlightDto flightDto = new FlightDto(  "FL123",
+                "2024-01-01T10:00:00+00:00",
+                "2024-01-01T14:00:00+00:00",
+                new AirportDto("ORIGNEW", "New Origin Airport"),
+                new AirportDto("DESTNEW", "New Destination Airport"),
+                new AircraftDto("Boeing", "737", 180, new AirlineDto("New Test Airline"), "SN1234"),
+                new BigDecimal(150.0));
+
+
+        UUID flightId = existingFlight.getId();
+
+        when(flightRepository.findById(flightId)).thenReturn(Optional.of(existingFlight));
+        doThrow(new DataIntegrityViolationException("Flight with the same data already exists."))
+                .when(flightRepository).save(any(Flight.class));
+
+        // Act & Assert
+        DataIntegrityViolationException thrown = assertThrows(DataIntegrityViolationException.class, () ->
+                flightService.updateFlight(flightId, flightDto));
+
+        assertEquals("Flight with the same data already exists.", thrown.getMessage());
+    }
     @Test
     void deleteFlight_Success() {
         // Arrange

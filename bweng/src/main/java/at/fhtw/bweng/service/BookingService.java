@@ -74,9 +74,6 @@ public class BookingService {
             throw new IllegalArgumentException("User ID must not be null.");
         }
         List<Booking> bookings =  bookingRepository.findBookingByUserId(userId);
-        if(bookings.isEmpty()) {
-            throw new NoSuchElementException("No bookings found for user ID " + userId);
-        }
 
         // Get the system's current timezone
         ZoneId systemZone = ZoneId.systemDefault();
