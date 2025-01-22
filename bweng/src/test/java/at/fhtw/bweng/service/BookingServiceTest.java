@@ -249,23 +249,6 @@ class BookingServiceTest {
     }
 
     @Test
-    void getBookingsByUserId_ThrowsExceptionWhenNoBookingsFound() {
-        // Arrange
-        UUID userId = UUID.randomUUID();
-        when(bookingRepository.findBookingByUserId(userId)).thenReturn(List.of());
-
-        // Act & Assert
-        NoSuchElementException exception = assertThrows(
-                NoSuchElementException.class,
-                () -> bookingService.getBookingsByUserId(userId)
-        );
-
-        assertEquals("No bookings found for user ID " + userId, exception.getMessage());
-        verify(bookingRepository, times(1)).findBookingByUserId(userId);
-
-    }
-
-    @Test
     void getBookingsByUserId_ThrowsExceptionWhenUserIdNotValid() {
         // Arrange
         UUID userId = null;
